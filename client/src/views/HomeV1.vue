@@ -62,11 +62,11 @@
 				heading="Subscribe our Newsletter"
 				description="Stay up to date with our latest new and products">
 			</emb-subscribe>
-			<emb-shop-card
-				secTitle="Shop By Brands"
+			<!-- <emb-shop-card
+				secTitle="Our Parten"
 				:data="shopCard"
 			>
-			</emb-shop-card>
+			</emb-shop-card> -->
 		</div>
 	</div>
 </template>
@@ -83,7 +83,7 @@ import DayDeal from "Components/Widgets/DayDeal";
 import DetailOffer from "Components/Widgets/DetailOffer";
 import Testimonial from "Components/Widgets/Testimonial";
 import Blog from "Components/Widgets/Blog";
-import ShopCard from "Components/Widgets/ShopCard";
+// import ShopCard from "Components/Widgets/ShopCard";
 import Subscribe from "Components/Widgets/Subscribe";
 
 // data
@@ -93,10 +93,10 @@ import featureProductData from "Assets/data/featureProductData";
 import dayDealData from "Assets/data/dayDealData";
 import latestArrivalData from "Assets/data/latestArrivalData";
 import TestimonialData from "Assets/data/TestimonialData";
-import shopCard from "Assets/data/shopCard";
+// import shopCard from "Assets/data/shopCard";
 
 import api from "Api";
-
+import company from "Api/company";
 export default {
   components: {
     embHomeMainBanner: HomeMainBanner,
@@ -109,7 +109,7 @@ export default {
     embTestimonial: Testimonial,
     embBlog: Blog,
     embSubscribe: Subscribe,
-    embShopCard: ShopCard
+    // embShopCard: ShopCard
   },
   data() {
     return {
@@ -119,12 +119,14 @@ export default {
       dayDealData,
       latestArrivalData,
       TestimonialData,
-      shopCard,
+    //   shopCard,
       blogData: null
     };
   },
-  mounted() {
-    this.getBlogData();
+  async mounted() {
+	// this.getBlogData();
+	const res = await company.getCompany()
+	console.log(res.data)
   },
   methods: {
     getBlogData() {
@@ -137,6 +139,7 @@ export default {
           console.log(error);
         });
     }
-  }
+  },
+
 };
 </script>

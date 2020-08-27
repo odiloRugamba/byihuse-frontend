@@ -7,17 +7,17 @@
                <v-flex xs12 sm12 md12 lg6 xl6>
                   <v-layout row wrap>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
-                        <v-text-field label="First Name" :rules="inputRules.basictextRules"></v-text-field>
+                        <v-text-field v-model="firstName" label="First Name" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
-                        <v-text-field label="Last Name" :rules="inputRules.basictextRules"></v-text-field>
+                        <v-text-field label="Last Name" v-model="lastName" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
-                     <v-flex xs12 sm12 md12 lg12 xl12 py-1>
+                     <!-- <v-flex xs12 sm12 md12 lg12 xl12 py-1>
 								<v-radio-group v-model="gender">
 									<v-radio label="Male" value="Male"></v-radio>
 									<v-radio label="Female" value="Female"></v-radio>
                         </v-radio-group>
-                     </v-flex>
+                     </v-flex> -->
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
                         <v-menu
                            ref="menu"
@@ -28,7 +28,7 @@
                            offset-y
                            min-width="290px"
                         >
-                        	<template v-slot:activator="{ on }">
+                        	<!-- <template v-slot:activator="{ on }">
                         		<v-text-field
 											v-model="date"
 											v-on="on"
@@ -43,17 +43,26 @@
                               v-model="date"
                               min="1950-01-01"
                               @change="save"
-                           ></v-date-picker>
+                           ></v-date-picker> -->
                         </v-menu>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
-                        <v-text-field label="Mobile No" :rules="inputRules.basictextRules"></v-text-field>
+                        <v-text-field label="Email" v-model="email" :rules="emailRules"></v-text-field>
+                     </v-flex>
+                     <v-flex xs12 sm12 md12 lg12 xl12 py-1>
+                        <v-select
+									:items="Departments"
+									label="Departments"
+									v-model="assignedDepartments"
+									dense
+									></v-select>
+                        <!-- <v-text-field label="Departments" v-model="Departments" :rules="inputRules.basictextRules"></v-text-field> -->
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
                         <v-text-field label="Location" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
-                        <v-text-field label="Email" :rules="emailRules"></v-text-field>
+                        <v-text-field type="password" label="password" v-model="password" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 pt-1 pb-0>
                         <v-btn class="accent mx-0 mb-4" @click.stop.prevent="saveDetails">Save</v-btn>
@@ -69,9 +78,18 @@
 </template>
 
 <script>
+import auth from 'Api/auth';
+import department from "Api/department";
 	export default{
    	data () {
       	return {
+            firstName: '',
+            lastName: '',
+            email: '',
+            Departments: [],
+            assignedDepartments: '',
+            assignedDepartmentsId: '',
+            password: '',
 				val: '',
          	valid: false,
           	inputRules: {
@@ -94,7 +112,8 @@
       },
       methods: {
         saveDetails(){
-				this.$refs.form.validate()
+            this.$refs.form.validate()
+            this.update()
             if(this.valid == true){
                this.$snotify.success('Your account Information Updated succesfully',{
                   closeOnClick: false,
@@ -108,9 +127,43 @@
             
 				}
          },
+         async update () {
+            this.data.forEach(el => {
+				   if (el.name.kiny === this.assignedDepartments) {
+					   console.log(el._id)
+					   this.assignedDepartmentsId = el._id
+				   }
+			   });
+            const resName = await auth.updateName({
+               firstName: this.firstName,
+               lastName: this.lastName
+            })
+            const resEmail = await auth.upadetEmail({
+               email: this.email
+            })
+            const resPassword = await auth.updatePassword({
+               password: this.password
+            })
+            const resDepartments = await auth.updateDepartments({
+               departments: this.assignedDepartmentsId
+            })
+            console.log(resEmail, resPassword, resDepartments,resName)
+            // console.log()
+         },
          save (date) {
             this.$refs.menu.save(date)
          }
-      }
+      },
+      async mounted () {
+			try {
+				const res = await department.getDepartment()
+				this.data = await res.data.data
+				this.data.forEach(el => {
+					this.Departments.push(el.name.kiny)
+				});
+			} catch (err) {
+				console.log(err.message)
+			}
+		}
    }
 </script>

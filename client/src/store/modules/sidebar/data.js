@@ -2,26 +2,16 @@
 // Sidebar Routers
 export const menus = [
    {
-      path: '',
+      path: '/home',
       name: "message.home",
 		icon: "home",
 		type: "sub_menu",
       children: [
-			{
-				name: "message.homeOne",
-				children_menus:null,
-            path: "/home"
-			},
-			{
-				name: "message.homeTwo",
-				children_menus:null,
-            path: "/home-two"
-         },
-         {
-				name: "message.homeThree",
-				children_menus:null,
-            path: "/home-three"
-			},
+			// {
+			// 	name: "message.homeOne",
+			// 	children_menus:null,
+         //    path: "/home"
+			// }
 		]
    },
    {
@@ -185,40 +175,40 @@ export const menus = [
             children_menus:null,
             path: '/faq'
          },
-         {
-            name: 'message.404Page',
-            children_menus:null,
-            path: 'not-found'
-			},
-			{
-            name: 'message.userProfile',
-            children_menus:null,
-            path: '/account/profile'
-         },
-         {
-            name: 'message.session',
-            path: '',
-				icon: 'supervised_user_circle',
-				type: "sub_menu",
-				children_menus:[
-					{
-						name: 'message.signIn',
-						path: '/session/signin'
-					},
-					{
-						name: 'message.register',
-						path: '/session/signup'
-					},
-					{
-						name: 'message.forgotPassword',
-						path: '/session/forgot-password'
-					},
-					{
-						name: 'message.thankYou',
-						path: '/session/thank-you'
-					},
-				]
-         },
+         // {
+         //    name: 'message.404Page',
+         //    children_menus:null,
+         //    path: 'not-found'
+			// },
+			// {
+         //    name: 'message.userProfile',
+         //    children_menus:null,
+         //    path: '/account/profile'
+         // },
+         // {
+         //    name: 'message.session',
+         //    path: '',
+			// 	icon: 'supervised_user_circle',
+			// 	type: "sub_menu",
+			// 	children_menus:[
+			// 		{
+			// 			name: 'message.signIn',
+			// 			path: '/session/signin'
+			// 		},
+			// 		{
+			// 			name: 'message.register',
+			// 			path: '/session/signup'
+			// 		},
+			// 		{
+			// 			name: 'message.forgotPassword',
+			// 			path: '/session/forgot-password'
+			// 		},
+			// 		{
+			// 			name: 'message.thankYou',
+			// 			path: '/session/thank-you'
+			// 		},
+			// 	]
+         // },
       ]
    },
    {
@@ -227,59 +217,59 @@ export const menus = [
       icon: 'perm_contact_calendar',
       children: null
    },
-   {
-      path: '/admin-panel/reports',
-      name:"message.adminPanel",
-      icon: 'perm_identity',
-      children:null
-   },
+   // {
+   //    path: '/admin-panel/reports',
+   //    name:"message.adminPanel",
+   //    icon: 'perm_identity',
+   //    children:null
+   // },
 ]
 
 
-export const adminPanelMenus = [
-	{
-      path: '/admin-panel/reports',
-      name:"message.reports",
-      icon: 'poll',
-      children:null,
-		active: true
-   },
-   {
-      path: '/admin-panel/invoices',
-      name:"message.invoices",
-      icon: 'recent_actors',
-      children:null,
-		active: false
-   },
-   {
-      path: '',
-      name:"message.products",
-      icon: 'shopping_cart',
-		active: false,
-      children: [
-			{
-				name: "message.products",
-				path: "/admin-panel/products"
-			},
-			{
-				name: "message.productAdd",
-				path: "/admin-panel/product-add"
-         },
-      ]
+// export const adminPanelMenus = [
+// 	{
+//       path: '/admin-panel/reports',
+//       name:"message.reports",
+//       icon: 'poll',
+//       children:null,
+// 		active: true
+//    },
+//    {
+//       path: '/admin-panel/invoices',
+//       name:"message.invoices",
+//       icon: 'recent_actors',
+//       children:null,
+// 		active: false
+//    },
+//    {
+//       path: '',
+//       name:"message.products",
+//       icon: 'shopping_cart',
+// 		active: false,
+//       children: [
+// 			{
+// 				name: "message.products",
+// 				path: "/admin-panel/products"
+// 			},
+// 			{
+// 				name: "message.productAdd",
+// 				path: "/admin-panel/product-add"
+//          },
+//       ]
       
-   },
-   {
-      path: '/admin-panel/account/profile',
-      name:"message.profile",
-      icon: 'account_circle',
-		active: false,
-      children: null
-   },
-   {
-      path: '/home',
-      name:"message.goToSite",
-      icon: 'home',
-		active: false,
-      children: null
-   },
-]
+//    },
+//    {
+//       path: '/admin-panel/account/profile',
+//       name:"message.profile",
+//       icon: 'account_circle',
+// 		active: false,
+//       children: null
+//    },
+//    {
+//       path: '/home',
+//       name:"message.goToSite",
+//       icon: 'home',
+// 		active: false,
+//       children: null
+//    },
+// ]

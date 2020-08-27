@@ -9,8 +9,8 @@
 								<img src="/static/images/user-3.jpg" width="70" alt="Active User">
 							</div>
 							<div class="px-4">
-								<h4>Hi, {{firstName}}</h4>
-								<div class="text-muted text-xl">hh</div>
+								<h4>Hi,{{firstName}}</h4>
+								<div class="text-muted text-xl">{{email}}</div>
 							</div>
 						</div>
 						<v-layout row wrap fill-height profile-list>
@@ -52,6 +52,8 @@ import { mapGetters } from "vuex";
 export default {
 	data(){
 	    return{
+			firstName: '',
+			email: '',
 			settings:{
 				orderHistory:[
 					{
@@ -92,13 +94,18 @@ export default {
 	methods:{
 		onTabChange(key) {
 			this.selectedTab = key;
-			console.log(this.lastName)
-			this.lastName = 'hello'
+			// this.$store.state.lastName = 'hello'
+			// console.log(this.lastName, this.firstName, this.email, this.role, this.assignedDepartments)
 		},
 	},
 	computed: {
 	...mapGetters(["firstName", "lastName", "email", "role", "assignedDepartments"])
+	},
+	created () {
+		const data =JSON.parse(localStorage.getItem('data'))
+		console.log(data)
+		this.firstName = data.firstName
+		this.email = data.email
 	}
-	
 }
 </script>

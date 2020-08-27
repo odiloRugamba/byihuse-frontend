@@ -45,6 +45,7 @@
 </template>
 <script>
 import auth from "Api/auth";
+import axios from 'axios'
 	export default{
 		data(){
 			return{
@@ -61,14 +62,24 @@ import auth from "Api/auth";
 					password: this.password
 					})
 					const data = res.data
-					// to="/checkout/payment"
-					this.$store.state.firstName = data.data.user.firstName
-					this.$store.state.lastName = data.data.user.lastName
-					this.$store.state.role = data.data.user.role
-					this.$store.state.email = data.data.user.email
-					this.$store.state.token = data.data.token
-					this.$store.state.assignedDepartments = data.data.user.assignedDepartments
-				this.$router.push('/home');
+					console.log(data)
+					const localData = {
+						firstName: data.data.user.firstName,
+						lastName: data.data.user.lastName,
+						role: data.data.user.role,
+						email: data.data.user.email,
+						departments: data.data.user.assignedDepartments
+					}
+					localStorage.setItem('data', JSON.stringify(localData))
+					axios.defaults.headers.post['header'] = data.data.token
+					// sessionStorage.setItem('token', data.data.token)
+					this.$snotify.success('SignIn process succesfully done',{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 1000,
+					showProgressBar:false,
+					});
+				this.$router.push('/account/profile');
 			} catch (err) {
 			console.log(err.message)
 			}

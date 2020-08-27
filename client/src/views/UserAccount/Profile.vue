@@ -18,34 +18,40 @@ export default {
          profileData:[
             {
                key:"First Name",
-               value:"ALex",
+               value:"",
             },
             {
                key:"Last Name",
                value:"Doe"
             },
             {
-               key:"Gender",
-               value:"Female"
-            },
-            {
-               key:"Date Of birth",
-               value:"9th May 1995"
-            },
-            {
-               key:"Mobile Number",
-               value:"+123 456 789 123"
+               key:"E-mail",
+               value:""
             },
             {
                key:"Location",
                value:"San Francisco"
             },
             {
-               key:"E-mail id",
-               value:"leftredno@ruth.com"
+               key:"Role",
+               value:""
+            },
+            {
+               key:"Departments",
+               value:""
             }
+            
          ]
       }
-   }
+   },
+   created () {
+		const data =JSON.parse(localStorage.getItem('data'))
+		console.log(data)
+      this.profileData[0].value= data.firstName
+      this.profileData[1].value = data.lastName
+      this.profileData[2].value = data.email
+      this.profileData[4].value = data.role
+      this.profileData[5].value = data.Departments
+	}
 }
 </script>
