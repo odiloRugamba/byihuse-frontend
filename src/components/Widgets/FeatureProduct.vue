@@ -81,7 +81,10 @@ import { mapGetters } from "vuex";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "products"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "products"]),
+    produc () {
+      return this.$store.state.products
+    }
   },
   components: {
     Slick
@@ -123,9 +126,6 @@ export default {
     };
   },
   methods: {
-    changeSelectedProduct(cateogary) {
-      this.$store.dispatch("changeSelectedProduct", cateogary);
-    },
     /**
      * method for adding item to cart
      */
@@ -142,9 +142,9 @@ export default {
     /**
      * method for to change item
      */
-    onTabChange(key) {
-      this.selectedTab = key;
-    },
+    // onTabChange(key) {
+    //   this.selectedTab = key;
+    // },
     /**
      * method for checking if item exists in cart
      */
@@ -188,6 +188,11 @@ export default {
       }
       return exists;
     }
+  },
+  mounted () {
+    // this.$store.dispatch("changeSelectedProduct", cateogary);
+    this.$store.dispatch('getproducts')
+    // console.log(this.produc)
   }
 };
 </script>

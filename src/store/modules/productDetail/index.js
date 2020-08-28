@@ -1,8 +1,9 @@
-import { products } from "./data";
+// import { products } from "./data";
 import api from 'Api'
 
 const state = {
-   products,
+   products:{},
+   i: 0,
    selectedProduct: null
 }
 
@@ -18,29 +19,30 @@ const getters = {
 
 // actions 
 const actions = {
-   changeSelectedProduct(context, payload) {
-      context.commit('selectProductHandler', payload);
-   },
-   getProducts(context) {
-      context.commit('getProductsHandler')
+   getproducts ({ commit }) {
+      api()
+      .get('/api/categories')
+      .then(response =>{
+         commit('SET_prducts', response.data)
+      })
    }
 }
 
 // mutations
 const mutations = {
-   getProductsHandler() {
-      api
-         .get("products.json")
-         .then(response => {
-            state.products = response.data;
-            // console.log(state.products);s
-         })
-         .catch(error => {
-            console.log(error);
-         });
-   },
-   selectProductHandler(state, category) {
-      state.selectedProduct = category;
+   SET_prducts (state, products) { 
+      if (products.data.feature === false) {
+         console.log('products.data')
+      }
+       var obje = {}
+      products.data.forEach(el => {
+         state.i++
+         var key = el.name.kiny + state.i
+      console.log(key)
+       obje[key] = el
+      });
+      console.log(obje)
+   //   state.products
    }
 }
 

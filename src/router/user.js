@@ -1,8 +1,6 @@
 import UserPanel from 'Container/UserPanel';
 
 const HomeV1 = () => import('Views/HomeV1');
-const HomeV2 = () => import('Views/HomeV2');
-const HomeV3 = () => import('Views/HomeV3');
 const Accessory = () => import('Views/Accesory');
 const Gadget = () => import('Views/Gadget');
 const Product = () => import('Views/Product');
@@ -42,20 +40,6 @@ export default {
 			meta: {
 				header: 1
 			 }
-		},
-		{ 
-			path: '/home-two',
-			component: HomeV2 ,
-			meta: {
-				header: 2
-			}
-		},
-		{ 
-			path: '/home-three',
-			component: HomeV3 ,
-			meta: {
-				header: 3
-			}
 		},
 		{
 			path: '/products/accessories',

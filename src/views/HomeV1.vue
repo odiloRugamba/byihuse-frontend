@@ -89,14 +89,15 @@ import Subscribe from "Components/Widgets/Subscribe";
 // data
 import homeBannerData from "Assets/data/homeBannerData";
 import featuresData from "Assets/data/featuresData";
-import featureProductData from "Assets/data/featureProductData";
+// import featureProductData from "Assets/data/featureProductData";
 import dayDealData from "Assets/data/dayDealData";
 import latestArrivalData from "Assets/data/latestArrivalData";
 import TestimonialData from "Assets/data/TestimonialData";
 // import shopCard from "Assets/data/shopCard";
 
 import api from "Api";
-import company from "Api/company";
+// import company from "Api/company";
+// import products from "Api/products";
 export default {
   components: {
     embHomeMainBanner: HomeMainBanner,
@@ -115,7 +116,7 @@ export default {
     return {
       homeBannerData,
       featuresData,
-      featureProductData,
+    //   featureProductData,
       dayDealData,
       latestArrivalData,
       TestimonialData,
@@ -125,8 +126,10 @@ export default {
   },
   async mounted() {
 	// this.getBlogData();
-	const res = await company.getCompany()
-	console.log(res.data)
+	// const res = await company.getCompany()
+	// const data = await products.getProducts()
+	// console.log(data.data.data)
+	// console.log(res.data.data)
   },
   methods: {
     getBlogData() {
