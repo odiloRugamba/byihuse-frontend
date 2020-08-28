@@ -192,7 +192,7 @@ export default {
   mounted () {
     // this.$store.dispatch("changeSelectedProduct", cateogary);
     this.$store.dispatch('getproducts')
-    // console.log(this.produc)
+    console.log(this.products)
   }
 };
 </script>

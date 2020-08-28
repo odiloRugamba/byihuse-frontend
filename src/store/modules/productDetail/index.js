@@ -42,6 +42,7 @@ const mutations = {
        obje[key] = el
       });
       console.log(obje)
+      state.products = obje
    //   state.products
    }
 }
