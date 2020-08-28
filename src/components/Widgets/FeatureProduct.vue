@@ -142,9 +142,9 @@ export default {
     /**
      * method for to change item
      */
-    // onTabChange(key) {
-    //   this.selectedTab = key;
-    // },
+    onTabChange(key) {
+      this.selectedTab = key;
+    },
     /**
      * method for checking if item exists in cart
      */
