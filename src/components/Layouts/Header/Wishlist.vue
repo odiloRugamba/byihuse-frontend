@@ -106,7 +106,7 @@
 				});
 				setTimeout(() => {
 					this.$store.dispatch("addAllWishlistItemToCart");
-				}, 2000);
+				}, 10);
 			},
 			/**
 			 * method for deleting item from wishlist 

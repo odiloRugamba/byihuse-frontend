@@ -21,9 +21,15 @@
 								<div class="emb-card">
 									<div class="thumb-wrap">
 										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
-											<img 
+											<!-- <img 
 												alt="feature product image"
 												:src="cateogary.image"
+												width="626"
+												height="800"
+											> -->
+                      <img 
+												alt="feature product image"
+												src="http://162.243.173.84:4000/1598520712511.jpg"
 												width="626"
 												height="800"
 											>

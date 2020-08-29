@@ -15,32 +15,32 @@ export const menus = [
 		]
    },
    {
-      path:'',
+      path:'/products',
       name: "message.shop",
       icon: "pages",
       type: "sub_menu",
-      children: [
-			{
-				name: "message.productDetails",
-				children_menus:null,
-            path: "/products/men/102"
-			},
-			{
-				name: "message.cart",
-				children_menus:null,
-            path: "/cart"
-			},
-			{
-				name: "message.checkout",
-				children_menus:null,
-            path: "/checkout",
-			},
-			{
-				name: "message.payment",
-				children_menus:null,
-            path: "/checkout/payment"
-         }
-      ]
+      // children: [
+		// 	{
+		// 		name: "message.productDetails",
+		// 		children_menus:null,
+      //       path: "/products/men/102"
+		// 	},
+		// 	{
+		// 		name: "message.cart",
+		// 		children_menus:null,
+      //       path: "/cart"
+		// 	},
+		// 	{
+		// 		name: "message.checkout",
+		// 		children_menus:null,
+      //       path: "/checkout",
+		// 	},
+		// 	{
+		// 		name: "message.payment",
+		// 		children_menus:null,
+      //       path: "/checkout/payment"
+      //    }
+      // ]
 	},
    {
       path: '/products/accessories',

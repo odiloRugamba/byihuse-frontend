@@ -62,10 +62,13 @@
                         <v-text-field label="Location" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 py-1>
-                        <v-text-field type="password" label="password" v-model="password" :rules="inputRules.basictextRules"></v-text-field>
+                        <v-text-field type="password" label="Older password" v-model="oldPassword" :rules="inputRules.basictextRules"></v-text-field>
+                     </v-flex>
+                     <v-flex xs12 sm12 md12 lg12 xl12 py-1>
+                        <v-text-field type="password" label="new password" v-model="newPassword" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 pt-1 pb-0>
-                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="saveDetails">Save</v-btn>
+                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="update">Save</v-btn>
                      </v-flex>
                   </v-layout>
                </v-flex>
@@ -89,7 +92,8 @@ import department from "Api/department";
             Departments: [],
             assignedDepartments: '',
             assignedDepartmentsId: '',
-            password: '',
+            oldPassword: '',
+            newPassword: '',
 				val: '',
          	valid: false,
           	inputRules: {
@@ -114,21 +118,17 @@ import department from "Api/department";
         saveDetails(){
             this.$refs.form.validate()
             this.update()
-            if(this.valid == true){
-               this.$snotify.success('Your account Information Updated succesfully',{
-                  closeOnClick: false,
-                  pauseOnHover: false,
-                  timeout: 1000,
-                  showProgressBar:false,
-               });
-               setTimeout(() => {
-                  this.$router.push({ path: '/account/profile' });
-               }, 50);
+            // if(this.valid == true){
+               
+               // setTimeout(() => {
+               //    this.$router.push({ path: '/account/profile' });
+               // }, 50);
             
-				}
+				// }
          },
          async update () {
-            this.data.forEach(el => {
+           try {
+               this.data.forEach(el => {
 				   if (el.name.kiny === this.assignedDepartments) {
 					   console.log(el._id)
 					   this.assignedDepartmentsId = el._id
@@ -138,16 +138,26 @@ import department from "Api/department";
                firstName: this.firstName,
                lastName: this.lastName
             })
-            const resEmail = await auth.upadetEmail({
+            const resEmail = await auth.updateEmail({
                email: this.email
             })
             const resPassword = await auth.updatePassword({
-               password: this.password
+               oldPassword: this.oldPassword,
+               newPassword: this.newPassword
             })
             const resDepartments = await auth.updateDepartments({
                departments: this.assignedDepartmentsId
             })
             console.log(resEmail, resPassword, resDepartments,resName)
+            this.$snotify.success('Your account Information Updated succesfully',{
+                  closeOnClick: false,
+                  pauseOnHover: false,
+                  timeout: 1000,
+                  showProgressBar:false,
+            });
+           } catch (err) {
+              console.log(err.message)
+           }
             // console.log()
          },
          save (date) {

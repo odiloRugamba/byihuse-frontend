@@ -18,7 +18,7 @@
 								<div class="notifications d-inline-flex align-items-center">
 									<emb-cart></emb-cart>
 									<emb-wishlist></emb-wishlist>
-									<emb-user-block :data="userLinks"></emb-user-block>
+									<emb-user-block></emb-user-block>
 								</div>
 							</v-layout>
 						</v-container>
@@ -61,28 +61,6 @@ export default {
 	data (){
 	   return{
 			appLogo: AppConfig.appLogo,
-			userLinks: [
-				{
-					icon:'account_circle',
-					title: 'User Profile',
-					path:"/account/profile"
-				},
-				{
-					icon:'settings',
-					title:'Account',
-					path:"/account/profile"
-				},
-				{
-					icon:'local_post_office',
-					title:'Messages',
-					path:"/account/profile"
-				},
-				{	
-					icon:'power_settings_new',
-					title: 'LogOut',
-					path:"/session/signin"
-				}
-			],
 		}
 	},
 	components: {

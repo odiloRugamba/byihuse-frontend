@@ -103,9 +103,11 @@ export default {
 	},
 	created () {
 		const data =JSON.parse(localStorage.getItem('data'))
-		console.log(data)
+		// console.log(data)
+		if (data) {
 		this.firstName = data.firstName
-		this.email = data.email
+		this.email = data.email	
+		}
 	}
 }
 </script>

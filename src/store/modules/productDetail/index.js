@@ -32,16 +32,16 @@ const actions = {
 const mutations = {
    SET_prducts (state, products) { 
       if (products.data.feature === false) {
-         console.log('products.data')
+         // console.log('products.data')
       }
        var obje = {}
       products.data.forEach(el => {
          state.i++
          var key = el.name.kiny + state.i
-      console.log(key)
+      // console.log(key)
        obje[key] = el
       });
-      console.log(obje)
+      // console.log(obje)
       state.products = obje
    //   state.products
    }

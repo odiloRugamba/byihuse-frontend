@@ -14,6 +14,7 @@
 									<v-text-field
 										type="email"
 										placeholder="Email*"
+										:rules="emailRules"
 										v-model="Email"
 									>
 									</v-text-field>
@@ -51,7 +52,11 @@ import axios from 'axios'
 			return{
 				checkbox: false,
 				Email: '',
-				password: ''
+				password: '',
+				emailRules: [
+					v => !!v || 'E-mail is required',
+					v => /.+@.+/.test(v) || 'E-mail must be valid'
+      		],
 			}
 		},
 		methods: {
@@ -71,7 +76,7 @@ import axios from 'axios'
 						departments: data.data.user.assignedDepartments
 					}
 					localStorage.setItem('data', JSON.stringify(localData))
-					axios.defaults.headers.post['header'] = data.data.token
+					axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`
 					// sessionStorage.setItem('token', data.data.token)
 					this.$snotify.success('SignIn process succesfully done',{
                     closeOnClick: false,
@@ -81,7 +86,13 @@ import axios from 'axios'
 					});
 				this.$router.push('/account/profile');
 			} catch (err) {
-			console.log(err.message)
+			console.log(err)
+			    this.$snotify.success('invaled Input',{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 1000,
+					showProgressBar:false,
+				});
 			}
 		}
 		}
