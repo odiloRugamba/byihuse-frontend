@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<div class="product-item-wrap emb-card"  >
+		<div class="product-item-wrap ml-10 mr-10  emb-card"  >
 			<div class="thumb-warp">
-				<img alt="product" height="800" width="626" :src="data.image" >
+				<img alt="product" height="500" width="226" :src="data.image" >
 				
 				<div class="wishlist-icon">
 					<v-btn @click="deleteItem(data)" icon >

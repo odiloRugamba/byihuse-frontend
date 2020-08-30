@@ -32,28 +32,24 @@
 										:rules="emailRules"
 									>
 									</v-text-field>
-									<v-select
+									<!-- <v-select
 									:items="items"
 									label="Role"
 									v-model="role"
 									dense
-									></v-select>
-									<v-select
-									:items="Departments"
-									label="Departments"
-									v-model="assignedDepartments"
-									dense
-									></v-select>
+									></v-select> -->
 									<v-text-field
 										type="password"
 										placeholder="Enter Password*"
+										v-model="password"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
 									<v-text-field
 										class="mb-4"
 										type="password"
-										placeholder="Retype Passowrd*"
+										placeholder="confrim Password*"
+										v-model="repassword"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
@@ -73,7 +69,7 @@
 	
 <script>
 import auth from "Api/auth";
-import department from "Api/department";
+// import department from "Api/department";
 	export default{
    	data () {
       	return {
@@ -82,18 +78,17 @@ import department from "Api/department";
 			  firstName: '',
 			  lastName: '',
 			  email: '',
-			  role: '',
-			  assignedDepartments: '',
+			  role: 'CLIENT',
 			  password: '',
+			  repassword: '',
 			  data: '',
-			  assignedDepartmentsId: '',
          	valid: false,
 				emailRules: [
 					v => !!v || 'E-mail is required',
 					v => /.+@.+/.test(v) || 'E-mail must be valid'
       		],
           	inputRules: {
-               basictextRules: [v => !!v || 'This field should not be empty']
+			   basictextRules: [v => !!v || 'This field should not be empty'],
             }
          }
       },
@@ -108,37 +103,36 @@ import department from "Api/department";
 			},
 		 async signup () {
            try {
-			   console.log(this.data)
-			    this.data.forEach(el => {
-				   if (el.name.kiny === this.assignedDepartments) {
-					   console.log(el._id)
-					   this.assignedDepartmentsId = el._id
-				   }
-			   });
-               const res = await auth.signup({
+			//    if (this.password === this.repassword) {
+				const res = await auth.signup({
                    firstName: this.firstName,
                    lastName: this.lastName,
                     email: this.email,
                     role: this.role,
-                    assignedDepartments: this.assignedDepartmentsId,
                     password: this.password
-			})
-			console.log(res.data)
+			})   
+			console.log(res)
+			//    } else {
+			// 	   this.password= ''
+			// 	   this.repassword= ''
+			//    }
+               
+			// console.log(res.data)
 			} catch (err) {
 				console.log(err)
 			}
 		}
 	},
-	async mounted () {
-			try {
-				const res = await department.getDepartment()
-				this.data = await res.data.data
-				this.data.forEach(el => {
-					this.Departments.push(el.name.kiny)
-				});
-			} catch (err) {
-				console.log(err.message)
-			}
-		}
+	// async mounted () {
+	// 		try {
+	// 			const res = await department.getDepartment()
+	// 			this.data = await res.data.data
+	// 			this.data.forEach(el => {
+	// 				this.Departments.push(el.name.kiny)
+	// 			});
+	// 		} catch (err) {
+	// 			console.log(err.message)
+	// 		}
+	// 	}
 	}
 </script>
