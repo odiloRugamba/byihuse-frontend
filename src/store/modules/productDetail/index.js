@@ -1,6 +1,7 @@
 // import { products } from "./data";
 import api from 'Api'
-
+import department from "Api/department";
+import product from "Api/products";
 const state = {
    products:{},
    i: 0,
@@ -30,20 +31,46 @@ const actions = {
 
 // mutations
 const mutations = {
-   SET_prducts (state, products) { 
-      if (products.data.feature === false) {
-         // console.log('products.data')
-      }
-       var obje = {}
+   async SET_prducts (state, products) {
+      try {
+      // console.log(products)
+      // if (products.data.feature === false) {
+      // }
+      const res = await department.getDepartment();
+      const respro = await product.getProducts()
+      // console.log(res.data.data)
+
+      var obje = {}
       products.data.forEach(el => {
-         state.i++
-         var key = el.name.kiny + state.i
-      // console.log(key)
-       obje[key] = el
+         res.data.data.forEach(dep => {
+            if (el.department === dep._id) {
+               respro.data.data.forEach( resp => {
+                  if (el._id === resp.category ) {
+                     var key = dep.name.en
+                     obje[key] = {
+                        objectID: resp._id,
+                        image: resp.picture1,
+                        brand: resp.company,
+                        price: resp.price,
+                        rate: 4,
+                        description: resp.description.en
+                     }
+                  }
+               });
+               // console.log(key)
+            }
+            // console.log(el.department,dep._id)
+            // console.log('hhajh')
+            state.products = obje
+         });
       });
-      // console.log(obje)
       state.products = obje
-   //   state.products
+      console.log(state.products)
+      //   state.products 
+      } catch (err) {
+         console.log(err)
+      }
+      
    }
 }
 

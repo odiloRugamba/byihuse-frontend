@@ -78,7 +78,7 @@
     flex-wrap: wrap;
 }
 #ddd{
-    width: 270px;
+    width: 17rem;
 }
 </style>
 <script>
