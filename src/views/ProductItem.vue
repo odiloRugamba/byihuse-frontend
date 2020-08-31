@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="product-item-wrap ml-10 mr-10  emb-card"  >
+		<div class="product-item-wrap  emb-card"  >
 			<div class="thumb-warp">
 				<img alt="product" height="500" width="226" :src="data.image" >
 				

@@ -1,5 +1,5 @@
 <template>
-   <div class="shop-content-wrap">
+   <div id="temm" class="shop-content-wrap">
 		<template v-if="gridListView==true && listData != null">
 			<v-row>
 				<v-col
@@ -20,7 +20,12 @@
 
    </div>   
 </template>
-
+<style >
+#temm{
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
 <script>
 import ProductItem from "./ProductItem";
 import ProductItemsListView from "./ProductItemsListView.vue";
