@@ -1,12 +1,12 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
-		<div class="container">
+		<div class="containevr ml-16">
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
 			<div id="contt" class="tab-content">
-				<template v-for="(tab,title, index) in products">
-					<div v-if="index == selectedTab" :key="index">
+				<template v-for="(tab,title) in products">
+					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
 								v-for="(cateogary,subindex) in products[title]"
@@ -64,7 +64,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
 				</template>	
@@ -76,7 +76,6 @@
 #contt{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 0px;
 }
 #ddd{
     width: 270px;
