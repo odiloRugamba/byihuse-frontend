@@ -41,12 +41,13 @@ const mutations = {
       // console.log(res.data.data)
 
       var obje = {}
+      var key= null
       products.data.forEach(el => {
          res.data.data.forEach(dep => {
+            key = dep.name.en
             if (el.department === dep._id) {
                respro.data.data.forEach( resp => {
                   if (el._id === resp.category ) {
-                     var key = dep.name.en
                      obje[key] = {
                         objectID: resp._id,
                         image: resp.picture1,
@@ -57,7 +58,7 @@ const mutations = {
                      }
                   }
                });
-               // console.log(key)
+               console.log(key)
             }
             // console.log(el.department,dep._id)
             // console.log('hhajh')
