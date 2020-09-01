@@ -1,11 +1,13 @@
 //----------------| Ecommerce Module |------------------//
 import { wishlist, cart } from "./data";
+import api from "Api";
+import wishlist from "Api/wishlist";
 import router from "../../../router";
 import moment from 'moment';
 
 const state = {
-      cart,
-      wishlist,
+      // cart: ,
+      // wishlist: [],
       tax: 27.95,
       shipping: 12.95,
       invoiceData: {
@@ -44,6 +46,13 @@ const getters = {
 
 // actions
 const actions = {
+      getWhishlist ({ commit }) {
+            api()
+            .get('/api/wishlists')
+            .then(response =>{
+            commit('init_whishlist', response.data)
+      })
+      },
       addProductToCart(context, payload) {
             context.commit('onAddProductToCart', payload);
       },
@@ -72,6 +81,9 @@ const actions = {
 
 // mutations
 const mutations = {
+      init_whishlist (state, payload) {
+            state.wishlist = payload
+      },
       onAddProductToCart(state, payload) {
             let newProduct = {
                   id: payload.objectID,
@@ -94,8 +106,8 @@ const mutations = {
       /**
        * method for adding item to wishlist
       */
-      onAddItemToWishlist(state, payload) {
-            let newItem = {
+      async onAddItemToWishlist(state, payload) {
+            var newItem =  {
                   id: payload.objectID,
                   image: payload.image,
                   name: payload.name,
@@ -104,6 +116,12 @@ const mutations = {
                   total: payload.price
             }
             state.wishlist.push(newItem);
+            try {
+                 const res = await wishlist.postwishlist(wishlist)
+                 console.log(res)
+            } catch (err) {
+                  console.log(err.message)
+            }
       },
       /**
        * method for deleting item from wishlist

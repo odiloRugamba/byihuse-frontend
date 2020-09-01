@@ -1,8 +1,9 @@
 import UserPanel from 'Container/UserPanel';
 
 const HomeV1 = () => import('Views/HomeV1');
-const Accessory = () => import('Views/Accesory');
-const Gadget = () => import('Views/Gadget');
+// const Accessory = () => import('Views/Accesory');
+const ProductCategoies = () => import('Views/productcategories');
+const ProductDepartments = () => import('Views/productDepartment');
 const Product = () => import('Views/Product');
 const Payment = () => import('Views/Payment/Payment');
 const Cart = () => import('Views/Cart');
@@ -41,23 +42,28 @@ export default {
 				header: 1
 			 }
 		},
-		{
-			path: '/products/accessories',
-			component: Accessory 
-		},
-		{ 
-			path: '/gadget',
-			component: Gadget 
-		},
+		// {
+		// 	path: '/products/accessories',
+		// 	component: Accessory 
+		// },
+		// { 
+		// 	path: '/gadget',
+		// 	component: Gadget 
+		// },
 		{			
 			path: '/products/:title',
-			component: Product,
+			component: ProductDepartments,
+			name: 'Products'
+		},
+		{			
+			path: '/products/:department/:category',
+			component: ProductCategoies,
 			name: 'Products'
 		},
 		{			
 			path: '/products',
 			component: Product,
-			name: 'Fashion'
+			name: 'all Products'
 		},
 		{ 
 			path: '/checkout/payment',
@@ -72,7 +78,7 @@ export default {
 			component: Checkout  
 		},
 		{ 
-			path: '/products/:title/:id',
+			path: '/products/:title/:category/:id',
 			component: ProductDetail, 
 			name:'productDetail'
 		},

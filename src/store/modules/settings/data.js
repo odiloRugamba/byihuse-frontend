@@ -11,8 +11,8 @@ export const languages = [
 export const currencies = [
    {
       id:0,
-      img: '/static/images/united-states.png',
-      title:'USD',
-      symbol:"$"
+      img: '/static/images/rwanda_round_icon_640.png',
+      title:'RWF',
+      symbol:"RWF"
    },
 ]

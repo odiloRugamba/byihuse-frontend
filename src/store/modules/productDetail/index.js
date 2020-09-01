@@ -63,10 +63,10 @@ const mutations = {
                type: el.name.en,
                image:'http://localhost:4000/'+prdata.pictures.pic1,
                price: prdata.price,
-               name: prdata.name.en
+               name: prdata.name.en,
+               category: pr.name.en
              })
             }
-            console.log(el.name.en)
             product.push({
                objectID: prdata._id,
                type: el.name.en,

@@ -16,7 +16,7 @@ export const menus = [
       // type: "sub_menu",
 	},
    {
-      path: '/products/accessories',
+      path: '/products/ACCESSORIES',
       name:"message.accessories",
       icon: 'party_mode',
       children: null

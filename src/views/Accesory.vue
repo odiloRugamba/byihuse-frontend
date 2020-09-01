@@ -6,7 +6,7 @@
 		>
 		</emb-page-title>
 		<div class="accesories-content section-gap">	
-			<ais-instant-search :search-client="searchClient" index-name="ikea">
+			<!-- <ais-instant-search :search-client="searchClient" index-name="ikea">
 				<v-container grid-list-xl py-0>
 					<v-layout row wrap>
 						<v-flex xs12 sm12 md4 lg3 xl3>
@@ -17,22 +17,22 @@
 						</v-flex>
 					</v-layout>
 			</v-container>
-		</ais-instant-search>
+		</ais-instant-search> -->
 		</div>	
 	</div>
 </template>
 
 <script>
 import AppConfig from "Constants/AppConfig";
-import ProductItems from "Components/Ecommerce/ProductItems";
-import SidebarFilters from 'Components/Ecommerce/SidebarFilters'
+// import ProductItems from "Components/Ecommerce/ProductItems";
+// import SidebarFilters from 'Components/Ecommerce/SidebarFilters'
 import algoliasearch from 'algoliasearch/lite';
 import 'instantsearch.css/themes/algolia-min.css';
 
 export default {
 	components:{
-		embSidebarFilters:SidebarFilters,
-		ProductItems
+		// embSidebarFilters:SidebarFilters,
+		// ProductItems
 	},
 	data(){
 		return{

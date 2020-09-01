@@ -1,37 +1,31 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
-		<div class="container">
-			<div class="sec-title">
+		<div class="containevr ml-16">
+			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
-			</div>
-			<div class="tab-bar-wrap  text-center">
-				<div v-for="(tab,key, index) in featured" :key="key" class="tab-bar d-inline-block">
-					<v-btn class="d-inline-block" @click="onTabChange(index)" :text="index === selectedTab">{{key}}</v-btn>
-				</div>	
-			</div>
-			<div class="tab-content">
-				<template v-for="(tab,title, index) in featured">
-					<div v-if="index == selectedTab" :key="index">
-						<slick ref="carousel" :options="slickOptions" :key="title">
+			</div> -->
+			<div id="contt" class="tab-content">
+				<!-- <template v-for="(tab,title) in products"> -->
+					<!-- <div v-if="index == selectedTab" :key="index"> -->
+						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
-								v-for="(cateogary,subindex) in featured[title]"
+								v-for="(cateogary,subindex) in products"
 								:key="subindex"
 								class="tab-item"
 							>
 								<div class="emb-card">
 									<div class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
+                        id="ddd"
 											>
-                      <!-- <img 
-												alt="feature product image"
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
-												width="626"
-												height="800"
+												
 											> -->
 										</router-link>
 										<div class="wishlist-icon">
@@ -71,26 +65,37 @@
 										</div>
 									</div>
 								</div>
-							</div>
-						</slick>
+							<!-- </div> -->
+						<!-- </slick> -->
 					</div>
-				</template>	
+				<!-- </template>	 -->
 			</div>	
 		</div>
 	</div>
 </template>
-
+<style>
+#contt{
+    display: flex;
+    flex-wrap: wrap;
+}
+#ddd{
+    width: 17rem;
+}
+</style>
 <script>
-import Slick from "vue-slick";
+// import Slick from "vue-slick";
 import { mapGetters } from "vuex";
-
+import departments from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "featured"]),
+    ...mapGetters(["rtlLayout", "cart", "wishlist"])
+    // produc () {
+    //   return this.$store.state.products
+    // }
   },
   components: {
-    Slick
+    // Slick
   },
   data() {
     return {
@@ -98,8 +103,8 @@ export default {
       activeTab: null,
       slickOptions: {
         autoplay: true,
-        slidesToShow: 4,
-        infinite: true,
+        slidesToShow: 5,
+        infinite: false,
         arrows: false,
         dots: true,
         rtl: this.rtlLayout,
@@ -124,8 +129,11 @@ export default {
               dots: false
             }
           }
-        ]
-      }
+        ],
+        
+      },
+      title: "",
+      products: []
     };
   },
   methods: {
@@ -190,14 +198,46 @@ export default {
         }
       }
       return exists;
+    },
+    async getParametre () {
+      try {
+      this.title= this.$route.params.title
+      // console.log(this.title)
+      const rescategoies = await departments.getDepartmentall()
+			rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.en,
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+						})
+						})
+				}) 
+        }
+      });
+      console.log(this.products)
+    } catch (err) {
+      console.log(err.message)
+    } 
     }
   },
-  mounted () {
-    // this.$store.dispatch("changeSelectedProduct", cateogary);
-    this.$store.dispatch('getproducts')
-    console.log(this.featured)
+  async mounted () {
+     this.getParametre ()
+  },
+  watch: {
+    "$route"(to) {
+		 this.title = to.params.title
+     this.id = to.params.id
+     location.reload();
+		 this.getParametre();
+    }
   }
-};
+}
 </script>
 
 

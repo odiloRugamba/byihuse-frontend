@@ -133,7 +133,7 @@
                            <v-flex xs12 sm6 md6 lg3 xl3 mb3 text-center  v-if="index <= 3" :key="index">
                               <div class="emb-card " >
                                  <div class="thumb-wrap">
-                                    <router-link :to="'/products/'+title+'/'+product.objectID">
+                                    <router-link :to="'/products/'+title+'/'+product.category+'/'+product.objectID">
                                        <img :src="product.image" alt="related product" width="626" height="800">
                                     </router-link>
                                     <div class="wishlist-icon">
@@ -260,7 +260,8 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+							category: recat.name.en
 						})
 						})
 
