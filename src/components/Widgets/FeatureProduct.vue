@@ -5,34 +5,34 @@
 				<h2>{{secTitle}}</h2>
 			</div>
 			<div class="tab-bar-wrap  text-center">
-				<div v-for="(tab,key, index) in products" :key="key" class="tab-bar d-inline-block">
+				<div v-for="(tab,key, index) in featured" :key="key" class="tab-bar d-inline-block">
 					<v-btn class="d-inline-block" @click="onTabChange(index)" :text="index === selectedTab">{{key}}</v-btn>
 				</div>	
 			</div>
 			<div class="tab-content">
-				<template v-for="(tab,title, index) in products">
+				<template v-for="(tab,title, index) in featured">
 					<div v-if="index == selectedTab" :key="index">
 						<slick ref="carousel" :options="slickOptions" :key="title">
 							<div
-								v-for="(cateogary,subindex) in products[title]"
+								v-for="(cateogary,subindex) in featured[title]"
 								:key="subindex"
 								class="tab-item"
 							>
 								<div class="emb-card">
 									<div class="thumb-wrap">
 										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
-											<!-- <img 
+											<img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
-											> -->
-                      <img 
+											>
+                      <!-- <img 
 												alt="feature product image"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
 												width="626"
 												height="800"
-											>
+											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -87,10 +87,7 @@ import { mapGetters } from "vuex";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "products"]),
-    produc () {
-      return this.$store.state.products
-    }
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "featured"]),
   },
   components: {
     Slick
@@ -198,7 +195,7 @@ export default {
   mounted () {
     // this.$store.dispatch("changeSelectedProduct", cateogary);
     this.$store.dispatch('getproducts')
-    console.log(this.products)
+    console.log(this.featured)
   }
 };
 </script>

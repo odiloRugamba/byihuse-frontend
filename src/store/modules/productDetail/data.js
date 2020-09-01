@@ -1,6 +1,6 @@
 export const products = {
 
-   me : [
+   men : [
       {
          objectID:101,
          type:"men",

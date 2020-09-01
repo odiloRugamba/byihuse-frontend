@@ -1,9 +1,11 @@
 // import { products } from "./data";
 import api from 'Api'
 import department from "Api/department";
-import product from "Api/products";
+// import { delete } from 'vue/types/umd';
+// import product from "Api/products";
 const state = {
    products:{},
+   featured: {},
    i: 0,
    selectedProduct: null
 }
@@ -12,6 +14,9 @@ const state = {
 const getters = {
    products: state => {
       return state.products
+   },
+   featured: state =>{
+      return state.featured
    },
    selectedProduct: state => {
       return state.selectedProduct
@@ -26,48 +31,69 @@ const actions = {
       .then(response =>{
          commit('SET_prducts', response.data)
       })
-   }
+   },
+   // getprfordetails ({ commit }) {
+   //    api()
+   //    .get('/api/categories')
+   //    .then(response =>{
+   //       commit('SET_prducts', response.data)
+   //    })
+   // }
 }
 
 // mutations
 const mutations = {
    async SET_prducts (state, products) {
       try {
-      // console.log(products)
+      console.log(products)
       // if (products.data.feature === false) {
       // }
-      const res = await department.getDepartment();
-      const respro = await product.getProducts()
-      // console.log(res.data.data)
-
-      var obje = {}
-      var key= null
-      products.data.forEach(el => {
-         res.data.data.forEach(dep => {
-            key = dep.name.en
-            if (el.department === dep._id) {
-               respro.data.data.forEach( resp => {
-                  if (el._id === resp.category ) {
-                     obje[key] = {
-                        objectID: resp._id,
-                        image: resp.picture1,
-                        brand: resp.company,
-                        price: resp.price,
-                        rate: 4,
-                        description: resp.description.en
-                     }
-                  }
-               });
-               console.log(key)
+      var obj = []
+      var data = {}
+      const product = []
+      const produ = {}
+      const res = await department.getDepartmentall();
+      console.log(res.data)
+      res.data.data.forEach(el => {
+         el.categories.forEach(pr =>{
+            pr.products.forEach(prdata =>{
+            if (prdata.featured === false) {
+              obj.push({
+               objectID: prdata._id,
+               type: el.name.en,
+               image:'http://localhost:4000/'+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.en
+             })
             }
-            // console.log(el.department,dep._id)
-            // console.log('hhajh')
-            state.products = obje
-         });
-      });
-      state.products = obje
-      console.log(state.products)
-      //   state.products 
+            console.log(el.name.en)
+            product.push({
+               objectID: prdata._id,
+               type: el.name.en,
+               image:'http://localhost:4000/'+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.en,
+               rate: 3,
+               image_gallery: [
+                  'http://localhost:4000/'+prdata.pictures.pic1,
+                  'http://localhost:4000/'+prdata.pictures.pic2,
+                  'http://localhost:4000/'+prdata.pictures.pic3,
+                  'http://localhost:4000/'+prdata.pictures.pic4
+               ],
+               description: prdata.description.en
+             })
+            })
+         })
+         data[el.name.en] = {...obj}
+         produ[el.name.en] = {...product}
+         // console.log(data)
+         for (let i = 0; i < obj.length; i++) {
+            delete obj[i]
+            delete product[i]
+         }
+      }); 
+      state.featured = data,
+      state.products = produ
       } catch (err) {
          console.log(err)
       }

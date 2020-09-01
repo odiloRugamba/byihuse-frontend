@@ -16,16 +16,17 @@
 								<div class="emb-card">
 									<div class="thumb-wrap">
 										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
-											<!-- <img 
+											<img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
-											> -->
-                      <img id="ddd" alt="product" height="800" width="626"
+                        id="ddd"
+											>
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
 												
-											>
+											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >

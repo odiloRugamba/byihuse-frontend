@@ -55,5 +55,7 @@ export default {
 	"productAdd":"Product Add",
 	"goToSite":"Go To Site",
 	"adminPanel":"Admin Panel",
-	"edit":	"Edit"
+	"edit":	"Edit",
+	"rental":"Rental",
+	"service": "Service"
 }

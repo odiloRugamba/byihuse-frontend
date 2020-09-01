@@ -9,6 +9,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import axios from 'axios'
 export default {
 	computed: {
 		...mapGetters(["rtlLayout"]),
@@ -28,6 +29,9 @@ export default {
 		if(this.rtlLayout) {
 			this.$vuetify.rtl = this.rtlLayout;
 		}
+		const token = sessionStorage.getItem('token')
+		console.log(token)
+		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 	},
 	methods: {
 		/**

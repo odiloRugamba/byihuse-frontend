@@ -1,6 +1,6 @@
 <template>
 	<div class="emb-product-detail">
-		<template v-if="selectedProduct != null">
+		<template selectedProduct>
 			<emb-page-title :heading="selectedProduct.name"></emb-page-title>
 			<div class="emb-productDetail-content white">
 				<div class="product-detail section-gap">
@@ -11,7 +11,7 @@
 									<v-flex xs2 sm2 md2 lg2 xl2 product-gallery>
 										<div 
 											class="detail-image-gallery d-inline-block mb-6 mx-2"  
-											v-for="(productItemImg,key) in selectedProduct.image_gallery" 
+											v-for="(productItemImg,key) in image_gallery" 
 											:key="key"
 											@mouseover="togglePreviewImage(productItemImg)"
 										>
@@ -197,31 +197,50 @@
 
 <script>
 import {mapGetters} from "vuex";
-
+import product from "Api/products";
 export default {
-	computed: {
-		...mapGetters(["cart","wishlist","selectedProduct","products"]),
+	data () {
+		return {
+			title: "",
+			id: "",
+			selectedProduct:{},
+			image_gallery: null
+		}
 	},
-	mounted() {
-		this.title = this.$route.params.title;
+	computed: {
+		...mapGetters(["cart","wishlist","selectedProduct"]),
+	},
+	async mounted() {
+	try {
+		// this.title = this.$route.params.title;
 		this.id = this.$route.params.id;
-		this.getParametre(this.title,this.id);
+		// this.getParametre(this.title,this.id);
+		// console.log(this.products[`${this.title}`])
+		const res = await product.getOne(this.id)
+		console.log(res.data.data.name)
+		// res.data.data.forEach(el => {
+			this.image_gallery = [
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic1,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic2,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic3,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic4,
+				]
+		// });
+		console.log(this.image_gallery)
+		// console.log(res.data.data.pictures)
+	} catch (err) {
+		console.log(err.message)
+	}
+	
 		
 	},
 	watch: {
     "$route"(to) {
 		 this.title = to.params.title;
 		 this.id = to.params.id;
-		 this.getParametre(this.title,this.id);
+		//  this.getParametre(this.title,this.id);
     },
 },
-	data () {
-		return{
-			title: "",
-			id: "",
-			selectedImage: null
-		}
-	},
 	methods: {
 		/* for routing matching **/
 		getParametre(param1,param2){

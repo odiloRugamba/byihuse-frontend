@@ -4,7 +4,11 @@ export default {
   async getDepartment () {
     const res = api().get('/api/departments')
     return res
-  }
+  },
+  async getDepartmentall () {
+    const res = api().get('/api/departments/all-data')
+    return res
+},
 }
 // {
 //   path: '',
