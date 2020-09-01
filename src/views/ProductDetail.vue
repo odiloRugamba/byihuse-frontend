@@ -39,16 +39,16 @@
 								<h4 class="accent--text"><emb-currency-sign></emb-currency-sign>{{selectedProduct.price}}</h4>
 								<ul class="product-availablity list-unstyled pl-0 mb-4 mt-4">
 									<li>
-										<template v-if="selectedProduct.availablity === true">
+										<template v-if="selectedProduct.availablity === false">
 											<span class="font-weight-medium">Availablity</span> : <span class="font-weight-regular">In Stocks</span>
 										</template>
-										<template v-else>
+										<!-- <template v-else>
 											<span class="font-weight-medium">Availablity</span> : <span class="font-weight-regular">Out Of Stocks</span>
-										</template>
+										</template> -->
 									</li>
-									<li>
+									<!-- <li>
 										<span class="font-weight-medium">Product Code</span> : <span class="font-weight-regular">{{selectedProduct.product_code}}</span>
-									</li>
+									</li> -->
 									<li>
 										<span class="font-weight-medium">Tags</span>
 										<span>:</span>
@@ -57,7 +57,7 @@
 										</span>
 									</li>
 								</ul>
-								<p>{{selectedProduct.descpription}}</p>
+								<p>{{selectedProduct.descprition}}</p>
 								<div class="bullet-points mb-4">
 									<ul class="features pl-13">
 										<li v-for="(Features,key) in selectedProduct.features" 	:key="key">
@@ -68,25 +68,25 @@
 								<div class="select-group mb-4">
 									<v-layout wrap>
 										<v-flex xs12 sm4 lg4 md4 lg3 xl3 pb-0  v-if="selectedProduct.type == 'men' || selectedProduct.type == 'women'" >
-											<v-select
+											<!-- <v-select
 												:items="['Pink','Orange','Black']"
 												label="Color"
 											>
-											</v-select>
+											</v-select> -->
 										</v-flex>
 										<v-flex xs12 sm4 lg4 md4 lg3 xl3 pb-0  v-if="selectedProduct.type == 'men' || selectedProduct.type == 'women'" >
-											<v-select
+											<!-- <v-select
 												:items="['XXL','XL','M','L','S']"
 												label="Size"
 											>
-											</v-select>
+											</v-select> -->
 										</v-flex>
 										<v-flex xs12 sm4 lg4 md4 lg3 xl3 pb-0>
-											<v-select
+											<!-- <v-select
 												v-model="selectedProduct.quantity"
 												:items="[1,2,3,4,5]"
 											>
-											</v-select>
+											</v-select> -->
 										</v-flex>
 									</v-layout>
 								</div>
@@ -129,7 +129,7 @@
 						</div>
 						<div class="product-listing">
 							<v-layout row wrap mb-4>
-                        <template v-for="(product, index) in products[title]">
+                        <template v-for="(product, index) in products">
                            <v-flex xs12 sm6 md6 lg3 xl3 mb3 text-center  v-if="index <= 3" :key="index">
                               <div class="emb-card " >
                                  <div class="thumb-wrap">
@@ -198,64 +198,79 @@
 <script>
 import {mapGetters} from "vuex";
 import product from "Api/products";
+import departments from "Api/department";
 export default {
 	data () {
 		return {
 			title: "",
 			id: "",
 			selectedProduct:{},
-			image_gallery: null
+			image_gallery: null,
+			selectedImage: '',
+			products: []
 		}
 	},
 	computed: {
 		...mapGetters(["cart","wishlist","selectedProduct"]),
 	},
 	async mounted() {
-	try {
-		// this.title = this.$route.params.title;
-		this.id = this.$route.params.id;
-		// this.getParametre(this.title,this.id);
-		// console.log(this.products[`${this.title}`])
-		const res = await product.getOne(this.id)
-		console.log(res.data.data.name)
-		// res.data.data.forEach(el => {
-			this.image_gallery = [
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic1,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic2,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic3,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic4,
-				]
-		// });
-		console.log(this.image_gallery)
-		// console.log(res.data.data.pictures)
-	} catch (err) {
-		console.log(err.message)
-	}
-	
-		
+		this.getParametre()
 	},
 	watch: {
     "$route"(to) {
 		 this.title = to.params.title;
 		 this.id = to.params.id;
-		//  this.getParametre(this.title,this.id);
+		 this.getParametre(this.title,this.id);
     },
 },
 	methods: {
 		/* for routing matching **/
-		getParametre(param1,param2){
-			for (var type in this.products) {
-				if(type == param1){
-					for( let titleDetails in this.products[type]){
-						var index = this.products[type][titleDetails].objectID;
-						if(param2 == index){
-							var item = this.products[type][titleDetails];
-							this.$store.dispatch("changeSelectedProduct",item);
-							this.selectedImage = this.selectedProduct.image_gallery[0];
-						}
+		async getParametre(){
+			try {
+		this.id = this.$route.params.id;
+		this.title = this.$route.params.title;		
+		const res = await product.getOne(this.id)
+		console.log(res.data.data.name)
+			this.image_gallery = [
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic1,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic2,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic3,
+				'http://192.168.43.9:4000/'+res.data.data.pictures.pic4,
+				],
+				this.selectedImage= 'http://192.168.43.9:4000/'+res.data.data.pictures.pic1
+		// console.log(this.image_gallery)
+		this.selectedProduct.name= res.data.data.name.en
+		this.selectedProduct.price= res.data.data.price
+		this.selectedProduct.descprition= res.data.data.description.en
+		// console.log()
+		this.selectedProduct.tags = ['Black Men Summer']
+		this.selectedProduct.features = [
+			'Black Men Summer',
+			'Slim Fit',
+			'Pure Cotton',
+			'Free Shipping and delivery in 4 Days'
+			]
+			const rescategoies = await departments.getDepartmentall()
+			rescategoies.data.data.forEach(el => {
+				el.categories.forEach(recat =>{
+					if (el.name.en === this.title) {
+						console.log(recat.products)
+						recat.products.forEach(pro =>{
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.en,
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+						})
+						})
+
 					}
-				}
-			}
+				})
+				
+			});
+	} catch (err) {
+		console.log(err.message)
+	}
 		},
 		/* for opening the popup **/
 		showReviewPopup() {
@@ -320,6 +335,9 @@ export default {
 			}
 			return exists;
 		},
-	}
+	},
+	// watch:{
+	// 	this.$route.params
+	// }
 }
 </script>
