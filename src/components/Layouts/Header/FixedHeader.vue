@@ -5,7 +5,7 @@
             <v-layout  align-center justify-space-between row ma-0>
                <div class="site-logo d-inline-block">
                   <router-link to="/">
-                     <img alt="site-logo" height="34" :src="appLogo" width="224">
+                     <img alt="site-logo" id="imgheader" height="20" src="/static/images/logo/logo.jpg" width="224">
                   </router-link>
                </div>
                <div>
@@ -23,7 +23,11 @@
       </div>
    </div>
 </template>
-
+<style  scoped>
+#imgheader{
+   height: 60px;
+}
+</style>
 <script>
 import Menu from './Menu';
 import AppConfig from "Constants/AppConfig";

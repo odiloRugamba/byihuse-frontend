@@ -23,7 +23,9 @@ export const store = new Vuex.Store({
         email: '',
         role: '',
         assignedDepartments: '',
-        token: ''
+        token: '',
+        drawer: null,
+        totalPrice: ''
     },
     getters:{
         firstName: state => {
@@ -41,12 +43,27 @@ export const store = new Vuex.Store({
         assignedDepartments: state => {
             return state.assignedDepartments;
         },
+        drawer: state =>{
+            return state.drawer
+        },
+        totalPrice: state => {
+            return state.totalPrice;
+        },
     },
     
     actions:{
     },
     
     mutations:{
+        showOrdervu (state, count) {
+        if (state.drawer === true) {
+            state.drawer = null
+        }else if (state.drawer === null) {
+           state.drawer = true
+        }
+        // state.drawer= true
+          console.log(state.drawer, count)
+        }
     },
     modules: {
         ecommerce,

@@ -82,7 +82,7 @@
                         </h4>
                      </div>
                      <div class="layout justify-end subtotal">
-                        <v-btn large class="accent mr-0" to="/checkout">
+                        <v-btn large class="accent mr-0" to="/checkout/payment">
                            Checkout
                         </v-btn>
                      </div>
@@ -164,6 +164,11 @@ export default {
         this.selectDeletedProduct
       );
     }
+  },
+  watch: {
+     getTotalPrice: function() {
+        this.$stote.state.totalPrice = this.getTotalPrice
+     }
   }
 };
 </script>

@@ -22,7 +22,7 @@ export default {
             },
             {
                key:"Last Name",
-               value:"Doe"
+               value:""
             },
             {
                key:"E-mail",
@@ -30,7 +30,7 @@ export default {
             },
             {
                key:"Location",
-               value:"San Francisco"
+               value:""
             },
             {
                key:"Role",

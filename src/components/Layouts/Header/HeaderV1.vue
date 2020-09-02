@@ -27,8 +27,8 @@
                   <v-layout row wrap justify-space-between align-center>
                      <v-flex xs12 sm12 md6 lg4 xl4>
                         <div class="site-logo d-inline-block">
-                           <router-link to="/">
-                              <img alt="site-logo" height="34" :src="appLogoDark" width="224">
+                           <router-link to="/home">
+                              <img alt="site-logo" height="34" src="/static/images/logo/logo.jpg" width="224">
                            </router-link>
                         </div>
                      </v-flex>

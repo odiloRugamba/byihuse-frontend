@@ -98,6 +98,9 @@
 			/**
 			 * method for calculatig total of  item 
 			*/
+			// drawer () {
+			// 	return this.$store.state.drawer
+			// },
 			itemTotal(){
 			let productTotal = null
 				if (this.cart.length > 0) {

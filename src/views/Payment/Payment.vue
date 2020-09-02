@@ -4,7 +4,7 @@
 		<div class="emb-payment-content section-gap overflow-x-hidden">
 			<v-container grid-list-xl py-0>
 				<template v-if="cart.length > 0">
-					<emb-sidebar-panel class="mb-12"></emb-sidebar-panel>
+					<emb-sidebar-panel class="mb-12"></emb-sidebar-panel>	
 					<v-expansion-panels v-model="panel" multiple >
 						<v-expansion-panel>
 							<shipping-address @changeStepOneForm="enableStepOneForm"></shipping-address>
@@ -50,7 +50,7 @@ export default {
 		paymentOption:PaymentOption
 	},
 	computed: {
-		...mapGetters(["cart"]),
+		...mapGetters(["cart", "drawer"]),
 		panel: {
 			get() {
 				return this.expansionPanel;

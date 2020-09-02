@@ -3,7 +3,7 @@
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md6 lg6 xl6>
-					<router-link to="/products/men/103">
+					<router-link to="/products/Men">
 						<v-img
 							alt="deal of the day"
 							:src="selectedPreviewImage"
@@ -51,7 +51,7 @@
 								>
 								</emb-timer>
 							</div>
-							<v-btn color="accent" to="/products/men/103">
+							<v-btn color="accent" to="/products/Men">
 								Shop Now
 							</v-btn>
 						</div>

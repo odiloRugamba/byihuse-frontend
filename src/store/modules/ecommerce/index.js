@@ -1,19 +1,25 @@
 //----------------| Ecommerce Module |------------------//
 import { wishlist, cart } from "./data";
-import router from "../../../router";
-import moment from 'moment';
+// import router from "../../../router";
+// import moment from 'moment';
 
 const state = {
       cart,
       wishlist,
-      tax: 27.95,
-      shipping: 12.95,
+      tax: 0,
+      shipping: 0,
       invoiceData: {
             products: [],
-            orderId: '',
-            transactionId: '',
-            orderedDate: '',
-            delevieryDate: '',
+            firstName: '',
+            lastname: '',
+            email: '',
+            streetNumber: '',
+            city: '',
+            country: '',
+            agentCode: '',
+            paymentsOption: '',
+            MOMOPhoneNumber: '',
+            totalAmmount: ''
       }
 }
 
@@ -64,10 +70,10 @@ const actions = {
       },
       addAllWishlistItemToCart(context) {
             context.commit("addAllWishlistItemToCart");
-      },
-      makePayment(context, payload) {
-            context.commit('makePayment', payload);
       }
+      // makePayment(context, payload, ) {
+      //       context.commit('makePayment', payload);
+      // }
 }
 
 // mutations
@@ -127,14 +133,16 @@ const mutations = {
       /**
        * method to calcualte Order Id , transcation Id, ordered date , delivery date 
       */
-      makePayment(state, products) {
+      makePayment(state, products, userDetails) {
             state.invoiceData.products = products;
-            state.invoiceData.orderId = '312134645432132132',
-                  state.invoiceData.transactionId = new Date().getTime() - 10000,
-                  state.invoiceData.orderedDate = moment().format('MMMM DD, YYYY'),
-                  state.invoiceData.deliveryDate = moment().add(5, 'days').format('MMMM DD, YYYY')
-            state.cart = [];
-            router.push('/checkout/final-receipt')
+            console.log(userDetails,products)
+            // console.log(state.invoiceData.products)
+            // state.invoiceData.orderId = '312134645432132132',
+            //       state.invoiceData.transactionId = new Date().getTime() - 10000,
+            //       state.invoiceData.orderedDate = moment().format('MMMM DD, YYYY'),
+            //       state.invoiceData.deliveryDate = moment().add(5, 'days').format('MMMM DD, YYYY')
+            // state.cart = [];
+            // router.push('/checkout/final-receipt')
       }
 }
 

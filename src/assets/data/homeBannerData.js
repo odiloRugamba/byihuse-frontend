@@ -4,20 +4,20 @@ export default [
         subHeading: "Big Sale",
         heading: "Women's Collection",
         link: "SHOP NOW",
-        routeSubTitle:"women"
+        routeSubTitle:"Women"
     },
     {
         image: "/static/images/slider-2.jpg",
         subHeading: "50% OFF",
         heading: "Men's Winter Collection",
         link: "SHOP NOW",
-        routeSubTitle:"men"
+        routeSubTitle:"Men"
     },
     {
         image: "/static/images/slider-3.jpg",
         subHeading: "Today's Special",
         heading: "Sale on Jacket",
         link: "SHOP NOW",
-        routeSubTitle:"men"
+        routeSubTitle:"Men"
     }
 ]

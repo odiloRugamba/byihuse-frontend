@@ -7,7 +7,7 @@ const ProductDepartments = () => import('Views/productDepartment');
 const Product = () => import('Views/Product');
 const Payment = () => import('Views/Payment/Payment');
 const Cart = () => import('Views/Cart');
-const Checkout = () => import('Views/Checkout');
+// const Checkout = () => import('Views/Checkout');
 const FinalReceipt = () => import('Views/FinalReceipt');
 const ProductDetail = () => import('Views/ProductDetail');
 const AboutUs = () => import('Views/AboutUs');
@@ -73,10 +73,10 @@ export default {
 			path: '/cart',
 			component: Cart,
 		},
-		{ 
-			path: '/checkout',
-			component: Checkout  
-		},
+		// { 
+		// 	path: '/checkout',
+		// 	component: Checkout  
+		// },
 		{ 
 			path: '/products/:title/:category/:id',
 			component: ProductDetail, 
