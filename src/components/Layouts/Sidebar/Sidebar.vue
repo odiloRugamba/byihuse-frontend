@@ -100,7 +100,7 @@
 					</template>
 
 					<template v-else>
-						<v-list-item :key="menu.title" :to="'/prodcts/'+menu.path">
+						<v-list-item :key="menu.title" :to="'/products/'+menu.path">
 							<v-list-item-action class="mr-0">
 								<v-icon>{{menu.icon}}</v-icon>
 							</v-list-item-action>
@@ -145,7 +145,7 @@ menus:  [
 	type: "sub_menu",
 	},
 	 {
-      path:'/products',
+      path:'',
       name: "message.shop",
       icon: "pages",
       children: null
