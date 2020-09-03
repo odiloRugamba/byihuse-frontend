@@ -48,11 +48,11 @@
 				:data="latestArrivalData"
 			>
 			</emb-new-arrival-Products>
-			<embTestimonial
+			<!-- <embTestimonial
 				secTitle="Customer Reviews"
 				:data="TestimonialData"
 			>
-			</embTestimonial>
+			</embTestimonial> -->
 			<!-- <emb-blog
 				secTitle="Latest From Blogs"
 				:data="blogData"
@@ -78,7 +78,7 @@ import Features from "Components/Widgets/Feature";
 import FeatureProduct from "Components/Widgets/FeatureProduct";
 import DayDeal from "Components/Widgets/DayDeal";
 import DetailOffer from "Components/Widgets/DetailOffer";
-import Testimonial from "Components/Widgets/Testimonial";
+// import Testimonial from "Components/Widgets/Testimonial";
 // import Blog from "Components/Widgets/Blog";
 // import ShopCard from "Components/Widgets/ShopCard";
 // import Subscribe from "Components/Widgets/Subscribe";
@@ -89,7 +89,7 @@ import featuresData from "Assets/data/featuresData";
 // import featureProductData from "Assets/data/featureProductData";
 import dayDealData from "Assets/data/dayDealData";
 import latestArrivalData from "Assets/data/latestArrivalData";
-import TestimonialData from "Assets/data/TestimonialData";
+// import TestimonialData from "Assets/data/TestimonialData";
 // import shopCard from "Assets/data/shopCard";
 
 import api from "Api";
@@ -105,7 +105,7 @@ export default {
     embFeatureProduct: FeatureProduct,
     embDayDeal: DayDeal,
     embDetailOffer: DetailOffer,
-    embTestimonial: Testimonial,
+    // embTestimonial: Testimonial,
 	// embBlog: Blog,
     // embSubscribe: Subscribe,
     // embShopCard: ShopCard
@@ -117,7 +117,7 @@ export default {
     //   featureProductData,
       dayDealData,
       latestArrivalData,
-      TestimonialData,
+    //   TestimonialData,
     //   shopCard,
       blogData: null
     };

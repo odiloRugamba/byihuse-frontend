@@ -1,18 +1,25 @@
 <template>
 	<div class="home-banner-wrap"> 
-		<slick ref="carousel" :options="slickOptions">
+		<slick id="bbb" ref="carousel" :options="slickOptions">
 			<div v-for="(sliderItem,key) in data"
 				:key="key">
-				<div class="banner-slide">
+				<div id="banner" class="banner-slide">
 					<router-link :to="'/products/'+sliderItem.routeSubTitle">
-					<img :src="sliderItem.image" alt="slide-item" width="1123" height="660">
+					<img id="banner" :src="sliderItem.image" alt="slide-item" width="1123" height="660">
 					</router-link>
 				</div>
 			</div>
 		</slick>
 	</div>
 </template>
-
+<style  scoped>
+/* #bbb{
+	height: 430px;
+} */
+#banner{
+	max-height: 430px;
+}
+</style>
 <script>
 import Slick from "vue-slick";
 export default {

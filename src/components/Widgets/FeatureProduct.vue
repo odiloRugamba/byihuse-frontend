@@ -21,17 +21,20 @@
 								<div class="emb-card">
 									<div class="thumb-wrap">
 										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-											<img 
+                      <img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
 											>
+                    
+											
                       <!-- <img 
 												alt="feature product image"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
 												width="626"
 												height="800"
+                        id="mmm"
 											> -->
 										</router-link>
 										<div class="wishlist-icon">
@@ -79,7 +82,39 @@
 		</div>
 	</div>
 </template>
-
+<style scoped>
+/* @media  (min-width: 600px){
+  #productImg{
+  width: 17rem;
+  height: 22rem;
+  align-items: center;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+} */
+/* #mmm{
+  width: 100%;
+  height: 100%;
+} */
+/* #productImg{
+  display: flex;
+}
+@media (max-width: 600px){
+  #productImg{ */
+    /* width: 100vw;
+    height: 100%; */
+    /* height: 80vw;
+    width: 60vw; */
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center;
+  }
+  #mmm{
+    margin-left: 3.3rem;
+  }
+} */
+</style>
 <script>
 import Slick from "vue-slick";
 import { mapGetters } from "vuex";

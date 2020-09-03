@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Unlock Offers or Apply Promo Codes</h4></v-expansion-panel-header>
+    <v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Add Agent code if you have it</h4></v-expansion-panel-header>
     <v-expansion-panel-content>
           <div>
             <v-tabs light slider-color="primary" v-model="active">
@@ -13,7 +13,7 @@
                             <div class="mb-6">
                               <img  alt="discount" src="/static/images/discount.png">
                             </div>
-                            <h4 class="mb-12 font-weight-medium">Apply for Embryo offer/Discount</h4>
+                            <h4 class="mb-12 font-weight-medium">Offer Thanks To Agent By Add his/her code</h4>
                         </div>
                         <div class="form-wrapper py-12 text-center">
                             <div class="d-inline-flex">

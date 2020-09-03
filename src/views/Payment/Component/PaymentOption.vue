@@ -127,6 +127,7 @@ import order from "Api/order";
 				totalAmmount: this.total,
 				products: this.product
 			}
+
 			const res = await order.makeOrder(this.invoiceData)
 			if (option === 'CASH') {
 				this.$router.push('/session/thank-you')
@@ -138,6 +139,8 @@ import order from "Api/order";
 			
 			// console.log(this.invoiceData)
 			localStorage.removeItem('cart');
+			location.reload();
+			
             }	
 			} catch (err) {
 					console.log(err.message)

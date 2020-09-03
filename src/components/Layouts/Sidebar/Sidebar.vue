@@ -85,7 +85,7 @@
                               <v-list-item
                                  v-for="(megaChild,megaChildKey) in subItem"
                                  :key="megaChildKey"
-                                 :to="megaChild.path"
+                                 :to="'/products/'+subItemKey+'/'+megaChild.path"
                                  class="mega-menu-item "
                               >
                                  <v-list-item-action class="mr-0 pl-1">
@@ -100,7 +100,7 @@
 					</template>
 
 					<template v-else>
-						<v-list-item :key="menu.title" :to="menu.path">
+						<v-list-item :key="menu.title" :to="'/prodcts/'+menu.path">
 							<v-list-item-action class="mr-0">
 								<v-icon>{{menu.icon}}</v-icon>
 							</v-list-item-action>
@@ -137,7 +137,7 @@ export default {
 			settings: {
 				maxScrollbarLength: 360
 			},
-			menus:  [
+menus:  [
 	{
    path: '/home',
     name: "message.home",
@@ -148,14 +148,14 @@ export default {
       path:'/products',
       name: "message.shop",
       icon: "pages",
-      // type: "sub_menu",
-	},
-	{
-      path: '/products/accessories',
-      name:"message.accessories",
-      icon: 'party_mode',
       children: null
-   },
+	},
+	// {
+   //    path: '/products/accessories',
+   //    name:"message.accessories",
+   //    icon: 'party_mode',
+   //    children: null
+   // },
    {
       path: '',
       name:"message.categories",
@@ -355,39 +355,40 @@ export default {
 //          ]
 //       }
 //    },
+   // {
+   //    path: "",
+   //    name: "message.pages",
+   //    icon: "pages",
+   //    type: "sub_menu",
+   //    children: [
+   //       {
+   //          name: 'message.termAndCondition',
+   //          children_menus:null,
+   //          path: '/term-condition'
+   //       },
+   //       {
+   //          name: 'message.privacyPolicy',
+   //          children_menus:null,
+   //          path: '/privacy-policy'
+   //       },
+   //       {
+   //          name: 'message.blogDetail',
+   //          children_menus:null,
+   //          path: '/blog-detail/1'
+   //       },
+   //       {
+   //          name: 'message.faq',
+   //          children_menus:null,
+   //          path: '/faq'
+   //       },
+   //    ]
+   // },
    {
-      path: "",
-      name: "message.pages",
-      icon: "pages",
-      type: "sub_menu",
-      children: [
-         {
-            name: "message.about",
-            children_menus:null,
-            path: "/about"
-         },
-         {
-            name: 'message.termAndCondition',
-            children_menus:null,
-            path: '/term-condition'
-         },
-         {
-            name: 'message.privacyPolicy',
-            children_menus:null,
-            path: '/privacy-policy'
-         },
-         {
-            name: 'message.blogDetail',
-            children_menus:null,
-            path: '/blog-detail/1'
-         },
-         {
-            name: 'message.faq',
-            children_menus:null,
-            path: '/faq'
-         },
-      ]
-   },
+    name: "message.about",
+    path: "/about",
+    icon: 'perm_contact_calendar',
+   children: null
+},
    {
       path: '/contact',
       name:"message.contactUs",
@@ -441,7 +442,7 @@ export default {
             }
 				// obj.removeAll()
          })
-         this.menus[3].children = arr
+         this.menus[2].children = arr
 			console.log(this.menus[3].children)
 		} catch (err) {
 			console.log(err.message)

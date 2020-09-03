@@ -63,12 +63,12 @@ menus:  [
       icon: "pages",
       // type: "sub_menu",
 	},
-	{
-      path: '/products/ACCESSORIES',
-      name:"message.accessories",
-      icon: 'party_mode',
-      children: null
-   },
+	// {
+   //    path: '/products/ACCESSORIES',
+   //    name:"message.accessories",
+   //    icon: 'party_mode',
+   //    children: null
+   // },
    {
       path: '',
       name:"message.categories",
@@ -346,7 +346,7 @@ menus:  [
             }
 				// obj.removeAll()
          })
-         this.menus[3].children = arr
+         this.menus[2].children = arr
 			console.log(this.menus[3].children)
 		} catch (err) {
 			console.log(err.message)

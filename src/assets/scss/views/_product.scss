@@ -1,5 +1,8 @@
 /*--------------------------------------------------------------- 
 4.4 Product
+thumb-wrap
+tab-item
+emb-card
 -----------------------------------------------------------------*/ 
 //==========================|| Product sccs ||===========================//
 .shop-content-wrap{
@@ -40,7 +43,8 @@
    .emb-card {
 		display: inline-block;
 		overflow: hidden;
-		width: 100%;
+		width: 500px;
+		// height: 10000px;
 		h5{
 			text-align: left;
 			text-overflow: ellipsis;
@@ -136,7 +140,7 @@
 }
 @media all and (-ms-high-contrast:none){
 	.shop-content-wrap .emb-card{ 
-		width: 100%
+		width: 100%;
 	}
 }
 @media only screen and (max-width: 1199px) {
@@ -153,7 +157,16 @@
 		.ais-Hits{
 			.ais-Hits-list{
 				margin-left: 0;
+				height: 10px;
 			}
+			// #productImg{
+			// 	display: flex;
+			// 	align-items: center;
+			// 	justify-content: center;
+			//   }
+			//   #mmm{
+			// 	  margin-left: 100px;
+			//   }
 			.ais-Hits-item{
 				width: 100%;
 				margin-left: 0;
