@@ -55,5 +55,10 @@ export default {
 	"productAdd":"Ajout de produit",
   "goToSite":"Aller au site",
   "adminPanel":"panneau d'administration",
-  "edit": "modifier"
+  "edit": "modifier",
+  "FeaProducts": "fr Featured Products",
+  "NewArrival": "fr New Arrivals",
+  "DenimPullover": "Denim Pullover",
+	"Nowonly": "Now only",
+	"dealDayTitle": "Suspendisse porttitor ornare ligula. Nam massa erat,fermentum dolor quis, maximus	ultrices diam. Aenean pellentesque	auctor elementum. Nunc vitae tortor	iaculis, mollis odio at, lacinia sapien. Mauris et leo sem. Curabitur sit amet enim nisi. Nunc placerat commodo sem,	sed maximus purus"
 } 

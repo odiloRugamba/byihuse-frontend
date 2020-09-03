@@ -43,11 +43,11 @@
 			>
 			</emb-day-deal>
 			<emb-detail-offer></emb-detail-offer>
-			<emb-feature-product
+			<emb-new-arrival-Products
 				secTitle="New Arrivals"
 				:data="latestArrivalData"
 			>
-			</emb-feature-product>
+			</emb-new-arrival-Products>
 			<embTestimonial
 				secTitle="Customer Reviews"
 				:data="TestimonialData"
@@ -77,6 +77,7 @@ import AsideBannerV1 from "Components/Layouts/Banner/AsideBannerV1";
 import AsideBannerV2 from "Components/Layouts/Banner/AsideBannerV2";
 
 // widgets
+import newArrivalProducts from "Components/Widgets/newArrivalProducts";
 import Features from "Components/Widgets/Feature";
 import FeatureProduct from "Components/Widgets/FeatureProduct";
 import DayDeal from "Components/Widgets/DayDeal";
@@ -103,12 +104,13 @@ export default {
     embHomeMainBanner: HomeMainBanner,
     embAsideBannerV1: AsideBannerV1,
     embAsideBannerV2: AsideBannerV2,
-    embFeatures: Features,
+	embFeatures: Features,
+	embNewArrivalProducts:newArrivalProducts,
     embFeatureProduct: FeatureProduct,
     embDayDeal: DayDeal,
     embDetailOffer: DetailOffer,
     embTestimonial: Testimonial,
-    embBlog: Blog,
+	embBlog: Blog,
     embSubscribe: Subscribe,
     // embShopCard: ShopCard
   },

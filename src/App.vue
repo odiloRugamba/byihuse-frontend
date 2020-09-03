@@ -32,6 +32,24 @@ export default {
 		const token = sessionStorage.getItem('token')
 		console.log(token)
 		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+		const cart = JSON.parse(localStorage.getItem('cart'))
+		if (cart) {
+		console.log(cart)
+		this.$store.commit({
+			type:'onAddProductToC', 
+			dart:cart 
+		})
+		}
+		const wishlist = JSON.parse(localStorage.getItem('wishlist'))
+		if (wishlist) {
+			this.$store.commit({
+			type:'onAddItemToWish', 
+			wishlist:wishlist 
+		})
+		}
+		// this.$store.commit({
+		// 	type:'tryyyy'
+		// })
 	},
 	methods: {
 		/**

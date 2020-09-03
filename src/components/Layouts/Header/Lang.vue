@@ -7,11 +7,11 @@
 					<v-icon dark>arrow_drop_down</v-icon>
 				</v-toolbar-title>
 			</template>
-			<!-- <v-list class="py-0">
+			<v-list class="py-0">
 				<v-list-item v-for="(language,key) in languages" :key="key" @click="changeLanguage(language)">
 					<span>{{language.name}}</span>
 				</v-list-item>
-			</v-list> -->
+			</v-list>
 		</v-menu>
 	</div>
 </template>

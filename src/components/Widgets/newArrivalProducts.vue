@@ -94,7 +94,7 @@ export default {
   },
   data() {
     return {
-      name: 'message.FeaProducts',
+      name: 'message.NewArrival',
       selectedTab: 0,
       activeTab: null,
       slickOptions: {

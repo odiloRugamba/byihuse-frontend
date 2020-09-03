@@ -50,6 +50,9 @@ const getters = {
 
 // actions
 const actions = {
+      // addProductLocal(context, dart) {
+      //       context.commit("onaddProductLocal", dart)
+      // },
       addProductToCart(context, payload) {
             context.commit('onAddProductToCart', payload);
       },
@@ -78,7 +81,13 @@ const actions = {
 
 // mutations
 const mutations = {
-      onAddProductToCart(state, payload) {
+      onaddProductLocal(state,dart){
+            console.log(dart, 'heeeo')
+            state.cart = dart
+            console.log(state.cart)
+      },
+      onAddProductToCart(state,payload) {
+            localStorage.removeItem('cart');
             let newProduct = {
                   id: payload.objectID,
                   image: payload.image,
@@ -88,19 +97,63 @@ const mutations = {
                   total: payload.price
             }
             state.cart.push(newProduct);
+            localStorage.setItem('cart', JSON.stringify(state.cart))
+            console.log(state.cart)
+      },
+      onAddProductToC(state, payload) {
+            console.log(payload.dart)
+            payload.dart.forEach(el => {
+              state.cart.push({
+                  id: el.objectID,
+                  image: el.image,
+                  name: el.name,
+                  price: el.price,
+                  quantity: el.quantity ? el.quantity : 1,
+                  total: el.price
+              })
+              console.log(state.cart)
+            });
+            
+      },
+      onAddItemToWish(state, payload) {
+            payload.wishlist.forEach(el => {
+                  state.wishlist.push({
+                        id: el.objectID,
+                        image: el.image,
+                        name: el.name,
+                        price: el.price,
+                        quantity: 1,
+                        total: el.price 
+                  })
+            }),
+            console.log(state.wishlist)
+            // let newItem = {
+            //       id: payload.objectID,
+            //       image: payload.image,
+            //       name: payload.name,
+            //       price: payload.price,
+            //       quantity: 1,
+            //       total: payload.price
+            // }
+            // state.wishlist.push(newItem);
       },
       /**
        * method for deleting product to cart
       */
       onDeleteProductFromCart(state, payload) {
+            localStorage.removeItem('cart');
             let index = state.cart.indexOf(payload);
             state.cart.splice(index, 1);
+            // const cat = JSON.parse(localStorage.getItem('cart'))
+            localStorage.setItem('cart', JSON.stringify(state.cart))
+
       },
 
       /**
        * method for adding item to wishlist
       */
       onAddItemToWishlist(state, payload) {
+            localStorage.removeItem('wishlist');
             let newItem = {
                   id: payload.objectID,
                   image: payload.image,
@@ -110,13 +163,17 @@ const mutations = {
                   total: payload.price
             }
             state.wishlist.push(newItem);
+
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist))
       },
       /**
        * method for deleting item from wishlist
       */
       onDeleteProductFromWishlist(state, payload) {
+            localStorage.removeItem('wishlist');
             let index = state.wishlist.indexOf(payload);
             state.wishlist.splice(index, 1);
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist))
       },
 
       /**
@@ -133,9 +190,9 @@ const mutations = {
       /**
        * method to calcualte Order Id , transcation Id, ordered date , delivery date 
       */
-      makePayment(state, products, userDetails) {
+      makePayment(state, products) {
             state.invoiceData.products = products;
-            console.log(userDetails,products)
+            // console.log(userDetails,products)
             // console.log(state.invoiceData.products)
             // state.invoiceData.orderId = '312134645432132132',
             //       state.invoiceData.transactionId = new Date().getTime() - 10000,

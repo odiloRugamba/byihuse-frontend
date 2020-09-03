@@ -57,5 +57,11 @@ export default {
 	"adminPanel":"Admin Panel",
 	"edit":	"Edit",
 	"rental":"Rental",
-	"service": "Service"
+	"service": "Service",
+	"FeaProducts": "Featured Products",
+	"NewArrival": "New Arrivals",
+	"Dealoftheday": "Deal of the day",
+	"DenimPullover": "Denim Pullover",
+	"Nowonly": "Now only",
+	"dealDayTitle": "Suspendisse porttitor ornare ligula. Nam massa erat,fermentum dolor quis, maximus	ultrices diam. Aenean pellentesque	auctor elementum. Nunc vitae tortor	iaculis, mollis odio at, lacinia sapien. Mauris et leo sem. Curabitur sit amet enim nisi. Nunc placerat commodo sem,	sed maximus purus"
 }
