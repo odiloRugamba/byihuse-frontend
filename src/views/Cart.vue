@@ -2,7 +2,7 @@
    <div class="emb-cart-wrap emb-card">
       <emb-page-title
          heading="Here's what's in your bag"
-         subHeading="Our latest news and learning articles."
+         subHeading=""
          >
       </emb-page-title>
       <div class="cart-content section-gap">

@@ -1,20 +1,20 @@
 export default [
     {
         image: "/static/images/free-delivery.png",
-        subTitle: "FREE SHIPPING",
-        title: "Every Day, Every Order",
-        desc: "*All order over RWF 100"
+        subTitle: "FREE Delivery",
+        title: "Order today and get it today!",
+        desc: "*All order over RWF 5000"
     },
     {
         image: "/static/images/customer-support.png",
-        subTitle: "FRIENDLY SUPPORT",
+        subTitle: "GOOD CUSTOMER CARE",
         title: "24/7 Dedicated Support",
-        desc: "*All over the World"
+        desc: "*We are ready to help you any time"
     },
     {
         image: "/static/images/money-back.png",
         subTitle: "SECURE",
-        title: "Money Back Guranteed",
-        desc: "*Conditions Apply"
+        title: "Pay online secure or just cash",
+        desc: "*It is easy"
     }
 ]

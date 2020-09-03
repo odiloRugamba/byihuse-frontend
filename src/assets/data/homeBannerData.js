@@ -1,13 +1,13 @@
 export default [
     {
-        image: "/static/images/logo/fristslide.jpg",
+        image: "/static/images/logo/fristslide-2.jpg",
         subHeading: "Big Sale",
         heading: "Women's Collection",
         link: "SHOP NOW",
         routeSubTitle:""
     },
     {
-        image: "/static/images/logo/fristslidee.jpg",
+        image: "/static/images/logo/secondslide-2.jpg",
         subHeading: "50% OFF",
         heading: "Men's Winter Collection",
         link: "SHOP NOW",

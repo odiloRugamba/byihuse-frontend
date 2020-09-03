@@ -14,7 +14,7 @@
 						</div>
 					</div>
 				</v-flex>
-				<v-flex xs12 sm12 md4 lg3 xl2>
+				<!-- <v-flex xs12 sm12 md4 lg3 xl2>
 					<div class="form-wrapper">
 						<v-text-field
 							dark
@@ -27,7 +27,7 @@
 						</v-text-field>
 						<a heref="javascript:void(0)" class="send-icon"><i class="material-icons white--text">send</i></a>
 					</div>
-				</v-flex>
+				</v-flex> -->
 			</v-layout>
 		</v-container>
 	</div>

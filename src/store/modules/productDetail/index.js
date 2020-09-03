@@ -61,7 +61,7 @@ const mutations = {
               obj.push({
                objectID: prdata._id,
                type: el.name.en,
-               image:'http://localhost:4000/'+prdata.pictures.pic1,
+               image:'https://byihuse.rw/'+prdata.pictures.pic1,
                price: prdata.price,
                name: prdata.name.en,
                category: pr.name.en
@@ -70,15 +70,15 @@ const mutations = {
             product.push({
                objectID: prdata._id,
                type: el.name.en,
-               image:'http://localhost:4000/'+prdata.pictures.pic1,
+               image:'https://byihuse.rw/'+prdata.pictures.pic1,
                price: prdata.price,
                name: prdata.name.en,
                rate: 3,
                image_gallery: [
-                  'http://localhost:4000/'+prdata.pictures.pic1,
-                  'http://localhost:4000/'+prdata.pictures.pic2,
-                  'http://localhost:4000/'+prdata.pictures.pic3,
-                  'http://localhost:4000/'+prdata.pictures.pic4
+                  'https://byihuse.rw/'+prdata.pictures.pic1,
+                  'https://byihuse.rw/'+prdata.pictures.pic2,
+                  'https://byihuse.rw/'+prdata.pictures.pic3,
+                  'https://byihuse.rw/'+prdata.pictures.pic4
                ],
                description: prdata.description.en
              })

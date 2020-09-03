@@ -26,7 +26,7 @@ export default [
    },
    {
       img: "/static/images/user-4.jpg",
-      username: "Embryo Vrumer",
+      username: "byihuse Vrumer",
       date: "Oct 29,  2018",
       subComment: null,
       comment:

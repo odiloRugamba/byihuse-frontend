@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV || 'dev'
 let host = ''
 
 if (env === 'production') {
-  host = '[host link]'
+  host = 'https://byihuse.rw'
 } else {
   host = 'http://localhost:4000'
   // host = 'http://162.243.173.84:4000'

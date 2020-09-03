@@ -20,7 +20,7 @@
 								</v-flex>
 								<v-flex xs12 sm6 md6 lg12 xl12 px-0>
 									<emb-aside-banner-v2 
-										img="/static/images/aside-2.jpg"
+										img="/static/images/aside-3.jpg"
 									>
 									</emb-aside-banner-v2>
 								</v-flex>

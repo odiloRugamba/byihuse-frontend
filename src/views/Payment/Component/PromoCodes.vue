@@ -26,7 +26,7 @@
                               </v-text-field>
                     				<!-- <v-btn icon @click="enterCouponCode"><v-icon>send</v-icon></v-btn> -->
                             </div>
-                            <p class="mb-0 grey--text">*if you were refer to us by an agent </p>
+                            <p class="mb-0 grey--text">*if you were refered to us by an agent </p>
                             <p class="grey--text">please provide his/her agent code <a href="javascript:void(0)">Here</a></p>
                         </div>
                       </v-card-text>

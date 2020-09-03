@@ -227,7 +227,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+							image: 'https://byihuse.rw/'+pro.pictures.pic1
                 })
             }
 			})

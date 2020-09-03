@@ -2,7 +2,7 @@
    <div class="emb-aboutus-wrap">
 		<emb-page-title
 			heading="About Us"
-			subHeading="Creative team and wide goals."
+			subHeading="We are here to make all your shoping fun!"
 		>
 		</emb-page-title>
 		<div class="emb-about-content">

@@ -1,6 +1,7 @@
 const path = require('path');
 module.exports = {
-	publicPath: process.env.NODE_ENV == 'production' ? '/' : '/',
+	publicPath: './public',
+	outputDir: '../backend/public',
 	configureWebpack: {
 		resolve: {
 			alias: {
@@ -9,8 +10,7 @@ module.exports = {
 				Constants: path.resolve(__dirname, 'src/constants'),
 				Assets: path.resolve(__dirname, 'src/assets'),
 				Container: path.resolve(__dirname, 'src/container'),
-				Views: path.resolve(__dirname, 'src/views'),
-				'@':  path.resolve(__dirname, 'src/')
+				Views: path.resolve(__dirname, 'src/views')
 			},
 			extensions: ['*', '.js', '.vue', '.json']
 		}

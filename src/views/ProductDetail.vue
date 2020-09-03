@@ -232,12 +232,12 @@ export default {
 		const res = await product.getOne(this.id)
 		console.log(res.data.data.name)
 			this.image_gallery = [
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic1,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic2,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic3,
-				'http://192.168.43.9:4000/'+res.data.data.pictures.pic4,
+				'https://byihuse.rw/'+res.data.data.pictures.pic1,
+				'https://byihuse.rw/'+res.data.data.pictures.pic2,
+				'https://byihuse.rw/'+res.data.data.pictures.pic3,
+				'https://byihuse.rw/'+res.data.data.pictures.pic4,
 				],
-				this.selectedImage= 'http://192.168.43.9:4000/'+res.data.data.pictures.pic1
+				this.selectedImage= 'https://byihuse.rw/'+res.data.data.pictures.pic1
 		// console.log(this.image_gallery)
 		this.selectedProduct.name= res.data.data.name.en
 		this.selectedProduct.price= res.data.data.price
@@ -260,7 +260,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+							image: 'https://byihuse.rw/'+pro.pictures.pic1,
 							category: recat.name.en
 						})
 						})
