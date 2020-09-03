@@ -137,6 +137,7 @@ import order from "Api/order";
 			// console.log(res)
 			
 			// console.log(this.invoiceData)
+			localStorage.removeItem('cart');
             }	
 			} catch (err) {
 					console.log(err.message)

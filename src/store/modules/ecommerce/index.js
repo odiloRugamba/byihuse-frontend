@@ -180,12 +180,16 @@ const mutations = {
        * method for adding all wishlist item to cart
       */
       addAllWishlistItemToCart(state) {
+            localStorage.removeItem('wishlist');
+            localStorage.removeItem('cart');
             if (state.wishlist && state.wishlist.length > 0) {
                   for (const wishlistItem of state.wishlist) {
                         state.cart.push(wishlistItem);
                   }
             }
             state.wishlist = [];
+            localStorage.setItem('cart', JSON.stringify(state.cart))
+            localStorage.setItem('wishlist', JSON.stringify(state.wishlist))
       },
       /**
        * method to calcualte Order Id , transcation Id, ordered date , delivery date 
