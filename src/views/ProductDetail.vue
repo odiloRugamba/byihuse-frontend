@@ -32,9 +32,9 @@
 								</v-layout>
 							</v-flex>
 							<v-flex xs12 sm12 md6 lg6 xl5>
-								<router-link to="/">Back to shop</router-link>
+								<router-link to="/products">Back to shop</router-link>
 								<h3>{{selectedProduct.name}}</h3>
-								<a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a>
+								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
 								<h4 class="accent--text"><emb-currency-sign></emb-currency-sign>{{selectedProduct.price}}</h4>
 								<ul class="product-availablity list-unstyled pl-0 mb-4 mt-4">
@@ -49,13 +49,13 @@
 									<!-- <li>
 										<span class="font-weight-medium">Product Code</span> : <span class="font-weight-regular">{{selectedProduct.product_code}}</span>
 									</li> -->
-									<li>
+									<!-- <li>
 										<span class="font-weight-medium">Tags</span>
 										<span>:</span>
 										<span class="font-weight-regular"	v-for="(tag,key) in selectedProduct.tags" :key="key">
 											{{tag}}
 										</span>
-									</li>
+									</li> -->
 								</ul>
 								<p>{{selectedProduct.descprition}}</p>
 								<div class="bullet-points mb-4">
@@ -112,7 +112,7 @@
 									>
 										Add To Cart
 									</v-btn>
-									<v-btn large to="/checkout" class="white buyProduct cpx-0">Buy Now</v-btn>
+									<!-- <v-btn large to="/checkout" class="white buyProduct cpx-0">Buy Now</v-btn> -->
 								</div>
 								<div>
 									<span>Share Now</span>
@@ -169,13 +169,13 @@
                                              </h6>
                                           </div>
                                           <div class="inline-block">
-                                             <v-rating 
+                                             <!-- <v-rating 
                                                 :value="product.rating"
                                                 background-color="grey"
                                                 readonly
                                                 color="warning"
                                              >
-                                             </v-rating>
+                                             </v-rating> -->
                                           </div>
                                        </div>
                                     </div>
@@ -244,12 +244,12 @@ export default {
 		this.selectedProduct.descprition= res.data.data.description.en
 		// console.log()
 		this.selectedProduct.tags = ['Black Men Summer']
-		this.selectedProduct.features = [
-			'Black Men Summer',
-			'Slim Fit',
-			'Pure Cotton',
-			'Free Shipping and delivery in 4 Days'
-			]
+		// this.selectedProduct.features = [
+		// 	'Black Men Summer',
+		// 	'Slim Fit',
+		// 	'Pure Cotton',
+		// 	'Free Shipping and delivery in 4 Days'
+		// 	]
 			const rescategoies = await departments.getDepartmentall()
 			rescategoies.data.data.forEach(el => {
 				el.categories.forEach(recat =>{

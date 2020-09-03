@@ -30,7 +30,7 @@ export default {
 	"jewellery":"Jewellery",
 	"purse":"Purse",
 	"pages":"Pages",
-	"about":"About",
+	"about":"About Us",
 	"termAndCondition":"Term and Condition",
 	"privacyPolicy":"Privacy Policy",
 	"blogDetail":"Blog Detail",

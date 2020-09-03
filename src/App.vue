@@ -2,12 +2,17 @@
 	<v-app>		
 		<router-view></router-view>
 	    <div class="rtl-layout" @click="toggleRTLLayout">
-	      <a class="text-xl" href="javascript:void(0);">RTL</a>
-	    </div>		
+	      <!-- <a class="text-xl" href="javascript:void(0);">RTL</a> -->
+	    </div>
+		<emb-subscribe
+				heading="Subscribe our Newsletter"
+				description="Stay up to date with our latest new and products">
+			</emb-subscribe>	
 	</v-app>
 </template>
 
 <script>
+import Subscribe from "Components/Widgets/Subscribe";
 import { mapGetters } from "vuex";
 import axios from 'axios'
 export default {
@@ -21,6 +26,9 @@ export default {
 				this.$store.dispatch("toggleSidebar", val);
 			}
 		}
+	},
+	components:{
+		embSubscribe: Subscribe,
 	},
 	/**
 	 * Method To set the Rtl While page is opened

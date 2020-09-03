@@ -1,5 +1,11 @@
 /*--------------------------------------------------------------- 
 3.2 Header
+app-nav-item
+app-nav-item
+menu-item-has-children
+app-nav-list
+$accent
+site-logo d-inline-block
 -----------------------------------------------------------------*/ 
 //======================|| Header Scss ||======================//
 .header-wrap{
@@ -495,7 +501,7 @@
 				}
 			}
 			&:last-child >a{
-				background-color: $accent;
+				// background-color: $accent;
 				color:$base;
 			}
 			&:hover {

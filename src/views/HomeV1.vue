@@ -53,15 +53,11 @@
 				:data="TestimonialData"
 			>
 			</embTestimonial>
-			<emb-blog
+			<!-- <emb-blog
 				secTitle="Latest From Blogs"
 				:data="blogData"
 			>	
-			</emb-blog>
-			<emb-subscribe
-				heading="Subscribe our Newsletter"
-				description="Stay up to date with our latest new and products">
-			</emb-subscribe>
+			</emb-blog> -->
 			<!-- <emb-shop-card
 				secTitle="Our Parten"
 				:data="shopCard"
@@ -83,9 +79,9 @@ import FeatureProduct from "Components/Widgets/FeatureProduct";
 import DayDeal from "Components/Widgets/DayDeal";
 import DetailOffer from "Components/Widgets/DetailOffer";
 import Testimonial from "Components/Widgets/Testimonial";
-import Blog from "Components/Widgets/Blog";
+// import Blog from "Components/Widgets/Blog";
 // import ShopCard from "Components/Widgets/ShopCard";
-import Subscribe from "Components/Widgets/Subscribe";
+// import Subscribe from "Components/Widgets/Subscribe";
 
 // data
 import homeBannerData from "Assets/data/homeBannerData";
@@ -110,8 +106,8 @@ export default {
     embDayDeal: DayDeal,
     embDetailOffer: DetailOffer,
     embTestimonial: Testimonial,
-	embBlog: Blog,
-    embSubscribe: Subscribe,
+	// embBlog: Blog,
+    // embSubscribe: Subscribe,
     // embShopCard: ShopCard
   },
   data() {

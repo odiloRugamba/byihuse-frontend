@@ -3,13 +3,13 @@ export default [
         image: "/static/images/free-delivery.png",
         subTitle: "FREE SHIPPING",
         title: "Every Day, Every Order",
-        desc: "*All order over $100"
+        desc: "*All order over RWF 100"
     },
     {
         image: "/static/images/customer-support.png",
         subTitle: "FRIENDLY SUPPORT",
         title: "24/7 Dedicated Support",
-        desc: "*Only In USA"
+        desc: "*All over the World"
     },
     {
         image: "/static/images/money-back.png",

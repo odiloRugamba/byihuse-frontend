@@ -15,7 +15,7 @@
                            <div class="notifications header-v3-top-tools">
                               <emb-cart></emb-cart>
                               <emb-wishlist></emb-wishlist>
-                              <emb-user-block :data="userLinks"></emb-user-block>
+                              <!-- <emb-user-block :data="userLinks"></emb-user-block> -->
                            </div>
                         </v-flex>
                      </v-layout>
@@ -28,7 +28,7 @@
                      <v-flex xs12 sm12 md6 lg4 xl4>
                         <div class="site-logo d-inline-block">
                            <router-link to="/home">
-                              <img alt="site-logo" height="34" src="/static/images/logo/logoo.png" width="224">
+                              <img id="logo" alt="site-logo" height="34" src="/static/images/logo/logoo.png" width="224">
                            </router-link>
                         </div>
                      </v-flex>
@@ -65,14 +65,19 @@
       </div>
    </div>
 </template>
-
+<style  scoped>
+#logo{
+   position: relative;
+   bottom: 10px;
+}
+</style>
 <script>
 import Menu from './Menu';
 import Lang from './Lang'
 import Currency from './Currency'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
-import UserBlock from './UserBlock'
+// import UserBlock from './UserBlock'
 import Search from './Search'
 import AppConfig from "Constants/AppConfig";
 
@@ -88,7 +93,7 @@ export default {
 		embCurrency: Currency,
 		embCart:Cart,
 		embWishlist: Wishlist,
-		embUserBlock:UserBlock,
+		// embUserBlock:UserBlock,
 		embSearch:Search,
 	},
 	mounted() {

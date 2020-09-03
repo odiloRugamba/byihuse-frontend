@@ -10,15 +10,15 @@ export default[
       image: "/static/images/user-2.jpg",
       user: " Farris",
       desc:
-        "This is exactly what our business has been lacking. After using embryo my business skyrocketed!",
+        "This is exactly what our business has been lacking. After using Byihuse my business skyrocketed!",
       position: "CEO , Dellec Info"
    },
    {
       image: "/static/images/user-3.jpg",
       user: "Willie Davis",
       desc:
-        "Embryo is the most valuable business resource we have EVER purchased. Embryo saved my business",
-      position: "CEO , Dellec Info"
+        "Byihuse is the most valuable business resource we have EVER purchased. Byihuse saved my business",
+      position: "CEO , Benjamin Info"
    },
    {
       image: "/static/images/user-3.jpg",
@@ -31,7 +31,7 @@ export default[
       image: "/static/images/user-5.jpg",
       user: "Fischia Samules",
       desc:
-        "We're loving it. You won't regret it. I am really satisfied with my embryo.I STRONGLY recommend",
+        "We're loving it. You won't regret it. I am really satisfied with my Byihuse.I STRONGLY recommend",
       position: "CEO , Dellec Info"
    }
 ]

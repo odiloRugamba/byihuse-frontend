@@ -8,6 +8,7 @@
 				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
+              <div v-if="products.length">
 							<div
 								v-for="(cateogary,subindex) in products"
 								:key="subindex"
@@ -15,7 +16,7 @@
 							>
 								<div class="emb-card">
 									<div class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
+										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.image"
@@ -54,13 +55,13 @@
 												</h6>
 											</div>
 											<div class="inline-block ">
-												<v-rating 
+												<!-- <v-rating 
 													v-model="cateogary.rate"
 													readonly
 													background-color="grey"
 													color="#edb876"
 												>
-												</v-rating>
+												</v-rating> -->
 											</div>
 										</div>
 									</div>
@@ -68,6 +69,11 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
+          </div>
+          <div v-else>
+            <h3>No Product Found</h3>
+            <v-btn block class="accent" to="/products">Shop</v-btn>
+          </div>
 				<!-- </template>	 -->
 			</div>	
 		</div>

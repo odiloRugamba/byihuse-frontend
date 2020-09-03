@@ -269,38 +269,38 @@ menus:  [
    //    }
    // },
    {
-      path: "",
-      name: "message.pages",
-      icon: "pages",
-      type: "sub_menu",
-      children: [
-         {
-            name: "message.about",
-            children_menus:null,
-            path: "/about"
-         },
-         {
-            name: 'message.termAndCondition',
-            children_menus:null,
-            path: '/term-condition'
-         },
-         {
-            name: 'message.privacyPolicy',
-            children_menus:null,
-            path: '/privacy-policy'
-         },
-         {
-            name: 'message.blogDetail',
-            children_menus:null,
-            path: '/blog-detail/1'
-         },
-         {
-            name: 'message.faq',
-            children_menus:null,
-            path: '/faq'
-         },
-      ]
+      name: "message.about",
+      children_menus:null,
+      path: "/about"
    },
+   // {
+   //    path: "",
+   //    name: "message.pages",
+   //    icon: "pages",
+   //    type: "sub_menu",
+   //    children: [
+   //       {
+   //          name: 'message.termAndCondition',
+   //          children_menus:null,
+   //          path: '/term-condition'
+   //       },
+         // {
+         //    name: 'message.privacyPolicy',
+         //    children_menus:null,
+         //    path: '/privacy-policy'
+         // },
+         // {
+         //    name: 'message.blogDetail',
+         //    children_menus:null,
+         //    path: '/blog-detail/1'
+         // },
+         // {
+         //    name: 'message.faq',
+         //    children_menus:null,
+         //    path: '/faq'
+         // },
+      // ]
+   // },
    {
       path: '/contact',
       name:"message.contactUs",

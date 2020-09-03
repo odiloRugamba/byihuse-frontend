@@ -6,7 +6,7 @@
 		>
 		</emb-page-title>
 		<div class="emb-about-content">
-			<div class="about-page section-gap">
+			<!-- <div class="about-page section-gap">
 				<v-container grid-list-xl>
 					<v-layout row wrap align-center>
 						<v-flex xs12 sm12 md12 lg6 xl6 pr-5>
@@ -20,8 +20,8 @@
 						</v-flex>
 					</v-layout>
 				</v-container>
-			</div>
-			<div class="about-info section-gap bg-grey">
+			</div> -->
+			<!-- <div class="about-info section-gap bg-grey">
 				<v-container grid-list-xl py-0>
 					<v-layout row wrap align-center mb-md-0 mb-6>
 						<v-flex xl6 sm12  xs12 md6 lg6 text-md-left text-center>
@@ -60,9 +60,9 @@
 						</v-flex>
 					</v-layout>
 				</v-container>
-			</div>
-			<TestimonialV2 />
-			<div class="team-section text-center section-gap blue-grey lighten-5">
+			</div> -->
+			<!-- <TestimonialV2 /> -->
+			<!-- <div class="team-section text-center section-gap blue-grey lighten-5">
 				<v-container grid-list-xl text-xl-center>
 					<div class="sec-title">
 						<h2>Meet Our Crew</h2>
@@ -80,8 +80,8 @@
 						</v-flex>
 					</v-layout>
 				</v-container>
-			</div>
-			<div class="about-contact-form">
+			</div> -->
+			<!-- <div class="about-contact-form">
 				<v-layout row wrap>
 					<v-flex xs12 sm12 md6 lg6 xl6 class=" about-contact-bg"></v-flex>
 						<v-flex xs12 sm12 md6 lg6 xl6 section-gap>
@@ -100,14 +100,14 @@
 							</div>
 						</v-flex>
 					</v-layout>
-			</div>
+			</div> -->
 		</div>
    </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import TestimonialV2 from "Components/Widgets/TestimonialV2";
+// import TestimonialV2 from "Components/Widgets/TestimonialV2";
 import api from "Api";
 
 export default {
@@ -115,7 +115,7 @@ export default {
     ...mapGetters(["rtlLayout"])
   },
   components: {
-    TestimonialV2
+    // TestimonialV2
   },
   data() {
     return {

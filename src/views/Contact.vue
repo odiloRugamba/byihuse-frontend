@@ -6,11 +6,11 @@
 		>
 		</emb-page-title>
 		<div class="emb-contact-content">
-         <div class="Contact-page">
+         <!-- <div class="Contact-page">
             <div class="contact-map">
 					<emb-google-map></emb-google-map>
             </div>
-			</div>
+			</div> -->
 			<div class="contact-info-wrapper">
 				<v-container grid-list-xl py-0>
 					<div class="section-gap">

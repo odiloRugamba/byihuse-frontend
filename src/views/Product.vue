@@ -15,7 +15,7 @@
 							>
 								<div class="emb-card">
 									<div class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.objectID">
+										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.image"
@@ -54,13 +54,13 @@
 												</h6>
 											</div>
 											<div class="inline-block ">
-												<v-rating 
+												<!-- <v-rating 
 													v-model="cateogary.rate"
 													readonly
 													background-color="grey"
 													color="#edb876"
 												>
-												</v-rating>
+												</v-rating> -->
 											</div>
 										</div>
 									</div>
