@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-	publicPath: './public',
+	publicPath: process.env.NODE_ENV == 'production' ? './public' : '/',
 	outputDir: '../backend/public',
 	configureWebpack: {
 		resolve: {
