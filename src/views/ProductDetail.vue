@@ -211,7 +211,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(["cart","wishlist","selectedProduct"]),
+		...mapGetters(["cart","wishlist","selectedProduct", "linksformbackend"]),
 	},
 	async mounted() {
 		this.getParametre()
@@ -232,12 +232,12 @@ export default {
 		const res = await product.getOne(this.id)
 		console.log(res.data.data.name)
 			this.image_gallery = [
-				'https://byihuse.rw/'+res.data.data.pictures.pic1,
-				'https://byihuse.rw/'+res.data.data.pictures.pic2,
-				'https://byihuse.rw/'+res.data.data.pictures.pic3,
-				'https://byihuse.rw/'+res.data.data.pictures.pic4,
+				this.linksformbackend+res.data.data.pictures.pic1,
+				this.linksformbackend+res.data.data.pictures.pic2,
+				this.linksformbackend+res.data.data.pictures.pic3,
+				this.linksformbackend+res.data.data.pictures.pic4,
 				],
-				this.selectedImage= 'https://byihuse.rw/'+res.data.data.pictures.pic1
+				this.selectedImage= this.linksformbackend+res.data.data.pictures.pic1
 		// console.log(this.image_gallery)
 		this.selectedProduct.name= res.data.data.name.en
 		this.selectedProduct.price= res.data.data.price
@@ -260,7 +260,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'https://byihuse.rw/'+pro.pictures.pic1,
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
 							category: recat.name.en
 						})
 						})

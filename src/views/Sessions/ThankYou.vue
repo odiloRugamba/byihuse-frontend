@@ -14,7 +14,7 @@
                            white pa-6
                            text-center"
                      >
-                        <h4 class="px-6 pb-2 text-center">For shopping with us. in a few moments one of our sales team personel will call you to arrange your delivery</h4>
+                        <h4 class="px-6 pb-2 text-center">For every thing you had done with Byihuse</h4>
                         <v-divider class="pt-2 pb-4"></v-divider>
                         <div class="mx-auto text-center">
                            <p class="mb-4">Spread The Word</p>
@@ -22,6 +22,7 @@
                               <emb-social-share></emb-social-share>
                            </div>
                         </div>
+                        <!-- <v-btn block class="accent elevation-5 my-0" height="50">Buy Embryo Now</v-btn> -->
                      </div>
                   </v-flex>
                </div>

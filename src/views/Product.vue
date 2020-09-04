@@ -1,6 +1,6 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
-		<div class="containevr ml-16">
+		<div class="containevr">
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
@@ -78,8 +78,106 @@
     display: flex;
     flex-wrap: wrap;
 }
-#ddd{
+@media (min-width: 1200px) {
+  #ddd{
     width: 17rem;
+}
+}
+/* @media (max-width: 550px) {
+  .containevr{
+
+  }
+} */
+/* @media (min-width: 380px) and (max-width: 480px) {
+  #contt{
+    justify-content: space-around;
+    /* margin-left: 5vw; */
+    /* margin-left: 2rem; */
+    /* justify-content: center; */
+
+  /* } */
+  /* #contt{
+    margin-top: 20px;
+} */
+/* #ddd{
+  width: 27rem;
+  height: 34rem;
+} */
+/* }  */
+@media (min-width: 380px) and (max-width: 430px) {
+  #contt{
+    /* display: flex; */
+    justify-content: space-around;
+    margin-left: 5vw;
+    /* margin-left: 2rem; */
+    /* justify-content: center; */
+
+  }
+  /* #contt{
+    margin-top: 20px;
+} */
+#ddd{
+  width: 27rem;
+  height: 34rem;
+}
+}
+@media (min-width: 420px) and (max-width: 600px) {
+  #contt{
+    /* display: flex; */
+    justify-content: space-around;
+    margin-left: 10vw;
+    /* margin-left: 2rem; */
+    /* justify-content: center; */
+
+  }
+  /* #contt{
+    margin-top: 20px;
+} */
+#ddd{
+  width: 27rem;
+  height: 34rem;
+}
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  #contt{
+    justify-content: space-around;
+  }
+  /* #contt{
+    margin-top: 20px;
+} */
+#ddd{
+  width: 27rem;
+  height: 34rem;
+}
+}
+@media (max-width: 380px) and (min-width: 0) {
+  #contt{
+    /* justify-content: space-around; */
+    display: block;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#ddd{
+  width: 25rem;
+  height: 30rem;
+}
+}
+@media  (min-width: 1200px) {
+   #contt{
+    margin-left: 90px;
+}
+}
+@media (max-width:1230px) and (min-width: 1200px) {
+  #ddd{
+    width: 27vw;
+}
+}
+@media (min-width:800px) and (max-width: 1200px) {
+  
+  #ddd{
+    width: 45vw;
+}
 }
 </style>
 <script>

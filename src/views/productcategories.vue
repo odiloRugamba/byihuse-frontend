@@ -40,7 +40,7 @@
 											</v-btn>
 										</div>
 										<div class="add-to-cart">
-											<v-btn v-if="ifItemExistInCart(cateogary)" to="/cart" class="accent" icon absolute bottom>
+											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/cart" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
 											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >
@@ -72,11 +72,11 @@
 						<!-- </slick> -->
 					</div>
           </div>
-          <div v-if="!pageProductsLoaded">
+          <div v-if="pageProductsLoaded && products.length">
             <h3>Loading...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
-          <div v-if="pageProductsLoaded && !products.length">
+          <div v-else>
             <h3>No Product Found</h3>
             <v-btn block class="accent" to="/products">Shop</v-btn>
           </div>
@@ -227,7 +227,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'https://byihuse.rw/'+pro.pictures.pic1
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
                 })
             }
 			})

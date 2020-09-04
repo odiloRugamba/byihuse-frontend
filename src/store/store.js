@@ -25,9 +25,13 @@ export const store = new Vuex.Store({
         assignedDepartments: '',
         token: '',
         drawer: null,
-        totalPrice: ''
+        totalPrice: '',
+        linksformbackend: 'http://192.168.43.9:4000/'
     },
     getters:{
+        linksformbackend: state =>{
+            return state.linksformbackend;
+        },
         firstName: state => {
             return state.firstName;
         },

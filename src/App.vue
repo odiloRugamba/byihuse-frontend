@@ -5,8 +5,8 @@
 	      <!-- <a class="text-xl" href="javascript:void(0);">RTL</a> -->
 	    </div>
 		<emb-subscribe
-				heading="Byihuse is here for all your shoping needs"
-				description="Our first mission and priority is to satisfy customer needs with good and quick services">
+				heading="Subscribe our Newsletter"
+				description="Stay up to date with our latest new and products">
 			</emb-subscribe>	
 	</v-app>
 </template>

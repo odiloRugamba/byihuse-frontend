@@ -6,7 +6,7 @@
                <div class="site-logo d-inline-block">
                   <router-link to="/">
                   <i></i>
-                     <img alt="site-logo" id="imgheader" height="20" src="/static/images/logo/white-logo.png" width="130">
+                     <img alt="site-logo" id="imgheader" height="20" src="/static/images/logo/logoo.png" width="224">
                   </router-link>
                </div>
                <div>

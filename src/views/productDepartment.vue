@@ -70,6 +70,10 @@
 						<!-- </slick> -->
 					</div>
           </div>
+         <div v-if="pageProductsLoaded && products.length">
+            <h3>Loading...</h3>
+            <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
+          </div>
           <div v-else>
             <h3>No Product Found</h3>
             <v-btn block class="accent" to="/products">Shop</v-btn>
@@ -114,6 +118,7 @@ export default {
         arrows: false,
         dots: true,
         rtl: this.rtlLayout,
+        pageProductsLoaded: false,
         responsive: [
           {
             breakpoint: 1200,
@@ -220,13 +225,14 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'https://byihuse.rw/'+pro.pictures.pic1
+							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
 						})
 						})
 				}) 
         }
       });
-      console.log(this.products)
+      this.pageProductsLoaded = true
+      // console.log(this.products)
     } catch (err) {
       console.log(err.message)
     } 
