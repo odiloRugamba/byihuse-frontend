@@ -16,9 +16,9 @@
 /* #bbb{
 	height: 430px;
 } */
-#banner{
+/* #banner{
 	max-height: 430px;
-}
+} */
 </style>
 <script>
 import Slick from "vue-slick";

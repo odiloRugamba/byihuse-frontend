@@ -1,12 +1,12 @@
 {
 	"name": "embryo",
-	"version": "6.0.0",
+	"version": "1.0.0",
 	"private": true,
-	"author": "The IRON Network",
+	"author": "Byihuse",
 	"keywords": [
-		"vuejs",
+		"rwanda shop",
 		"ecommerce",
-		"frontend-template"
+		"byihuse Rwanda"
 	],
 	"scripts": {
 		"serve": "vue-cli-service serve",
