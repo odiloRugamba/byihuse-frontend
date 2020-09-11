@@ -20,7 +20,13 @@
 		</v-menu>
 	</div>
 </template>
-
+<style  scoped>
+@media screen  and (max-width: 409px){
+   .userblock-dropdown img{
+      height: 20px;
+   }
+}
+</style>
 <script>
 	export default {
 		// props: ['data'],

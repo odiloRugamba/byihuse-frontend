@@ -4,6 +4,7 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import language from './modules/settings/data'
 
 // modules
 // import account from './modules/account';
@@ -18,6 +19,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state : {
+        // language,
+        // selectedLocale: languages[0],
         firstName: '',
         lastName: '',
         email: '',

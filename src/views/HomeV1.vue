@@ -38,9 +38,7 @@
 				:data="featureProductData"
 			>
 			</emb-feature-product>
-			<emb-day-deal
-				:data="dayDealData"
-			>
+			<emb-day-deal>
 			</emb-day-deal>
 			<emb-detail-offer></emb-detail-offer>
 			<emb-new-arrival-Products
@@ -87,7 +85,7 @@ import DetailOffer from "Components/Widgets/DetailOffer";
 import homeBannerData from "Assets/data/homeBannerData";
 import featuresData from "Assets/data/featuresData";
 // import featureProductData from "Assets/data/featureProductData";
-import dayDealData from "Assets/data/dayDealData";
+// import dayDealData from "Assets/data/dayDealData";
 import latestArrivalData from "Assets/data/latestArrivalData";
 // import TestimonialData from "Assets/data/TestimonialData";
 // import shopCard from "Assets/data/shopCard";
@@ -115,7 +113,7 @@ export default {
       homeBannerData,
       featuresData,
     //   featureProductData,
-      dayDealData,
+    //   dayDealData,
       latestArrivalData,
     //   TestimonialData,
     //   shopCard,

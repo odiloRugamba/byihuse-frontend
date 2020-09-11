@@ -19,16 +19,24 @@
 								class="tab-item"
 							>
 								<div class="emb-card">
-									<div class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+									<div  class="thumb-wrap">
+										<router-link  :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+                    <!-- <div id="ddd"> -->
                       <img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
 											>
-                    
-											
+                      <!-- <img id="ddd" alt="product"
+												src="/static/images/logo/p.png"
+												
+											> -->
+                      <!-- <img id="ddd" alt="product"
+												src="/static/images/logo/data1.jpg"
+												
+											> -->
+                    <!-- </div> -->
                       <!-- <img 
 												alt="feature product image"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
@@ -83,36 +91,15 @@
 	</div>
 </template>
 <style scoped>
-/* @media  (min-width: 600px){
-  #productImg{
-  width: 17rem;
-  height: 22rem;
-  align-items: center;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-}
+/* #ddd{
+  height: 240px;
 } */
-/* #mmm{
+.thumb-wrap img{
+  height: 380px;
+}
+/* #ddd img{
   width: 100%;
   height: 100%;
-} */
-/* #productImg{
-  display: flex;
-}
-@media (max-width: 600px){
-  #productImg{ */
-    /* width: 100vw;
-    height: 100%; */
-    /* height: 80vw;
-    width: 60vw; */
-    /* display: flex; */
-    /* align-items: center;
-    justify-content: center;
-  }
-  #mmm{
-    margin-left: 3.3rem;
-  }
 } */
 </style>
 <script>

@@ -9,12 +9,27 @@ Vue.use(Router)
 export default new Router({
 	mode: 'history',
 	routes: [
-		userRoutes,
-		{ 
+		// {
+		// 	path:'/',
+		// 	// component:
+		// 	redirect: '/en/home'
+		// },
+		{
+			path:'/:lang',
+			component: {
+				render(c){return c('router-view')}
+			},
+			children:[
+			userRoutes,
+		    { 
 			path: '*',
 			component: NotFound, 
 			name:'NotFound'
-		},
+		    },
+			
+	]
+	}
+		
 	]
 })
 

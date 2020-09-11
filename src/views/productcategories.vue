@@ -1,14 +1,14 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
-		<div class="containevr ml-16">
+		<div class="containevr">
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
-			<div id="contt" class="tab-content">
+      <div  v-if="products.length">
+			<div id="contt"  class="tab-content">
 				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
-              <div v-if="products.length">
 
               
 							<div
@@ -16,8 +16,8 @@
 								:key="subindex"
 								class="tab-item"
 							>
-								<div class="emb-card">
-									<div class="thumb-wrap">
+								<div  class="emb-card">
+									<div id="item" class="thumb-wrap">
 										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
@@ -71,18 +71,18 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
-          </div>
-          <div v-if="pageProductsLoaded && products.length">
+				<!-- </template>	 -->
+			</div>	
+		</div>
+    <div v-if="pageProductsLoaded && products.length">
             <h3>Loading...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-else>
             <h3>No Product Found</h3>
-            <v-btn block class="accent" to="/products">Shop</v-btn>
+            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
-				<!-- </template>	 -->
-			</div>	
-		</div>
+    </div>
 	</div>
 </template>
 <style>
@@ -90,8 +90,156 @@
     display: flex;
     flex-wrap: wrap;
 }
+#item{
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 416px) and (max-width: 430px) {
+  #contt{
+    margin-left: 3.7vw;
+    justify-content: center;
+
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
 #ddd{
-    width: 17rem;
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width: 380px) and (max-width: 420px) {
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width: 430px) and (max-width: 600px) {
+  #contt{
+    justify-content: space-around;
+    margin-left: 10vw;
+
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  #contt{
+    justify-content: space-around;
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width: 380px) and (min-width: 335px) {
+  #contt{
+    display: block;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 92vw;
+  height: 30rem;
+}
+#ddd{
+  max-height: 440px;
+  max-width: 313px;
+}
+}
+@media (max-width: 335px) and (min-width: 300px) {
+  #contt{
+    display: block;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 91vw;
+  height: 27rem;
+}
+#ddd{
+  max-height: 390px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width: 300px) and (min-width: 0px) {
+  #contt{
+    display: block;
+    justify-content: left;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 89vw;
+  height: 27rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 20rem; */
+}
+}
+@media  (min-width: 1230px)  {
+   #contt{
+    margin-left: 90px;
+}
+#item{
+  width: 17rem;
+  height: 23rem;
+}
+#ddd{
+  max-height: 320px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width:1230px) and (min-width: 1000px) {
+  #item{
+    width: 27vw;
+    height: 24rem;
+}
+#ddd{
+  max-height: 320px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width:800px) and (max-width: 900px) {
+  #contt{
+    justify-content: space-around;
+}
+  #item{
+    width: 38vw;
+    height: 30rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width:900px) and (max-width: 1000px) {
+  #contt{
+    justify-content: space-around;
+}
+  #item{
+    width: 35vw;
+    height: 28rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 260px; */
+}
 }
 </style>
 <script>
@@ -241,7 +389,7 @@ export default {
     } 
     }
   },
-  async mounted () {
+  async created () {
      this.getParametre ()
   },
   watch: {

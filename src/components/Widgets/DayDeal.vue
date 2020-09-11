@@ -17,18 +17,19 @@
 					<div class="day-deal-content"> 
 						<div class="mb-12">
 							<h2 class="font-weight-regular mb-6">
-								{{data.sectitle}}
+								{{$t(`${data.sectitle}`)}}
 							</h2>
 							<h5 class="font-weight-regular">
-								{{data.subtitle}}
+								{{$t(`${data.subtitle}`)}}
 							</h5>
 							<p class="d-inline-block mr-1">
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p>
 							<p class="accent--text d-inline-block sec-content">
-								{{data.metaainfo}} <emb-currency-sign class="accent--text"></emb-currency-sign>36.00
+								{{$t(`${data.metaainfo}`)}}
+								 <emb-currency-sign class="accent--text"></emb-currency-sign>36.00
 							</p>
-							<p>{{data.paragraph}}</p>
+							<p>{{$t(data.paragraph)}}</p>
 							<div  class="timer mb-6">
 								<emb-timer 
 									class="mb-4"
@@ -58,7 +59,7 @@
 						<v-layout row wrap cmx-0>
 							<v-flex xs4 sm4 md4 lg4 xl4
 								class="product-gallery" 
-								v-for="(productImage,key) in data.productGallery"
+								v-for="(productImage,key) in productGallery"
 								:key="key"
 								@click="togglePreviewImage(productImage)"
 							>
@@ -83,10 +84,22 @@
 
 <script>
 export default {
-	props:['data'],
+	// props:['data'],
 	data(){
 		return{
-			selectedPreviewImage: this.data.productGallery[0],
+			selectedPreviewImage:'',
+			data:{
+				sectitle: "message.sectitle",
+                subtitle: "message.subtitle",
+                // metainfo: "message.metainfo",
+                metaainfo: "message.metaainfo",
+                paragraph: "message.paragraph",
+			},
+			productGallery: [
+                "/static/images/men/1-item-a.jpg",
+                "/static/images/men/1-item-c.jpg",
+				"/static/images/men/1-item-b.jpg"
+				]
 		}
 	},
 	methods: {
@@ -96,6 +109,9 @@ export default {
 		togglePreviewImage(image) {
 			this.selectedPreviewImage = image;
 		}
+	},
+	mounted () {
+		this.selectedPreviewImage= this.productGallery[0]
 	}
 }
 </script>

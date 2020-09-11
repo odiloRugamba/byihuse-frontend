@@ -33,44 +33,44 @@ const SignIn = () => import('Views/Sessions/SignIn');
 export default {
 	path: '/',
 	component: UserPanel,
-	redirect:'/home',
+	// redirect:'en/home',
 	children:[
 		{ 
-			path: '/home',
+			path: 'home',
 			component: HomeV1 ,
 			meta: {
 				header: 1
 			 }
 		},
 		// {
-		// 	path: '/products/accessories',
+		// 	path: 'products/accessories',
 		// 	component: Accessory 
 		// },
 		// { 
-		// 	path: '/gadget',
+		// 	path: 'gadget',
 		// 	component: Gadget 
 		// },
 		{			
-			path: '/products/:title',
+			path: 'products/:title',
 			component: ProductDepartments,
 			name: 'Products'
 		},
 		{			
-			path: '/products/:department/:category',
+			path: 'products/:department/:category',
 			component: ProductCategoies,
 			name: 'Products'
 		},
 		{			
-			path: '/products',
+			path: 'products',
 			component: Product,
 			name: 'all Products'
 		},
 		{ 
-			path: '/checkout/payment',
+			path: 'checkout/payment',
 			component: Payment 
 		},
 		{ 
-			path: '/cart',
+			path: 'cart',
 			component: Cart,
 		},
 		// { 
@@ -78,32 +78,32 @@ export default {
 		// 	component: Checkout  
 		// },
 		{ 
-			path: '/products/:title/:category/:id',
+			path: 'products/:title/:category/:id',
 			component: ProductDetail, 
 			name:'productDetail'
 		},
 		{ 
-			path: '/checkout/final-receipt',  
+			path: 'checkout/final-receipt',  
 			component: FinalReceipt, 
 			name:'FinalReceipt'
 		},
 		{ 
-			path: '/about',  
+			path: 'about',  
 			component: AboutUs, 
 			name:'about'
 		},
 		{ 
-			path: '/term-condition',  
+			path: 'term-condition',  
 			component: TermCondiition, 
 			name:'term-condition'
 		},
 		{ 
-			path: '/faq',  
+			path: 'faq',  
 			component: Faq, 
 			name:'Faq'
 		},
 		{ 
-			path: '/account',  
+			path: 'account',  
 			component: Account, 
 			name:'Account',
 			children: [
@@ -136,7 +136,7 @@ export default {
 			name:'BlogDetail;'
 		},
 		{ 
-			path: '/contact',  
+			path: 'contact',  
 			component: ContactUs, 
 			name:'ContactUs'
 		},
@@ -157,7 +157,7 @@ export default {
 			name:'ForgotPassword'
 		},
 		{ 
-			path: '/session/thank-you',  
+			path: 'session/thank-you',  
 			component: ThankYou, 
 			name:'ThankYou'
 		},

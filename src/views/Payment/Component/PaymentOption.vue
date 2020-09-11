@@ -90,7 +90,7 @@ import order from "Api/order";
             agentCode: '',
             paymentsOption: '',
             MOMOPhoneNumber: '',
-			totalAmmount: ''
+			totalAmmount: '',
 			},
 			code: 783729873429,
 			total: 0,

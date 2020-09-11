@@ -230,7 +230,7 @@ export default {
 		this.id = this.$route.params.id;
 		this.title = this.$route.params.title;		
 		const res = await product.getOne(this.id)
-		console.log(res.data.data.name)
+		// console.log(res.data.data.name)
 			this.image_gallery = [
 				this.linksformbackend+res.data.data.pictures.pic1,
 				this.linksformbackend+res.data.data.pictures.pic2,

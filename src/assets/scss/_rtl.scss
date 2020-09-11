@@ -1,5 +1,6 @@
 /*--------------------------------------------------------------- 
 3.7 RTL
+thumb-wrap
 -----------------------------------------------------------------*/ 
 // RTL Btn 
 .rtl-layout a {
@@ -332,6 +333,7 @@ html body {
 		.thumb-wrap{
 			margin-left: 0 !important;
 			margin-right: auto ;
+			height: 400px;
 		}
 		.content-wrap.pl-6{
 			padding-left: 0px !important;

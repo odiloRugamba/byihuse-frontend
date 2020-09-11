@@ -6,6 +6,10 @@ menu-item-has-children
 app-nav-list
 $accent
 site-logo d-inline-block
+top-header
+notifications
+top-header-wrap
+lang-menu
 -----------------------------------------------------------------*/ 
 //======================|| Header Scss ||======================//
 .header-wrap{
@@ -24,7 +28,7 @@ site-logo d-inline-block
 				font-weight: 500;
 			}
 			.lang-menu{
-				margin-right:1rem;
+				margin-right:.1rem;
 			}
 			.currency-menu, .lang-menu{
 				font-size:0.875rem;
@@ -307,6 +311,7 @@ site-logo d-inline-block
 		}
 	}
 }
+
 //----------------------| Header-v3 |---------------------//
 .header-v3-wrap{
 	.header-wrap{
@@ -330,6 +335,7 @@ site-logo d-inline-block
 				}
 				.lang-menu{
 					margin-right:0;
+					// font-size: 1px;
 				}
 			}
 			.header-v3-top-tools {
@@ -816,7 +822,7 @@ site-logo d-inline-block
 	.header-v3-wrap{
 		.header-wrap{
 			.top-header-wrap{
-				display: none;
+				// display: none;
 			}
 			.bottom-header {
 				height: 64px;

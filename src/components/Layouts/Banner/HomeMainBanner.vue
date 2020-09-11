@@ -16,7 +16,7 @@
 /* #bbb{
 	height: 430px;
 } */
-#banner{
+.home-banner-wrap img{
 	max-height: 430px;
 }
 </style>

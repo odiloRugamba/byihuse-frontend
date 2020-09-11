@@ -59,7 +59,13 @@
 		</v-menu>
 	</div>
 </template>
-
+<style  scoped>
+/* @media screen and (max-width: 409px){
+	.cart-menu-list{
+		width: 12px;
+	}
+} */
+</style>
 <script>
 	import { mapGetters } from 'vuex';
 	import VuePerfectScrollbar from 'vue-perfect-scrollbar';

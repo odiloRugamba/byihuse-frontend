@@ -12,9 +12,9 @@
 							<img :src="feature.image" width="50" height="50" alt="feature image">
 						</div>
 						<div class="features">
-							<h6 class="font-weight-medium">{{feature.subTitle}}</h6>
-							<h5 class="inline-block">{{feature.title}}</h5>
-							<span class="grey--text">{{feature.desc}}</span>
+							<h6 class="font-weight-medium">{{$t(feature.subTitle)}}</h6>
+							<h5 class="inline-block">{{$t(feature.title)}}</h5>
+							<span class="grey--text">{{$t(feature.desc)}}</span>
 						</div>
 					</div>
 				</v-flex>
@@ -25,6 +25,30 @@
 
 <script>
 	export default {
-		props: ['data'],
+		// props: ['data'],
+		data () {
+			return{
+				data:[
+		{
+        image: "/static/images/free-delivery.png",
+        subTitle: "message.subTitleOne",
+        title: "message.titleOne",
+        desc: "message.descOne"
+    },
+    {
+        image: "/static/images/customer-support.png",
+        subTitle: "message.subTitleTwo",
+        title: "message.titleTwo",
+        desc: "message.descTwo",
+    },
+    {
+        image: "/static/images/money-back.png",
+        subTitle: "message.subTitleThree",
+        title: "message.titleThree",
+        desc: "message.descThree",
+    }
+				]
+			}
+		}
 	}
 </script>

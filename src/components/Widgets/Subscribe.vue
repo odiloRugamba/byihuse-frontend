@@ -6,10 +6,10 @@
 					<div class="subscribe-content">
 						<div>
 							<h3 class="white--text">
-								{{heading}}
+								{{$t(heading)}}
 							</h3>
 							<p class="white--text">
-								{{description}}
+								{{$t(description)}}
 							</p>
 						</div>
 					</div>
@@ -35,13 +35,15 @@
 
 <script>
 	export default {
-		props:['heading','description'],
+		// props:['heading','description'],
 		data () {
 			return{
 				email: '',
 				emailRules: [
 					v => /.+@.+/.test(v) || 'E-mail must be valid'
-				]
+				],
+				heading:"message.heading",
+				description:"message.description"
 			}
 		}
 	}

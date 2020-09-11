@@ -2,20 +2,35 @@
    <div>
       <div class="header-v3-wrap">
          <div  class="header-wrap">
-            <div  class="top-header-wrap">
+            <div  class="top-header-wrap forSmalll">
                <div class="top-header">
                   <v-container grid-list-xl>
                      <v-layout  row wrap align-center justify-space-between pt-0 pb-0 ma-0 >
-                        <v-flex xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
-                           <span class="white--text">Welcome to our store</span>
-                           <emb-lang></emb-lang>
-                           <emb-currency></emb-currency>
+                        <v-flex id="flexx" xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
+                           <span id="span" class="white--text">{{$t('message.wellcome')}}</span>
+                           <emb-lang id="langCurrenncy"></emb-lang>
+                           <emb-currency id="langCurrenncy"></emb-currency>
                         </v-flex>
                      	<v-flex xs6 sm6 md6 lg3 xl3 pa-0>
                            <div class="notifications header-v3-top-tools">
-                              <emb-cart></emb-cart>
-                              <emb-wishlist></emb-wishlist>
-                              <!-- <emb-user-block :data="userLinks"></emb-user-block> -->
+                              <emb-cart id="cartlist"></emb-cart>
+                              <emb-wishlist id="cartlist"></emb-wishlist>
+                              <emb-user-block id="user" :data="userLinks"></emb-user-block>
+                           </div>
+                        </v-flex>
+                     </v-layout>
+                  </v-container>
+               </div>
+            </div>
+            <div  class="top-header-wrap forlarge">
+               <div class="top-header">
+                  <v-container grid-list-xl>
+                     <v-layout>
+                     	<v-flex >
+                           <div class="notifications header-v3-top-tools">
+                              <emb-cart id="cartlist"></emb-cart>
+                              <emb-wishlist id="cartlist"></emb-wishlist>
+                              <emb-user-block id="user" :data="userLinks"></emb-user-block>
                            </div>
                         </v-flex>
                      </v-layout>
@@ -66,6 +81,57 @@
    </div>
 </template>
 <style  scoped>
+@media screen  and (max-width: 409px){
+   .header-wrap .top-header-wrap{
+      height: 2000px;
+   }
+   .forSmalll{
+      display: none;
+      /* position: absolute; */
+      /* font-size: 13px; */
+   }
+   .notifications #cartlist{
+      position: relative;
+      top: 8px;
+      /* height: 300px; */
+   }
+   /* #cartlist{
+      width: 12px;
+   } */
+   /* .cartSmall{
+      display: flex;
+      justify-content: flex-end;
+      
+   }
+   .notifications #cartlist{
+      font-size: 12px;
+   } */
+}
+@media screen and (min-width: 992px){
+   .forlarge{
+      display: none;
+   }
+}
+@media (min-width: 409px) and (max-width: 992px){
+   .forlarge{
+      display: none;
+   }
+   .top-header-wrap #span {
+      display: none;
+   }
+   .notifications #cartlist{
+      position: relative;
+      top: 14px;
+   }
+   .notifications button{
+      margin-left: 0px;
+      width: 10px;
+   }
+   .notifications #user{
+      position: relative;
+      top: 12px;
+   }
+}
 #logo{
    position: relative;
    bottom: 10px;
@@ -77,7 +143,7 @@ import Lang from './Lang'
 import Currency from './Currency'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
-// import UserBlock from './UserBlock'
+import UserBlock from './UserBlock'
 import Search from './Search'
 import AppConfig from "Constants/AppConfig";
 
@@ -93,7 +159,7 @@ export default {
 		embCurrency: Currency,
 		embCart:Cart,
 		embWishlist: Wishlist,
-		// embUserBlock:UserBlock,
+		embUserBlock:UserBlock,
 		embSearch:Search,
 	},
 	mounted() {
