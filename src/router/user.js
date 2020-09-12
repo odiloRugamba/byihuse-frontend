@@ -1,6 +1,7 @@
 import UserPanel from 'Container/UserPanel';
 
 const HomeV1 = () => import('Views/HomeV1');
+const services = () => import('Views/services.vue');
 // const Accessory = () => import('Views/Accesory');
 const ProductCategoies = () => import('Views/productcategories');
 const ProductDepartments = () => import('Views/productDepartment');
@@ -50,6 +51,11 @@ export default {
 		// 	path: 'gadget',
 		// 	component: Gadget 
 		// },
+		{			
+			path: 'services',
+			component: services,
+			name: 'services'
+		},
 		{			
 			path: 'products/:title',
 			component: ProductDepartments,

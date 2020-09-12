@@ -10,8 +10,22 @@ top-header
 notifications
 top-header-wrap
 lang-menu
+header-v3-wrap
 -----------------------------------------------------------------*/ 
 //======================|| Header Scss ||======================//
+// @media screen  and (max-width: 409px){
+	.header-v3-wrap{
+		.header-wrap{
+			.top-header-wrap{
+				color:$base;
+				font-size: 15px;
+				height: 100px!important;
+				font-weight: 400;
+			}
+		}
+	}
+// }
+
 .header-wrap{
 	.top-header-wrap{
 		.top-header{
@@ -990,6 +1004,14 @@ lang-menu
 	.header-v1-wrap .header-wrap .top-header-wrap .top-header .site-logo img{
 		width:160px;
 	}
+		.top-header{
+		height: 67px !important;
+	}
+		
+	
+	
+	
+	
 }
 
 @media only screen and (max-width: 376px) {
