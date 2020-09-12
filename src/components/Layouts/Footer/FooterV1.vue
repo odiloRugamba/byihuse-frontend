@@ -93,7 +93,7 @@ export default {
 			about:[
 				{
 					menuItem:"message.about",
-					path:"/about"
+					path:"/en/about"
 				},
 				// {
 				// 	menuItem:"message.termAndCondition",
@@ -103,13 +103,13 @@ export default {
 				// 	menuItem:"message.privacyPolicy",
 				// 	path:"/privacy-policy"
 				// },
-				{
-					menuItem:"message.faq",
-					path:"/faq"
-				},
+				// {
+				// 	menuItem:"message.faq",
+				// 	path:"/faq"
+				// },
 				{
 					menuItem:"message.contactUs",
-					path:"/contact"
+					path:"/en/contact"
 				},
 			],
 			session:[

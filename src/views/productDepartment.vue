@@ -17,7 +17,7 @@
 							>
 								<div class="emb-card">
 									<div id="item" class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.image"
@@ -39,7 +39,7 @@
 											</v-btn>
 										</div>
 										<div class="add-to-cart">
-											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/cart" class="accent" icon absolute bottom>
+											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/en/cart" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
 											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >
@@ -374,7 +374,8 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              category:recat.name.en
 						})
 						})
 				}) 

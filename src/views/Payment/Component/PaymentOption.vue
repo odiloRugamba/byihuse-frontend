@@ -27,7 +27,7 @@
 												<v-flex xs12 sm12 md12 lg12 xl12>
 													<div class="text-xl-left text-sm-left">
 														<v-btn class="accent mr-3" @click="makePayment('MOMO')">Submit</v-btn>
-														<v-btn>Clear</v-btn>
+														<v-btn @click="makeCleat">Clear</v-btn>
 													</div>
 												</v-flex>
 											</div>
@@ -52,7 +52,8 @@
 								<v-divider class="mt-12 mb-2"></v-divider>
 								<div class="text-center">
 									<!-- <v-btn class="sidebar-toggle mx-4" color="accent" dark @click="showOrder()" >Show Order Detail</v-btn> -->
-									<v-btn class="sidebar-toggle mx-4" color="accent" dark @click="makePayment('CASH')">Submit</v-btn>
+									<v-btn class="sidebar-toggle mx-4"  color="accent" dark @click="makePayment('CASH')">Submit</v-btn>
+									<v-btn @click="makeCleat">Clear</v-btn>
 								</div>
 							</v-card-text>
 						</v-card>
@@ -98,6 +99,9 @@ import order from "Api/order";
          }
 		},
 		methods:{
+			makeCleat() {
+				location.reload()
+			},
 			/**
 			 * This Function is to make Payment
 			*/
@@ -111,7 +115,7 @@ import order from "Api/order";
 					quantity: el.quantity
 				})
 				this.total +=el.total
-				console.log(el.price)
+				console.log(el)
 			});
 			this.invoiceData = {
 				firstName: this.userDetails.firstName,
@@ -133,7 +137,8 @@ import order from "Api/order";
 				this.$router.push('/session/thank-you')
 			}else {
 				console.log(res.data.data.payment.meta.authorization.redirect)
-				window.open(res.data.data.payment.meta.authorization.redirect)
+				// window.open(res.data.data.payment.meta.authorization.redirect)
+				this.$router.push(res.data.data.payment.meta.authorization.redirect)
 			}
 			// console.log(res)
 			
@@ -143,7 +148,12 @@ import order from "Api/order";
 			
             }	
 			} catch (err) {
-					console.log(err.message)
+				this.$snotify.error(`We are having issues! please try again soon`, {
+					closeOnClick: false,
+					pauseOnHover: false,
+					timeout: 1000
+					});
+					console.log(err)
 			}
 			},
 			showOrder () {

@@ -34,7 +34,7 @@
 											<v-icon>remove_shopping_cart</v-icon>
 										</v-btn>
 										<v-btn class="primary d-inline-block ml-2 d-inline-flex align-items-center" icon
-											to="/cart">
+											to="/en/cart">
 											<v-icon>edit</v-icon>
 										</v-btn>
 									</v-flex>
@@ -47,7 +47,7 @@
 					message="Are you sure you want to delete this product?" @onConfirm="onDeleteProductFromCart">
 				</emb-delete-confirmation>
 				<v-layout align-center pa-3>
-					<v-btn class="accent white--text" block to="/checkout/payment">Checkout</v-btn>
+					<v-btn class="accent white--text" block to="/en/checkout/payment">Checkout</v-btn>
 				</v-layout>
 			</div>
 			<div v-else class="text-center white pa-6">

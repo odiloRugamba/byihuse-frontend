@@ -3,10 +3,10 @@ export const languages = [
       name: "English",
       locale: "en"
    },
-   {
-      name: "French",
-      locale: "fr"
-   },
+   // {
+   //    name: "French",
+   //    locale: "fr"
+   // },
 ]
 export const currencies = [
    {
