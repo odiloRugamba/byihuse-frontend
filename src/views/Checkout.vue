@@ -34,7 +34,7 @@
 							<div class="emb-card pa-6">
 								<h4>Guest Checkout</h4>
 								<p>Proceed to checkout and create an account later</p>
-								<v-btn class="accent mt-0 mr-0 mx-0" large to="/checkout/payment">
+								<v-btn class="accent mt-0 mr-0 mx-0" large to="/en/checkout/payment">
 									Continue as Guest
 								</v-btn>
 							</div>

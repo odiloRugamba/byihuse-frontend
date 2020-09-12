@@ -17,6 +17,10 @@
 										>
 											<a href="javascript:void(0)">
 												<img :src="productItemImg" width="71" height="91" alt="product image">
+												<!-- <img
+												src="http://162.243.173.84:4000/1598520712511.jpg"
+												width="71" height="91"
+											> -->
 											</a>
 										</div>
 									</v-flex>
@@ -24,7 +28,12 @@
 										<div class="product-detail-thumb">
 											<div class="image-wrapper emb-card">
 												<a href="javascript:void(0)">
-													<img class="detailImg" :src="selectedImage"  width="auto" height="auto" alt="product detail image">
+													<!-- <img class="detailImg" :src="selectedImage"  width="auto" height="auto" alt="product detail image"> -->
+													<img class="detailImg" :src="selectedImage" id="maxProduct"  alt="product detail image">
+													<!-- <img  width="auto" height="auto" 
+												src="/static/images/logo/p.jpg"
+												id="maxProduct"
+											> -->
 												</a>
 											</div>
 										</div>
@@ -32,7 +41,7 @@
 								</v-layout>
 							</v-flex>
 							<v-flex xs12 sm12 md6 lg6 xl5>
-								<router-link to="/products">Back to shop</router-link>
+								<router-link to="/en/products">Back to shop</router-link>
 								<h3>{{selectedProduct.name}}</h3>
 								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
@@ -100,7 +109,7 @@
 										v-if="ifItemExistInCart(selectedProduct)"
 										class="accent cpx-0"
 										large
-										to="/cart"
+										to="/en/cart"
 									>
 										View Cart
 									</v-btn>
@@ -133,7 +142,7 @@
                            <v-flex xs12 sm6 md6 lg3 xl3 mb3 text-center  v-if="index <= 3" :key="index">
                               <div class="emb-card " >
                                  <div class="thumb-wrap">
-                                    <router-link :to="'/products/'+title+'/'+product.category+'/'+product.objectID">
+                                    <router-link :to="'/en/products/'+title+'/'+product.category+'/'+product.objectID">
                                        <img :src="product.image" alt="related product" width="626" height="800">
                                     </router-link>
                                     <div class="wishlist-icon">
@@ -145,7 +154,7 @@
                                        </v-btn>
                                     </div>
                                     <div class="add-to-cart">
-                                       <v-btn v-if="ifItemExistInCart(product)" to="/cart" class="primary" small icon>
+                                       <v-btn v-if="ifItemExistInCart(product)" to="/en/cart" class="primary" small icon>
                                           <v-icon medium>edit</v-icon>
                                        </v-btn>
                                        <v-btn
@@ -186,7 +195,7 @@
 							</v-layout>	
 						</div>
 						<div class="text-center">
-							<v-btn :to="`/products/`+title" class="white">Show All</v-btn>
+							<v-btn :to="`/en/products/`+title" class="white">Show All</v-btn>
 						</div>
 					</v-container>
 				</div>
@@ -194,7 +203,14 @@
 		</template>
 	</div>
 </template>
+<style  scoped>
+/* @media screen and (min-width: 500px) { */
+#maxProduct{
+	max-height: 600px;
+}	
+/* } */
 
+</style>
 <script>
 import {mapGetters} from "vuex";
 import product from "Api/products";

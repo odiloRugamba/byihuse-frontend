@@ -82,7 +82,7 @@
                         </h4>
                      </div>
                      <div class="layout justify-end subtotal">
-                        <v-btn large class="accent mr-0" to="/checkout/payment">
+                        <v-btn large class="accent mr-0" to="/en/checkout/payment">
                            Checkout
                         </v-btn>
                      </div>

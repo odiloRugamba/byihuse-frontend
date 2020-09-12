@@ -52,7 +52,7 @@
 								>
 								</emb-timer>
 							</div>
-							<v-btn color="accent" to="/products/Men">
+							<v-btn color="accent" to="/en/products">
 								Shop Now
 							</v-btn>
 						</div>

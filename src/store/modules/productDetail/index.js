@@ -80,8 +80,10 @@ const mutations = {
                   'http://localhost:4000/'+prdata.pictures.pic3,
                   'http://localhost:4000/'+prdata.pictures.pic4
                ],
-               description: prdata.description.en
+               description: prdata.description.en,
+               category: pr.name.en
              })
+             console.log(prdata)
             })
          })
          data[el.name.en] = {...obj}
