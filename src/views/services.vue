@@ -5,13 +5,22 @@
 			subHeading="Use our services ."
 		>
 		</emb-page-title>
+        <v-btn class="primary ml-1 toggleBtn" icon @click="darwer=!darwer">
+                         <i class="material-icons">menu</i>
+                     </v-btn>
         <div class="mainSerices">
          <div>
-             <v-navigation-drawer
-      permanent>
+             <div id="idCard">
+              <v-navigation-drawer
+              id="idCard"
+              dark
+              class="primary"
+              width="230"
+              height="1000"
+              permanent>
     <v-list id="services">
         <div v-for="names in servicesName" :key="names">
-         <v-list-item @click="viewServices(names.id)" link>
+         <v-list-item id="servicesId" @click="viewServices(names.id)" link>
             {{names.name}}
         </v-list-item>
         <v-divider></v-divider>
@@ -19,6 +28,29 @@
         
     </v-list>
     </v-navigation-drawer>
+        </div>
+        <div class ="forSmall">
+            <v-navigation-drawer
+            v-model="darwer"
+            app
+              dark
+              width="230"
+              height="1000"
+               class="primary"
+               id="thisOneTry"
+              temporary>
+    <v-list id="services">
+        <div v-for="names in servicesName" :key="names">
+         <v-list-item id="servicesId" @click="viewServices(names.id)" link>
+            {{names.name}}
+        </v-list-item>
+        <v-divider></v-divider>
+        </div>
+        
+    </v-list>
+    </v-navigation-drawer>
+        </div>
+             
         </div>
         <div class="asideServices">
         	<div class="day-deal-wrap white section-gap">
@@ -47,10 +79,10 @@
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p> -->
 							<p class="accent--text d-inline-block sec-content">
-								 <emb-currency-sign class="accent--text"></emb-currency-sign>36.00
+								 <emb-currency-sign class="accent--text"></emb-currency-sign>{{selectedServices.price}}
 							</p>
 							<p>{{selectedServices.paragraph}}</p>
-							<div  class="timer mb-6">
+							<!-- <div  class="timer mb-6">
 								<emb-timer 
 									class="mb-4"
 									starttime="Dec 1, 2018 15:37:25" 
@@ -71,7 +103,7 @@
 									}'
 								>
 								</emb-timer>
-							</div>
+							</div> -->
 						</div>
 						<v-layout row wrap cmx-0>
 							<v-flex xs4 sm4 md4 lg4 xl4
@@ -129,13 +161,42 @@
     /* height: 400px; */
     width: 100%;
 }
+/* #idCard{
+    height: 100%;
+} */
+#navig{
+    background: #EEEEEE;
+}
+#servicesId{
+    font-size: 17px;
+}
+@media screen and (max-width: 1279px){
+    #idCard{
+        display: none;
+    }
+    .forSmall{
+        /* display: none; */
+        position: relative;
+        top: 100px;
+    }
+    .thisOneTry{
+        position: relative;
+        top: 100px;
+    }
+}
+@media screen and (min-width: 1279px){
+    .forSmall, .toggleBtn{
+        display: none;
+    }
+}
 </style>
 <script>
 import services from "Api/services";
-
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+        darwer: null,
       valid: false,
       contactInfo: "",
       emailRules: [
@@ -149,20 +210,16 @@ export default {
       selectedServices: {
                 sectitle: "hello",
                 subtitle: "message.subtitle",
-                metaainfo: "message.metaainfo",
-                paragraph: "message.paragraph",
-                productGallery: [
-                "/static/images/men/1-item-a.jpg",
-                "/static/images/men/1-item-c.jpg",
-				"/static/images/men/1-item-b.jpg"
-				]
+                // metaainfo: "message.metaainfo",
+                paragraph: "",
+                productGallery: {}
       },
       	selectedPreviewImage:'',
     };
   },
   mounted() {
     this.getContactInfo();
-    this.selectedPreviewImage= this.selectedServices.productGallery[0]
+    // this.selectedPreviewImage= this.selectedServices.productGallery[0]
   },
   methods: {
       togglePreviewImage(image) {
@@ -171,14 +228,17 @@ export default {
     async getContactInfo() {
       try {
           const res = await services.getServices()
-          console.log(res.data.data)
+        //   console.log(res.data.data)
           res.data.data.forEach(el => {
-              console.log(el)
+            //   console.log(el)
               this.servicesName.push({
-                  name:el.department.name.en,
+                  name:el.name.en,
                   id: el._id
               })
           });
+          console.log(this.servicesName[0].id)
+          const resOneForMouted = await services.getOne(this.servicesName[0].id)
+          console.log(resOneForMouted)
       } catch (err) {
           console.log(err.message)
       }
@@ -192,11 +252,18 @@ export default {
                 // console.log(el)
                 if (el._id === id) {
                   this.selectedServices= {
-                    pictures: el.name,
-                    // sectitle:el.name.en
-                    productGallery:el.pictures
+                    sectitle: el.name.en,
+                    price:el.price,
+                    paragraph:el.description.en,
+                    productGallery:{
+                        pic1:this.linksformbackend+el.pictures.pic1,
+                        pic2:this.linksformbackend+el.pictures.pic2,
+                        pic3:this.linksformbackend+el.pictures.pic3,
+                        // pic4:this.linksformbackend+el.pictures.pic4,
+                    }
                 }  
-                console.log(el)
+                console.log(this.selectedServices)
+                this.selectedPreviewImage= this.selectedServices.productGallery.pic1
                 }
                 
             })
@@ -208,6 +275,9 @@ export default {
     saveDetails() {
       this.$refs.form.validate();
     }
+  },
+  computed: {
+      ...mapGetters(["linksformbackend"])
   }
 };
 </script>

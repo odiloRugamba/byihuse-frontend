@@ -91,5 +91,8 @@ export default {
   "description": "Stay up to date with our latest new and products",
   "footeTittle": "en About Partern",
   "footerDesc": "en Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quo nesciunt pariatur laboriosam accusantium? Doloremque fugit unde explicabo consequuntur aliquid laudantium id voluptatum? Saepe earum, suscipit ex quos eius natus. ",
-  "services": "services"
+  "services": "services",
+  "byiza": "Byiza",
+  "byoroshye": "Byoroshye",
+  "byizewe": "Byizewe"
 }

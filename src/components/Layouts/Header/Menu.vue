@@ -6,7 +6,7 @@
 				<template v-if="menuItem.type === 'sub_menu'">
 					<ul  class="sub-menu" v-if="menuItem.children && menuItem.children.length > 0">
 						<li v-for="(subMenuItem , subMenuKey) in menuItem.children" :key="subMenuKey">
-							<a   :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{$t(subMenuItem.name)}}</a>
+							<router-link :to="'/en'+subMenuItem.path" :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{$t(subMenuItem.name)}}</router-link>
 							<ul class="sub-menu" v-if="subMenuItem.children_menus">
 								<li  v-for="(childrenItem , childrenKey) in subMenuItem.children_menus" :key="childrenKey">
 									<a @click="changeOneRoute(childrenItem.path)"  >{{$t(childrenItem.name)}}</a>
@@ -121,7 +121,24 @@ menus:  [
       path:`/services`,
       name: "message.services",
       icon: "pages",
-      // type: "sub_menu",
+      type: "sub_menu",
+      children: [
+         {
+            name: "message.byiza",
+            children_menus:null,
+            path: "/about"
+         },
+         {
+            name: 'message.byoroshye',
+            children_menus:null,
+            path: '/term-condition'
+         },
+         {
+            name: 'message.byizewe',
+            children_menus:null,
+            path: '/services'
+         },
+      ]
 	},
    //  {
    //    path: '',
