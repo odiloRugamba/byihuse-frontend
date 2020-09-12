@@ -169,7 +169,7 @@
                                     </div>
                                  </div>
                                  <div class="emb-card-content px-6 py-4 white">
-                                    <h5  v-text="product.name"></h5>
+                                    <h5  class="text" v-text="product.name"></h5>
                                     <div class="emb-meta-info">
                                        <div class="layout align-center justify-space-between pa-4">
                                           <div class="inline-block">
@@ -209,6 +209,12 @@
 	max-height: 600px;
 }	
 /* } */
+.emb-card-content .text{
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
+}
 
 </style>
 <script>

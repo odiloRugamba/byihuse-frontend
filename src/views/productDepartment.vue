@@ -85,6 +85,12 @@
 	</div>
 </template>
 <style>
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
+}
 #contt{
     display: flex;
     flex-wrap: wrap;

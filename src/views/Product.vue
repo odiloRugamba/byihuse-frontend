@@ -16,13 +16,13 @@
 								<div class="emb-card">
 									<div  id="item" class="thumb-wrap">
 										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-											<img 
+											<!-- <img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
                         id="ddd"
-											>
+											> -->
                       <!-- <img id="ddd" alt="product" height="800" width="626"
 												src="http://162.243.173.84:4000/1598520712511.jpg"
 												
@@ -31,12 +31,12 @@
 												src="/static/images/logo/tryy.jpg"
 												
 											> -->
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
+                      <img id="ddd" alt="product" height="800" width="626"
 												src="/static/images/logo/p.jpg"
 												
-											> -->
+											>
                        <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/data.jpg"
+												src="/static/images/logo/data1.jpg"
 												
 											> -->
 										</router-link>
@@ -89,6 +89,12 @@
 #contt{
     display: flex;
     flex-wrap: wrap;
+}
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
 }
 #item{
   display: flex;
