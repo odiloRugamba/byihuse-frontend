@@ -89,6 +89,40 @@ menus:  [
       type: 'mega_menu',
       children: {}
    },
+      // {
+      // path:'',
+      // name: "message.shop",
+      // icon: "pages",
+      // type: "sub_menu",
+      // children: [
+		// 	{
+		// 		name: "message.productDetails",
+		// 		children_menus:null,
+      //       path: "/products/men/102"
+		// 	},
+		// 	{
+		// 		name: "message.cart",
+		// 		children_menus:null,
+      //       path: "/cart"
+		// 	},
+		// 	{
+		// 		name: "message.checkout",
+		// 		children_menus:null,
+      //       path: "/checkout",
+		// 	},
+		// 	{
+		// 		name: "message.payment",
+		// 		children_menus:null,
+      //       path: "/checkout/payment"
+      //    }
+      // ]
+   // },
+   {
+      path:`/services`,
+      name: "message.services",
+      icon: "pages",
+      // type: "sub_menu",
+	},
    //  {
    //    path: '',
    //    name:"message.service",

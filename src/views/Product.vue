@@ -36,7 +36,7 @@
 												
 											> -->
                        <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/data.jpg"
+												src="/static/images/logo/data1.jpg"
 												
 											> -->
 										</router-link>
@@ -89,6 +89,12 @@
 #contt{
     display: flex;
     flex-wrap: wrap;
+}
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
 }
 #item{
   display: flex;

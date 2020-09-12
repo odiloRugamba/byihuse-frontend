@@ -1,0 +1,214 @@
+<template>
+   <div class="emb-contact-wrap">
+		<emb-page-title
+			heading="Services"
+			subHeading="Use our services ."
+		>
+		</emb-page-title>
+        <div class="mainSerices">
+         <div>
+             <v-navigation-drawer
+      permanent>
+    <v-list id="services">
+        <div v-for="names in servicesName" :key="names">
+         <v-list-item @click="viewServices(names.id)" link>
+            {{names.name}}
+        </v-list-item>
+        <v-divider></v-divider>
+        </div>
+        
+    </v-list>
+    </v-navigation-drawer>
+        </div>
+        <div class="asideServices">
+        	<div class="day-deal-wrap white section-gap">
+		<v-container grid-list-xl pb-0>
+			<v-layout row wrap>
+				<v-flex xs12 sm12 md6 lg5 xl6>
+					<router-link to="/products/Men">
+						<v-img
+							alt="deal of the day"
+							:src="selectedPreviewImage"
+							aspect-ratio="1"
+							max-width="700"
+							max-height="800" />
+					</router-link>
+				</v-flex>
+				<v-flex xs12 sm12 md6 lg6 xl6  deal-content>
+					<div class="day-deal-content"> 
+						<div class="mb-12">
+							<h2 class="font-weight-regular mb-6">
+								{{selectedServices.sectitle}}
+							</h2>
+							<h5 class="font-weight-regular">
+								{{selectedServices.subtitle}}
+							</h5>
+							<!-- <p class="d-inline-block mr-1">
+								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
+							</p> -->
+							<p class="accent--text d-inline-block sec-content">
+								 <emb-currency-sign class="accent--text"></emb-currency-sign>36.00
+							</p>
+							<p>{{selectedServices.paragraph}}</p>
+							<div  class="timer mb-6">
+								<emb-timer 
+									class="mb-4"
+									starttime="Dec 1, 2018 15:37:25" 
+									endtime="Dec 25, 2025 16:37:25" 
+									trans='{  
+										"day":"Day",
+										"hours":"Hours",
+										"minutes":"Minutes",
+										"seconds":"Seconds",
+										"expired":"Event has been expired.",
+										"running":"Till the end of event.",
+										"upcoming":"Till start of event.",
+										"status": {
+											"expired":"Expired",
+											"running":"Running",
+											"upcoming":"Future"
+										}
+									}'
+								>
+								</emb-timer>
+							</div>
+						</div>
+						<v-layout row wrap cmx-0>
+							<v-flex xs4 sm4 md4 lg4 xl4
+								class="product-gallery" 
+								v-for="(productImage,key) in selectedServices.productGallery"
+								:key="key"
+								@click="togglePreviewImage(productImage)"
+							>
+								<a href="javascript:void(0)">
+									<v-img
+										alt="deal of the day"
+										class="emb-card"
+										:src="productImage"
+										aspect-ratio="0.8"
+										max-width="217"
+										max-height="217"
+									/>
+								</a>
+							</v-flex>
+						</v-layout>
+					</div>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</div>
+    <div>
+        <v-flex ml-10 mb-10 sm12 md12 lg7 xl7>
+								<div class="sec-title">
+									<h2>Write to Us</h2>
+								</div>
+								<v-form  ref="form" v-model="valid">
+									<v-text-field type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field type="email" placeholder="Email" :rules="emailRules"></v-text-field>
+									<v-text-field	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
+									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="saveDetails">	Send Message</v-btn>
+								</v-form>
+							</v-flex>
+    </div>
+        </div>
+        </div>
+   </div>
+</template>
+<style scoped>
+#services{
+    position: relative;
+    bottom: 10px;
+}
+.mainSerices{
+    display: flex;
+}
+.asideServices{
+    /* background: grey; */
+    /* height: 400px; */
+    width: 100%;
+}
+</style>
+<script>
+import services from "Api/services";
+
+export default {
+  data() {
+    return {
+      valid: false,
+      contactInfo: "",
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v => /.+@.+/.test(v) || "E-mail must be valid"
+      ],
+      inputRules: {
+        basictextRules: [v => !!v || "This field should not be empty"]
+      },
+      servicesName: [],
+      selectedServices: {
+                sectitle: "hello",
+                subtitle: "message.subtitle",
+                metaainfo: "message.metaainfo",
+                paragraph: "message.paragraph",
+                productGallery: [
+                "/static/images/men/1-item-a.jpg",
+                "/static/images/men/1-item-c.jpg",
+				"/static/images/men/1-item-b.jpg"
+				]
+      },
+      	selectedPreviewImage:'',
+    };
+  },
+  mounted() {
+    this.getContactInfo();
+    this.selectedPreviewImage= this.selectedServices.productGallery[0]
+  },
+  methods: {
+      togglePreviewImage(image) {
+			this.selectedPreviewImage = image;
+		},
+    async getContactInfo() {
+      try {
+          const res = await services.getServices()
+          console.log(res.data.data)
+          res.data.data.forEach(el => {
+              console.log(el)
+              this.servicesName.push({
+                  name:el.department.name.en,
+                  id: el._id
+              })
+          });
+      } catch (err) {
+          console.log(err.message)
+      }
+    },
+    async viewServices(id) {
+        try {
+            console.log(id)
+            const resOne = await services.getServices()
+            // console.log(resOne.data.data)
+            resOne.data.data.forEach(el => {
+                // console.log(el)
+                if (el._id === id) {
+                  this.selectedServices= {
+                    pictures: el.name,
+                    // sectitle:el.name.en
+                    productGallery:el.pictures
+                }  
+                console.log(el)
+                }
+                
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+        
+    },
+    saveDetails() {
+      this.$refs.form.validate();
+    }
+  }
+};
+</script>
+

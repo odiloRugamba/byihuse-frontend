@@ -6,7 +6,7 @@
                <div class="top-header">
                   <v-container grid-list-xl>
                      <v-layout  row wrap align-center justify-space-between pt-0 pb-0 ma-0 >
-                        <v-flex id="flexx" xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
+                        <v-flex  xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
                            <span id="span" class="white--text">{{$t('message.wellcome')}}</span>
                            <emb-lang id="langCurrenncy"></emb-lang>
                            <emb-currency id="langCurrenncy"></emb-currency>
@@ -22,15 +22,19 @@
                   </v-container>
                </div>
             </div>
-            <div  class="top-header-wrap forlarge">
+            <div  class="top-header-wra forlarge">
                <div class="top-header">
                   <v-container grid-list-xl>
                      <v-layout>
+                        <v-flex id="flexx" xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
+                           <emb-lang id="langCurrenncy"></emb-lang>
+                           <emb-currency id="langCurrenncy"></emb-currency>
+                        </v-flex>
                      	<v-flex >
                            <div class="notifications header-v3-top-tools">
                               <emb-cart id="cartlist"></emb-cart>
                               <emb-wishlist id="cartlist"></emb-wishlist>
-                              <emb-user-block id="user" :data="userLinks"></emb-user-block>
+                              <!-- <emb-user-block id="user" :data="userLinks"></emb-user-block> -->
                            </div>
                         </v-flex>
                      </v-layout>
@@ -81,6 +85,17 @@
    </div>
 </template>
 <style  scoped>
+#flexx{
+   display: flex;
+   text-align: center;
+   position: relative;
+   left: 10px;
+   top: 30px;
+}
+.notifications{
+   display: flex;
+   justify-content: flex-end;
+}
 @media screen  and (max-width: 409px){
    .header-wrap .top-header-wrap{
       height: 2000px;
@@ -143,7 +158,7 @@ import Lang from './Lang'
 import Currency from './Currency'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
-import UserBlock from './UserBlock'
+// import UserBlock from './UserBlock'
 import Search from './Search'
 import AppConfig from "Constants/AppConfig";
 
@@ -159,7 +174,7 @@ export default {
 		embCurrency: Currency,
 		embCart:Cart,
 		embWishlist: Wishlist,
-		embUserBlock:UserBlock,
+		// embUserBlock:UserBlock,
 		embSearch:Search,
 	},
 	mounted() {

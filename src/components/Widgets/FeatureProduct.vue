@@ -63,7 +63,8 @@
 										</div>
 									</div>
 									<div class="emb-card-content pa-4">
-										<h5  class="font-weight-medium" v-text="cateogary.name"></h5>
+										<h5  class="font-weight-medium" id="text" v-text="cateogary.name"></h5>
+										<!-- <h5  class="font-weight-medium" id="text">fhsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h5> -->
 										<div class="emb-meta-info layout align-center my-1">
 											<div class="inline-block">
 												<h6 class="accent--text font-weight-medium">
@@ -94,8 +95,15 @@
 /* #ddd{
   height: 240px;
 } */
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
+}
 .thumb-wrap img{
   height: 380px;
+  /* max-width: 255px; */
 }
 /* #ddd img{
   width: 100%;
