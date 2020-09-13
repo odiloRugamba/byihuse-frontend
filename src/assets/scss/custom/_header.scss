@@ -11,6 +11,7 @@ notifications
 top-header-wrap
 lang-menu
 header-v3-wrap
+form
 -----------------------------------------------------------------*/ 
 //======================|| Header Scss ||======================//
 // @media screen  and (max-width: 409px){
@@ -399,7 +400,7 @@ header-v3-wrap
 			.site-logo a{
 				line-height: 102px;
 			}
-			form {
+			// form {
 				input {
 					border: 1px solid $base-200;
 					background-color:$base; 
@@ -421,7 +422,7 @@ header-v3-wrap
 					height: auto;
 					margin-left: -56px;
 				}
-			}
+			// }
 		}
 		.bottom-header{
 			height: 50px;

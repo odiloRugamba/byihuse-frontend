@@ -52,12 +52,10 @@
                         </div>
                      </v-flex>
                      <v-flex xs12 sm12 md6 lg4 xl4  search-v3-wrap>
-                        <form>
-                           <input type="text" placeholder="Search">
-                           <v-btn  icon>
+                           <input v-on:keyup.enter="search"  v-model="keyword" type="text" placeholder="Search">
+                           <v-btn @click="search"  icon>
                               <v-icon>search</v-icon>
                            </v-btn>
-                        </form>
                      </v-flex>
                   </v-layout>
                </v-container>
@@ -85,6 +83,9 @@
    </div>
 </template>
 <style  scoped>
+#addBackground{
+   background: white;
+}
 #flexx{
    display: flex;
    text-align: center;
@@ -160,12 +161,13 @@ import Cart from './Cart'
 import Wishlist from './Wishlist'
 // import UserBlock from './UserBlock'
 import Search from './Search'
-import AppConfig from "Constants/AppConfig";
+// import AppConfig from "Constants/AppConfig";
 
 export default {
 	data (){
 	   return{
-			appLogo: AppConfig.appLogo,
+         keyword: '',
+			// appLogo: AppConfig.appLogo,
 		}
 	},
 	components: {
@@ -200,7 +202,17 @@ export default {
 					fixedHeader.style.top = "0";
 				}
 			}
-		}
-	}	
+      },
+      search(){
+         event.preventDefault();
+         // console.log(this.$route)
+         
+         //   this.$router.push(`/en/search/${this.keyword}`)
+           location.assign(`/en/search/${this.keyword}`)
+      }
+   },
+   created(){
+      this.keyword = this.$route.params.keyword
+   }
 };
 </script>

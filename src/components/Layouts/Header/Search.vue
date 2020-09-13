@@ -1,7 +1,7 @@
 <template>
    <div>
       <div class="search-box">
-        <v-btn class="d-inline-block" fab dark v-if="isHidden"	color="accent" @click="isHidden = false">
+        <v-btn  class="d-inline-block" fab dark v-if="isHidden"	color="accent" @click="search, isHidden = false">
             <v-icon>search</v-icon>
          </v-btn>
       </div>
@@ -21,6 +21,11 @@
       data (){
          return{
             isHidden: true,
+         }
+      },
+      methods: {
+         search() {
+            this.$router.push('/search')
          }
       }
    }

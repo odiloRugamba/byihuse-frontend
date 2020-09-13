@@ -11,4 +11,10 @@ export default {
     // console.log(res)
     return res
   },
+  async getSearchedProducts (keyword) {
+    const res = api().get(`/api/products/search/${keyword}`)
+    // console.log(res)
+    return res
+  },
 }
+ 

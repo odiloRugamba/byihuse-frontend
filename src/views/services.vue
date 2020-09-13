@@ -135,12 +135,13 @@
 									<h2>Write to Us</h2>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field type="email" placeholder="Email" :rules="emailRules"></v-text-field>
-									<v-text-field	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
-									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="saveDetails">	Send Message</v-btn>
+									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
+									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Number" :rules="inputRules.basictextRules"></v-text-field>
+                                    <v-text-field v-model="address" 	type="Address"	placeholder="address" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea v-model="details" rows="2" label="Leave a eal idea" :rules="inputRules.basictextRules"></v-textarea>
+									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
 								</v-form>
 							</v-flex>
     </div>
@@ -193,10 +194,17 @@
 <script>
 import services from "Api/services";
 import { mapGetters } from "vuex";
+import servicesOrders from "Api/serviceOrders";
 export default {
   data() {
     return {
-        darwer: null,
+        fristName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        details: '',
+        address: '',
+      darwer: null,
       valid: false,
       contactInfo: "",
       emailRules: [
@@ -208,9 +216,9 @@ export default {
       },
       servicesName: [],
       selectedServices: {
-                sectitle: "hello",
-                subtitle: "message.subtitle",
-                // metaainfo: "message.metaainfo",
+                id: '',
+                sectitle: "",
+                subtitle: "",
                 paragraph: "",
                 productGallery: {}
       },
@@ -219,9 +227,32 @@ export default {
   },
   mounted() {
     this.getContactInfo();
-    // this.selectedPreviewImage= this.selectedServices.productGallery[0]
   },
   methods: {
+      async AskForServices() {
+          try {
+           const orderRes = await servicesOrders.addServicesOrders({
+            service: this.selectedServices.id,
+            firstName:this.fristName,
+            lastName:this.lastName,
+            email:this.email,
+            Phone: this.phoneNumber,
+            address: this.address,
+            details: this.details
+            })
+            console.log(orderRes)
+            this.$snotify.success(`${orderRes.data.message}`,{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 3000,
+					showProgressBar:false,
+				});
+          } catch (err) {
+              console.log(err.message)
+          }
+        //   console.log('hhelo')
+        
+      },
       togglePreviewImage(image) {
 			this.selectedPreviewImage = image;
 		},
@@ -236,7 +267,6 @@ export default {
                   id: el._id
               })
           });
-          console.log(this.servicesName[0].id)
           const resOneForMouted = await services.getOne(this.servicesName[0].id)
           console.log(resOneForMouted)
       } catch (err) {
@@ -247,11 +277,10 @@ export default {
         try {
             console.log(id)
             const resOne = await services.getServices()
-            // console.log(resOne.data.data)
             resOne.data.data.forEach(el => {
-                // console.log(el)
                 if (el._id === id) {
                   this.selectedServices= {
+                    id: el._id,
                     sectitle: el.name.en,
                     price:el.price,
                     paragraph:el.description.en,
@@ -267,6 +296,9 @@ export default {
                 }
                 
             })
+            if (window.innerWidth <= 1279 ) {
+                this.darwer= false
+            }
         } catch (err) {
             console.log(err.message)
         }

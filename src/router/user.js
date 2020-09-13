@@ -1,5 +1,7 @@
 import UserPanel from 'Container/UserPanel';
 
+
+const Search = () => import('Views/search');
 const HomeV1 = () => import('Views/HomeV1');
 const services = () => import('Views/services.vue');
 // const Accessory = () => import('Views/Accesory');
@@ -51,6 +53,11 @@ export default {
 		// 	path: 'gadget',
 		// 	component: Gadget 
 		// },
+		{			
+			path: 'search/:keyword',
+			component: Search,
+			name: 'Search'
+		},
 		{			
 			path: 'services',
 			component: services,
