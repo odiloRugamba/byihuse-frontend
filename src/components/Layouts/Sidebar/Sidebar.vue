@@ -100,7 +100,7 @@
 					</template>
 
 					<template v-else>
-						<v-list-item :key="menu.title" :to="'/products/'+menu.path">
+						<v-list-item :key="menu.title" :to="'/en'+menu.path">
 							<v-list-item-action class="mr-0">
 								<v-icon>{{menu.icon}}</v-icon>
 							</v-list-item-action>
@@ -142,7 +142,8 @@ menus:  [
    path: '/home',
     name: "message.home",
 	icon: "home",
-	type: "sub_menu",
+   // type: "sub_menu",
+   children: null
 	},
 	 {
       path:'',
@@ -163,6 +164,29 @@ menus:  [
       type: 'mega_menu',
       children: {}
    },
+      {
+      path:``,
+      name: "message.services",
+      icon: "pages",
+      type: "sub_menu",
+      children: [
+         {
+            name: "message.byiza",
+            children_menus:null,
+            path: "/about"
+         },
+         {
+            name: 'message.byoroshye',
+            children_menus:null,
+            path: '/term-condition'
+         },
+         {
+            name: 'message.byizewe',
+            children_menus:null,
+            path: '/en/services'
+         },
+      ]
+	},
 //     {
 //       path: '',
 //       name:"message.rental",

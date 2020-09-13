@@ -83,7 +83,7 @@ menus:  [
    //    children: null
    // },
    {
-      path: '',
+      path: '/home',
       name:"message.categories",
       icon: 'party_mode',
       type: 'mega_menu',

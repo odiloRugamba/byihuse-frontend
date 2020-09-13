@@ -57,14 +57,14 @@
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md6 lg5 xl6>
-					<router-link to="/products/Men">
+					<!-- <router-link to="/products/Men"> -->
 						<v-img
 							alt="deal of the day"
 							:src="selectedPreviewImage"
 							aspect-ratio="1"
 							max-width="700"
 							max-height="800" />
-					</router-link>
+					<!-- </router-link> -->
 				</v-flex>
 				<v-flex xs12 sm12 md6 lg6 xl6  deal-content>
 					<div class="day-deal-content"> 
@@ -231,6 +231,7 @@ export default {
   methods: {
       async AskForServices() {
           try {
+              console.log(this.selectedServices)
            const orderRes = await servicesOrders.addServicesOrders({
             service: this.selectedServices.id,
             firstName:this.fristName,
@@ -267,8 +268,25 @@ export default {
                   id: el._id
               })
           });
-          const resOneForMouted = await services.getOne(this.servicesName[0].id)
-          console.log(resOneForMouted)
+          res.data.data.forEach(el => {
+            //   console.log(el)
+            if (this.servicesName[0].id === el._id) {
+              this.selectedServices= {
+                    id: el._id,
+                    sectitle: el.name.en,
+                    price:el.price,
+                    paragraph:el.description.en,
+                    productGallery:{
+                        pic1:this.linksformbackend+el.pictures.pic1,
+                        pic2:this.linksformbackend+el.pictures.pic2,
+                        pic3:this.linksformbackend+el.pictures.pic3,
+                        // pic4:this.linksformbackend+el.pictures.pic4,
+                    }
+                }
+            }
+          });
+        //   const resOneForMouted = await services.getOne(this.servicesName[0].id)
+        //   console.log(resOneForMouted)
       } catch (err) {
           console.log(err.message)
       }
@@ -291,7 +309,7 @@ export default {
                         // pic4:this.linksformbackend+el.pictures.pic4,
                     }
                 }  
-                console.log(this.selectedServices)
+                console.log(this.linksformbackend+el.pictures.pic1)
                 this.selectedPreviewImage= this.selectedServices.productGallery.pic1
                 }
                 
