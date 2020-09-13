@@ -136,9 +136,9 @@ import order from "Api/order";
 			if (option === 'CASH') {
 				this.$router.push('/session/thank-you')
 			}else {
-				console.log(res.data.data.payment.meta.authorization.redirect)
+				// console.log(res.data.data.payment.meta.authorization.redirect)
 				// window.open(res.data.data.payment.meta.authorization.redirect)
-				this.$router.push(res.data.data.payment.meta.authorization.redirect)
+				location.replace(res.data.data.payment.meta.authorization.redirect);
 			}
 			// console.log(res)
 			
@@ -151,7 +151,7 @@ import order from "Api/order";
 				this.$snotify.error(`We are having issues! please try again soon`, {
 					closeOnClick: false,
 					pauseOnHover: false,
-					timeout: 1000
+					timeout: 3000
 					});
 					console.log(err)
 			}

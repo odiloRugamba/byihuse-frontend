@@ -40,12 +40,12 @@
 									<h2>Write to Us</h2>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field type="email" placeholder="Email" :rules="emailRules"></v-text-field>
-									<v-text-field	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
-									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="saveDetails">	Send Message</v-btn>
+									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
+									<v-text-field v-model="subject"	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea v-model="message" rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
+									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	Send Message</v-btn>
 								</v-form>
 							</v-flex>
 						</v-layout>
@@ -57,11 +57,16 @@
 </template>
 
 <script>
-import api from "Api";
+import contact from "Api/contact";
 
 export default {
   data() {
     return {
+	  fristName:'',
+	  lastName: '',
+	  email: '',
+	  subject: '',
+	  message: '',
       valid: false,
       contactInfo: "",
       emailRules: [
@@ -70,22 +75,29 @@ export default {
       ],
       inputRules: {
         basictextRules: [v => !!v || "This field should not be empty"]
-      }
+	  },
     };
   },
-  mounted() {
-    this.getContactInfo();
-  },
   methods: {
-    getContactInfo() {
-      api
-        .get("contact.json")
-        .then(response => {
-          this.contactInfo = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    async getContactInfo() {
+      try {
+		  const res = await contact.postMessage({
+			   firstName: this.fristName,
+			   lastName: this.lastName,
+			   email:this.email,
+			   subject: this.subject,
+			   message: this.message
+			   })
+		  console.log()
+		  this.$snotify.success(`${res.data.message}`,{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 1000,
+					showProgressBar:false,
+				});
+	  } catch (err) {
+		  console.log(err)
+	  }
     },
     saveDetails() {
       this.$refs.form.validate();

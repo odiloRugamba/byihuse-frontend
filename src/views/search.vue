@@ -4,9 +4,8 @@
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
-      <div  v-if="products.length">
-			<div id="contt"  class="tab-content">
-				<!-- <template v-for="(tab,title) in products"> -->
+			<div id="contt" class="tab-content">
+				<template >
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
@@ -14,20 +13,15 @@
 								:key="subindex"
 								class="tab-item"
 							>
-								<div  class="emb-card">
-									<div id="item" class="thumb-wrap">
+								<div class="emb-card">
+									<div  id="item" class="thumb-wrap">
 										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
-												:src="cateogary.image"
+												:src="cateogary.imag"
 												width="626"
 												height="800"
-                        id="ddd"
-											>
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												
-											> -->
+                                                id="ddd">
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -69,30 +63,24 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
-				<!-- </template>	 -->
+                    <div v-if="!products.length">
+                        <h3>No Products Found</h3>
+                    </div>
+				</template>	
 			</div>	
 		</div>
-    <div v-if="pageProductsLoaded && products.length">
-            <h3>Loading...</h3>
-            <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
-          </div>
-          <div v-else>
-            <h3 class="pl-15">No Product Found</h3>
-            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
-          </div>
-    </div>
 	</div>
 </template>
 <style>
+#contt{
+    display: flex;
+    flex-wrap: wrap;
+}
 .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 width:200px; 
-}
-#contt{
-    display: flex;
-    flex-wrap: wrap;
 }
 #item{
   display: flex;
@@ -249,20 +237,20 @@ width:200px;
 <script>
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
-import departments from "Api/department";
+import product from "Api/products";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist"])
-    // produc () {
-    //   return this.$store.state.products
-    // }
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
   },
   components: {
     // Slick
   },
   data() {
     return {
+      keyword: '',
+      products: [],
+      produ: [],
       selectedTab: 0,
       activeTab: null,
       slickOptions: {
@@ -293,12 +281,8 @@ export default {
               dots: false
             }
           }
-        ],
-        
-      },
-      title: "",
-      products: [],
-      pageProductsLoaded: false,
+        ]
+      }
     };
   },
   methods: {
@@ -363,52 +347,38 @@ export default {
         }
       }
       return exists;
-    },
-    async getParametre () {
-      try {
-      this.title= this.$route.params.department
-      this.id = this.$route.params.category
-      // console.log(this.title)
-      const rescategoies = await departments.getDepartmentall()
-		rescategoies.data.data.forEach(el => {
-        if (el.name.en === this.title) {
-         el.categories.forEach(recat =>{
-		    recat.products.forEach(pro =>{
-            if (recat.name.en === this.id) {
-               this.products.push({
-							objectID: pro._id,
-							price: pro.price,
-							name: pro.name.en,
-              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
-              category: recat.name.en
-              })
-            }
-      })
-      // console.log(recat.name.en)
-			}) 
-        }
-      });
-      this.pageProductsLoaded = true,
-      console.log(this.products)
-    } catch (err) {
-      console.log(err.message)
-    } 
     }
   },
   async created () {
-     this.getParametre ()
-  },
-  watch: {
-    "$route"(to) {
-		 this.title = to.params.department
-         this.id = to.params.category
-          location.reload();
-         this.getParametre();
-        //  console.log('he')
-        
-    }
+      try {
+          this.keyword = this.$route.params.keyword
+          const res= await product.getSearchedProducts(this.keyword)
+        console.log(res)
+        res.data.data.forEach(el => {
+            this.produ.push({
+               objectID: el._id,
+               type: el.name.en,
+               imag:this.linksformbackend+el.pictures.pic1,
+               price: el.price,
+               name: el.name.en,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+el.pictures.pic1,
+                  this.linksformbackend+el.pictures.pic2,
+                  this.linksformbackend+el.pictures.pic3,
+                  this.linksformbackend+el.pictures.pic4
+               ],
+               description: el.description.en,
+               category: el.category.name.en 
+            })
+        });
+        this.products=this.produ
+        console.log(this.products)
+      } catch (err) {
+         console.log(err.message) 
+      }
   }
-}
+};
 </script>
 
 
