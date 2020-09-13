@@ -2,10 +2,10 @@
    <div class="emb-thankyou-wrap section-gap">
       <div class="container py-0">
          <div class="layout justify-center align-center">
-            <v-flex sm12 md10 lg8 xl8>
-               <div class="form-img thank-you-image text-center hidden-sm-and-down">
+            <v-flex sm12 md10 lg12 xl8>
+               <!-- <div class="form-img thank-you-image text-center hidden-sm-and-down">
                   <h2 class="white--text">Thank You</h2>
-               </div>
+               </div> -->
                <div class="layout align-center justify-center">
                   <v-flex xs12 md8 lg6 xl6>
                      <div 
@@ -14,7 +14,7 @@
                            white pa-6
                            text-center"
                      >
-                        <h4 class="px-6 pb-2 text-center">For every thing you had done with Byihuse</h4>
+                        <h4 class="px-6 pb-2 text-center">Thank you for shopping with us. Our sales team will call you in a minute for delivery process</h4>
                         <v-divider class="pt-2 pb-4"></v-divider>
                         <div class="mx-auto text-center">
                            <p class="mb-4">Spread The Word</p>
@@ -31,3 +31,13 @@
       </div>
    </div>
 </template>
+<script>
+export default {
+   methods:{
+
+   },
+   mounted(){
+      console.log(this.$route.query.resp.data.id,this.$route.query.resp.data.txRef,)
+   }
+}
+</script>

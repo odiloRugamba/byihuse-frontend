@@ -140,7 +140,7 @@
 									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
 									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Number" :rules="inputRules.basictextRules"></v-text-field>
                                     <v-text-field v-model="address" 	type="Address"	placeholder="address" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea v-model="details" rows="2" label="Leave a eal idea" :rules="inputRules.basictextRules"></v-textarea>
+									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
 								</v-form>
 							</v-flex>
