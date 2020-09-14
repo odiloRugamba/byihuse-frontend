@@ -19,19 +19,20 @@
 								class="tab-item"
 							>
 								<div class="emb-card">
-									<div  class="thumb-wrap">
+									<div   class="thumb-wrap">
 										<router-link  :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
                     <!-- <div id="ddd"> -->
-                      <!-- <img 
+                      <img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
-											> -->
-                      <img id="ddd" alt="product"
+                        id="ddd"
+											>
+                      <!-- <img id="ddd" alt="product"
 												src="/static/images/logo/data1.jpg"
 												
-											>
+											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -83,10 +84,10 @@
 /* #ddd{
   height: 240px;
 } */
-/* .tab-item .emb-card img{
+.emb-card{
   max-width: 300px;
-  max-height: 100px;
-} */
+  /* max-height: 100px; */
+}
 .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
