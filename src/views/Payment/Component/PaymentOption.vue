@@ -144,7 +144,7 @@ import order from "Api/order";
 			
 			// console.log(this.invoiceData)
 			localStorage.removeItem('cart');
-			location.reload();
+			// location.reload();
 			
             }	
 			} catch (err) {

@@ -7,7 +7,7 @@
       </div>
       <div  class="search-form"  v-if="!isHidden">
         <div class="form">
-          <input type="text" placeholder="Search Here">
+          <input v-on:keyup.enter="search"  v-model="keyword" type="text" placeholder="Search Here">
             <v-btn class="close-btn white" @click="isHidden = !isHidden">
               <v-icon>close</v-icon>
             </v-btn>
@@ -21,12 +21,20 @@
       data (){
          return{
             isHidden: true,
+            keyword: ''
          }
       },
       methods: {
-         search() {
-            this.$router.push('/search')
-         }
+         search(){
+         event.preventDefault();
+         // console.log(this.$route)
+         
+         //   this.$router.push(`/en/search/${this.keyword}`)
+           location.assign(`/en/search/${this.keyword}`)
       }
+      },
+   created(){
+      this.keyword = this.$route.params.keyword
+   }
    }
 </script>

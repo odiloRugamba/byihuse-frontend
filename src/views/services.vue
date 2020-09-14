@@ -57,14 +57,14 @@
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md6 lg5 xl6>
-					<router-link to="#">
+					<!-- <router-link to="/products/Men"> -->
 						<v-img
 							alt="deal of the day"
 							:src="selectedPreviewImage"
 							aspect-ratio="1"
 							max-width="700"
 							max-height="500" />
-					</router-link>
+					<!-- </router-link> -->
 				</v-flex>
 				<v-flex xs12 sm12 md6 lg6 xl6  deal-content>
 					<div class="day-deal-content"> 
@@ -119,7 +119,7 @@
 									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
 									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Number" :rules="inputRules.basictextRules"></v-text-field>
                                     <v-text-field v-model="address" 	type="Address"	placeholder="address" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea v-model="details" rows="2" label="Leave a eal idea" :rules="inputRules.basictextRules"></v-textarea>
+									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
 								</v-form>
 							</v-flex>
@@ -210,6 +210,7 @@ export default {
   methods: {
       async AskForServices() {
           try {
+              console.log(this.selectedServices)
            const orderRes = await servicesOrders.addServicesOrders({
             service: this.selectedServices.id,
             firstName:this.fristName,
@@ -246,8 +247,25 @@ export default {
                   id: el._id
               })
           });
-          const resOneForMouted = await services.getOne(this.servicesName[0].id)
-          console.log(resOneForMouted)
+          res.data.data.forEach(el => {
+            //   console.log(el)
+            if (this.servicesName[0].id === el._id) {
+              this.selectedServices= {
+                    id: el._id,
+                    sectitle: el.name.en,
+                    price:el.price,
+                    paragraph:el.description.en,
+                    productGallery:{
+                        pic1:this.linksformbackend+el.pictures.pic1,
+                        pic2:this.linksformbackend+el.pictures.pic2,
+                        pic3:this.linksformbackend+el.pictures.pic3,
+                        // pic4:this.linksformbackend+el.pictures.pic4,
+                    }
+                }
+            }
+          });
+        //   const resOneForMouted = await services.getOne(this.servicesName[0].id)
+        //   console.log(resOneForMouted)
       } catch (err) {
           console.log(err.message)
       }
@@ -270,7 +288,7 @@ export default {
                         // pic4:this.linksformbackend+el.pictures.pic4,
                     }
                 }  
-                console.log(this.selectedServices)
+                console.log(this.linksformbackend+el.pictures.pic1)
                 this.selectedPreviewImage= this.selectedServices.productGallery.pic1
                 }
                 

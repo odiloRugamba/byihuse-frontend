@@ -43,9 +43,9 @@ const actions = {
 
 // mutations
 const mutations = {
-   async SET_prducts (state, products) {
+   async SET_prducts (state) {
       try {
-      console.log(products)
+      // console.log(products)
       // if (products.data.feature === false) {
       // }
       var obj = []
@@ -53,7 +53,7 @@ const mutations = {
       const product = []
       const produ = {}
       const res = await department.getDepartmentall();
-      console.log(res.data)
+      // console.log(res.data)
       res.data.data.forEach(el => {
          el.categories.forEach(pr =>{
             pr.products.forEach(prdata =>{
@@ -83,7 +83,7 @@ const mutations = {
                description: prdata.description.en,
                category: pr.name.en
              })
-             console.log(prdata)
+            //  console.log(prdata)
             })
          })
          data[el.name.en] = {...obj}
@@ -96,6 +96,7 @@ const mutations = {
       }); 
       state.featured = data,
       state.products = produ
+      console.log(produ)
       } catch (err) {
          console.log(err)
       }

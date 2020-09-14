@@ -29,7 +29,8 @@ export const store = new Vuex.Store({
         token: '',
         drawer: null,
         totalPrice: '',
-        linksformbackend: 'http://localhost:4000/'
+        // linksformbackend: 'http://localhost:4000/'
+        linksformbackend:'http://localhost:4000/'
     },
     getters:{
         linksformbackend: state =>{

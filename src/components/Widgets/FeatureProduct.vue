@@ -95,16 +95,16 @@
 /* #ddd{
   height: 240px;
 } */
-.font-weight-medium{
+/* .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 width:200px; 
 }
 .thumb-wrap img{
-  height: 380px;
+  height: 380px; */
   /* max-width: 255px; */
-}
+/* } */
 /* #ddd img{
   width: 100%;
   height: 100%;

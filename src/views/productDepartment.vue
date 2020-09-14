@@ -254,7 +254,7 @@ import departments from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist","linksformbackend"])
     // produc () {
     //   return this.$store.state.products
     // }
@@ -380,7 +380,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              image: this.linksformbackend+pro.pictures.pic1,
               category:recat.name.en
 						})
 						})
