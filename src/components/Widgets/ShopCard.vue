@@ -23,15 +23,33 @@
 <script>
 import Slick from "vue-slick";
 import { mapGetters } from "vuex";
+import Company from "Api/company.js";
 export default {
-  props: [ "secTitle","data"],
+  props: [ "secTitle"],
   computed: {
     ...mapGetters(["rtlLayout","linksformbackend"])
   },
   components: { Slick },
+  async mounted() {
+    try {
+      const res = await Company.getCompany()
+      console.log(res)
+      res.data.data.forEach(el => {
+        console.log(el)
+        this.data.push({
+          image:this.linksformbackend+el.logo
+          // image:'https://byihuse.rw/1598890724471.jpg'
+          // image:'/static/images/client-logo-1.png'
+        })
+        console.log(this.data)
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  },
   data() {
     return {
-      // data: [],
+      data: [],
       slickOptions: {
         rtl: this.rtlLayout,
         slidesToShow: 5,
