@@ -58,7 +58,6 @@
 			</emb-blog> -->
 			<emb-shop-card
 				secTitle="Our Parten"
-				:data="shopCard"
 			>
 			</emb-shop-card>
 		</div>
@@ -91,7 +90,7 @@ import latestArrivalData from "Assets/data/latestArrivalData";
 // import shopCard from "Assets/data/shopCard";
 
 // import api from "Api";
-import Company from "Api/company";
+// import Company from "Api/company";
 // import products from "Api/products";
 export default {
   components: {
@@ -116,7 +115,7 @@ export default {
     //   dayDealData,
       latestArrivalData,
     //   TestimonialData,
-      shopCard: [],
+    //   shopCard: [],
       blogData: null
     };
   },
@@ -139,23 +138,23 @@ export default {
     //     });
     // }
   },
-   async mounted() {
-    try {
-      const res = await Company.getCompany()
-      console.log(res)
-      res.data.data.forEach(el => {
-        console.log(el)
-        this.shopCard.push({
-          image:this.linksformbackend+el.logo
-          // image:'https://byihuse.rw/1598890724471.jpg'
-        //   image:'/static/images/client-logo-1.png'
-        })
-        console.log(this.data)
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  },
+//    async mounted() {
+//     try {
+//       const res = await Company.getCompany()
+//       console.log(res)
+//       res.data.data.forEach(el => {
+//         console.log(el)
+//         this.shopCard.push({
+//           image:this.linksformbackend+el.logo
+//           // image:'https://byihuse.rw/1598890724471.jpg'
+//         //   image:'/static/images/logo/p.png'
+//         })
+//         console.log(this.shopCard)
+//       });
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   },
 
 };
 </script>
