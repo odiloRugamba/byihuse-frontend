@@ -32,12 +32,25 @@
    </div>
 </template>
 <script>
+import verify from "Api/verify.js";
 export default {
    methods:{
 
    },
-   mounted(){
-      console.log(this.$route.query.resp.data.id,this.$route.query.resp.data.txRef,)
+   async mounted(){
+      try {
+       const data = JSON.parse(this.$route.query.resp)
+      const res = await verify.verifyPayments({
+         transactionId: data.data.id,
+         orderId: data.data.txRef
+      })
+      console.log(res)
+      } catch (err) {
+         console.log(err)
+      }
+      
+
+      // console.log(this.$route.query.resp.id,this.$route.query.resp.txRef,)
    }
 }
 </script>
