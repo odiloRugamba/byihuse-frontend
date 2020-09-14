@@ -85,7 +85,7 @@
                               <v-list-item
                                  v-for="(megaChild,megaChildKey) in subItem"
                                  :key="megaChildKey"
-                                 :to="'/products/'+subItemKey+'/'+megaChild.path"
+                                 :to="'/en/products/'+subItemKey+'/'+megaChild.path"
                                  class="mega-menu-item "
                               >
                                  <v-list-item-action class="mr-0 pl-1">

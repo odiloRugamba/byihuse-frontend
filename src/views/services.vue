@@ -130,7 +130,7 @@
 		</v-container>
 	</div>
     <div>
-        <v-flex ml-10 mb-10 sm12 md12 lg7 xl7>
+        <v-flex ml-10 mr-5 mb-10 sm12 md12 lg7 xl7>
 								<div class="sec-title">
 									<h2>Write to Us</h2>
 								</div>
@@ -281,8 +281,9 @@ export default {
                         pic2:this.linksformbackend+el.pictures.pic2,
                         pic3:this.linksformbackend+el.pictures.pic3,
                         // pic4:this.linksformbackend+el.pictures.pic4,
-                    }
-                }
+                    },
+                },
+                this.selectedPreviewImage=this.linksformbackend+el.pictures.pic1
             }
           });
         //   const resOneForMouted = await services.getOne(this.servicesName[0].id)
