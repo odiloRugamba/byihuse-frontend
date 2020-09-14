@@ -123,15 +123,15 @@ menus:  [
       icon: "pages",
       type: "sub_menu",
       children: [
-         {
-            name: "message.byiza",
-            children_menus:null,
-            path: "/about"
-         },
+         // {
+         //    name: "message.byiza",
+         //    children_menus:null,
+         //    path: "/about"
+         // },
          {
             name: 'message.byoroshye',
             children_menus:null,
-            path: '/term-condition'
+            path: '/services'
          },
          {
             name: 'message.byizewe',

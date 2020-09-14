@@ -46,7 +46,7 @@
                   <v-layout row wrap justify-space-between align-center>
                      <v-flex xs12 sm12 md6 lg4 xl4>
                         <div class="site-logo d-inline-block">
-                           <router-link to="/home">
+                           <router-link to="/en/home">
                               <img id="logo" alt="site-logo" height="34" src="/static/images/logo/logoo.png" width="224">
                            </router-link>
                         </div>
