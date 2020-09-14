@@ -46,7 +46,21 @@
 				:data="latestArrivalData"
 			>
 			</emb-new-arrival-Products>
-		
+			<!-- <embTestimonial
+				secTitle="Customer Reviews"
+				:data="TestimonialData"
+			>
+			</embTestimonial> -->
+			<!-- <emb-blog
+				secTitle="Latest From Blogs"
+				:data="blogData"
+			>	
+			</emb-blog> -->
+			<emb-shop-card
+				secTitle="Our Parten"
+				:data="shopCard"
+			>
+			</emb-shop-card>
 		</div>
 	</div>
 </template>
@@ -64,7 +78,7 @@ import DayDeal from "Components/Widgets/DayDeal";
 import DetailOffer from "Components/Widgets/DetailOffer";
 // import Testimonial from "Components/Widgets/Testimonial";
 // import Blog from "Components/Widgets/Blog";
-// import ShopCard from "Components/Widgets/ShopCard";
+import ShopCard from "Components/Widgets/ShopCard";
 // import Subscribe from "Components/Widgets/Subscribe";
 
 // data
@@ -76,8 +90,8 @@ import latestArrivalData from "Assets/data/latestArrivalData";
 // import TestimonialData from "Assets/data/TestimonialData";
 // import shopCard from "Assets/data/shopCard";
 
-import api from "Api";
-// import company from "Api/company";
+// import api from "Api";
+import Company from "Api/company";
 // import products from "Api/products";
 export default {
   components: {
@@ -92,7 +106,7 @@ export default {
     // embTestimonial: Testimonial,
 	// embBlog: Blog,
     // embSubscribe: Subscribe,
-    // embShopCard: ShopCard
+    embShopCard: ShopCard
   },
   data() {
     return {
@@ -102,27 +116,44 @@ export default {
     //   dayDealData,
       latestArrivalData,
     //   TestimonialData,
-    //   shopCard,
+      shopCard: [],
       blogData: null
     };
   },
-  async mounted() {
+//   async mounted() {
 	// this.getBlogData();
 	// const res = await company.getCompany()
 	// const data = await products.getProducts()
 	// console.log(data.data.data)
 	// console.log(res.data.data)
-  },
+//   },
   methods: {
-    getBlogData() {
-      api
-        .get("blogs.json")
-        .then(response => {
-          this.blogData = response.data;
+    // getBlogData() {
+    //   api
+    //     .get("blogs.json")
+    //     .then(response => {
+    //       this.blogData = response.data;
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // }
+  },
+   async mounted() {
+    try {
+      const res = await Company.getCompany()
+      console.log(res)
+      res.data.data.forEach(el => {
+        console.log(el)
+        this.shopCard.push({
+          image:this.linksformbackend+el.logo
+          // image:'https://byihuse.rw/1598890724471.jpg'
+        //   image:'/static/images/client-logo-1.png'
         })
-        .catch(error => {
-          console.log(error);
-        });
+        console.log(this.data)
+      });
+    } catch (err) {
+      console.log(err)
     }
   },
 

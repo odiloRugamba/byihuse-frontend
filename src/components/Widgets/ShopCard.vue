@@ -6,27 +6,32 @@
 			</div>
 			<slick ref="carousel" class="shop-card-slider" :options="slickOptions">
 				<div v-for="(brand,key) in data" :key="key" class="text-center slick-item">
-					<router-link to="/products">
-						<img alt="client-logo" :src="brand" width="250" height="50">
+					<router-link to="/en/products">
+						<img alt="client-logo" :src="brand.image" width="250" height="50">
 					</router-link>
 				</div>
 			</slick>
      </div>
    </div>
 </template>
-
+<style  scoped>
+.shop-card-slider{
+  display: flex;
+  justify-content: space-between;
+}
+</style>
 <script>
 import Slick from "vue-slick";
 import { mapGetters } from "vuex";
-
 export default {
-  props: ["data", "secTitle"],
+  props: [ "secTitle","data"],
   computed: {
-    ...mapGetters(["rtlLayout"])
+    ...mapGetters(["rtlLayout","linksformbackend"])
   },
   components: { Slick },
   data() {
     return {
+      // data: [],
       slickOptions: {
         rtl: this.rtlLayout,
         slidesToShow: 5,
