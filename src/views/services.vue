@@ -16,7 +16,7 @@
               dark
               class="primary"
               width="230"
-              height="1000"
+              height="700"
               permanent>
     <v-list id="services">
         <div v-for="names in servicesName" :key="names">
@@ -56,16 +56,6 @@
         	<div class="day-deal-wrap white section-gap">
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
-				<v-flex xs12 sm12 md6 lg5 xl6>
-					<!-- <router-link to="/products/Men"> -->
-						<v-img
-							alt="deal of the day"
-							:src="selectedPreviewImage"
-							aspect-ratio="1"
-							max-width="700"
-							max-height="500" />
-					<!-- </router-link> -->
-				</v-flex>
 				<v-flex xs12 sm12 md6 lg6 xl6  deal-content>
 					<div class="day-deal-content"> 
 						<div class="mb-12">
@@ -105,24 +95,26 @@
 						</v-layout>
 					</div>
 				</v-flex>
-			</v-layout>
-		</v-container>
-	</div>
-    <div>
-        <v-flex ml-10 mb-10 sm12 md12 lg7 xl7>
+                
+				<v-flex xs12 sm12 md6 lg5 xl6>
 								<div class="sec-title">
-									<h2>Write to Us</h2>
+									<h5>Fill this form to request this service</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
-									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Number" :rules="inputRules.basictextRules"></v-text-field>
-                                    <v-text-field v-model="address" 	type="Address"	placeholder="address" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Phone number" :rules="inputRules.basictextRules"></v-text-field>
+                                    <v-text-field v-model="address" 	type="Address"	placeholder="Your address" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
 								</v-form>
-							</v-flex>
+				</v-flex>
+			</v-layout>
+		</v-container>
+	</div>
+    <div>
+
     </div>
         </div>
         </div>

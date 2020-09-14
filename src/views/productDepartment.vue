@@ -71,13 +71,13 @@
 						<!-- </slick> -->
 					</div>
           </div>
-         <div v-if="pageProductsLoaded && products.length">
+          <div v-if="!pageProductsLoaded">
             <h3>Loading...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
-          <div v-else>
-            <h3>No Product Found</h3>
-            <v-btn block class="accent" to="/products">Shop</v-btn>
+          <div v-if="pageProductsLoaded && !products.length">
+            <h3 class="pl-15">No Product Found</h3>
+            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
 				<!-- </template>	 -->
 			</div>	

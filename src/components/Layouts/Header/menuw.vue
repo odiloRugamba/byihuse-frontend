@@ -6,7 +6,7 @@
 				<template v-if="menuItem.type === 'sub_menu'">
 					<ul  class="sub-menu" v-if="menuItem.children && menuItem.children.length > 0">
 						<li v-for="(subMenuItem , subMenuKey) in menuItem.children" :key="subMenuKey">
-							<router-link :to="subMenuItem.path" :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{$t(subMenuItem.name)}}</router-link>
+							<router-link :to="'/en'+subMenuItem.path" :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{$t(subMenuItem.name)}}</router-link>
 							<ul class="sub-menu" v-if="subMenuItem.children_menus">
 								<li  v-for="(childrenItem , childrenKey) in subMenuItem.children_menus" :key="childrenKey">
 									<router-link :to="childrenItem.path" >{{$t(childrenItem.name)}}</router-link>
