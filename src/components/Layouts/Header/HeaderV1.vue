@@ -208,7 +208,7 @@ export default {
          // console.log(this.$route)
          
          //   this.$router.push(`/en/search/${this.keyword}`)
-           location.assign(`/en/search/${this.keyword}`)
+           location.assign(`/#/en/search/${this.keyword}`)
       }
    },
    created(){

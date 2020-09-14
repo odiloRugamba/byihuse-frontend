@@ -69,7 +69,7 @@
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p> -->
 							<p class="accent--text d-inline-block sec-content">
-								 <emb-currency-sign class="accent--text"></emb-currency-sign>{{selectedServices.price}}
+								 <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price}}
 							</p>
 							<p>{{selectedServices.paragraph}}</p>
 							
@@ -252,8 +252,9 @@ export default {
                         pic2:this.linksformbackend+el.pictures.pic2,
                         pic3:this.linksformbackend+el.pictures.pic3,
                         // pic4:this.linksformbackend+el.pictures.pic4,
-                    }
-                }
+                    },
+                },
+                this.selectedPreviewImage=this.linksformbackend+el.pictures.pic1
             }
           });
         //   const resOneForMouted = await services.getOne(this.servicesName[0].id)

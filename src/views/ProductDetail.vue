@@ -332,7 +332,9 @@ width:200px;
 }
 @media  (min-width: 1230px)  {
    #contt{
-    margin-left: 90px;
+    /* margin-left: 90px; */
+	flex-wrap: wrap;
+	display: flex;
 }
 #item{
   width: 17rem;
@@ -345,7 +347,7 @@ width:200px;
 }
 @media (max-width:1230px) and (min-width: 1000px) {
   #item{
-    width: 27vw;
+    width: 22vw;
     height: 24rem;
 }
 #ddd{

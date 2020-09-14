@@ -28,22 +28,6 @@
 												width="626"
 												height="800"
 											>
-                      <!-- <img id="ddd" alt="product"
-												src="/static/images/logo/p.png"
-												
-											> -->
-                      <!-- <img id="ddd" alt="product"
-												src="/static/images/logo/data1.jpg"
-												
-											> -->
-                    <!-- </div> -->
-                      <!-- <img 
-												alt="feature product image"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												width="626"
-												height="800"
-                        id="mmm"
-											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -71,7 +55,7 @@
 													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
 												</h6>
 											</div>
-											<div class="inline-block ">
+											<!-- <div class="inline-block "> -->
 												<!-- <v-rating 
 													v-model="cateogary.rate"
 													readonly
@@ -79,7 +63,7 @@
 													color="#edb876"
 												>
 												</v-rating> -->
-											</div>
+											<!-- </div> -->
 										</div>
 									</div>
 								</div>
@@ -102,9 +86,9 @@ overflow: hidden;
 width:200px; 
 }
 .thumb-wrap img{
-  height: 380px; */
-  /* max-width: 255px; */
-/* } */
+  height: 380px; 
+  max-width: 255px;
+} */
 /* #ddd img{
   width: 100%;
   height: 100%;
