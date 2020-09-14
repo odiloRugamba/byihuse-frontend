@@ -73,7 +73,7 @@
 									<span>$847.63</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Shipping</p>
+									<p>Delivery</p>
 									<span>$12.95</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">

@@ -7,7 +7,7 @@
                   <v-container grid-list-xl>
                      <v-layout  row wrap align-center justify-space-between pt-0 pb-0 ma-0 >
                         <v-flex xs6 sm6 md6 lg9 xl9 pa-0 currency-lang-wrap header-v3-top-tools>
-                           <span class="white--text">Welcome to our store</span>
+                           <span class="white--text">Made in Rwanda</span>
                            <emb-lang></emb-lang>
                            <emb-currency></emb-currency>
                         </v-flex>

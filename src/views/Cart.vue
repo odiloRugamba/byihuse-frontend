@@ -60,7 +60,7 @@
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
-                        <p>Shipping</p>
+                        <p>Delivery</p>
                         <span>
                            <emb-currency-sign></emb-currency-sign>
                            {{shipping}}

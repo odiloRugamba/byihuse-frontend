@@ -134,7 +134,7 @@
 				<div class="related-product section-gap bg-grey">
 					<v-container grid-list-xl class="py-0">
 						<div class="sec-title">
-							<h2 class="font-weight-medium">You Might Also Like</h2>
+							<h2>You Might Also Like</h2>
 						</div>
 						<div class="product-listing">
 							<v-layout row wrap mb-4>
@@ -270,7 +270,7 @@ export default {
 		// 	'Black Men Summer',
 		// 	'Slim Fit',
 		// 	'Pure Cotton',
-		// 	'Free Shipping and delivery in 4 Days'
+		// 	'Free Delivery and delivery in 4 Days'
 		// 	]
 			const rescategoies = await departments.getDepartmentall()
 			rescategoies.data.data.forEach(el => {

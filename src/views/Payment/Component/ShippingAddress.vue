@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Enter Your Shipping Address</h4></v-expansion-panel-header>
+		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Enter Your Delivery Address</h4></v-expansion-panel-header>
 		<v-expansion-panel-content>
 			<v-card-text>
 				<v-form ref="form" v-model="valid">

@@ -2,65 +2,60 @@
    <div class="emb-aboutus-wrap">
 		<emb-page-title
 			heading="About Us"
-			subHeading="Creative team and wide goals."
+			subHeading="We are here to make all your shopping fun!"
 		>
 		</emb-page-title>
 		<div class="emb-about-content">
-			<!-- <div class="about-page section-gap">
-				<v-container grid-list-xl>
-					<v-layout row wrap align-center>
-						<v-flex xs12 sm12 md12 lg6 xl6 pr-5>
-							<h2 class="font-weight-bold font-italic mb-6"> Providing the optimize E-commerce servicing to millions of customers form last 10 year </h2>
-							<h4 class="font-weight-bold mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate nihil non quo corrupti, laborum hic, </h4>
-							<p class="mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolore neque consequatur harum suscipit hic nisi voluptate nulla deserunt! Ducimus odit nisi aliquam non quae exercitationem? Impedit dolores aliquam suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eaque illo, dolore voluptates ipsum ratione. At eius earum voluptatibus aperiam porro a quo, obcaecati dolor distinctio provident iusto libero ducimus? </p>
-							<v-btn large class="accent mx-0">Read More</v-btn>
-						</v-flex>
-						<v-flex xs12 md12 lg6 xl6 text-lg-left text-center>
-							<img alt="About us Figure" src="/static/images/about-us.jpg" width="700" height="700">
-						</v-flex>
-					</v-layout>
-				</v-container>
-			</div> -->
-			<!-- <div class="about-info section-gap bg-grey">
+			
+			<div class="about-info section-gap bg-grey">
 				<v-container grid-list-xl py-0>
 					<v-layout row wrap align-center mb-md-0 mb-6>
 						<v-flex xl6 sm12  xs12 md6 lg6 text-md-left text-center>
-							<img src="/static/images/our-mission.jpg" alt="mission" width="900" height="700">
+							<img src="/static/images/our-mission-3.png" alt="mission" width="900" height="700">
 						</v-flex>
 						<v-flex xl6 xs12 md6 lg6 class="pl-12">
 							<h2 class="font-weight-bold">
 								Our Mission
 							</h2>
-							<h5 class="font-italic">nulla dolor dicta laborum unde molestias ab magni.Lorem ipsum dolor sit amet,
-							consectetur adipisicing elit</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quibusdam cum blanditiis voluptas,
-							voluptates hic eius maxime dolorum saepe quae animi eveniet nulla dolor dicta laborum unde molestias ab
-							magni.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quibusdam cum blanditiis
-							voluptas,
-							voluptates hic eius maxime dolorum saepe quae animi eveniet nulla dolor dicta laborum unde molestias ab
-							magni.</p>
-						</v-flex>
-					</v-layout>
-					<v-layout row wrap align-center reverse>
-						<v-flex xl6 xs12 md6 lg6>
-							<img src="/static/images/our-vision.jpg" alt="vission" width="900" height="700">
-						</v-flex>
-						<v-flex xl6 xs12 md6 lg6 class="pr-12">
-							<h2 class="font-bold">
-								Our Vision
-							</h2>
-							<h5 class="font-italic">nulla dolor dicta laborum unde molestias ab magni.Lorem ipsum dolor sit amet,
-								consectetur adipisicing elit</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quibusdam cum blanditiis voluptas,
-							voluptates hic eius maxime dolorum saepe quae animi eveniet nulla dolor dicta laborum unde molestias ab
-							magni.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quibusdam cum blanditiis
-							voluptas,
-							voluptates hic eius maxime dolorum saepe quae animi eveniet nulla dolor dicta laborum unde molestias ab
-							magni.</p>
+							<h5 class="font-italic">Providing the best online shopping experience</h5>
+							<p>Through easy to use web and mobile application, customer care and delivery we give you the best online shopping experience </p>
 						</v-flex>
 					</v-layout>
 				</v-container>
-			</div> -->
+			</div>
+			<div class="about-page section-gap">
+				<v-container grid-list-xl>
+					<v-layout row wrap align-center>
+						<v-flex xs12 sm12 md12 lg6 xl6 pr-5>
+							<h2 class="font-weight-bold mb-6"> Made in Rwanda </h2>
+							<h4 class="font-weight-bold font-italic mb-6">We connect you with Rwandan industries and other companies using technology</h4>
+							<p class="mb-6"> We work closely with companies in Rwanda to get you the best deals, you can only get talking to those companies directly </p>
+							
+						</v-flex>
+						<v-flex xs12 md12 lg6 xl6 text-lg-left text-center>
+							<img alt="About us Figure" src="/static/images/about-us-2.jpg" width="600" height="700">
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</div>
+			<div class="about-info section-gap bg-grey">
+				<v-container grid-list-xl py-0>
+					<v-layout row wrap align-center reverse>
+						<v-flex xl6 xs12 md6 lg6 class="pr-12">
+							<h2 class="font-bold">
+								Our services
+							</h2>
+							<h5 class="font-italic">With FINVIA Group Ltd we offer:</h5>
+							<p><b>1. Byiza:</b>Tura muyawe, We will build over a 100 houses to support goverment policy of living in modern villages </p>
+							<p><b>2. Byizewe:</b> We provide professional technicians in plumbing, electricity, fire fighting, car driving and many more </p>
+							<p><b>3. Byoroshye: </b> Cleaning clothes and ironing. We pick them up from your place nad drop them later</p>
+						</v-flex>
+						<v-flex xl6 xs12 md6 lg6>
+							<img src="/static/images/our-vision-3.png" alt="vission" width="500" height="500">
+						</v-flex>
+					</v-layout>
+				</v-container>
+			</div>
 			<!-- <TestimonialV2 /> -->
 			<!-- <div class="team-section text-center section-gap blue-grey lighten-5">
 				<v-container grid-list-xl text-xl-center>

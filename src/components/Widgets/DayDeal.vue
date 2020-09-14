@@ -3,13 +3,13 @@
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md6 lg6 xl6>
-					<router-link to="/products/Men">
+					<router-link to="/en/services">
 						<v-img
 							alt="deal of the day"
 							:src="selectedPreviewImage"
 							aspect-ratio="1"
 							max-width="900"
-							max-height="800"
+							max-height="500"
 						/>
 					</router-link>
 				</v-flex>
@@ -22,39 +22,13 @@
 							<h5 class="font-weight-regular">
 								{{$t(`${data.subtitle}`)}}
 							</h5>
-							<p class="d-inline-block mr-1">
-								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
-							</p>
 							<p class="accent--text d-inline-block sec-content">
 								{{$t(`${data.metaainfo}`)}}
-								 <emb-currency-sign class="accent--text"></emb-currency-sign>36.00
+								 <emb-currency-sign class="accent--text"></emb-currency-sign> 1000
 							</p>
 							<p>{{$t(data.paragraph)}}</p>
-							<div  class="timer mb-6">
-								<emb-timer 
-									class="mb-4"
-									starttime="Dec 1, 2018 15:37:25" 
-									endtime="Dec 25, 2025 16:37:25" 
-									trans='{  
-										"day":"Day",
-										"hours":"Hours",
-										"minutes":"Minutes",
-										"seconds":"Seconds",
-										"expired":"Event has been expired.",
-										"running":"Till the end of event.",
-										"upcoming":"Till start of event.",
-										"status": {
-											"expired":"Expired",
-											"running":"Running",
-											"upcoming":"Future"
-										}
-									}'
-								>
-								</emb-timer>
-							</div>
-							<v-btn color="accent" to="/en/products">
-								Shop Now
-							</v-btn>
+							<h4>Call us on +250 784 481 653</h4>
+							
 						</div>
 						<v-layout row wrap cmx-0>
 							<v-flex xs4 sm4 md4 lg4 xl4
@@ -96,9 +70,9 @@ export default {
                 paragraph: "message.paragraph",
 			},
 			productGallery: [
-                "/static/images/men/1-item-a.jpg",
-                "/static/images/men/1-item-c.jpg",
-				"/static/images/men/1-item-b.jpg"
+					"/static/images/men/dry-clean.jpg",
+					"/static/images/men/dry-clean-2.jpg",
+					"/static/images/men/dry-clean-3.jpg"
 				]
 		}
 	},

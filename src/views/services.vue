@@ -57,13 +57,13 @@
 		<v-container grid-list-xl pb-0>
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md6 lg5 xl6>
-					<router-link to="/products/Men">
+					<router-link to="#">
 						<v-img
 							alt="deal of the day"
 							:src="selectedPreviewImage"
 							aspect-ratio="1"
 							max-width="700"
-							max-height="800" />
+							max-height="500" />
 					</router-link>
 				</v-flex>
 				<v-flex xs12 sm12 md6 lg6 xl6  deal-content>
@@ -82,28 +82,7 @@
 								 <emb-currency-sign class="accent--text"></emb-currency-sign>{{selectedServices.price}}
 							</p>
 							<p>{{selectedServices.paragraph}}</p>
-							<!-- <div  class="timer mb-6">
-								<emb-timer 
-									class="mb-4"
-									starttime="Dec 1, 2018 15:37:25" 
-									endtime="Dec 25, 2025 16:37:25" 
-									trans='{  
-										"day":"Day",
-										"hours":"Hours",
-										"minutes":"Minutes",
-										"seconds":"Seconds",
-										"expired":"Event has been expired.",
-										"running":"Till the end of event.",
-										"upcoming":"Till start of event.",
-										"status": {
-											"expired":"Expired",
-											"running":"Running",
-											"upcoming":"Future"
-										}
-									}'
-								>
-								</emb-timer>
-							</div> -->
+							
 						</div>
 						<v-layout row wrap cmx-0>
 							<v-flex xs4 sm4 md4 lg4 xl4

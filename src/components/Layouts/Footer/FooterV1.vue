@@ -13,6 +13,9 @@
 						</div>
 					</v-flex>
 					<v-flex xs12 sm3 md2 lg2 xl2>
+						
+					</v-flex>
+					<v-flex xs12 sm3 md2 lg2 xl2>
 						<h6 class="white--text mb-4">About</h6>
 						<div class="abt-menu">
 							<ul class="list-unstyled pl-0">
@@ -24,28 +27,7 @@
 						</div>
 					</v-flex>
 					<v-flex xs12 sm3 md2 lg2 xl2>
-						<h6 class="white--text mb-4">Session</h6>
-						<div class="features-menu">
-							<ul class="list-unstyled pl-0">
-								<li 
-									v-for="(list,key) in session"
-									:key="key"
-								>
-									<router-link :to="list.path">{{$t(list.menuItem)}}</router-link>
-								</li>		
-							</ul>
-						</div>
-					</v-flex>
-					<v-flex xs12 sm3 md2 lg2 xl>
-						<h6 class="white--text mb-4">Categories</h6>
-						<div class="policy-menu">
-							<ul class="list-unstyled pl-0">
-								<li v-for="(list,key) in categories"
-									:key="key">
-									<router-link :to="list.path">{{$t(list.menuItem)}}</router-link>
-								</li>
-							</ul>
-						</div>
+						
 					</v-flex>
 					<v-flex xs12 sm3 md2 lg1 xl1>
 						<div class="policy-menu">
@@ -60,12 +42,12 @@
 					</v-flex>
 				</v-layout>
 			</div>
-			<!-- <hr> -->
-			<!-- <div class="footer-bottom">
+			<hr>
+			<div class="footer-bottom">
 				<div class="footer-bottom-content px-3">
 					<v-layout row wrap align-center justify-space-between>
 						<v-flex xs12 sm12 md6 lg6 xl6 class="text-md-left text-center"> 
-							<img :src="img" width="218" height="18"/>
+							
 						</v-flex>
 						<v-flex xs12 sm12 md6 lg6 xl6 py-3 px-2>
 							<div class="text-md-right text-center">
@@ -74,7 +56,7 @@
 						</v-flex>
 					</v-layout>
 				</div>
-			</div> -->
+			</div>
 		</v-container>
 	</div> 
 </div>

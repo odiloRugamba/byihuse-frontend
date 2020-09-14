@@ -14,13 +14,13 @@
 							<v-layout row wrap text-center mx-0>
 								<v-flex xs12 sm6 md6 lg12 xl12 px-0>
 									<emb-aside-banner-v1 
-										img="/static/images/aside-1.jpg"
+										img="/static/images/aside-4.jpg"
 									>
 									</emb-aside-banner-v1>
 								</v-flex>
 								<v-flex xs12 sm6 md6 lg12 xl12 px-0>
 									<emb-aside-banner-v2 
-										img="/static/images/aside-2.jpg"
+										img="/static/images/aside-3.jpg"
 									>
 									</emb-aside-banner-v2>
 								</v-flex>
@@ -46,21 +46,7 @@
 				:data="latestArrivalData"
 			>
 			</emb-new-arrival-Products>
-			<!-- <embTestimonial
-				secTitle="Customer Reviews"
-				:data="TestimonialData"
-			>
-			</embTestimonial> -->
-			<!-- <emb-blog
-				secTitle="Latest From Blogs"
-				:data="blogData"
-			>	
-			</emb-blog> -->
-			<!-- <emb-shop-card
-				secTitle="Our Parten"
-				:data="shopCard"
-			>
-			</emb-shop-card> -->
+		
 		</div>
 	</div>
 </template>

@@ -1,23 +1,17 @@
 export default [
     {
-        image: "/static/images/logo/fristslide.jpg",
+        image: "/static/images/logo/first-slide.jpg",
         subHeading: "Big Sale",
-        heading: "Women's Collection",
+        heading: "shop from anywhere",
         link: "SHOP NOW",
         routeSubTitle:""
     },
     {
-        image: "/static/images/logo/fristslidee.jpg",
-        subHeading: "50% OFF",
-        heading: "Men's Winter Collection",
+        image: "/static/images/logo/second-slide.jpg",
+        subHeading: "at discount",
+        heading: "Buy now",
         link: "SHOP NOW",
         routeSubTitle:""
     },
-    // {
-    //     image: "/static/images/slider-3.jpg",
-    //     subHeading: "Today's Special",
-    //     heading: "Sale on Jacket",
-    //     link: "SHOP NOW",
-    //     routeSubTitle:"Men"
-    // }
+
 ]

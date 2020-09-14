@@ -1,50 +1,49 @@
+
 <template>
 	<div class="emb-detailOffer-wrap">
 		<div class="offer-list">
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link to="/en/products">
+					<router-link to="#">
 						<div class="overlay-wrap">
 							<a href="javascript:void(0)">
-								<img alt="Sale Call In Action" class="w-100" src="/static/images/sale-1.jpg" width="640" height="430">
+								<img alt="Sale Call In Action" class="w-100" src="/static/images/byoroshye.jpg" width="640" height="430">
 							</a>
 							<div class="overlay-content primary-rgba">
 								<div>
-									<h2>{{$t(sale)}}</h2>
-									<h5>{{$t(women)}}</h5>
-									<h3>{{$t(discountNumber)}}</h3>
+									<h2>Byoroshye</h2>
+									<h6 class="font-weight-regular">Dry cleaning services with pickup and drop off</h6>
 								</div>
 							</div>
 					  </div>
 					</router-link>
 				</v-flex>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link to="/en/products">
+					<router-link to="#">
 						<div class="overlay-wrap">
 								<a href="javascript:void(0)">
-									<img alt="Sale Call In Action" class="w-100" src="/static/images/sale-2.jpg" width="640" height="430">
+									<img alt="Sale Call In Action" class="w-100" src="/static/images/byiza-1.jpg" width="640" height="430">
 								</a>
 								<div class="overlay-content black-rgba">
 									<div>
-										<h6 class="">{{$t(arrivalTitle)}}</h6>
-										<h2 class="font-weight-regular">{{$t(flat)}}</h2>
-										<h5 class="">{{$t(discount)}}</h5>
+										<h2 class="">Byiza</h2>
+										<h6>Through FINVIA Group we are going to build 100 houses for our clients</h6>
 									</div>
+									
 								</div>
 						  </div>
 					</router-link>
 				</v-flex>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link to="/en/products">
+					<router-link to="#">
 						<div class="overlay-wrap">
 								<a href="javascript:void(0)">
-									<img alt="Sale Call In Action" class="w-100" src="/static/images/sale-3.jpg" width="640" height="430">
+									<img alt="Sale Call In Action" class="w-100" src="/static/images/byizewe.jpg" width="640" height="430">
 								</a>
 								<div class="overlay-content pink-rgba">
 									<div>
-										<h2>{{$t(sale)}}</h2>
-										<h5>{{$t(Mencollection)}}</h5>
-										<h3>{{$t(off)}}</h3>
+										<h2>Byizewe</h2>
+										<h6>We provide proffesional and trusted technicians</h6>
 									</div>
 								</div>
 						  </div>
@@ -54,7 +53,9 @@
 		</div>
 	</div>
 </template>
+
 <script>
+
 export default {
 	data() {
 		return{

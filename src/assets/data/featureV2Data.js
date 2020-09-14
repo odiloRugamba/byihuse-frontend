@@ -1,7 +1,7 @@
 export default [
    {
       icon: "shopping_cart",
-      subTitle: "Free Shipping",
+      subTitle: "FREE Delivery",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
    },
    {

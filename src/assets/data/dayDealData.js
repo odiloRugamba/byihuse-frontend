@@ -1,13 +1,12 @@
 export default {
-   sectitle: "Deal of the day",
-   subtitle: "Denim Pullover",
-   metainfo: "45.00",
-   metaainfo: "Now only",
-   paragraph:
-     "Suspendisse porttitor ornare ligula. Nam massa erat,fermentum dolor quis, maximus	ultrices diam. Aenean pellentesque	auctor elementum. Nunc vitae tortor	iaculis, mollis odio at, lacinia sapien. Mauris et leo sem. Curabitur sit amet enim nisi. Nunc placerat commodo sem,	sed maximus purus",
-   productGallery: [
-     "/static/images/men/1-item-a.jpg",
-     "/static/images/men/1-item-c.jpg",
-     "/static/images/men/1-item-b.jpg"
-   ]
+  sectitle: "Byoroshye Dry cleaning",
+  subtitle: "Fast and easy dry cleaning",
+  metainfo: "",
+  metaainfo: "starting at only",
+  paragraph:"Byihuse.rw through FINVIA GROUP ltd offers the fastest dry cleaning services in Kigali yet at the best prices. We even pick your clothes from your house and deliver them after. Call us and let us help you",
+  productGallery: [
+    "/static/images/men/dry-clean.jpg",
+    "/static/images/men/dry-clean-2.jpg",
+    "/static/images/men/dry-clean-3.jpg"
+  ]
 }

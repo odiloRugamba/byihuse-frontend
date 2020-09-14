@@ -14,7 +14,7 @@ export const products = {
          product_code : "#EM1201",
          tags: ["Jean ", "Men ", "Outwear"],
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Stretchable", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Stretchable", "Free Delivery and delivery in 4 Days"],
          image_gallery : [
             "/static/images/men/3-item-a.jpg",
             "/static/images/men/3-item-b.jpg",
@@ -40,7 +40,7 @@ export const products = {
          product_code : "#EM1202",
          tags : ["Winter ", "Men ", "Jacket"],
          description:"Sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae! Lorem ipsum dolor",
-         features : ["Loose Fit", "Pure Leather", "Free Shipping and delivery in 2 Days"],
+         features : ["Loose Fit", "Pure Leather", "Free Delivery and delivery in 2 Days"],
          image_gallery: [
             "/static/images/men/2-item-a.jpg",
             "/static/images/men/2-item-b.jpg",
@@ -66,7 +66,7 @@ export const products = {
          product_code : "#EM1203",
          tags: ["Men ", "Pullover", "Denim"],
          description:"Suspendisse porttitor ornare ligula. Nam massa erat, fermentum dolor quis, maximus ultrices diam. Aenean pellentesque auctor elementum. Nunc vitae tortor iaculis, mollis odio at, lacinia sapien. Mauris et leo sem. Curabitur sit amet enim nisi. Nunc placerat commodo sem, sed maximus purus",
-         features : ["Slim Fit", "Denim Made", "Free Shipping in some areas and delivery in 4 Days"],
+         features : ["Slim Fit", "Denim Made", "Free Delivery in some areas and delivery in 4 Days"],
          image_gallery: [
             "/static/images/men/1-item-a.jpg",
             "/static/images/men/1-item-b.jpg",
@@ -92,7 +92,7 @@ export const products = {
          product_code : "#EM1204",
          tags: ["Blue", "Men", "Jean"],
          description:"Dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Relaxed", "Free Shipping and delivery in 1 Days"],
+         features : ["Slim Fit", "Relaxed", "Free Delivery and delivery in 1 Days"],
          image_gallery: [
             "/static/images/men/4-item-a.jpg",
             "/static/images/men/4-item-b.jpg",
@@ -118,7 +118,7 @@ export const products = {
          product_code : "#EM1205",
          tags: ["Black ", "Men ", "Summer"],
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Pure Cotton", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Pure Cotton", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/men/5-item-a.jpg",
             "/static/images/men/5-item-b.jpg",
@@ -172,7 +172,7 @@ export const products = {
    //       product_code : "#EM1206",
    //       tags: ["Blue ", "Outwear ", "Denim"],
    //       description:"Dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Loose Fit", "Pure Denim", "Free Shipping and delivery in 2 Days"],
+   //       features : ["Loose Fit", "Pure Denim", "Free Delivery and delivery in 2 Days"],
    //       image_gallery: [
    //          "/static/images/women/7-item-a.jpg",
    //          "/static/images/women/7-item-b.jpg",
@@ -198,7 +198,7 @@ export const products = {
    //       product_code : "#EM1207",
    //       tags: ["Red ", "Women ", "Outwear"],
    //       description:"Consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Slim Fit", "Pure Cotton", "Free Shipping and delivery in 4 Days"],
+   //       features : ["Slim Fit", "Pure Cotton", "Free Delivery and delivery in 4 Days"],
    //       image_gallery: [
    //          "/static/images/women/8-item-a.jpg",
    //          "/static/images/women/8-item-b.jpg",
@@ -224,7 +224,7 @@ export const products = {
    //       product_code : "#EM1208",
    //       tags: ["White ", "Graphic ", "Women"],
    //       description:"Sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Slim Fit ", "100% Cotton ", "Free Shipping and delivery in 4 Days"],
+   //       features : ["Slim Fit ", "100% Cotton ", "Free Delivery and delivery in 4 Days"],
    //       image_gallery: [
    //          "/static/images/women/9-item-b.jpg",
    //          "/static/images/women/9-item-c.jpg",
@@ -326,7 +326,7 @@ export const products = {
    //       product_code : "#EM1213",
    //       tags: ["Analog/Digital ", "Men/Women ", "Black"],
    //       description:"Opsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Touch Screen", "Bluetooth", "Free Shipping and delivery in 4 Days"],
+   //       features : ["Touch Screen", "Bluetooth", "Free Delivery and delivery in 4 Days"],
    //       image_gallery: [
    //          "/static/images/gadgets/g-4-a.jpg",
    //          "/static/images/gadgets/g-4-b.jpg",
@@ -352,7 +352,7 @@ export const products = {
    //       product_code : "#EM1214",
    //       tags: ["Speaker", "Smart", "Circular"],
    //       description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Woofer", "Wireless", "Free Shipping and delivery in 4 Days"],
+   //       features : ["Woofer", "Wireless", "Free Delivery and delivery in 4 Days"],
    //       image_gallery: [
    //          "/static/images/gadgets/g-5-a.jpg",
    //          "/static/images/gadgets/g-5-b.jpg",
@@ -428,7 +428,7 @@ export const products = {
    //       product_code : "#EM1217",
    //       tags: ["Chain", "Long Chain", "Accessories"],
    //       description:"Ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Slim Fit", "Pure Steel", "Free Shipping and delivery in 7 Days"],
+   //       features : ["Slim Fit", "Pure Steel", "Free Delivery and delivery in 7 Days"],
    //       image_gallery: [
    //          "/static/images/accesories/a-3-a.jpg",
    //          "/static/images/accesories/a-3-b.jpg",
@@ -478,7 +478,7 @@ export const products = {
    //       product_code : "#EM1219",
    //       tags: ["Black", "Men", "Shape"],
    //       description:"Iit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-   //       features : ["Smooth Finishing", "Soft", "Free Shipping and delivery in 4 Days"],
+   //       features : ["Smooth Finishing", "Soft", "Free Delivery and delivery in 4 Days"],
    //       image_gallery: [
    //          "/static/images/accesories/a-5-a.jpg",
    //          "/static/images/accesories/a-5-b.jpg",

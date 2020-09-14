@@ -34,7 +34,7 @@ export const wishlist = [
    //    "color": "Black",
    //    "description": "Ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
    //    "discount_price": 78.0,
-   //    "features": ["Slim Fit", "Pure Steel", "Free Shipping and delivery in 7 Days"],
+   //    "features": ["Slim Fit", "Pure Steel", "Free Delivery and delivery in 7 Days"],
    //    "id": 118,
    //    "image": "/static/images/accessroies/a-3-a.jpg",
    //    "image_gallery": ["/static/images/accessroies/a-3-a.jpg", "/static/images/accessroies/a-3-b.jpg", "/static/images/accessroies/a-3-c.jpg", "/static/images/accessroies/a-3-d.jpg"],

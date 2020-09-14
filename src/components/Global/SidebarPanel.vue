@@ -52,7 +52,7 @@
 							<span><emb-currency-sign></emb-currency-sign>{{itemTotal}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
-							<p>Shipping</p>
+							<p>Delivery</p>
 							<span><emb-currency-sign></emb-currency-sign>{{shipping}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">

@@ -13,7 +13,7 @@ export default  {
          product_code : "#EM1201",
          tags: "",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Stretchable", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Stretchable", "Free Delivery and delivery in 4 Days"],
          image_gallery : [
             "/static/images/men/3-item-a.jpg",
             "/static/images/men/3-item-b.jpg",
@@ -65,7 +65,7 @@ export default  {
          product_code : "#EM1205",
          tags: "Popular",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Pure Cotton", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Pure Cotton", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/men/5-item-a.jpg",
             "/static/images/men/5-item-b.jpg",
@@ -91,7 +91,7 @@ export default  {
          product_code : "#EM1208",
          tags: "",
          description:"Sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit ", "100% Cotton ", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit ", "100% Cotton ", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/women/9-item-b.jpg",
             "/static/images/women/9-item-c.jpg",
@@ -191,7 +191,7 @@ export default  {
          product_code : "#EM1213",
          tags: "Popular",
          description:"Opsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Touch Screen", "Bluetooth", "Free Shipping and delivery in 4 Days"],
+         features : ["Touch Screen", "Bluetooth", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/gadgets/g-4-a.jpg",
             "/static/images/gadgets/g-4-b.jpg",
@@ -217,7 +217,7 @@ export default  {
          product_code : "#EM1214",
          tags: "",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Woofer", "Wireless", "Free Shipping and delivery in 4 Days"],
+         features : ["Woofer", "Wireless", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/gadgets/g-5-a.jpg",
             "/static/images/gadgets/g-5-b.jpg",
@@ -318,7 +318,7 @@ export default  {
          product_code : "#EM1201",
          tags: "Popular",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Stretchable", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Stretchable", "Free Delivery and delivery in 4 Days"],
          image_gallery : [
             "/static/images/men/3-item-a.jpg",
             "/static/images/men/3-item-b.jpg",
@@ -344,7 +344,7 @@ export default  {
          product_code : "#EM1202",
          tags : "Popular",
          description:"Sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae! Lorem ipsum dolor",
-         features : ["Loose Fit", "Pure Leather", "Free Shipping and delivery in 2 Days"],
+         features : ["Loose Fit", "Pure Leather", "Free Delivery and delivery in 2 Days"],
          image_gallery: [
             "/static/images/men/2-item-a.jpg",
             "/static/images/men/2-item-b.jpg",
@@ -370,7 +370,7 @@ export default  {
          product_code : "#EM1203",
          tags: "",
          description:"Suspendisse porttitor ornare ligula. Nam massa erat, fermentum dolor quis, maximus ultrices diam. Aenean pellentesque auctor elementum. Nunc vitae tortor iaculis, mollis odio at, lacinia sapien. Mauris et leo sem. Curabitur sit amet enim nisi. Nunc placerat commodo sem, sed maximus purus",
-         features : ["Slim Fit", "Denim Made", "Free Shipping in some areas and delivery in 4 Days"],
+         features : ["Slim Fit", "Denim Made", "Free Delivery in some areas and delivery in 4 Days"],
          image_gallery: [
             "/static/images/men/1-item-a.jpg",
             "/static/images/men/1-item-b.jpg",
@@ -396,7 +396,7 @@ export default  {
          product_code : "#EM1204",
          tags: "",
          description:"Dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Relaxed", "Free Shipping and delivery in 1 Days"],
+         features : ["Slim Fit", "Relaxed", "Free Delivery and delivery in 1 Days"],
          image_gallery: [
             "/static/images/men/4-item-a.jpg",
             "/static/images/men/4-item-b.jpg",
@@ -422,7 +422,7 @@ export default  {
          product_code : "#EM1205",
          tags: "",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Pure Cotton", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Pure Cotton", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/men/5-item-a.jpg",
             "/static/images/men/5-item-b.jpg",
@@ -476,7 +476,7 @@ export default  {
          product_code : "#EM1206",
          tags: "",
          description:"Dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Loose Fit", "Pure Denim", "Free Shipping and delivery in 2 Days"],
+         features : ["Loose Fit", "Pure Denim", "Free Delivery and delivery in 2 Days"],
          image_gallery: [
             "/static/images/women/7-item-a.jpg",
             "/static/images/women/7-item-b.jpg",
@@ -502,7 +502,7 @@ export default  {
          product_code : "#EM1207",
          tags: "Popular",
          description:"Consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit", "Pure Cotton", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit", "Pure Cotton", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/women/8-item-a.jpg",
             "/static/images/women/8-item-b.jpg",
@@ -528,7 +528,7 @@ export default  {
          product_code : "#EM1208",
          tags: "",
          description:"Sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Slim Fit ", "100% Cotton ", "Free Shipping and delivery in 4 Days"],
+         features : ["Slim Fit ", "100% Cotton ", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/women/9-item-b.jpg",
             "/static/images/women/9-item-c.jpg",
@@ -630,7 +630,7 @@ export default  {
          product_code : "#EM1213",
          tags: "",
          description:"Opsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Touch Screen", "Bluetooth", "Free Shipping and delivery in 4 Days"],
+         features : ["Touch Screen", "Bluetooth", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/gadgets/g-4-a.jpg",
             "/static/images/gadgets/g-4-b.jpg",
@@ -656,7 +656,7 @@ export default  {
          product_code : "#EM1214",
          tags: "",
          description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio aperiam debitis ipsa veniam eos quas excepturi quae? Recusandae distinctio nihil quia quis, eaque aspernatur perferendis repudiandae adipisci labore, impedit beatae!",
-         features : ["Woofer", "Wireless", "Free Shipping and delivery in 4 Days"],
+         features : ["Woofer", "Wireless", "Free Delivery and delivery in 4 Days"],
          image_gallery: [
             "/static/images/gadgets/g-5-a.jpg",
             "/static/images/gadgets/g-5-b.jpg",

@@ -18,21 +18,21 @@
 							<v-flex sm12 md12 lg5 xl5>
 								<div class="sec-title">
 									<h2 class="v-layout justify-start align-center">Contact Info</h2>
-									<h5 class="font-italic mb-6">{{contactInfo.info}}</h5> 
+									<h5 class="font-italic mb-6">Sales team</h5> 
 								</div>
 								<!-- {{contactInfo.info}} -->
 								<div class="mb-6">
 									<h3>Call</h3>
-									<a href="tel:12345688" class="color-inherit">
-										{{contactInfo.call}}</a>
+									<a href="tel:+250784481653" class="color-inherit">
+										+250 784 481 653</a>
 								</div>
 								<div class="mb-6">
 									<h3>Mail</h3>
-									<a href="mailto:support@theironnetwork.org" class="color-inherit">{{contactInfo.mail}}</a>
+									<a href="mailto:info@byihuse.rw" class="color-inherit">info@byihuse.rw</a>
 								</div>
 								<div class="mb-6">
 									<h3>Address</h3>
-									<p>{{contactInfo.address}}</p>
+									<p>KN2 ave opposite MIC building</p>
 								</div>
 							</v-flex>
 							<v-flex sm12 md12 lg7 xl7>

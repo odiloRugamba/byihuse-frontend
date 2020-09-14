@@ -61,7 +61,7 @@
                                  <div><span><emb-currency-sign></emb-currency-sign>{{itemTotal()}}</span></div>
                               </div>
                               <div class="d-flex align-center justify-space-between mb-4">
-                                 <p class="mb-0">Shipping</p>
+                                 <p class="mb-0">Delivery</p>
                                  <span><emb-currency-sign></emb-currency-sign>{{shipping}}</span>
                               </div>
                               <div class="d-flex align-center justify-space-between mb-4">

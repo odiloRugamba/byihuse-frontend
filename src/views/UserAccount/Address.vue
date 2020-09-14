@@ -16,7 +16,7 @@
             </div>
          </v-flex>
          <v-flex xs12 sm5 md5 lg5 xl5>
-            <h5>Shipping Address</h5>
+            <h5>Delivery Address</h5>
             <div class="pt-4">
                <address class="mb-6">
                      2735  Sherman Street<br>

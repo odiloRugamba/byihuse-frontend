@@ -17,8 +17,8 @@ export const buySellChartData  = [{
       ],
       "buySellChartColors": [{
             "lineTension": 0.4,
-            "borderColor": "#283593",
-            "pointBorderColor": "#283593",
+            "borderColor": "#003566",
+            "pointBorderColor": "#003566",
             "pointBorderWidth": 2,
             "pointRadius": 2,
             "fill": false,
@@ -66,8 +66,8 @@ export const buySellChartData  = [{
       ],
       "buySellChartColors": [{
             "lineTension": 0.4,
-            "borderColor": "#283593",
-            "pointBorderColor": "#283593",
+            "borderColor": "#003566",
+            "pointBorderColor": "#003566",
             "pointBorderWidth": 2,
             "pointRadius": 2,
             "fill": false,
@@ -115,8 +115,8 @@ export const buySellChartData  = [{
       ],
       "buySellChartColors": [{
             "lineTension": 0.4,
-            "borderColor": "#283593",
-            "pointBorderColor": "#283593",
+            "borderColor": "#003566",
+            "pointBorderColor": "#003566",
             "pointBorderWidth": 2,
             "pointRadius": 2,
             "fill": false,
