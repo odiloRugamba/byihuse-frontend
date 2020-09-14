@@ -1,13 +1,6 @@
 /*--------------------------------------------------------------- 
 5. Responsive
-tab-content
-tab-item
-containevr
 thumb-wrap
-tab-content
-header-v3-top-tools
-top-header-wrap
-lang-menu
 -----------------------------------------------------------------*/ 
 //===============================|| RESPONSIVE SCSS ||=============================//
 @media (max-width: 1700px){
@@ -381,12 +374,6 @@ lang-menu
 		text-align: center;
 		margin: 0 -19px; 
 	}
-	.tab-content{
-		margin-top: 10px;
-		width: 27rem;
-		display: flex;
-		justify-content: space-around;
-	}
 }
 @media only screen and (max-width: 578px) {
    .feature-product-wrap .custom-tab-container, .emb-latest-arrival .custom-tab-container{
@@ -394,13 +381,7 @@ lang-menu
 		margin: 0 ; 
 	}
 	.feature-product-wrap .tab-item, .emb-latest-arrival .tab-item{
-		margin-bottom: 20px;
-		// margin-left: 0px; ml-16
-	}
-	.tab-item{
-		margin-bottom: 20px;
-		width: 100vw;
-		// height: 30rem;
+		margin-bottom: 1px;
 	}
 	.lightening-deals-wrap{
 		.c-layout{
