@@ -130,6 +130,7 @@ width:200px;
 #item{
   width: 27rem;
   height: 34rem;
+   margin-top: 1rem;
 }
 #ddd{
   max-height: 440px;
@@ -157,6 +158,7 @@ width:200px;
     margin-left: 0px;
 }
 #item{
+   margin-top: 1rem;
   width: 92vw;
   height: 30rem;
 }

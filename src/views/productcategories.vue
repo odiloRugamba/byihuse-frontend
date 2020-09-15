@@ -173,6 +173,7 @@ width:200px;
 #item{
   width: 91vw;
   height: 27rem;
+   margin-top: 1rem;
 }
 #ddd{
   max-height: 390px;

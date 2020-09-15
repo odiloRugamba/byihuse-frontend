@@ -18,17 +18,17 @@
 								<div class="emb-card">
 									<div id="item" class="thumb-wrap">
 										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-											<img 
+											<!-- <img 
 												alt="feature product image"
 												:src="cateogary.image"
 												width="626"
 												height="800"
                         id="ddd"
-											>
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												
 											> -->
+                      <img id="ddd" alt="product" height="800" width="626"
+												src="/static/images/logo/p.jpg"
+												
+											>
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -119,6 +119,16 @@ width:200px;
   max-height: 440px;
   /* max-width: 260px; */
 }
+  #contt{
+    justify-content: space-around;
+    /* margin-left: 10vw; */
+
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+  margin-top: 1rem;
+}
 }
 @media (min-width: 430px) and (max-width: 600px) {
   #contt{
@@ -128,10 +138,11 @@ width:200px;
   }
 #item{
   width: 27rem;
-  height: 34rem;
+  height: 37rem;
+  margin-top: 1rem;
 }
 #ddd{
-  max-height: 440px;
+  max-height: 520px;
   /* max-width: 260px; */
 }
 }
@@ -158,6 +169,7 @@ width:200px;
 #item{
   width: 92vw;
   height: 30rem;
+   margin-top: 1rem;
 }
 #ddd{
   max-height: 440px;
@@ -174,6 +186,7 @@ width:200px;
 #item{
   width: 91vw;
   height: 27rem;
+   margin-top: 1rem;
 }
 #ddd{
   max-height: 390px;
@@ -191,6 +204,7 @@ width:200px;
 #item{
   width: 89vw;
   height: 27rem;
+   margin-top: 1rem;
 }
 #ddd{
   max-height: 380px;
