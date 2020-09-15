@@ -57,7 +57,7 @@
 			>	
 			</emb-blog> -->
 			<emb-shop-card
-				secTitle="Our Parten"
+				secTitle="Our Partners"
 			>
 			</emb-shop-card>
 		</div>

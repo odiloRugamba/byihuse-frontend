@@ -69,7 +69,7 @@
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p> -->
 							<p class="accent--text d-inline-block sec-content">
-								 <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price}}
+								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price}}
 							</p>
 							<p>{{selectedServices.paragraph}}</p>
 							
