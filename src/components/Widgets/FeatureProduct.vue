@@ -9,17 +9,17 @@
 					<v-btn class="d-inline-block" @click="onTabChange(index)" :text="index === selectedTab">{{key}}</v-btn>
 				</div>	
 			</div>
-			<div class="tab-content">
+			<div  class="tab-content">
 				<template v-for="(tab,title, index) in featured">
 					<div v-if="index == selectedTab" :key="index">
-						<slick ref="carousel" :options="slickOptions" :key="title">
+						<slick id="contt" ref="carousel" :options="slickOptions" :key="title">
 							<div
 								v-for="(cateogary,subindex) in featured[title]"
 								:key="subindex"
 								class="tab-item"
 							>
 								<div class="emb-card">
-									<div  class="thumb-wrap">
+									<div   class="thumb-wrap">
 										<router-link  :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
                     <!-- <div id="ddd"> -->
                       <img 
@@ -27,7 +27,12 @@
 												:src="cateogary.image"
 												width="626"
 												height="800"
+                        id="ddd"
 											>
+                      <!-- <img id="ddd" alt="product"
+												src="/static/images/logo/data1.jpg"
+												
+											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -79,6 +84,10 @@
 /* #ddd{
   height: 240px;
 } */
+.emb-card{
+  max-width: 300px;
+  /* max-height: 100px; */
+}
 .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
@@ -87,7 +96,173 @@ width:200px;
 }
 .thumb-wrap img{
   height: 380px; 
-  max-width: 255px;
+  max-width: 300px;
+}
+#contt{
+    display: flex;
+    flex-wrap: wrap;
+}
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
+}
+#item{
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 416px) and (max-width: 430px) {
+  #contt{
+    margin-left: 3.7vw;
+    justify-content: center;
+
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width: 380px) and (max-width: 420px) {
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+#contt{
+    /* justify-content: space-around; */
+    margin-left: 10vw;
+
+  }
+}
+@media (min-width: 430px) and (max-width: 600px) {
+  #contt{
+    justify-content: space-around;
+    margin-left: 10vw;
+
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  #contt{
+    justify-content: space-around;
+  }
+#item{
+  width: 27rem;
+  height: 34rem;
+}
+#ddd{
+  max-height: 440px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width: 380px) and (min-width: 335px) {
+  #contt{
+    display: block;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 92vw;
+  height: 30rem;
+}
+#ddd{
+  max-height: 440px;
+  max-width: 313px;
+}
+}
+@media (max-width: 335px) and (min-width: 300px) {
+  #contt{
+    display: block;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 91vw;
+  height: 27rem;
+}
+#ddd{
+  max-height: 390px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width: 300px) and (min-width: 0px) {
+  #contt{
+    display: block;
+    justify-content: left;
+  }
+  #contt{
+    margin-left: 0px;
+}
+#item{
+  width: 89vw;
+  height: 27rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 20rem; */
+}
+}
+@media  (min-width: 1230px)  {
+   #contt{
+    margin-left: 90px;
+}
+#item{
+  width: 17rem;
+  height: 23rem;
+}
+.thumb-wrap #ddd{
+  max-height: 320px;
+  /* max-width: 260px; */
+}
+}
+@media (max-width:1230px) and (min-width: 1000px) {
+  #item{
+    width: 27vw;
+    height: 24rem;
+}
+#ddd{
+  max-height: 320px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width:800px) and (max-width: 900px) {
+  #contt{
+    justify-content: space-around;
+}
+  #item{
+    width: 38vw;
+    height: 30rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 260px; */
+}
+}
+@media (min-width:900px) and (max-width: 1000px) {
+  #contt{
+    justify-content: space-around;
+}
+  #item{
+    width: 35vw;
+    height: 28rem;
+}
+#ddd{
+  max-height: 380px;
+  /* max-width: 260px; */
+}
 }
 /* #ddd img{
   width: 100%;

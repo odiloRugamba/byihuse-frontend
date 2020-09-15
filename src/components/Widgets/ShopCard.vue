@@ -4,24 +4,31 @@
 			<div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div>
-			<slick ref="carousel" class="shop-card-slider" :options="slickOptions">
-				<div v-for="(brand,key) in data" :key="key" class="text-center slick-item">
-					<router-link to="/en/products">
-						<img alt="client-logo" :src="brand.image" width="250" height="50">
-					</router-link>
-				</div>
-			</slick>
+			<v-slide-group multiple show-arrows>
+      <v-slide-item
+        v-for="logo in data"
+        :key="logo"
+        id="logo"
+      >
+        <img id="img" alt="client-logo" :src="logo.image" width="250" height="50">
+      </v-slide-item>
+    </v-slide-group>
      </div>
    </div>
 </template>
 <style  scoped>
-.shop-card-slider{
-  display: flex;
-  justify-content: space-between;
+#logo{
+  margin:0px .3rem ;
+   height: 120px;
+   width: 130px;
+}
+#logo #img{
+  /* height: 30px; */
+  /* width: 100px; */
 }
 </style>
 <script>
-import Slick from "vue-slick";
+// import Slick from "vue-slick";
 import { mapGetters } from "vuex";
 import Company from "Api/company.js";
 export default {
@@ -29,7 +36,7 @@ export default {
   computed: {
     ...mapGetters(["rtlLayout","linksformbackend"])
   },
-  components: { Slick },
+  // components: { Slick },
   async mounted() {
     try {
       const res = await Company.getCompany()
@@ -41,7 +48,8 @@ export default {
           // image:'https://byihuse.rw/1598890724471.jpg'
           // image:'/static/images/client-logo-1.png'
         })
-        console.log(this.data)
+        // this.data
+        // console.log(this.data)
       });
     } catch (err) {
       console.log(err)
