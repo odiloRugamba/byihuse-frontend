@@ -26,7 +26,7 @@
 												</v-flex>
 												<v-flex xs12 sm12 md12 lg12 xl12>
 													<div class="text-xl-left text-sm-left">
-														<v-btn class="accent mr-3" @click="makePayment('MOMO')">Submit</v-btn>
+														<v-btn :loading="loading" class="accent mr-3" @click="makePayment('MOMO')">Submit</v-btn>
 														<v-btn @click="makeCleat">Clear</v-btn>
 													</div>
 												</v-flex>
@@ -95,7 +95,8 @@ import order from "Api/order";
 			},
 			code: 783729873429,
 			total: 0,
-			product: []
+			product: [],
+			loading: false
          }
 		},
 		methods:{
@@ -106,6 +107,7 @@ import order from "Api/order";
 			 * This Function is to make Payment
 			*/
 			async makePayment(option){
+				this.loading=true
 				try {
 				this.$refs.form.validate()
             if(this.valid){
@@ -145,7 +147,7 @@ import order from "Api/order";
 			// console.log(this.invoiceData)
 			localStorage.removeItem('cart');
 			// location.reload();
-			
+			this.loading=false
             }	
 			} catch (err) {
 				this.$snotify.error(`We are having issues! please try again soon`, {
@@ -155,6 +157,7 @@ import order from "Api/order";
 					});
 					console.log(err)
 			}
+			this.loading=false
 			},
 			showOrder () {
 				// this.drawer = true

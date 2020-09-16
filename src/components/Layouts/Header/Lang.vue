@@ -3,7 +3,9 @@
 		<v-menu transition="scale-transition" :nudge-width="40">
 			<template v-slot:activator="{ on }">
 				<v-toolbar-title v-on="on">
-					<a href="javascript:void(0)" class="white--text font-weight-regular">{{selectedLocale.name}}</a>
+					<a v-if="selectedLocale.name" href="javascript:void(0)" class="white--text font-weight-regular">{{selectedLocale.name}}</a>
+					<a  v-if="!selectedLocale.name" href="javascript:void(0)" class="white--text font-weight-regular">{{specialLang}}</a>
+					<!-- <span id="span">{{specialLang}}</span> -->
 					<v-icon dark>arrow_drop_down</v-icon>
 				</v-toolbar-title>
 			</template>
@@ -26,7 +28,8 @@
 	export default {
 		data() {
 			return{
-				langPage: ''
+				langPage: '',
+				specialLang: ''
 			}
 		},
 		computed: {
@@ -63,16 +66,18 @@
 		// 	}
 		// },
 		// created() {
-			// const lang = JSON.parse(localStorage.getItem('lang'))
-			// this.$store.dispatch("changeLanguage", lang.name);
-			// this.$i18n.locale = lang.locale;
-			// const current = localStorage.getItem('current')
-			// this.$router.push(`/${lang.locale}${current}`)
-			// this.$i18n.locale = lang.locale;
-			// console.log(current)
-			// this.$store.dispatch("changeLanguage", lang.name);
-			// console.log(lang)
-			// console.log( current)
+		// 	const lang = JSON.parse(localStorage.getItem('lang'))
+		// 	const current = localStorage.getItem('current')
+		// 	this.$store.dispatch("changeLanguage", lang.name);
+		// 	this.$i18n.locale = lang.locale;
+		// 	this.$router.push(`/${lang.locale}${current}`)
+		// 	this.$i18n.locale = lang.locale;
+		// 	console.log(current)
+		// 	this.$store.dispatch("changeLanguage", lang.name);
+		// 	console.log(lang)
+		// 	console.log( current)
+		// 	this.specialLang=lang.name
+		// 	localStorage.removeItem('current')
 		// }
 	}
 </script>

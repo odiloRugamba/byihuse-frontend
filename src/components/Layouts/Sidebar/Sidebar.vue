@@ -186,6 +186,12 @@ menus:  [
             path: '/en/services'
          },
       ]
+   },
+         {
+      path:`/rental`,
+      name: "message.rental",
+      icon: "pages",
+      children: null
 	},
 //     {
 //       path: '',

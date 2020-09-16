@@ -5,52 +5,8 @@
 			subHeading="Use our services ."
 		>
 		</emb-page-title>
-        <v-btn class="primary ml-1 toggleBtn" icon @click="darwer=!darwer">
-                         <i class="material-icons">menu</i>
-                     </v-btn>
         <div class="mainSerices">
          <div>
-             <div id="idCard">
-              <v-navigation-drawer
-              id="idCard"
-              dark
-              class="primary"
-              width="230"
-              height="700"
-              permanent>
-    <v-list id="services">
-        <div v-for="names in servicesName" :key="names">
-         <v-list-item id="servicesId" @click="viewServices(names.id)" link>
-            {{names.name}}
-        </v-list-item>
-        <v-divider></v-divider>
-        </div>
-        
-    </v-list>
-    </v-navigation-drawer>
-        </div>
-        <div class ="forSmall">
-            <v-navigation-drawer
-            v-model="darwer"
-            app
-              dark
-              width="230"
-              height="1000"
-               class="primary"
-               id="thisOneTry"
-              temporary>
-    <v-list id="services">
-        <div v-for="names in servicesName" :key="names">
-         <v-list-item id="servicesId" @click="viewServices(names.id)" link>
-            {{names.name}}
-        </v-list-item>
-        <v-divider></v-divider>
-        </div>
-        
-    </v-list>
-    </v-navigation-drawer>
-        </div>
-             
         </div>
         <div class="asideServices">
         	<div class="day-deal-wrap white section-gap">
@@ -107,7 +63,7 @@
 									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Phone number" :rules="inputRules.basictextRules"></v-text-field>
                                     <v-text-field v-model="address" 	type="Address"	placeholder="Your address" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
-									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
+									<v-btn  class="accent mx-0 mt-4" :loading="loading" large @click.stop.prevent="AskForServices">Submit</v-btn>
 								</v-form>
 				</v-flex>
 			</v-layout>
@@ -203,8 +159,8 @@ export default {
   methods: {
       async AskForServices() {
           try {
-              this.loading= true
-            //   console.log(this.selectedServices)
+            this.loading= true
+            console.log(this.selectedServices)
            const orderRes = await servicesOrders.addServicesOrders({
             service: this.selectedServices.id,
             firstName:this.fristName,
@@ -214,14 +170,22 @@ export default {
             address: this.address,
             details: this.details
             })
-            console.log(orderRes)
+            // this.selectedServices.id,
+            // this.fristName = '',
+            // this.lastName= '',
+            // this.email= '',
+            // this.phoneNumber= '',
+            // this.address= '',
+            // this.details= ''
+            // console.log(orderRes)
             this.$snotify.success(`${orderRes.data.message}`,{
                     closeOnClick: false,
                     pauseOnHover: false,
                     timeout: 3000,
 					showProgressBar:false,
                 });
-                this.loading=false
+            // console.log(orderRes.data.message)
+            this.loading=false
           } catch (err) {
               console.log(err.message)
           }
@@ -242,7 +206,6 @@ export default {
                   id: el._id
               })
           });
-          this.servicesName.splice(0,1)
           res.data.data.forEach(el => {
             //   console.log(el)
             if (this.servicesName[0].id === el._id) {
@@ -259,7 +222,6 @@ export default {
                     },
                 },
                 this.selectedPreviewImage=this.linksformbackend+el.pictures.pic1
-
             }
           });
         //   const resOneForMouted = await services.getOne(this.servicesName[0].id)
@@ -267,37 +229,6 @@ export default {
       } catch (err) {
           console.log(err.message)
       }
-    },
-    async viewServices(id) {
-        try {
-            console.log(id)
-            const resOne = await services.getServices()
-            resOne.data.data.forEach(el => {
-                if (el._id === id) {
-                  this.selectedServices= {
-                    id: el._id,
-                    sectitle: el.name.en,
-                    price:el.price,
-                    paragraph:el.description.en,
-                    productGallery:{
-                        pic1:this.linksformbackend+el.pictures.pic1,
-                        pic2:this.linksformbackend+el.pictures.pic2,
-                        pic3:this.linksformbackend+el.pictures.pic3,
-                        // pic4:this.linksformbackend+el.pictures.pic4,
-                    }
-                }  
-                console.log(this.linksformbackend+el.pictures.pic1)
-                this.selectedPreviewImage= this.selectedServices.productGallery.pic1
-                }
-                
-            })
-            if (window.innerWidth <= 1279 ) {
-                this.darwer= false
-            }
-        } catch (err) {
-            console.log(err.message)
-        }
-        
     },
     saveDetails() {
       this.$refs.form.validate();

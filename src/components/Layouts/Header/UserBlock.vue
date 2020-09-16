@@ -12,7 +12,7 @@
 					<v-icon class="mr-2">{{userLink.icon}}</v-icon>
 					<span>{{userLink.title}}</span>
 				</v-list-item>
-				<v-list-item  @click="changePage('/session/signin')">
+				<v-list-item  @click="changePage('/en/session/signin')">
 					<v-icon class="mr-2">power_settings_new</v-icon>
 					<span v-if="!user">LogIn</span><span v-if="user">LogOut</span>
 				</v-list-item>

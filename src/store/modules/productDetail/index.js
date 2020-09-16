@@ -96,7 +96,8 @@ const mutations = {
       }); 
       state.featured = data,
       state.products = produ
-      console.log(produ)
+      // console.log(produ)
+      console.log(localStorage.getItem('lang'))
       } catch (err) {
          console.log(err)
       }

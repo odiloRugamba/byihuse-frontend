@@ -19,8 +19,8 @@
 <style  scoped>
 #logo{
   margin:0px .3rem ;
-   height: 120px;
-   width: 130px;
+   height: 150px;
+   width: 170px;
 }
 #logo #img{
   /* height: 30px; */

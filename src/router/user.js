@@ -1,6 +1,8 @@
 import UserPanel from 'Container/UserPanel';
 
 
+const Rental = () => import('Views/rental');
+const Drycleaning = () => import('Views/drycleaning');
 const Search = () => import('Views/search');
 const HomeV1 = () => import('Views/HomeV1');
 const services = () => import('Views/services.vue');
@@ -53,6 +55,16 @@ export default {
 		// 	path: 'gadget',
 		// 	component: Gadget 
 		// },
+		{			
+			path: 'rental',
+			component: Rental,
+			name: 'Rental'
+		},
+		{			
+			path: 'dry-cleaning',
+			component: Drycleaning,
+			name: 'Drycleaning'
+		},
 		{			
 			path: 'search/:keyword',
 			component: Search,

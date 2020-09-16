@@ -42,7 +42,7 @@
 								<v-text-field  v-model="userInfo.phone" :rules="inputRules.basictextRules" label="Mobile*" required></v-text-field>
 							</v-flex>
 							<v-flex lg6 xl6 md6 sm12>
-								<v-text-field v-model="userInfo.email" :rules="inputRules.emailRules"  label="Email*" required>
+								<v-text-field v-model="userInfo.email"   label="Email*" >
 								</v-text-field>
 							</v-flex>
 							

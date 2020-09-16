@@ -111,6 +111,10 @@
       top: 8px;
       /* height: 300px; */
    }
+   #user{
+      position: relative;
+      top: 7px;
+   }
    /* #cartlist{
       width: 12px;
    } */
@@ -122,6 +126,7 @@
    .notifications #cartlist{
       font-size: 12px;
    } */
+   
 }
 @media screen and (min-width: 992px){
    .forlarge{

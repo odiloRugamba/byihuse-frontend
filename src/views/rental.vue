@@ -1,8 +1,8 @@
 <template>
    <div class="emb-contact-wrap">
 		<emb-page-title
-			heading="Services"
-			subHeading="Use our services ."
+			heading="Rental"
+			subHeading="Use our rental and minimize your life challenges."
 		>
 		</emb-page-title>
         <v-btn class="primary ml-1 toggleBtn" icon @click="darwer=!darwer">
@@ -19,7 +19,7 @@
               height="700"
               permanent>
     <v-list id="services">
-        <div v-for="names in servicesName" :key="names">
+        <div v-for="names in rentalNames" :key="names">
          <v-list-item id="servicesId" @click="viewServices(names.id)" link>
             {{names.name}}
         </v-list-item>
@@ -40,7 +40,7 @@
                id="thisOneTry"
               temporary>
     <v-list id="services">
-        <div v-for="names in servicesName" :key="names">
+        <div v-for="names in rentalNames" :key="names">
          <v-list-item id="servicesId" @click="viewServices(names.id)" link>
             {{names.name}}
         </v-list-item>
@@ -98,12 +98,12 @@
                 
 				<v-flex xs12 sm12 md6 lg5 xl6>
 								<div class="sec-title">
-									<h5>Fill this form to request this service</h5>
+									<h5>Fill this form to request this Rental</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
+									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>
 									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Phone number" :rules="inputRules.basictextRules"></v-text-field>
                                     <v-text-field v-model="address" 	type="Address"	placeholder="Your address" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
@@ -163,9 +163,9 @@
 }
 </style>
 <script>
-import services from "Api/services";
+import Rental from "Api/rental";
 import { mapGetters } from "vuex";
-import servicesOrders from "Api/serviceOrders";
+// import servicesOrders from "Api/serviceOrders";
 export default {
   data() {
     return {
@@ -179,14 +179,10 @@ export default {
       darwer: null,
       valid: false,
       contactInfo: "",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+/.test(v) || "E-mail must be valid"
-      ],
       inputRules: {
         basictextRules: [v => !!v || "This field should not be empty"]
       },
-      servicesName: [],
+      rentalNames: [],
       selectedServices: {
                 id: '',
                 sectitle: "",
@@ -204,9 +200,9 @@ export default {
       async AskForServices() {
           try {
               this.loading= true
-            //   console.log(this.selectedServices)
-           const orderRes = await servicesOrders.addServicesOrders({
-            service: this.selectedServices.id,
+              console.log(this.selectedServices)
+           const orderRes = await Rental.rentalOrder({
+            rental: this.selectedServices.id,
             firstName:this.fristName,
             lastName:this.lastName,
             email:this.email,
@@ -222,6 +218,7 @@ export default {
 					showProgressBar:false,
                 });
                 this.loading=false
+                // this.$router.push('/en/session/thank-you')
           } catch (err) {
               console.log(err.message)
           }
@@ -233,19 +230,19 @@ export default {
 		},
     async getContactInfo() {
       try {
-          const res = await services.getServices()
+          const res = await Rental.getRental()
         //   console.log(res.data.data)
           res.data.data.forEach(el => {
             //   console.log(el)
-              this.servicesName.push({
+              this.rentalNames.push({
                   name:el.name.en,
                   id: el._id
               })
           });
-          this.servicesName.splice(0,1)
+        //   this.servicesName.splice(0,1)
           res.data.data.forEach(el => {
             //   console.log(el)
-            if (this.servicesName[0].id === el._id) {
+            if (this.rentalNames[0].id === el._id) {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
@@ -271,7 +268,7 @@ export default {
     async viewServices(id) {
         try {
             console.log(id)
-            const resOne = await services.getServices()
+            const resOne = await Rental.getRental()
             resOne.data.data.forEach(el => {
                 if (el._id === id) {
                   this.selectedServices= {

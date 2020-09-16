@@ -5,7 +5,7 @@
 				<v-btn class="cart-btn" fab dark small color="accent" v-on="on">
 					<v-badge right large color="accent">
 						<template v-if="cart.length > 0">
-							<span slot="badge">{{cart.length}}</span>
+							<span  slot="badge">{{cart.length}}</span>
 						</template>
 						<v-icon dark>shopping_cart</v-icon>
 					</v-badge>

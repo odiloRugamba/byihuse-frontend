@@ -45,7 +45,7 @@
 									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
 									<v-text-field v-model="subject"	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="message" rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
-									<v-btn class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	Send Message</v-btn>
+									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	Send Message</v-btn>
 								</v-form>
 							</v-flex>
 						</v-layout>
@@ -62,6 +62,7 @@ import contact from "Api/contact";
 export default {
   data() {
     return {
+	loading: false,
 	  fristName:'',
 	  lastName: '',
 	  email: '',
@@ -80,6 +81,7 @@ export default {
   },
   methods: {
     async getContactInfo() {
+		this.loading=true
       try {
 		  const res = await contact.postMessage({
 			   firstName: this.fristName,
@@ -88,15 +90,23 @@ export default {
 			   subject: this.subject,
 			   message: this.message
 			   })
-		  console.log()
+		//   console.log()
 		  this.$snotify.success(`${res.data.message}`,{
                     closeOnClick: false,
                     pauseOnHover: false,
                     timeout: 1000,
 					showProgressBar:false,
 				});
+				this.loading=false
 	  } catch (err) {
 		  console.log(err)
+		//   this.$snotify.error(`${err}`,{
+        //             closeOnClick: false,
+        //             pauseOnHover: false,
+        //             timeout: 1000,
+		// 			showProgressBar:false,
+		// 		});
+		  this.loading=false
 	  }
     },
     saveDetails() {

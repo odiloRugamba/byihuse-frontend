@@ -94,5 +94,6 @@ export default {
   "services": "services",
   "byiza": "Byiza",
   "byoroshye": "Byoroshye",
-  "byizewe": "Byizewe"
+  "byizewe": "Byizewe",
+  "drycleaning": "Dry cleaning"
 }
