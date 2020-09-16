@@ -209,11 +209,16 @@ export default {
 			}
       },
       search(){
+         this.isHidden=true
          event.preventDefault();
-         // console.log(this.$route)
-         
+         if (this.$route.params.keyword) {
+            location.assign(`/#/en/search/${this.keyword}`)
+            window.location.reload(false);
+         }else{
+            location.assign(`/#/en/search/${this.keyword}`)
+         }
          //   this.$router.push(`/en/search/${this.keyword}`)
-           location.assign(`/#/en/search/${this.keyword}`)
+         //   
       }
    },
    created(){
