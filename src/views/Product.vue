@@ -5,11 +5,11 @@
 				<h2>{{secTitle}}</h2>
 			</div> -->
 			<div id="contt" class="tab-content">
-				<template v-for="(tab,title) in products">
+				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
-								v-for="(cateogary,subindex) in products[title]"
+								v-for="(cateogary,subindex) in produ"
 								:key="subindex"
 								class="tab-item"
 							>
@@ -80,12 +80,25 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
-				</template>	
+				<!-- </template>	 -->
 			</div>	
 		</div>
+    <div class="pagination text-center">
+            <v-pagination
+              class="my-4"
+              v-model="page"
+              :length="length"
+              :totalVisible="totalVisible"
+            ></v-pagination>
+      </div>
 	</div>
 </template>
 <style>
+.pagination{
+  display: flex;
+  justify-content: center;
+  /* margin-left: 300px; */
+}
 #contt{
     display: flex;
     flex-wrap: wrap;
@@ -253,14 +266,14 @@ width:200px;
 <script>
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
-
+import department from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "products"]),
-    produc () {
-      return this.$store.state.products
-    }
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
+    // produc () {
+    //   return this.$store.state.products
+    // }
   },
   components: {
     // Slick
@@ -298,7 +311,12 @@ export default {
             }
           }
         ]
-      }
+      },
+      products: [],
+      page:1,
+      produ: [],
+      length: 7,
+      totalVisible:7
     };
   },
   methods: {
@@ -365,12 +383,73 @@ export default {
       return exists;
     }
   },
-  created () {
-    // this.$store.dispatch("changeSelectedProduct", cateogary);
-    this.$store.dispatch('getproducts')
-    console.log(this.products)
+  async mounted () {
+    try {
+      const res= await department.getDepartmentall()
+      // console.log(res)
+      res.data.data.forEach(el => {
+        // console.log(el)
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.en,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.en,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.en,
+               category: pro.name.en
+             })
+          })
+        })
+      });
+      // console.log()
+      this.produ = this.products.slice(0, 20)
+      this.length = this.products.length / 20
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  watch:{
+    page: function () {
+      // console.log(this.page, 'hello')
+      this.produ= []
+      const trimeStart = (this.page-1) * 20
+      const trimeEnd = trimeStart + 20
+      this.produ = this.products.slice(trimeStart,trimeEnd)
+      // for (let i = trimeStart; i < trimeEnd; i++) {
+      //   this.produ.push(this.products[i]);
+        
+      // }
+      console.log(this.produ)
+      console.log(trimeStart)
+    }
   }
+  // product.push({
+  //              objectID: prdata._id,
+  //              type: el.name.en,
+  //              image:'Https://byihuse.rw/'+prdata.pictures.pic1,
+  //              price: prdata.price,
+  //              name: prdata.name.en,
+  //              rate: 3,
+  //              image_gallery: [
+  //                 'Https://byihuse.rw/'+prdata.pictures.pic1,
+  //                 'Https://byihuse.rw/'+prdata.pictures.pic2,
+  //                 'Https://byihuse.rw/'+prdata.pictures.pic3,
+  //                 'Https://byihuse.rw/'+prdata.pictures.pic4
+  //              ],
+  //              description: prdata.description.en,
+  //              category: pr.name.en
+  //            })
 };
 </script>
+
 
 

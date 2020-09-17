@@ -4,14 +4,14 @@
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
-      <div v-if="products.length">
+      <div v-if="produ.length">
 			<div id="contt" class="tab-content">
 				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
               
 							<div
-								v-for="(cateogary,subindex) in products"
+								v-for="(cateogary,subindex) in produ"
 								:key="subindex"
 								class="tab-item"
 							>
@@ -71,20 +71,33 @@
 						<!-- </slick> -->
 					</div>
           </div>
+           <div class="pagination text-center">
+            <v-pagination
+              class="my-4"
+              v-model="page"
+              :length="length"
+              :totalVisible="totalVisible"
+            ></v-pagination>
+          </div>
           <div v-if="!pageProductsLoaded">
             <h3>Loading...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
-          <div v-if="pageProductsLoaded && !products.length">
-            <h3 class="pl-15">No Product Found</h3>
-            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
-          </div>
 				<!-- </template>	 -->
 			</div>	
+      <div v-if="pageProductsLoaded && !products.length">
+            <h3 class="pl-15">No Product Found</h3>
+            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
+      </div>
 		</div>
 	</div>
 </template>
 <style>
+.pagination{
+  display: flex;
+  justify-content: center;
+  /* margin-left: 300px; */
+}
 .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
@@ -313,7 +326,11 @@ export default {
         
       },
       title: "",
-      products: []
+      products: [],
+      page:1,
+      produ: [],
+      length: 7,
+      totalVisible:7
     };
   },
   methods: {
@@ -402,7 +419,8 @@ export default {
         }
       });
       this.pageProductsLoaded = true
-      // console.log(this.products)
+      this.length=this.products.length /20
+      this.produ = this.products.slice(0, 20)
     } catch (err) {
       console.log(err.message)
     } 
@@ -417,6 +435,19 @@ export default {
      this.id = to.params.id
      location.reload();
 		 this.getParametre();
+    },
+    page: function () {
+      // console.log(this.page, 'hello')
+      this.produ= []
+      const trimeStart = (this.page-1) * 20
+      const trimeEnd = trimeStart + 20
+      this.produ = this.products.slice(trimeStart,trimeEnd)
+      // for (let i = trimeStart; i < trimeEnd; i++) {
+      //   this.produ.push(this.products[i]);
+        
+      // }
+      console.log(this.produ)
+      console.log(trimeStart)
     }
   }
 }

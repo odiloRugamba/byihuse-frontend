@@ -10,7 +10,7 @@
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
-								v-for="(cateogary,subindex) in products"
+								v-for="(cateogary,subindex) in produ"
 								:key="subindex"
 								class="tab-item"
 							>
@@ -70,13 +70,21 @@
 						<!-- </slick> -->
 					</div>
 				<!-- </template>	 -->
-			</div>	
+			</div>
+      <div class="text-center">
+    <v-pagination
+      class="my-4"
+      v-model="page"
+      :length="length"
+      :total-visible="totalVisible"
+    ></v-pagination>
+  </div>	
 		</div>
           <div v-if="!pageProductsLoaded">
             <h3>Loading...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
-          <div v-if="pageProductsLoaded && !products.length">
+          <div v-if="pageProductsLoaded && !produ.length">
             <h3 class="pl-15">No Product Found</h3>
             <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
@@ -300,9 +308,16 @@ export default {
       title: "",
       products: [],
       pageProductsLoaded: false,
+      page:1,
+      produ: [],
+      length: '',
+      totalVisible:7
     };
   },
   methods: {
+    // changepage() {
+    //   console.log('helo')
+    // },
     /**
      * method for adding item to cart
      */
@@ -389,8 +404,15 @@ export default {
 			}) 
         }
       });
-      this.pageProductsLoaded = true,
-      console.log(this.products)
+      this.length=this.products.length /20
+      // const enddddd = this.products.length
+      // for (let i = 0; i < 20; i++) {
+      //   this.produ.push(this.products[i])
+      // }
+      this.produ = this.products.slice(0, 20)
+      // console.log(this.produ)
+      this.pageProductsLoaded = true
+      console.log(this.products.length)
     } catch (err) {
       console.log(err.message)
     } 
@@ -407,6 +429,15 @@ export default {
          this.getParametre();
         //  console.log('he')
         
+    },
+    page: function () {
+      console.log(this.page)
+      // console.log(this.products)
+      const trimeStart = (this.page-1) * 20
+      const trimeEnd = trimeStart + 20
+      this.produ = this.products.slice(trimeStart,trimeEnd)
+      console.log(this.produ)
+      console.log(trimeStart)
     }
   }
 }

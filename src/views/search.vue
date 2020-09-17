@@ -9,7 +9,7 @@
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
-								v-for="(cateogary,subindex) in products"
+								v-for="(cateogary,subindex) in product"
 								:key="subindex"
 								class="tab-item"
 							>
@@ -67,7 +67,16 @@
                         <h3>No Products Found</h3>
                     </div>
 				</template>	
-			</div>	
+			</div>
+      <div class="pagination text-center">
+            <v-pagination
+              class="my-4"
+              v-model="page"
+              :length="length"
+              :totalVisible="totalVisible"
+              v-if="pagination"
+            ></v-pagination>
+      </div>	
 		</div>
 	</div>
 </template>
@@ -282,7 +291,12 @@ export default {
             }
           }
         ]
-      }
+      },
+      page:1,
+      product: [],
+      length: 7,
+      totalVisible:7,
+      pagination: true
     };
   },
   methods: {
@@ -373,10 +387,36 @@ export default {
             })
         });
         this.products=this.produ
-        console.log(this.products)
+        if (this.products.length > 20) {
+          this.length=this.products.length /20
+          // for (let i = 0; i < 20; i++) {
+          //  this.product.push(this.products[i])
+          this.product = this.products.slice(0, 20)
+          // }
+        } else {
+          this.pagination = false
+          this.product = this.products
+          console.log(this.products)
+        }
+      
       } catch (err) {
          console.log(err.message) 
       }
+  },
+  watch: {
+    page: function () {
+      // console.log(this.page, 'hello')
+      this.produ= []
+      const trimeStart = (this.page-1) * 20
+      const trimeEnd = trimeStart + 20
+      this.product = this.products.slice(trimeStart,trimeEnd)
+      // for (let i = trimeStart; i < trimeEnd; i++) {
+      //   this.produ.push(this.products[i]);
+        
+      // }
+      console.log(this.produ)
+      console.log(trimeStart)
+    }
   }
 };
 </script>

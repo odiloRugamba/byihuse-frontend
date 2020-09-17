@@ -50,8 +50,6 @@ const mutations = {
       // }
       var obj = []
       var data = {}
-      const product = []
-      const produ = {}
       const res = await department.getDepartmentall();
       // console.log(res.data)
       res.data.data.forEach(el => {
@@ -67,35 +65,18 @@ const mutations = {
                category: pr.name.en
              })
             }
-            product.push({
-               objectID: prdata._id,
-               type: el.name.en,
-               image:'Https://byihuse.rw/'+prdata.pictures.pic1,
-               price: prdata.price,
-               name: prdata.name.en,
-               rate: 3,
-               image_gallery: [
-                  'Https://byihuse.rw/'+prdata.pictures.pic1,
-                  'Https://byihuse.rw/'+prdata.pictures.pic2,
-                  'Https://byihuse.rw/'+prdata.pictures.pic3,
-                  'Https://byihuse.rw/'+prdata.pictures.pic4
-               ],
-               description: prdata.description.en,
-               category: pr.name.en
-             })
+            
             //  console.log(prdata)
             })
          })
          data[el.name.en] = {...obj}
-         produ[el.name.en] = {...product}
          // console.log(data)
          for (let i = 0; i < obj.length; i++) {
             delete obj[i]
-            delete product[i]
          }
       }); 
       state.featured = data,
-      state.products = produ
+      // state.products = produ
       // console.log(produ)
       console.log(localStorage.getItem('lang'))
       } catch (err) {
