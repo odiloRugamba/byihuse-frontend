@@ -665,8 +665,7 @@ form
 }
 // Sidebar Menu 
 .sidebar-bg {
-	background-image: $responsive-sidebar-bg;
-	background-repeat: no-repeat;
+	background-color: $responsive-sidebar-bg;
 	height: 100%;
 	max-height: calc(100% + 0px);
 	background-position: right;

@@ -6,7 +6,9 @@ export default {
     return res
   },
   async signup (data) {
-    return api().post('/api/auth/signup', data)
+    const res= api().post('/api/auth/signup', data)
+    console.log(res)
+    return res
   },
   async updateName (data) {
     return api().put('/api/auth/name', data)

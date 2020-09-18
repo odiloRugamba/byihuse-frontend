@@ -97,8 +97,6 @@ import auth from "Api/auth";
 				this.$refs.form.validate();
 				if(this.valid == true){
 					this.signup()
-					console.log('askjhaskj')
-					this.$router.push('/session/signin');
             }	
 			},
 		 async signup () {
@@ -112,14 +110,11 @@ import auth from "Api/auth";
                     password: this.password
 			})   
 			console.log(res)
-			//    } else {
-			// 	   this.password= ''
-			// 	   this.repassword= ''
-			//    }
-               
-			// console.log(res.data)
+			// console.log('askjhaskj')
+			this.$router.push('/session/signin');
 			} catch (err) {
-				console.log(err)
+				console.log(err.message)
+				// console.log(res)
 			}
 		}
 	},

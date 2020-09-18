@@ -58,17 +58,22 @@
   </div>
 </template>
 <style scoped>
-.thumb-wrap .product-image-placeholder{
-  height: 380px;
-  overflow: hidden;
-}
-.font-weight-medium {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
-}
+.thumb-wrap{
+    height: 380px;
+    width: 300px;
+  }
 
+  .thumb-wrap .product-image-placeholder{
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .font-weight-medium {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 260px;
+  }
 </style>
 <script>
   import Slick from "vue-slick";

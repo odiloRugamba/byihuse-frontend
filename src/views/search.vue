@@ -64,7 +64,7 @@
 						<!-- </slick> -->
 					</div>
                     <div v-if="!products.length">
-                        <h3>No Products Found</h3>
+                        <h3>No Products Found, Cannot find what you are looking for? call +250 784 481 653</h3>
                     </div>
 				</template>	
 			</div>

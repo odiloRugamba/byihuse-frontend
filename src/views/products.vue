@@ -4,8 +4,7 @@
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
-      <div  v-if="products.length">
-			<div id="contt"  class="tab-content">
+			<div id="contt" class="tab-content">
 				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
@@ -14,16 +13,32 @@
 								:key="subindex"
 								class="tab-item"
 							>
-								<div  class="emb-card">
-									<div class="thumb-wrap">
-
+								<div class="emb-card">
+									<div  id="item" class="thumb-wrap">
 										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-										<div class="product-image-placeholder">
-                    	<img 
+											<img 
 												alt="feature product image"
 												:src="cateogary.image"
+												width="626"
+												height="800"
+                        id="ddd"
 											>
-										</div>
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
+												src="http://162.243.173.84:4000/1598520712511.jpg"
+												
+											> -->
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
+												src="/static/images/logo/tryy.jpg"
+												
+											> -->
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
+												src="/static/images/logo/p.png"
+												
+											> -->
+                       <!-- <img id="ddd" alt="product" height="800" width="626"
+												src="/static/images/logo/data1.jpg"
+												
+											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -33,7 +48,7 @@
 												<v-icon class="grey--text">favorite</v-icon>
 											</v-btn>
 										</div>
-										<div class="add-to-cart">
+										<div class="add-to-cart ">
 											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/en/cart" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
@@ -66,55 +81,83 @@
 						<!-- </slick> -->
 					</div>
 				<!-- </template>	 -->
-			</div>
-      <div class="text-center">
-    <v-pagination
-      class="my-4"
-      v-model="page"
-      :length="length"
-      :total-visible="totalVisible"
-    ></v-pagination>
-  </div>	
+			</div>	
 		</div>
-          <div v-if="!pageProductsLoaded">
-            <h3>Loading...</h3>
-            <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
-          </div>
-          <div v-if="pageProductsLoaded && !produ.length">
-            <h3 class="pl-15">No Product Found</h3>
-            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
-          </div>
-    </div>
+    <div class="pagination text-center">
+            <v-pagination
+              class="my-4"
+              v-model="page"
+              :length="length"
+              :totalVisible="totalVisible"
+            ></v-pagination>
+      </div>
 	</div>
 </template>
-<style>
+<style scoped>
+.pagination{
+  display: flex;
+  justify-content: center;
+  /* margin-left: 300px; */
+}
+#contt{
+    display: flex!important;
+    flex-wrap: wrap;
+  justify-content: center;
+  /* margin-left: 100-; */
+}
+.font-weight-medium{
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width:200px; 
+}
+@media screen  and (min-width: 600px){
+  .thumb-wrap #ddd{
+  max-height: 26rem;
+}
+}
+@media screen and (min-width: 1240px){
+	.emb-card {
+	height: 31rem;
+	width: 19rem!important;
+}
+.thumb-wrap{
+  height: 25rem;
+}
 
-  .thumb-wrap{
-    height: 380px;
-    width: 300px;
-  }
-
-  .thumb-wrap .product-image-placeholder{
-    height: 380px;
-    overflow: hidden;
-  }
-
-  .font-weight-medium {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 260px;
-  }
-
+}
+@media (min-width: 806px) and (max-width: 1240px){
+	.emb-card {
+	height: 29rem;
+	width: 17rem!important;
+	}
+}
+@media (min-width: 600px) and (max-width: 806px){
+	.emb-card {
+	/* height: 36rem; */
+	/* width: 24rem!important; */
+  width: 40vw;
+  height: 66vw;
+	}
+}
+@media screen and (max-width: 600px){
+	.emb-card {
+	/* height: 36rem; 
+	width: 24rem!important; */
+  width: 60vw;
+  height: 100vw;
+  margin-bottom: 1rem;
+	}
+}
 </style>
 <script>
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
-import departments from "Api/department";
+import department from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
     // produc () {
     //   return this.$store.state.products
     // }
@@ -154,22 +197,16 @@ export default {
               dots: false
             }
           }
-        ],
-        
+        ]
       },
-      title: "",
       products: [],
-      pageProductsLoaded: false,
       page:1,
       produ: [],
-      length: '',
+      length: 7,
       totalVisible:7
     };
   },
   methods: {
-    // changepage() {
-    //   console.log('helo')
-    // },
     /**
      * method for adding item to cart
      */
@@ -231,68 +268,59 @@ export default {
         }
       }
       return exists;
-    },
-    async getParametre () {
-      try {
-      this.title= this.$route.params.department
-      this.id = this.$route.params.category
-      // console.log(this.title)
-      const rescategoies = await departments.getDepartmentall()
-		rescategoies.data.data.forEach(el => {
-        if (el.name.en === this.title) {
-         el.categories.forEach(recat =>{
-		    recat.products.forEach(pro =>{
-            if (recat.name.en === this.id) {
-               this.products.push({
-							objectID: pro._id,
-							price: pro.price,
-							name: pro.name.en,
-              image: this.linksformbackend+pro.pictures.pic1,
-              category: recat.name.en
-              })
-            }
-      })
-      // console.log(recat.name.en)
-			}) 
-        }
-      });
-      this.length=Math.ceil(this.products.length / 20)
-      // const enddddd = this.products.length
-      // for (let i = 0; i < 20; i++) {
-      //   this.produ.push(this.products[i])
-      // }
-      this.produ = this.products.slice(0, 20)
-      // console.log(this.produ)
-      this.pageProductsLoaded = true
-      console.log(this.products.length)
-    } catch (err) {
-      console.log(err.message)
-    } 
     }
   },
-  async created () {
-     this.getParametre ()
+  async mounted () {
+    try {
+      const res= await department.getDepartmentall()
+      // console.log(res)
+      res.data.data.forEach(el => {
+        // console.log(el)
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.en,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.en,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.en,
+               category: pro.name.en
+             })
+          })
+        })
+      });
+      // console.log()
+      this.produ = this.products.slice(0, 20)
+      this.length = Math.ceil(this.products.length / 20)
+    } catch (err) {
+      console.log(err)
+    }
   },
-  watch: {
-    "$route"(to) {
-		 this.title = to.params.department
-         this.id = to.params.category
-          location.reload();
-         this.getParametre();
-        //  console.log('he')
-        
-    },
+  watch:{
     page: function () {
-      console.log(this.page)
-      // console.log(this.products)
+      // console.log(this.page, 'hello')
+      this.produ= []
       const trimeStart = (this.page-1) * 20
       const trimeEnd = trimeStart + 20
       this.produ = this.products.slice(trimeStart,trimeEnd)
+      // for (let i = trimeStart; i < trimeEnd; i++) {
+      //   this.produ.push(this.products[i]);
+        
+      // }
       console.log(this.produ)
       console.log(trimeStart)
     }
   }
-}
+};
 </script>
+
 
 

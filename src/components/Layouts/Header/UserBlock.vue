@@ -4,15 +4,20 @@
 			max-width="200" class="userblock-dropdown" light>
 			<template  v-slot:activator="{ on }">
 				<v-btn fab small v-on="on">
-					<img src="/static/images/user-3.jpg" width="40" height="40" class="v-btn--round">
+					<img src="/static/images/logo/face.png" width="40" height="40" class="v-btn--round">
 				</v-btn>
 			</template>
 			<v-list class="user-dropdown-list">
-				<v-list-item  :href="userLink.path" v-for="(userLink, key) in userLinks" :key="key">
-					<v-icon class="mr-2">{{userLink.icon}}</v-icon>
-					<span>{{userLink.title}}</span>
-				</v-list-item>
-				<v-list-item  @click="changePage('/en/session/signin')">
+				<div  v-if="user">
+				 <v-list-item  v-for="(userLink, key) in userLinks" :key="key">
+					<router-link :to="userLink.path" >
+					    <v-icon class="mr-2">{{userLink.icon}}</v-icon>
+					    <span>{{userLink.title}}</span>	
+					</router-link>
+				 </v-list-item>
+				</div>
+				
+				<v-list-item  @click="changePage('/session/signin')">
 					<v-icon class="mr-2">power_settings_new</v-icon>
 					<span v-if="!user">LogIn</span><span v-if="user">LogOut</span>
 				</v-list-item>
@@ -34,40 +39,55 @@
 			changePage(page) {
 				localStorage.clear()
 				this.$router.push(page)
+				// location.replace(page)
+				// location.reload(false)
+				if (this.user) {
+					this.user= false
+					console.log('hel')
+				}else{
+					this.user= true
+					console.log('hel0')
+				}
 			}
 		
 		},
 		data () {
 			return {
-				user: true,
+				user: false,
 			userLinks: [
 				{
 					icon:'account_circle',
 					title: 'User Profile',
 					path:"/account/profile"
 				},
-				{
-					icon:'settings',
-					title:'Account',
-					path:"/account/profile"
-				},
-				{
-					icon:'local_post_office',
-					title:'Messages',
-					path:"/account/profile"
-				}
+				// {
+				// 	icon:'settings',
+				// 	title:'Account',
+				// 	path:"/account/profile"
+				// },
+				// {
+				// 	icon:'local_post_office',
+				// 	title:'Messages',
+				// 	path:"/account/profile"
+				// }
 			],
+			data: ''
 			}
 		},
-	// 	mounted () {
-	// 	const data =JSON.parse(localStorage.getItem('data'))
-	// 	// console.log(data)
-	// 	if (data) {
-	// 		this.data = true
-	// 	console.log('hhe')
+		mounted () {
+		this.data =JSON.parse(localStorage.getItem('data'))
+		// console.log(data)
+		if (this.data) {
+			this.user = true
+		console.log('hhe')
+		}
+		// this.data = true
+		// console.log(this.firstName)
+	},
+	// watch:{
+	// 	data: function() {
+	// 		console.log('jdshjdhfjdshjkdfjk')
 	// 	}
-	// 	this.data = true
-	// 	console.log(this.firstName)
 	// }
 	}
 </script>

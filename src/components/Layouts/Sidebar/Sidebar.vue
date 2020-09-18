@@ -182,12 +182,12 @@ menus:  [
          },
       ]
    },
-         {
-      path:`/rental`,
-      name: "message.rental",
-      icon: "pages",
-      children: null
-	},
+   //       {
+   //    path:`/rental`,
+   //    name: "message.rental",
+   //    icon: "pages",
+   //    children: null
+	// },
 //     {
 //       path: '',
 //       name:"message.rental",

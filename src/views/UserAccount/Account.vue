@@ -6,7 +6,7 @@
 					<div class="container grid-list-xl">
 						<div class="layout justify-start mt-0 mb-4 mx-0">
 							<div class="login-user-img">
-								<img src="/static/images/user-3.jpg" width="70" alt="Active User">
+								<img src="/static/images/logo/face.png" width="70" alt="Active User">
 							</div>
 							<div class="px-4">
 								<h4>Hi,{{firstName}}</h4>
@@ -71,22 +71,22 @@ export default {
 						id:"profile"
 					},
 				],
-				address:[
-					{
-						title:"Addresses",
-						icon:"location_on",
-						path:"/account/address",
-						id:"addresses"
-					}
-				],
-				cards:[
-					{
-						title:"Saved Cards",
-						icon:"credit_card",
-						path:"/account/cards",
-						id:"cards"
-					},
-				]
+				// address:[
+				// 	{
+				// 		title:"Addresses",
+				// 		icon:"location_on",
+				// 		path:"/account/address",
+				// 		id:"addresses"
+				// 	}
+				// ],
+				// cards:[
+				// 	{
+				// 		title:"Saved Cards",
+				// 		icon:"credit_card",
+				// 		path:"/account/cards",
+				// 		id:"cards"
+				// 	},
+				// ]
 			},
 			selectedTab: 0,
 		}
