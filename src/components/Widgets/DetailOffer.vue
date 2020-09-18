@@ -4,7 +4,7 @@
 		<div class="offer-list">
 			<v-layout row wrap>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link to="#">
+					<router-link to="/en/byoroshye">
 						<div class="overlay-wrap">
 							<a href="javascript:void(0)">
 								<img alt="Sale Call In Action" class="w-100" src="/static/images/byoroshye.jpg" width="640" height="430">
@@ -35,7 +35,7 @@
 					</router-link>
 				</v-flex>
 				<v-flex xs12 sm12 md12 lg4 xl4>
-					<router-link to="#">
+					<router-link to="/en/services">
 						<div class="overlay-wrap">
 								<a href="javascript:void(0)">
 									<img alt="Sale Call In Action" class="w-100" src="/static/images/byizewe.jpg" width="640" height="430">

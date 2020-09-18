@@ -115,7 +115,12 @@ thumb-wrap
 				position: relative;
 				img{
 					width:100%;
-				}
+				};
+				
+			}
+			.thumb-wrap .product-image-placeholder{
+				height: 380px;
+				overflow: hidden;
 			}
 		}
 	}
@@ -263,6 +268,7 @@ thumb-wrap
 			.thumb-wrap{
 				margin-right:0; 
 			}
+			
 		}
 	}
 	.emb-aboutus-wrap{

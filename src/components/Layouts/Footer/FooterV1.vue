@@ -15,7 +15,7 @@
 					<v-flex xs12 sm3 md2 lg2 xl2>
 						
 					</v-flex>
-					<v-flex xs12 sm3 md2 lg2 xl2>
+					<v-flex xs6 sm3 md3 lg3 xl3>
 						<h6 class="white--text mb-4">About</h6>
 						<div class="abt-menu">
 							<ul class="list-unstyled pl-0">
@@ -26,10 +26,7 @@
 							</ul>
 						</div>
 					</v-flex>
-					<v-flex xs12 sm3 md2 lg2 xl2>
-						
-					</v-flex>
-					<v-flex xs12 sm3 md2 lg1 xl1>
+					<v-flex xs6 sm3 md2 lg2 xl2>
 						<div class="policy-menu">
 							<h6 class="white--text mb-4">Social</h6>
 							<ul class="list-unstyled pl-0">

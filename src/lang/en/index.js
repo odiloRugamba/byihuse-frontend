@@ -67,7 +67,7 @@ export default {
 	"wellcome": "Made in Rwanda",
 	"subTitleOne": "FREE delivery",
 	"titleOne": "Order today and get it today!",
-	"descOne": "*All orders over RWF 100",
+	"descOne": "*All orders over RWF 1000",
 	"subTitleTwo": "GOOD CUSTOMER CARE",
 	"titleTwo": "24/7 Dedicated Support",
 	"descTwo": "*We are ready to help you any time",
