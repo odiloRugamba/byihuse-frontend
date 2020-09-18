@@ -67,7 +67,7 @@ import axios from 'axios'
 					password: this.password
 					})
 					const data = res.data
-					console.log(data)
+					// console.log(data)
 					const localData = {
 						firstName: data.data.user.firstName,
 						lastName: data.data.user.lastName,
@@ -84,7 +84,9 @@ import axios from 'axios'
                     timeout: 1000,
 					showProgressBar:false,
 					});
-				this.$router.push('/account/profile');
+				// this.$router.push();
+				// location.reload(true)
+				window.location.assign('/')
 			} catch (err) {
 			console.log(err)
 			    this.$snotify.success('invaled Input',{

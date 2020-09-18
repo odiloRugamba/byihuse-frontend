@@ -404,7 +404,7 @@ export default {
 			}) 
         }
       });
-      this.length=this.products.length /20
+      this.length=Math.ceil(this.products.length / 20)
       // const enddddd = this.products.length
       // for (let i = 0; i < 20; i++) {
       //   this.produ.push(this.products[i])

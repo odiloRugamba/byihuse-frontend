@@ -26,7 +26,7 @@
 								<v-col cols="12" sm="6" md="4" class="d-inline-flex align-center justify-center">
 									<div class="text-center">
 										<h5 class="mb-1">{{item.name}}</h5>
-										<p class="mb-0">Delivery in 3-4 days | Free</p>
+										<p class="mb-0">Delivery in 1-2 days | Free</p>
 										<p class="mb-0"> 10 Days Replacement Policy</p>
 									</div>
 								</v-col>
@@ -42,7 +42,7 @@
 									</h4>
 								</v-col>
 								<v-col cols="2" sm="2" md="2" class="res-float-icon d-inline-flex align-center justify-md-center justify-end">
-									<a class="accent--text remove-cart" @click="deleteProductFromCart(cart)" href="javascript:void(0)">
+									<a class="accent--text remove-cart" @click="deleteProductFromCart(item)" href="javascript:void(0)">
 										<i class="material-icons font-weight-bold">close </i>
 									</a>
 								</v-col>
@@ -151,6 +151,7 @@ export default {
     deleteProductFromCart(product) {
       this.$refs.deleteConfirmationDialog.openDialog();
       this.selectDeletedProduct = product;
+      // console.log('shsajk', product)
     },
     onDeleteProductFromCart() {
       this.$refs.deleteConfirmationDialog.close();

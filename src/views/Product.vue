@@ -32,7 +32,7 @@
 												
 											> -->
                       <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/p.jpg"
+												src="/static/images/logo/p.png"
 												
 											> -->
                        <!-- <img id="ddd" alt="product" height="800" width="626"
@@ -48,7 +48,7 @@
 												<v-icon class="grey--text">favorite</v-icon>
 											</v-btn>
 										</div>
-										<div class="add-to-cart">
+										<div class="add-to-cart ">
 											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/en/cart" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
@@ -94,11 +94,6 @@
 	</div>
 </template>
 <style>
-.pagination{
-  display: flex;
-  justify-content: center;
-  /* margin-left: 300px; */
-}
 #contt{
     display: flex;
     flex-wrap: wrap;
@@ -143,7 +138,6 @@ width:200px;
 #item{
   width: 27rem;
   height: 34rem;
-   margin-top: 1rem;
 }
 #ddd{
   max-height: 440px;
@@ -171,7 +165,6 @@ width:200px;
     margin-left: 0px;
 }
 #item{
-   margin-top: 1rem;
   width: 92vw;
   height: 30rem;
 }
@@ -262,6 +255,9 @@ width:200px;
   /* max-width: 260px; */
 }
 }
+/* @media screen  (min-width: ){
+  
+} */
 </style>
 <script>
 // import Slick from "vue-slick";
@@ -315,8 +311,8 @@ export default {
       products: [],
       page:1,
       produ: [],
-      length: 7,
-      totalVisible:7
+      length: 0,
+      totalVisible:0
     };
   },
   methods: {
@@ -412,7 +408,7 @@ export default {
       });
       // console.log()
       this.produ = this.products.slice(0, 20)
-      this.length = this.products.length / 20
+      this.length = Math.ceil(this.products.length / 20)
     } catch (err) {
       console.log(err)
     }
@@ -432,22 +428,6 @@ export default {
       console.log(trimeStart)
     }
   }
-  // product.push({
-  //              objectID: prdata._id,
-  //              type: el.name.en,
-  //              image:'Https://byihuse.rw/'+prdata.pictures.pic1,
-  //              price: prdata.price,
-  //              name: prdata.name.en,
-  //              rate: 3,
-  //              image_gallery: [
-  //                 'Https://byihuse.rw/'+prdata.pictures.pic1,
-  //                 'Https://byihuse.rw/'+prdata.pictures.pic2,
-  //                 'Https://byihuse.rw/'+prdata.pictures.pic3,
-  //                 'Https://byihuse.rw/'+prdata.pictures.pic4
-  //              ],
-  //              description: prdata.description.en,
-  //              category: pr.name.en
-  //            })
 };
 </script>
 

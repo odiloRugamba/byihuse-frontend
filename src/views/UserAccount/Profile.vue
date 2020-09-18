@@ -28,18 +28,18 @@ export default {
                key:"E-mail",
                value:""
             },
-            {
-               key:"Location",
-               value:""
-            },
+            // {
+            //    key:"Location",
+            //    value:""
+            // },
             {
                key:"Role",
                value:""
             },
-            {
-               key:"Departments",
-               value:""
-            }
+            // {
+            //    key:"Departments",
+            //    value:""
+            // }
             
          ]
       }

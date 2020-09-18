@@ -1,8 +1,8 @@
 <template>
-   <div class="page-title-bar">
+   <div class="emb-shop-card section-gap  page-title-bar">
       <div class="container">
-         <h1 class="mb-4"> {{heading}}</h1>
-         <p class="white--text font-weight-regular"> {{subHeading}} </p>
+         <h1 style="color: #003566;" class="mb-4"> {{heading}}</h1>
+         <p style="color:#003566;" class="font-weight-regular"> {{subHeading}} </p>
       </div>
    </div>
 </template>

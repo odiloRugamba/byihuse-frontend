@@ -59,7 +59,7 @@ const mutations = {
               obj.push({
                objectID: prdata._id,
                type: el.name.en,
-               image:'Https://byihuse.rw/'+prdata.pictures.pic1,
+               image:'http://localhost:4000/'+prdata.pictures.pic1,
                price: prdata.price,
                name: prdata.name.en,
                category: pr.name.en
