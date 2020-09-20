@@ -266,7 +266,7 @@ import department from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale"]),
     // produc () {
     //   return this.$store.state.products
     // }
@@ -383,7 +383,34 @@ export default {
     try {
       const res= await department.getDepartmentall()
       // console.log(res)
-      res.data.data.forEach(el => {
+      if (this.selectedLocale === 'French') {
+        res.data.data.forEach(el => {
+        // console.log(el)
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.fr,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.fr,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.fr,
+               category: pro.name.fr
+             })
+            //  console.log(prdata.name)
+            //  console.log(this.selectedLocale)
+          })
+        })
+      });
+      } else {
+        res.data.data.forEach(el => {
         // console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
@@ -403,9 +430,12 @@ export default {
                description: prdata.description.en,
                category: pro.name.en
              })
+            //  console.log(prdata.name)
+            //  console.log(this.selectedLocale)
           })
         })
       });
+      }
       // console.log()
       this.produ = this.products.slice(0, 20)
       this.length = Math.ceil(this.products.length / 20)

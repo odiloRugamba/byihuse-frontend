@@ -88,19 +88,19 @@
   max-width: 300px;
   /* max-height: 100px; */
 }
-.font-weight-medium{
+/* .font-weight-medium{
   text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 width:200px; 
-}
+} */
 .thumb-wrap img{
   height: 380px; 
   max-width: 300px;
 }
 #contt{
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 .font-weight-medium{
   text-overflow: ellipsis;

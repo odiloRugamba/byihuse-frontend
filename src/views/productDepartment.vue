@@ -281,7 +281,7 @@ import departments from "Api/department";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist","linksformbackend"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist","linksformbackend", "selectedLocale"])
     // produc () {
     //   return this.$store.state.products
     // }
@@ -401,7 +401,26 @@ export default {
       this.title= this.$route.params.title
       // console.log(this.title)
       const rescategoies = await departments.getDepartmentall()
-			rescategoies.data.data.forEach(el => {
+      if (this.selectedLocale === 'French') {
+        rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              // console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.fr,
+              image: this.linksformbackend+pro.pictures.pic1,
+              category:recat.name.fr
+						})
+						})
+				}) 
+        }
+      });
+      } else {
+        rescategoies.data.data.forEach(el => {
         // console.log(el.name.en ,this.title)
         if (el.name.en === this.title) {
          el.categories.forEach(recat =>{
@@ -418,6 +437,7 @@ export default {
 				}) 
         }
       });
+      }
       this.pageProductsLoaded = true
       this.length=Math.ceil(this.products.length / 20)
       this.produ = this.products.slice(0, 20)

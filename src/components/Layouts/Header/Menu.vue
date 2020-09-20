@@ -56,8 +56,8 @@ export default {
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // console.log('helo',megaitemkey, submega)
-         // const current = `/products/${megaitemkey}/${submega}`
-         // localStorage.setItem('current', current)
+         const current = `/products/${megaitemkey}/${submega}`
+         localStorage.setItem('current', current)
       },
       changedepRoute(megaitemkey) {
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
@@ -65,7 +65,7 @@ export default {
       changeOneRoute(oneLink){
          this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
          // location.reload()
-         console.log('helo', oneLink)
+         // console.log('helo', oneLink)
       }
    },
 data () {
@@ -84,7 +84,7 @@ menus:  [
       // type: "sub_menu",
 	},
    {
-      path: 'home',
+      path: '',
       name:"message.categories",
       icon: 'party_mode',
       type: 'mega_menu',

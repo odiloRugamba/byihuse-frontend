@@ -110,14 +110,14 @@ width:200px;
   max-width: 300px;
 }
 #contt{
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 .font-weight-medium{
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
-width:200px; 
+width:200px;  */
 }
 #item{
   display: flex;
@@ -396,7 +396,7 @@ export default {
   mounted () {
     // this.$store.dispatch("changeSelectedProduct", cateogary);
     this.$store.dispatch('getproducts')
-    console.log(this.featured)
+    // console.log(this.featured)
   }
 };
 </script>
