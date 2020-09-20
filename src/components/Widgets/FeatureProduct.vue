@@ -20,7 +20,7 @@
 							>
 								<div class="emb-card">
 									<div   class="thumb-wrap">
-										<router-link  :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link  :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
                     <!-- <div id="ddd"> -->
                       <img 
 												alt="feature product image"
@@ -43,7 +43,7 @@
 											</v-btn>
 										</div>
 										<div class="add-to-cart">
-											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/en/cart" class="accent" icon absolute bottom>
+											<v-btn v-if="ifItemExistInCart(cateogary,cart)" :to="'/'+$i18n.locale+'/cart'" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
 											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >

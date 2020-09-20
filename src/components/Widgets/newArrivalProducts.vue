@@ -20,7 +20,7 @@
 							>
 								<div class="emb-card">
 									<div   class="thumb-wrap">
-										<router-link  :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link  :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
                     <!-- <div id="ddd"> -->
                       <img 
 												alt="feature product image"

@@ -21,7 +21,7 @@
 							<ul class="list-unstyled pl-0">
 								<li v-for="(list,key) in about"
 									:key="key">
-									<router-link :to="list.path">{{$t(list.menuItem)}}</router-link>
+									<router-link :to="'/'+$i18n.locale+list.path">{{$t(list.menuItem)}}</router-link>
 								</li>
 							</ul>
 						</div>
@@ -163,7 +163,7 @@ export default {
          this.resDept = await departments.getDepartment()
 			// var obj = []
 			// var arr = {}
-			this.resDept.data.data.forEach(dep =>{
+			// this.resDept.data.data.forEach(dep =>{
 			//     this.resCat.data.data.forEach(el => {
 			// 		if (dep._id === el.department) {
 			// 		obj.push({
@@ -177,8 +177,8 @@ export default {
             // for (let i = 0; i < obj.length; i++) {
             //    delete obj[i]
             // }
-            console.log(dep.name.en)
-         })
+            // console.log(dep.name.en)
+        //  })
         //  this.categories = arr
 			console.log(this.categories)
 		} catch (err) {

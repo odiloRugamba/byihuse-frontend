@@ -154,7 +154,7 @@
                                        </v-btn>
                                     </div>
                                     <div class="add-to-cart">
-                                       <v-btn v-if="ifItemExistInCart(product)" to="/en/cart" class="primary" small icon>
+                                       <v-btn v-if="ifItemExistInCart(product)" :to="'/'+$i18n.locale+'/cart'" class="primary" small icon>
                                           <v-icon medium>edit</v-icon>
                                        </v-btn>
                                        <v-btn
