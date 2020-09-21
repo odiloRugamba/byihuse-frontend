@@ -51,12 +51,12 @@
 					}
 				});
 				localStorage.setItem('current', currentRoute)
-				console.log(currentRoute)
-				// location.reload();
+				console.log(rote, this.$route.path)
 				this.langPage = language.lang
-				const lang = JSON.parse(localStorage.getItem('lang'))
-				const current = localStorage.getItem('current')
-				this.$router.push(`/${lang.locale}${current}`)
+				// const lang = JSON.parse(localStorage.getItem('lang'))
+				// const current = localStorage.getItem('current')
+				// this.$router.push(`/${lang.locale}${current}`)
+				location.reload();
 				
 			}
 		},
@@ -65,19 +65,24 @@
 		// 		console.log('hello')
 		// 	}
 		// },
-		// created() {
-		// 	const lang = JSON.parse(localStorage.getItem('lang'))
-		// 	const current = localStorage.getItem('current')
-		// 	this.$store.dispatch("changeLanguage", lang.name);
-		// 	this.$i18n.locale = lang.locale;
-		// 	this.$router.push(`/${lang.locale}${current}`)
-		// 	this.$i18n.locale = lang.locale;
-		// 	console.log(current)
-		// 	this.$store.dispatch("changeLanguage", lang.name);
-		// 	console.log(lang)
-		// 	console.log( current)
-		// 	this.specialLang=lang.name
-		// 	localStorage.removeItem('current')
-		// }
+		created() {
+			const lang = JSON.parse(localStorage.getItem('lang'))
+			const current = localStorage.getItem('current')
+			if (current) {
+			this.$store.dispatch("changeLanguage", lang.name);
+			this.$i18n.locale = lang.locale;
+			this.$router.push(`/${lang.locale}${current}`)
+			this.$i18n.locale = lang.locale;
+			this.$store.dispatch("changeLanguage", lang.name);
+			this.specialLang=lang.name
+			}else{
+				this.$router.push(`/${lang.locale}/home`)
+			}
+			
+			// console.log(lang)
+			// console.log( current)
+			// console.log(current)
+			// localStorage.removeItem('current')		
+		}
 	}
 </script>

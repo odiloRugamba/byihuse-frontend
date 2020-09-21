@@ -203,7 +203,7 @@ export default {
   mounted () {
     // this.$store.dispatch("changeSelectedProduct", cateogary);
     this.$store.dispatch('getproducts')
-    console.log(this.featured)
+    // console.log(this.featured)
   }
 };
 </script>

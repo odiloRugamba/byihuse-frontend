@@ -4,7 +4,7 @@
 			<div v-for="(sliderItem,key) in data"
 				:key="key">
 				<div id="banner" class="banner-slide">
-					<router-link :to="'/en/products/'+sliderItem.routeSubTitle">
+					<router-link :to="'/'+$i18n.locale+'/products'+sliderItem.routeSubTitle">
 					<img id="banner" :src="sliderItem.image" alt="slide-item" width="1123" height="660">
 					</router-link>
 				</div>

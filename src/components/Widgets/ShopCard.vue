@@ -40,9 +40,9 @@ export default {
   async mounted() {
     try {
       const res = await Company.getCompany()
-      console.log(res)
+      // console.log(res)
       res.data.data.forEach(el => {
-        console.log(el)
+        // console.log(el)
         this.data.push({
           image:this.linksformbackend+el.logo
           // image:'https://byihuse.rw/1598890724471.jpg'

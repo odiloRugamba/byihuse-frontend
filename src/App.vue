@@ -30,11 +30,9 @@ export default {
 			this.$vuetify.rtl = this.rtlLayout;
 		}
 		const token = sessionStorage.getItem('token')
-		console.log(token)
 		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 		const cart = JSON.parse(localStorage.getItem('cart'))
 		if (cart) {
-		console.log(cart)
 		this.$store.commit({
 			type:'onAddProductToC', 
 			dart:cart 

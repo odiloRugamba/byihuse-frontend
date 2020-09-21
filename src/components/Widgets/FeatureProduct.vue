@@ -16,7 +16,7 @@
               <div v-for="(cateogary,subindex) in featured[title]" :key="subindex" class="tab-item">
                 <div class="emb-card">
                   <div class="thumb-wrap">
-                    <router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+                    <router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
                       <div class="product-image-placeholder">
                        <img alt="feature product image" :src="cateogary.image">
                       </div>

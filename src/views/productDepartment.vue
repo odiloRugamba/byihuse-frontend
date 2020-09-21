@@ -5,6 +5,7 @@
 				<h2>{{secTitle}}</h2>
 			</div> -->
       <div v-if="produ.length">
+<<<<<<< HEAD
         <div id="contt" class="tab-content">
           <!-- <template v-for="(tab,title) in products"> -->
           <!-- <div v-if="index == selectedTab" :key="index"> -->
@@ -45,6 +46,60 @@
                 </div>
                 <div class="inline-block ">
                   <!-- <v-rating 
+=======
+			<div id="contt" class="tab-content">
+				<!-- <template v-for="(tab,title) in products"> -->
+					<!-- <div v-if="index == selectedTab" :key="index"> -->
+						<!-- <slick  :options="slickOptions" :key="title"> -->
+              
+							<div
+								v-for="(cateogary,subindex) in produ"
+								:key="subindex"
+								class="tab-item"
+							>
+								<div class="emb-card">
+									<div id="item" class="thumb-wrap">
+										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+											<img 
+												alt="feature product image"
+												:src="cateogary.image"
+												width="626"
+												height="800"
+                        id="ddd"
+											>
+                      <!-- <img id="ddd" alt="product" height="800" width="626"
+												src="/static/images/logo/p.jpg"
+												
+											> -->
+										</router-link>
+										<div class="wishlist-icon">
+											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
+												<v-icon  class="black--text">favorite</v-icon>
+											</v-btn>
+											<v-btn v-else @click="addItemToWishlist(cateogary)" icon >
+												<v-icon class="grey--text">favorite</v-icon>
+											</v-btn>
+										</div>
+										<div class="add-to-cart">
+											<v-btn v-if="ifItemExistInCart(cateogary,cart)" :to="'/'+$i18n.locale+'/cart'" class="accent" icon absolute bottom>
+												<v-icon>remove_red_eye</v-icon>
+											</v-btn>
+											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >
+												<v-icon>shopping_cart</v-icon>
+											</v-btn>
+										</div>
+									</div>
+									<div class="emb-card-content pa-4">
+										<h5  class="font-weight-medium" v-text="cateogary.name"></h5>
+										<div class="emb-meta-info layout align-center my-1">
+											<div class="inline-block">
+												<h6 class="accent--text font-weight-medium">
+													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+												</h6>
+											</div>
+											<div class="inline-block ">
+												<!-- <v-rating 
+>>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
 													v-model="cateogary.rate"
 													readonly
 													background-color="grey"
@@ -100,18 +155,77 @@
   }
 </style>
 <script>
-  // import Slick from "vue-slick";
-  import {
-    mapGetters
-  } from "vuex";
-  import departments from "Api/department";
-  export default {
-    props: ["secTitle"],
-    computed: {
-      ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"])
-      // produc () {
-      //   return this.$store.state.products
-      // }
+// import Slick from "vue-slick";
+import { mapGetters } from "vuex";
+import departments from "Api/department";
+export default {
+  props: ["secTitle"],
+  computed: {
+    ...mapGetters(["rtlLayout", "cart", "wishlist","linksformbackend", "selectedLocale"])
+    // produc () {
+    //   return this.$store.state.products
+    // }
+  },
+  components: {
+    // Slick
+  },
+  data() {
+    return {
+      selectedTab: 0,
+      activeTab: null,
+      slickOptions: {
+        autoplay: true,
+        slidesToShow: 5,
+        infinite: false,
+        arrows: false,
+        dots: true,
+        rtl: this.rtlLayout,
+        pageProductsLoaded: false,
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              arrows: false,
+              dots: false
+            }
+          }
+        ],
+        
+      },
+      title: "",
+      products: [],
+      page:1,
+      produ: [],
+      length: 7,
+      totalVisible:7
+    };
+  },
+  methods: {
+    /**
+     * method for adding item to cart
+     */
+    addProductToCart(newItem) {
+      this.$snotify.success("Product adding to the cart", {
+        closeOnClick: false,
+        pauseOnHover: false,
+        timeout: 1000
+      });
+      setTimeout(() => {
+        this.$store.dispatch("addProductToCart", newItem);
+      }, 100);
     },
     components: {
       // Slick
@@ -252,8 +366,70 @@
         }
       }
     },
+<<<<<<< HEAD
     async created() {
       this.getParametre()
+=======
+    async getParametre () {
+      try {
+      this.title= this.$route.params.title
+      // console.log(this.title)
+      const rescategoies = await departments.getDepartmentall()
+      if (this.selectedLocale === 'French') {
+        rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              // console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.fr,
+              image: this.linksformbackend+pro.pictures.pic1,
+              category:recat.name.fr
+						})
+						})
+				}) 
+        }
+      });
+      } else {
+        rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.en,
+              image: this.linksformbackend+pro.pictures.pic1,
+              category:recat.name.en
+						})
+						})
+				}) 
+        }
+      });
+      }
+      this.pageProductsLoaded = true
+      this.length=Math.ceil(this.products.length / 20)
+      this.produ = this.products.slice(0, 20)
+    } catch (err) {
+      console.log(err.message)
+    } 
+    }
+  },
+  async created () {
+     this.getParametre ()
+  },
+  watch: {
+    "$route"(to) {
+		 this.title = to.params.title
+     this.id = to.params.id
+     location.reload();
+		 this.getParametre();
+>>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
     },
     watch: {
       "$route"(to) {

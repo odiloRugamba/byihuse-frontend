@@ -15,7 +15,7 @@
 							no-action
 							v-model="menu.active"
 						>	
-							<v-list-item class="px-0" slot="activator" :to="menu.path">
+							<v-list-item class="px-0" slot="activator" :to="'/'+$i18n.locale+menu.path">
 								<v-list-item-action class="mr-0">
 									<v-icon>{{menu.icon}}</v-icon>
 								</v-list-item-action>
@@ -85,7 +85,7 @@
                               <v-list-item
                                  v-for="(megaChild,megaChildKey) in subItem"
                                  :key="megaChildKey"
-                                 :to="'/en/products/'+subItemKey+'/'+megaChild.path"
+                                 :to="'/'+$i18n.locale+'/products/'+subItemKey+'/'+megaChild.path"
                                  class="mega-menu-item "
                               >
                                  <v-list-item-action class="mr-0 pl-1">
@@ -100,7 +100,7 @@
 					</template>
 
 					<template v-else>
-						<v-list-item :key="menu.title" :to="'/en'+menu.path">
+						<v-list-item :key="menu.title" :to="'/'+$i18n.locale+menu.path">
 							<v-list-item-action class="mr-0">
 								<v-icon>{{menu.icon}}</v-icon>
 							</v-list-item-action>
@@ -151,12 +151,6 @@ menus:  [
       icon: "pages",
       children: null
 	},
-	// {
-   //    path: '/products/accessories',
-   //    name:"message.accessories",
-   //    icon: 'party_mode',
-   //    children: null
-   // },
    {
       path: '',
       name:"message.categories",
@@ -173,15 +167,20 @@ menus:  [
          {
             name: 'byoroshye',
             children_menus:null,
+<<<<<<< HEAD
             path: '/en/byoroshye'
+=======
+            path: `/${this.$i18n.locale}/services`
+>>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
          },
          {
             name: 'message.byizewe',
             children_menus:null,
-            path: '/en/services'
+            path: `/${this.$i18n.locale}/services`
          },
       ]
    },
+<<<<<<< HEAD
    //       {
    //    path:`/rental`,
    //    name: "message.rental",
@@ -408,6 +407,14 @@ menus:  [
    //       },
    //    ]
    // },
+=======
+         {
+      path:`/rental`,
+      name: "message.rental",
+      icon: "pages",
+      children: null
+	},
+>>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
    {
     name: "message.about",
     path: "/about",
