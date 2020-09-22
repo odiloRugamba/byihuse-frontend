@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="feature-product-wrap section-gap title-gap">
     <div class="containevr">
       <div id="contt" class="tab-content">
@@ -44,99 +43,6 @@
           </div>
         </div>
         <!-- </template>	 -->
-=======
-	<div class="feature-product-wrap section-gap title-gap">
-		<div class="containevr">
-			<!-- <div class="sec-title">
-				<h2>{{secTitle}}</h2>
-			</div> -->
-			<div id="contt" class="tab-content">
-				<!-- <template v-for="(tab,title) in products"> -->
-					<!-- <div v-if="index == selectedTab" :key="index"> -->
-						<!-- <slick  :options="slickOptions" :key="title"> -->
-							<div
-								v-for="(cateogary,subindex) in produ"
-								:key="subindex"
-								class="tab-item"
-							>
-								<div class="emb-card">
-									<div  id="item" class="thumb-wrap">
-										<router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-											<img 
-												alt="feature product image"
-												:src="cateogary.image"
-												width="626"
-												height="800"
-                        id="ddd"
-											>
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												
-											> -->
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/tryy.jpg"
-												
-											> -->
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/p.png"
-												
-											> -->
-                       <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/data1.jpg"
-												
-											> -->
-										</router-link>
-										<div class="wishlist-icon">
-											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
-												<v-icon  class="black--text">favorite</v-icon>
-											</v-btn>
-											<v-btn v-else @click="addItemToWishlist(cateogary)" icon >
-												<v-icon class="grey--text">favorite</v-icon>
-											</v-btn>
-										</div>
-										<div class="add-to-cart ">
-											<v-btn v-if="ifItemExistInCart(cateogary,cart)" :to="'/'+$i18n.locale+'/cart'" class="accent" icon absolute bottom>
-												<v-icon>remove_red_eye</v-icon>
-											</v-btn>
-											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >
-												<v-icon>shopping_cart</v-icon>
-											</v-btn>
-										</div>
-									</div>
-									<div class="emb-card-content pa-4">
-										<h5  class="font-weight-medium" v-text="cateogary.name"></h5>
-										<div class="emb-meta-info layout align-center my-1">
-											<div class="inline-block">
-												<h6 class="accent--text font-weight-medium">
-													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
-												</h6>
-											</div>
-											<div class="inline-block ">
-												<!-- <v-rating 
-													v-model="cateogary.rate"
-													readonly
-													background-color="grey"
-													color="#edb876"
-												>
-												</v-rating> -->
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- </div> -->
-						<!-- </slick> -->
-					</div>
-				<!-- </template>	 -->
-			</div>	
-		</div>
-    <div class="pagination text-center">
-            <v-pagination
-              class="my-4"
-              v-model="page"
-              :length="length"
-              :totalVisible="totalVisible"
-            ></v-pagination>
->>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
       </div>
     </div>
     <div class="pagination text-center">
@@ -286,7 +192,6 @@
         }
         return exists;
       }
-<<<<<<< HEAD
     },
     async mounted() {
       try {
@@ -337,88 +242,6 @@
         console.log(this.produ)
         console.log(trimeStart)
       }
-=======
-      return exists;
-    }
-  },
-  async mounted () {
-    try {
-      const res= await department.getDepartmentall()
-      // console.log(res)
-      if (this.selectedLocale === 'French') {
-        res.data.data.forEach(el => {
-        // console.log(el)
-        el.categories.forEach(pro =>{
-          pro.products.forEach(prdata =>{
-            this.products.push({
-               objectID: prdata._id,
-               type: el.name.fr,
-               image:this.linksformbackend+prdata.pictures.pic1,
-               price: prdata.price,
-               name: prdata.name.fr,
-               rate: 3,
-               image_gallery: [
-                  this.linksformbackend+prdata.pictures.pic1,
-                  this.linksformbackend+prdata.pictures.pic2,
-                  this.linksformbackend+prdata.pictures.pic3,
-                  this.linksformbackend+prdata.pictures.pic4
-               ],
-               description: prdata.description.fr,
-               category: pro.name.fr
-             })
-            //  console.log(prdata.name)
-            //  console.log(this.selectedLocale)
-          })
-        })
-      });
-      } else {
-        res.data.data.forEach(el => {
-        // console.log(el)
-        el.categories.forEach(pro =>{
-          pro.products.forEach(prdata =>{
-            this.products.push({
-               objectID: prdata._id,
-               type: el.name.en,
-               image:this.linksformbackend+prdata.pictures.pic1,
-               price: prdata.price,
-               name: prdata.name.en,
-               rate: 3,
-               image_gallery: [
-                  this.linksformbackend+prdata.pictures.pic1,
-                  this.linksformbackend+prdata.pictures.pic2,
-                  this.linksformbackend+prdata.pictures.pic3,
-                  this.linksformbackend+prdata.pictures.pic4
-               ],
-               description: prdata.description.en,
-               category: pro.name.en
-             })
-            //  console.log(prdata.name)
-            //  console.log(this.selectedLocale)
-          })
-        })
-      });
-      }
-      // console.log()
-      this.produ = this.products.slice(0, 20)
-      this.length = Math.ceil(this.products.length / 20)
-    } catch (err) {
-      console.log(err)
-    }
-  },
-  watch:{
-    page: function () {
-      // console.log(this.page, 'hello')
-      this.produ= []
-      const trimeStart = (this.page-1) * 20
-      const trimeEnd = trimeStart + 20
-      this.produ = this.products.slice(trimeStart,trimeEnd)
-      // for (let i = trimeStart; i < trimeEnd; i++) {
-      //   this.produ.push(this.products[i]);
-        
-      // }
-      console.log(this.produ)
-      console.log(trimeStart)
->>>>>>> dcb97499309ee1f3fb6008cd0c258643286e823e
     }
   };
 </script>
