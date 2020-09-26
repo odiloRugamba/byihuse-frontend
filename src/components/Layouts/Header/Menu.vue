@@ -108,12 +108,12 @@ menus:  [
          }
       ]
    },
-   //    {
-   //    path:`rental`,
-   //    name: "message.rental",
-   //    icon: "pages",
-   //    type: "sub_menu",
-	// },
+      {
+      path:`rental`,
+      name: "message.rental",
+      icon: "pages",
+      type: "sub_menu",
+	},
    {
       name: "message.about",
       children_menus:null,
