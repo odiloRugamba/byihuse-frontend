@@ -64,7 +64,7 @@
 						<!-- </slick> -->
 					</div>
                     <div v-if="!products.length">
-                        <h3>No Products Found</h3>
+                        <h3>No Products Found, Cannot find what you are looking for? call +250 784 481 653</h3>
                     </div>
 				</template>	
 			</div>
@@ -388,7 +388,7 @@ export default {
         });
         this.products=this.produ
         if (this.products.length > 20) {
-          this.length=Math.ceil(this.products.length / 20)
+          this.length=this.products.length /20
           // for (let i = 0; i < 20; i++) {
           //  this.product.push(this.products[i])
           this.product = this.products.slice(0, 20)

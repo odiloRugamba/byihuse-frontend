@@ -65,7 +65,7 @@ export default {
 			name: 'Rental'
 		},
 		{			
-			path: 'dry-cleaning',
+			path: 'byoroshye',
 			component: Drycleaning,
 			name: 'Drycleaning'
 		},

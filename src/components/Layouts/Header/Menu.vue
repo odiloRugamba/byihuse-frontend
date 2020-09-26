@@ -99,43 +99,21 @@ menus:  [
          {
             name: 'message.byoroshye',
             children_menus:null,
-            path: 'services'
+            path: 'byoroshye'
          },
          {
             name: 'message.byizewe',
             children_menus:null,
             path: 'services'
-         },
-         {
-            name: 'message.drycleaning',
-            children_menus:null,
-            path: 'dry-cleaning'
-         },
+         }
       ]
    },
-      {
-      path:`rental`,
-      name: "message.rental",
-      icon: "pages",
-      type: "sub_menu",
-      // children: [
-         // {
-         //    name: 'message.byoroshye',
-         //    children_menus:null,
-         //    path: 'services'
-         // },
-      //    {
-      //       name: 'message.byizewe',
-      //       children_menus:null,
-      //       path: 'services'
-      //    },
-      //    {
-      //       name: 'message.drycleaning',
-      //       children_menus:null,
-      //       path: 'dry-cleaning'
-      //    },
-      // ]
-	},
+   //    {
+   //    path:`rental`,
+   //    name: "message.rental",
+   //    icon: "pages",
+   //    type: "sub_menu",
+	// },
    {
       name: "message.about",
       children_menus:null,

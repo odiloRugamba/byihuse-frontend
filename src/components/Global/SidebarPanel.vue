@@ -40,7 +40,7 @@
 										<v-btn :ripple="false" class="ma-0" icon @click="deleteProductFromCart(cart)">
 											<v-icon>remove_shopping_cart</v-icon>
 										</v-btn>
-										<v-btn :ripple="false" class="ma-0" icon to="/cart" >
+										<v-btn :ripple="false" class="ma-0" icon to="/en/cart" >
 											<v-icon>edit</v-icon>
 										</v-btn>
 									</v-flex>
@@ -56,7 +56,7 @@
 							<span><emb-currency-sign></emb-currency-sign>{{shipping}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
-							<p>Tax(GST)</p>
+							<p>Tax</p>
 							<span><emb-currency-sign></emb-currency-sign>{{tax}}</span>
 						</div>
 						<v-divider class="my-4"></v-divider>

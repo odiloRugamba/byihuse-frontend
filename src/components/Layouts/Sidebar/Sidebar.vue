@@ -164,13 +164,8 @@ menus:  [
       icon: "pages",
       type: "sub_menu",
       children: [
-         // {
-         //    name: "message.byiza",
-         //    children_menus:null,
-         //    path: "/about"
-         // },
          {
-            name: 'message.byoroshye',
+            name: 'byoroshye',
             children_menus:null,
             path: `/${this.$i18n.locale}/services`
          },

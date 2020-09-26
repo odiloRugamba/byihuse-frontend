@@ -15,7 +15,7 @@
                            <div class="notifications header-v3-top-tools">
                               <emb-cart></emb-cart>
                               <emb-wishlist></emb-wishlist>
-                              <emb-user-block :data="userLinks"></emb-user-block>
+                              <!-- <emb-user-block :data="userLinks"></emb-user-block> -->
                            </div>
                         </v-flex>
                      </v-layout>
@@ -72,35 +72,35 @@ import Lang from './Lang'
 import Currency from './Currency'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
-import UserBlock from './UserBlock'
+// import UserBlock from './UserBlock'
 import Search from './Search'
 import AppConfig from "Constants/AppConfig";
 export default {
 	data (){
 	   return{
 			appLogoDark: AppConfig.appLogoDark,
-			userLinks: [
-				{
-					icon:'account_circle',
-					title: 'User Profile',
-					path:"/account/profile"
-				},
-				{
-					icon:'settings',
-					title:'Account',
-					path:"/account/profile"
-				},
-				{
-					icon:'local_post_office',
-					title:'Messages',
-					path:"/account/profile"
-				},
-				{	
-					icon:'power_settings_new',
-					title: 'LogOut',
-					path:"/session/signin"
-				}
-			],
+			// userLinks: [
+			// 	{
+			// 		icon:'account_circle',
+			// 		title: 'User Profile',
+			// 		path:"/account/profile"
+			// 	},
+			// 	{
+			// 		icon:'settings',
+			// 		title:'Account',
+			// 		path:"/account/profile"
+			// 	},
+			// 	{
+			// 		icon:'local_post_office',
+			// 		title:'Messages',
+			// 		path:"/account/profile"
+			// 	},
+			// 	{	
+			// 		icon:'power_settings_new',
+			// 		title: 'LogOut',
+			// 		path:"/session/signin"
+			// 	}
+			// ],
 		}
 	},
 	components: {
@@ -109,7 +109,7 @@ export default {
       embLang: Lang,
 		embCurrency: Currency,
 		embWishlist: Wishlist,
-		embUserBlock:UserBlock,
+		// embUserBlock:UserBlock,
 		embSearch:Search,
    },
    mounted() {
