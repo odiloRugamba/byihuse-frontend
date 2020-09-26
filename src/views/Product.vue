@@ -76,83 +76,9 @@
 
 </style>
 <script>
-// import Slick from "vue-slick";
-import { mapGetters } from "vuex";
-import department from "Api/department";
-import currency from "Api/currency";
-export default {
-  props: ["secTitle"],
-  computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale", "selectedCurrency"]),
-    // produc () {
-    //   return this.$store.state.products
-    // }
-  },
-  components: {
-    // Slick
-  },
-  data() {
-    return {
-      selectedTab: 0,
-      activeTab: null,
-      slickOptions: {
-        autoplay: true,
-        slidesToShow: 5,
-        infinite: false,
-        arrows: false,
-        dots: true,
-        rtl: this.rtlLayout,
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 3
-            }
-          },
-          {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 2
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              arrows: false,
-              dots: false
-            }
-          }
-        ]
-      },
-      products: [],
-      page:1,
-      produ: [],
-      length: 0,
-      totalVisible:0,
-      currentValue: '',
-      symbol:''
-    };
-  },
-  methods: {
-    /**
-     * method for adding item to cart
-     */
-    addProductToCart(newItem) {
-      this.$snotify.success("Product adding to the cart", {
-        closeOnClick: false,
-        pauseOnHover: false,
-        timeout: 1000
-      });
-      setTimeout(() => {
-        this.$store.dispatch("addProductToCart", newItem);
-      }, 100);
-// =======
-  // import Slick from "vue-slick";
-  import {
-    mapGetters
-  } from "vuex";
+  import {mapGetters} from "vuex";
   import department from "Api/department";
+  import currency from "Api/currency"
   export default {
     props: ["secTitle"],
     computed: {
@@ -264,11 +190,10 @@ export default {
         }
         return exists;
       }
-    }
-  },
+    },
   async mounted () {
     try {
-      const res= await department.getDepartmentall()
+        const res= await department.getDepartmentall()
       // console.log(res)
       const curRes= await currency.getcurrency()
       curRes.data.data.forEach(el=> {
@@ -381,88 +306,26 @@ export default {
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
-// =======
-    },
-    async mounted() {
-      try {
-        const res = await department.getDepartmentall()
-        // console.log(res)
-        res.data.data.forEach(el => {
-          // console.log(el)
-          el.categories.forEach(pro => {
-            pro.products.forEach(prdata => {
-              this.products.push({
-                objectID: prdata._id,
-                type: el.name.en,
-                image: this.linksformbackend + prdata.pictures.pic1,
-                price: prdata.price,
-                name: prdata.name.en,
-                rate: 3,
-                image_gallery: [
-                  this.linksformbackend + prdata.pictures.pic1,
-                  this.linksformbackend + prdata.pictures.pic2,
-                  this.linksformbackend + prdata.pictures.pic3,
-                  this.linksformbackend + prdata.pictures.pic4
-                ],
-                description: prdata.description.en,
-                category: pro.name.en,
-                department: el.name.en,
-              })
-            })
-// >>>>>>> 594436db40aaf89caa43bf53d7bd9cb31073fe6e
           })
-        });
-        // console.log()
-        this.produ = this.products.slice(0, 20)
-        this.length = this.products.length / 20
-      } catch (err) {
-        console.log(err)
-      }
-    },
-    watch: {
-      page: function () {
-        // console.log(this.page, 'hello')
-        this.produ = []
-        const trimeStart = (this.page - 1) * 20
-        const trimeEnd = trimeStart + 20
-        this.produ = this.products.slice(trimeStart, trimeEnd)
-        // for (let i = trimeStart; i < trimeEnd; i++) {
-        //   this.produ.push(this.products[i]);
-
-        // }
-        console.log(this.produ)
-        console.log(trimeStart)
-      }
-// <<<<<<< HEAD
-      // console.log(this.products)
-      // console.log()
-      this.produ = this.products.slice(0, 20)
-      this.length = Math.ceil(this.products.length / 20)
+        })
+        })
+    }
     } catch (err) {
       console.log(err)
     }
   },
   watch:{
     page: function () {
-      // window.scrollTo(0, 0);
       window.scrollTo({
         top:0,
         left: 0,
         behavior: "smooth"
       })
-      // console.log(this.page, 'hello')
       this.produ= []
       const trimeStart = (this.page-1) * 20
       const trimeEnd = trimeStart + 20
       this.produ = this.products.slice(trimeStart,trimeEnd)
-      // for (let i = trimeStart; i < trimeEnd; i++) {
-      //   this.produ.push(this.products[i]);
-        
-      // // }
-      // console.log(this.produ)
-      // console.log(trimeStart)
-// =======
-// >>>>>>> 594436db40aaf89caa43bf53d7bd9cb31073fe6e
     }
-  };
+  }
+}
 </script>
