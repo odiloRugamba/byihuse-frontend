@@ -33,7 +33,11 @@
 }
 </style>
 <script>
+import { mapGetters } from 'vuex'
 	export default {
+		computed: {
+			...mapGetters(["user"])
+		},
 		// props: ['data'],
 		methods: {
 			changePage(page) {
@@ -42,34 +46,20 @@
 				// location.replace(page)
 				// location.reload(false)
 				if (this.user) {
-					this.user= false
+					this.$store.state.user= false
 					console.log('hel')
-				}else{
-					this.user= true
-					console.log('hel0')
 				}
 			}
 		
 		},
 		data () {
 			return {
-				user: false,
 			userLinks: [
 				{
 					icon:'account_circle',
 					title: 'User Profile',
 					path:"/account/profile"
 				},
-				// {
-				// 	icon:'settings',
-				// 	title:'Account',
-				// 	path:"/account/profile"
-				// },
-				// {
-				// 	icon:'local_post_office',
-				// 	title:'Messages',
-				// 	path:"/account/profile"
-				// }
 			],
 			data: ''
 			}
@@ -78,16 +68,11 @@
 		this.data =JSON.parse(localStorage.getItem('data'))
 		// console.log(data)
 		if (this.data) {
-			this.user = true
+			this.$store.state.user = true
 		console.log('hhe')
 		}
 		// this.data = true
 		// console.log(this.firstName)
 	},
-	// watch:{
-	// 	data: function() {
-	// 		console.log('jdshjdhfjdshjkdfjk')
-	// 	}
-	// }
 	}
 </script>

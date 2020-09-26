@@ -15,4 +15,10 @@ export const currencies = [
       title:'RWF',
       symbol:"RWF"
    },
+   {
+      id:1,
+      img: '/static/images/united-states.png',
+      title:'USD',
+      symbol:"$"
+   },
 ]

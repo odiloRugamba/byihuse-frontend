@@ -6,7 +6,7 @@
             <label>{{info.key}} :</label>
             <span>{{info.value}}</span>
          </div>
-         <router-link :to="{name: 'EditProfileInfo', query: {type: 'info'}}" > <v-btn class="accent mx-0">Edit</v-btn> </router-link>
+         <!-- <router-link :to="{name: 'EditProfileInfo', query: {type: 'info'}}" > <v-btn class="accent mx-0">Edit</v-btn> </router-link> -->
       </div>
    </div>
 </template>
@@ -32,10 +32,10 @@ export default {
             //    key:"Location",
             //    value:""
             // },
-            {
-               key:"Role",
-               value:""
-            },
+            // {
+            //    key:"Role",
+            //    value:""
+            // },
             // {
             //    key:"Departments",
             //    value:""
@@ -46,7 +46,7 @@ export default {
    },
    created () {
 		const data =JSON.parse(localStorage.getItem('data'))
-		console.log(data)
+		// console.log(data)
       this.profileData[0].value= data.firstName
       this.profileData[1].value = data.lastName
       this.profileData[2].value = data.email

@@ -46,7 +46,7 @@
                   <v-layout row wrap justify-space-between align-center>
                      <v-flex xs12 sm12 md6 lg4 xl4>
                         <div class="site-logo d-inline-block">
-                           <router-link to="/en/home">
+                           <router-link :to="'/'+$i18n.locale+'/home'">
                               <img id="logo" alt="site-logo" height="34" src="/static/images/logo/logoo.png" width="224">
                            </router-link>
                         </div>
@@ -219,7 +219,7 @@ export default {
             window.location.reload(false);
          }else{
             localStorage.removeItem('current')
-            location.assign(`/#/en/search/${this.keyword}`)
+            location.assign(`/#/${this.$i18n.locale}/search/${this.keyword}`)
             const current = `/search/${this.keyword}`
             localStorage.setItem('current', current)
          }

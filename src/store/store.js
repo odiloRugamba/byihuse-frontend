@@ -14,6 +14,7 @@ import settings from './modules/settings';
 import payment from './modules/payment';
 import blog from './modules/blog';
 import productDetail from './modules/productDetail';
+// import { data } from 'jquery';
 
 Vue.use(Vuex);
 
@@ -29,10 +30,14 @@ export const store = new Vuex.Store({
         token: '',
         drawer: null,
         totalPrice: '',
-        // linksformbackend: 'http://localhost:4000/'
-        linksformbackend:'Https://byihuse.rw/'
+        linksformbackend: 'http://localhost:4000/',
+        // linksformbackend:'Https://byihuse.rw/',
+        user: false
     },
     getters:{
+        user: state =>{
+            return state.user;
+        },
         linksformbackend: state =>{
             return state.linksformbackend;
         },

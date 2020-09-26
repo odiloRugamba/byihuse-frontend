@@ -1,6 +1,8 @@
 import UserPanel from 'Container/UserPanel';
 
-
+// const editEmail= () =>import('/views/UserAccount/editEmail.vue')
+// const editPassword= () =>import('/views/UserAccount/editPassword.vue')
+// const editNames= () =>import('/views/UserAccount/editNames.vue')
 const Rental = () => import('Views/rental');
 const Drycleaning = () => import('Views/drycleaning');
 const Search = () => import('Views/search');
@@ -24,8 +26,10 @@ const Profile = () => import('Views/UserAccount/Profile.vue');
 const Address = () => import('Views/UserAccount/Address.vue');
 const Cards = () => import ('Views/UserAccount/Cards.vue');
 const EditProfile = () => import ('Views/UserAccount/EditProfile.vue');
-const EditAddress = () => import ('Views/UserAccount/EditAddress.vue');
-const EditProfileInfo = () => import ('Views/UserAccount/EditProfileInfo.vue');
+const editEmail = () => import ('Views/UserAccount/editEmail.vue');
+const editNames = () => import ('Views/UserAccount/editNames.vue');
+const editPassword = () => import ('Views/UserAccount/editPassword.vue');
+// const EditProfileInfo = () => import ('Views/UserAccount/EditProfileInfo.vue');
 const BlogDetail = () => import('Views/Blogs/BlogDetails');
 const ContactUs = () => import('Views/Contact');
 const PrivacyPolicy = () => import('Views/PrivacyPolicy');
@@ -147,12 +151,27 @@ export default {
 				{
 					path: '/account/profile/edit',name:'EditProfile',component: EditProfile
 				},
+				// {
+				// 	path: '/account/profile/edit',name:'EditAddress',component: EditAddress
+				// },
 				{
-					path: '/account/profile/edit',name:'EditAddress',component: EditAddress
+					path: '/account/profile-edit/name',
+					name:'editNames',
+					component: editNames,
 				},
 				{
-					path: '/account/profile/edit',name:'EditProfileInfo',component: EditProfileInfo,
+					path: '/account/profile-edit/email',
+					name:'editEmail',
+					component: editEmail,
 				},
+				{
+					path: '/account/profile-edit/password',
+					name:'editPassword',
+					component: editPassword,
+				},
+				// {
+				// 	path: '/account/profile/edit',name:'EditProfileInfo',component: EditProfileInfo,
+				// },
         ]
 		},
 		{ 

@@ -24,7 +24,10 @@ export default {
             sortable: false,
             value: 'srno'
             },
-            { text: 'Order Id', value: 'orderId' },
+            {
+               text: 'Order Id',
+               value: 'orderId'
+            },
             { text: 'Product Name', value: 'name' },
             { text: 'Price', value: 'price' },
             { text: 'Status', value: 'status' },

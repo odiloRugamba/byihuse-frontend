@@ -71,14 +71,30 @@ export default {
 						id:"profile"
 					},
 				],
-				// address:[
-				// 	{
-				// 		title:"Addresses",
-				// 		icon:"location_on",
-				// 		path:"/account/address",
-				// 		id:"addresses"
-				// 	}
-				// ],
+				editNames:[
+					{
+						title:"Edit Names",
+						icon:"account_circle",
+						path:"/account/profile-edit/name",
+						id:"addresses"
+					}
+				],
+				editEmails:[
+					{
+						title:"Edit Emails",
+						icon:"account_circle",
+						path:"/account/profile-edit/email",
+						id:"addresses"
+					}
+				],
+				editPassword:[
+					{
+						title:"Edit Password",
+						icon:"account_circle",
+						path:"/account/profile-edit/password",
+						id:"addresses"
+					}
+				],
 				// cards:[
 				// 	{
 				// 		title:"Saved Cards",

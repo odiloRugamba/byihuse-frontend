@@ -78,7 +78,7 @@
 			}else{
 				this.$router.push(`/${lang.locale}/home`)
 			}
-			
+			// localStorage.removeItem('current')
 			// console.log(lang)
 			// console.log( current)
 			// console.log(current)

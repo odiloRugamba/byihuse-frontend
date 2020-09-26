@@ -263,10 +263,11 @@ width:200px;
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
 import department from "Api/department";
+import currency from "Api/currency";
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale"]),
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale", "selectedCurrency"]),
     // produc () {
     //   return this.$store.state.products
     // }
@@ -312,7 +313,9 @@ export default {
       page:1,
       produ: [],
       length: 0,
-      totalVisible:0
+      totalVisible:0,
+      currentValue: '',
+      symbol:''
     };
   },
   methods: {
@@ -383,7 +386,16 @@ export default {
     try {
       const res= await department.getDepartmentall()
       // console.log(res)
-      if (this.selectedLocale === 'French') {
+      const curRes= await currency.getcurrency()
+      curRes.data.data.forEach(el=> {
+        // console.log(el, this.selectedCurrency)
+        if (el.symbol === this.selectedCurrency.symbol) {
+          console.log(el)
+          this.symbol= true
+          this.currentValue= el.currentValue
+        }
+      })
+      if (this.selectedLocale === 'French' && !this.symbol) {
         res.data.data.forEach(el => {
         // console.log(el)
         el.categories.forEach(pro =>{
@@ -409,7 +421,7 @@ export default {
           })
         })
       });
-      } else {
+      } else if(this.selectedLocale ==='English' && !this.symbol) {
         res.data.data.forEach(el => {
         // console.log(el)
         el.categories.forEach(pro =>{
@@ -430,12 +442,66 @@ export default {
                description: prdata.description.en,
                category: pro.name.en
              })
+            //  console.log(prdata.price)
+             console.log('this.selectedLocale')
+          })
+        })
+      });
+      }
+      if (this.selectedLocale === 'French' && this.symbol) {
+        res.data.data.forEach(el => {
+        // console.log(el)
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.fr,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: this.currentValue*prdata.price,
+               name: prdata.name.fr,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.fr,
+               category: pro.name.fr
+             })
+            //  console.log(prdata.name)
+            //  console.log(this.selectedLocale)
+          })
+        })
+      });
+      } else if(this.selectedLocale ==='English' && this.symbol) {
+        res.data.data.forEach(el => {
+        // console.log(el)
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.en,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: this.currentValue*prdata.price,
+               name: prdata.name.en,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.en,
+               category: pro.name.en
+             })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
           })
         })
       });
       }
+      // console.log(this.products)
       // console.log()
       this.produ = this.products.slice(0, 20)
       this.length = Math.ceil(this.products.length / 20)
@@ -445,6 +511,12 @@ export default {
   },
   watch:{
     page: function () {
+      // window.scrollTo(0, 0);
+      window.scrollTo({
+        top:0,
+        left: 0,
+        behavior: "smooth"
+      })
       // console.log(this.page, 'hello')
       this.produ= []
       const trimeStart = (this.page-1) * 20
@@ -453,9 +525,9 @@ export default {
       // for (let i = trimeStart; i < trimeEnd; i++) {
       //   this.produ.push(this.products[i]);
         
-      // }
-      console.log(this.produ)
-      console.log(trimeStart)
+      // // }
+      // console.log(this.produ)
+      // console.log(trimeStart)
     }
   }
 };

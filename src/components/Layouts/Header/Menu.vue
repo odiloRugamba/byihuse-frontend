@@ -160,8 +160,25 @@ menus:  [
 			this.resCat = await categories.getCategories()
          this.resDept = await departments.getDepartment()
 			var obj = []
-			var arr = {}
-			this.resDept.data.data.forEach(dep =>{
+         var arr = {}
+         if (this.selectedLocale === 'French') {
+            this.resDept.data.data.forEach(dep =>{
+			    this.resCat.data.data.forEach(el => {
+					if (dep._id === el.department) {
+					obj.push({
+							path: `${el.name.fr}`,
+							children_menus:null,
+                            name: `${el.name.fr}`
+						})
+					}
+            });
+            arr[dep.name.fr] = {...obj}
+            for (let i = 0; i < obj.length; i++) {
+               delete obj[i]
+            }
+         })
+         } else {
+           this.resDept.data.data.forEach(dep =>{
 			    this.resCat.data.data.forEach(el => {
 					if (dep._id === el.department) {
 					obj.push({
@@ -175,7 +192,9 @@ menus:  [
             for (let i = 0; i < obj.length; i++) {
                delete obj[i]
             }
-         })
+         }) 
+         }
+			
          this.menus[2].children = arr
 			// console.log(this.menus[3].children)
 		} catch (err) {

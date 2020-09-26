@@ -26,8 +26,20 @@
 		},
 		methods: {
 			changeCurrency(currency) {
+				localStorage.removeItem('currency')
+				this.$store.dispatch("changeCurrency", currency);
+				// console.log(currency)
+				localStorage.setItem('currency',JSON.stringify(currency))
+				location.reload(false)
+
+			},
+		},
+		created(){
+			const currency = JSON.parse(localStorage.getItem('currency'))
+			if (currency) {
 				this.$store.dispatch("changeCurrency", currency);
 			}
+			console.log(currency)
 		}
 	}
 </script>
