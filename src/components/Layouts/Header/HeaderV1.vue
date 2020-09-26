@@ -15,7 +15,7 @@
                            <div class="notifications header-v3-top-tools">
                               <emb-cart id="cartlist"></emb-cart>
                               <emb-wishlist id="cartlist"></emb-wishlist>
-                              <!-- <emb-user-block id="user" :data="userLinks"></emb-user-block> -->
+                              <emb-user-block id="user" :data="userLinks"></emb-user-block>
                            </div>
                         </v-flex>
                      </v-layout>
@@ -164,7 +164,7 @@ import Lang from './Lang'
 import Currency from './Currency'
 import Cart from './Cart'
 import Wishlist from './Wishlist'
-// import UserBlock from './UserBlock'
+import UserBlock from './UserBlock'
 import Search from './Search'
 // import AppConfig from "Constants/AppConfig";
 
@@ -181,7 +181,7 @@ export default {
 		embCurrency: Currency,
 		embCart:Cart,
 		embWishlist: Wishlist,
-		// embUserBlock:UserBlock,
+		embUserBlock:UserBlock,
 		embSearch:Search,
 	},
 	mounted() {
