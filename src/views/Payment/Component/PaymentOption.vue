@@ -69,7 +69,7 @@ import order from "Api/order";
 	import { mapGetters } from 'vuex';
    export default{
 		computed: {
-			...mapGetters(["stepOneFormValid","cart", "drawer", "userDetails", "totalPrice"])
+			...mapGetters(["stepOneFormValid","cart", "drawer", "userDetails", "totalPrice", "shipping"])
 		},
       data () {
 	   	return{
@@ -116,9 +116,10 @@ import order from "Api/order";
 					_id: el.id,
 					quantity: el.quantity
 				})
-				this.total +=el.total
-				console.log(el)
+				this.total +=(el.total*el.quantity)
 			});
+			// console.log(this.total+ this.shipping)
+			// console.log(this.shipping)
 			this.invoiceData = {
 				firstName: this.userDetails.firstName,
 				lastName: this.userDetails.lastName,
@@ -131,9 +132,10 @@ import order from "Api/order";
 				phoneNumber: this.userDetails.phone,
 				MoMoPhoneNumber: this.userDetails.phone,
 				totalAmmount: this.total,
-				products: this.product
+				products: this.product,
+				delivery:this.shipping
 			}
-
+			console.log(this.invoiceData)
 			const res = await order.makeOrder(this.invoiceData)
 			if (option === 'CASH') {
 				this.$router.push('/session/thank-you')
@@ -141,6 +143,8 @@ import order from "Api/order";
 				// console.log(res.data.data.payment.meta.authorization.redirect)
 				// window.open(res.data.data.payment.meta.authorization.redirect)
 				location.replace(res.data.data.payment.meta.authorization.redirect);
+				// console.log(this.totalPrice)
+				console.log(res)
 			}
 			// console.log(res)
 			

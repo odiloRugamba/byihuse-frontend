@@ -69,7 +69,7 @@
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p> -->
 							<p class="accent--text d-inline-block sec-content">
-								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price}}
+								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price*rentalHour}}
 							</p>
 							<p>{{selectedServices.paragraph}}</p>
 							
@@ -101,6 +101,13 @@
 									<h5>Fill this form to request this Rental</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
+                                    <div class="hourRental">
+                                        <div class="input">
+                                         <v-text-field v-model="rentalHour" id="input"  solo></v-text-field>   
+                                         <!-- <input class="input font-weight-regular" type="text" v-model="rentalHour" value=""> -->
+                                        </div>
+                                        <div class="font-weight-regular rentalH ml-2">:Renting Hour</div>
+                                    </div>
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>
@@ -121,6 +128,24 @@
    </div>
 </template>
 <style scoped>
+.hourRental{
+    /* width: 200px; */
+    /* height: 50px; */
+    display: flex;
+    align-items: center;
+}
+.input{
+    width: 100px;
+    font-size: 20px;
+}
+#input{
+text-align: end;
+}
+.rentalH{
+    font-size: 20px;
+    margin-bottom: 20px;
+    
+}
 #services{
     position: relative;
     bottom: 10px;
@@ -190,7 +215,9 @@ export default {
                 paragraph: "",
                 productGallery: {}
       },
-      	selectedPreviewImage:'',
+          selectedPreviewImage:'',
+          rentalHour:'1',
+        //   price
     };
   },
   mounted() {
@@ -202,13 +229,15 @@ export default {
               this.loading= true
               console.log(this.selectedServices)
            const orderRes = await Rental.rentalOrder({
-            rental: this.selectedServices.id,
+            rentalId: this.selectedServices.id,
             firstName:this.fristName,
             lastName:this.lastName,
             email:this.email,
-            Phone: this.phoneNumber,
+            phone: this.phoneNumber,
             address: this.address,
-            details: this.details
+            details: this.details,
+            agentCode:this.agentCode,
+            estimatedHours:this.rentalHour
             })
             console.log(orderRes)
             this.$snotify.success(`${orderRes.data.message}`,{
@@ -221,6 +250,7 @@ export default {
                 // this.$router.push('/en/session/thank-you')
           } catch (err) {
               console.log(err.message)
+              this.loading=false
           }
         //   console.log('hhelo')
         
@@ -241,7 +271,7 @@ export default {
           });
         //   this.servicesName.splice(0,1)
           res.data.data.forEach(el => {
-            //   console.log(el)
+              console.log(el)
             if (this.rentalNames[0].id === el._id) {
               this.selectedServices= {
                     id: el._id,
@@ -255,6 +285,7 @@ export default {
                         // pic4:this.linksformbackend+el.pictures.pic4,
                     },
                 },
+                // this.price= el.
                 this.selectedPreviewImage=this.linksformbackend+el.pictures.pic1
 
             }

@@ -47,13 +47,25 @@
 								</h4>
 
 								<p>{{selectedProduct.descprition}}</p>
-								<div class="bullet-points mb-4">
+								<div class="serviveListDive">
+									<div class="font-weight-regular title">Additional service:</div>
+									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
+										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
+											<emb-currency-sign></emb-currency-sign>
+											{{service.price}}
+										</v-btn>
+									 <div id="serviceName">{{service.name}}</div>
+									</div>
+								</div>
+
+								<!-- <div class="bullet-points mb-4">
 									<ul class="features pl-13">
 										<li v-for="(Features,key) in selectedProduct.features" :key="key">
 											{{Features}}
 										</li>
 									</ul>
-								</div>
+								</div> -->
+
 								<div class="mb-6">
 									<a href="javascript:void(0)" class="color-inherit text-underline"
 										@click="addItemToWishlist(selectedProduct)">
@@ -144,7 +156,21 @@
 </template>
 <style scoped>
 	/* @media screen and (min-width: 500px) { */
+	/* .title{
 
+	} */
+	.serviveListDive{
+		margin-bottom: 20px;
+	}
+	#servivePrice{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.serviceList{
+		display: flex;
+		/* width: 30px; */
+		margin-top: 10px;
+	}
 	.thumb-wrap {
 		height: 380px;
 		width: 300px;
@@ -176,7 +202,8 @@
 				selectedProduct: {},
 				image_gallery: null,
 				selectedImage: '',
-				products: []
+				products: [],
+				AdditionalService:[]
 			}
 		},
 		computed: {
@@ -194,6 +221,17 @@
 		},
 		methods: {
 			/* for routing matching **/
+			selectService(service){
+				if (!service.select) {
+					service.select= true
+					this.selectedProduct.price=this.selectedProduct.price+service.price
+				// console.log(service.select)
+				}else{
+					this.selectedProduct.price=this.selectedProduct.price-service.price
+					service.select= false
+				// console.log(service.select)
+				}
+			},
 			async getParametre() {
 				try {
 					this.id = this.$route.params.id;
@@ -211,7 +249,14 @@
 					this.selectedProduct.name = res.data.data.name.en
 					this.selectedProduct.price = res.data.data.price
 					this.selectedProduct.descprition = res.data.data.description.en
-					// console.log()
+					console.log(res.data.data)
+					res.data.data.additionalServices.forEach(el =>{
+						this.AdditionalService.push({
+							select: false,
+							name:el.name,
+							price: el.price
+						})
+					})
 					this.selectedProduct.tags = ['Black Men Summer']
 					// this.selectedProduct.features = [
 					// 	'Black Men Summer',

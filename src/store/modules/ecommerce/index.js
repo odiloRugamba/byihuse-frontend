@@ -7,7 +7,6 @@ const state = {
       cart,
       wishlist,
       tax: 0,
-      shipping: 0,
       invoiceData: {
             products: [],
             firstName: '',
@@ -33,9 +32,6 @@ const getters = {
       },
       tax: state => {
             return state.tax;
-      },
-      shipping: state => {
-            return state.shipping;
       },
       invoiceData: state => {
             return state.invoiceData;

@@ -69,7 +69,7 @@ const mutations = {
          res.data.data.forEach(el => {
             el.categories.forEach(pr =>{
                pr.products.forEach(prdata =>{
-               if (prdata.featured === false) {
+               if (prdata.featured === true) {
                  obj.push({
                   objectID: prdata._id,
                   type: el.name.fr,

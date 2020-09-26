@@ -4,7 +4,15 @@
 		<div class="emb-payment-content section-gap overflow-x-hidden">
 			<v-container grid-list-xl py-0>
 				<template v-if="cart.length > 0">
-					<emb-sidebar-panel class="mb-12"></emb-sidebar-panel>	
+					<div class="deliveryNavigation">
+						<div class="delivery">
+							<v-btn @click="freedelivery" :class="{accent: attached}">Free Delivery</v-btn>
+							<v-btn id="premium" @click="premiumdelivery" :class="{accent: !attached}">primium Delivery</v-btn>
+						</div>
+						<div class="Navigation">
+							<emb-sidebar-panel class="mb-12"></emb-sidebar-panel>	
+						</div>
+					</div>
 					<v-expansion-panels v-model="panel" multiple >
 						<v-expansion-panel>
 							<shipping-address @changeStepOneForm="enableStepOneForm"></shipping-address>
@@ -41,7 +49,8 @@ export default {
 	data(){
 		return{
 			stepOneFormValid: false,
-			expansionPanel: [0]
+			expansionPanel: [0],
+			attached: true
 		}
 	},
 	components:{
@@ -76,7 +85,31 @@ export default {
 		},
 		changePanelValue(){
 			this.expansionPanel = [2];
+		},
+		freedelivery(){
+			this.attached= true
+			this.$store.state.shipping= 0
+		},
+		premiumdelivery(){
+			this.attached= false
+			this.$store.state.shipping= 2000
+			// console.log('helo')
 		}
 	}
 }
 </script>
+<style  scoped>
+.deliveryNavigation{
+	display: flex;
+	/* justify-content: end; */
+}
+.delivery{
+	flex: 1;
+}
+.Navigation{
+	flex: 1;
+}
+#premium{
+	margin-left: 10px;
+}
+</style>

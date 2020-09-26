@@ -22,6 +22,7 @@ export const store = new Vuex.Store({
     state : {
         // language,
         // selectedLocale: languages[0],
+        shipping: 0,
         firstName: '',
         lastName: '',
         email: '',
@@ -37,6 +38,9 @@ export const store = new Vuex.Store({
         // linksformbackend:'Https://byihuse.rw/',
     },
     getters:{
+        shipping: state => {
+            return state.shipping;
+      },
         user: state =>{
             return state.user;
         },

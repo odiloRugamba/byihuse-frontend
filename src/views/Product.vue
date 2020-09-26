@@ -82,7 +82,7 @@
   export default {
     props: ["secTitle"],
     computed: {
-      ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
+      ...mapGetters(["rtlLayout", "cart", "wishlist","selectedLocale", "linksformbackend", "selectedCurrency"]),
     },
     components: {
       // Slick
@@ -124,7 +124,9 @@
         page: 1,
         produ: [],
         length: 7,
-        totalVisible: 7
+        totalVisible: 7,
+        symbol: '',
+        currentValue:''
       };
     },
     methods: {
@@ -292,7 +294,7 @@
                objectID: prdata._id,
                type: el.name.en,
                image:this.linksformbackend+prdata.pictures.pic1,
-               price: this.currentValue*prdata.price,
+               price: prdata.price/this.currentValue,
                name: prdata.name.en,
                rate: 3,
                image_gallery: [
@@ -310,6 +312,8 @@
         })
         })
     }
+    // console.log(this.products.slice(0, 20))
+    this.produ= this.products.slice(0,20)
     } catch (err) {
       console.log(err)
     }
