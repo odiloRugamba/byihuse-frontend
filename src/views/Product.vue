@@ -294,7 +294,7 @@
                objectID: prdata._id,
                type: el.name.en,
                image:this.linksformbackend+prdata.pictures.pic1,
-               price: prdata.price/this.currentValue,
+               price: (prdata.price/this.currentValue).toFixed(2),
                name: prdata.name.en,
                rate: 3,
                image_gallery: [

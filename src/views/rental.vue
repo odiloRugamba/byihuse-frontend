@@ -68,9 +68,6 @@
 							<!-- <p class="d-inline-block mr-1">
 								<strike class="px-1"><emb-currency-sign class="font-color"></emb-currency-sign>42.46</strike>
 							</p> -->
-							<p class="accent--text d-inline-block sec-content">
-								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price*rentalHour}}
-							</p>
 							<p>{{selectedServices.paragraph}}</p>
 							
 						</div>
@@ -108,6 +105,9 @@
                                         </div>
                                         <div class="font-weight-regular rentalH ml-2">:Renting Hour</div>
                                     </div>
+                                    <p class="accent--text d-inline-block sec-content">
+								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price*rentalHour}}
+							</p>
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>

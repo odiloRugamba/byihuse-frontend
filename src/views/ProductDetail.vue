@@ -47,7 +47,7 @@
 								</h4>
 
 								<p>{{selectedProduct.descprition}}</p>
-								<div class="serviveListDive">
+								<div v-if="AdditionalService" class="serviveListDive">
 									<div class="font-weight-regular title">Additional service:</div>
 									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
 										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
@@ -249,7 +249,7 @@
 					this.selectedProduct.name = res.data.data.name.en
 					this.selectedProduct.price = res.data.data.price
 					this.selectedProduct.descprition = res.data.data.description.en
-					console.log(res.data.data)
+					// console.log(res.data.data)
 					res.data.data.additionalServices.forEach(el =>{
 						this.AdditionalService.push({
 							select: false,
