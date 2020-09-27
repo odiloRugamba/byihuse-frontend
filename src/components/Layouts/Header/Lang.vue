@@ -66,8 +66,15 @@
 		// 	}
 		// },
 		created() {
-			const lang = JSON.parse(localStorage.getItem('lang'))
+			let lang = JSON.parse(localStorage.getItem('lang'))
 			const current = localStorage.getItem('current')
+			if (!lang) {
+				lang= {
+					name: "English",
+					locale: "en"
+					}
+				// localStorage.setItem('lang',JSON.)
+			}
 			if (current) {
 			this.$store.dispatch("changeLanguage", lang.name);
 			this.$i18n.locale = lang.locale;
@@ -77,12 +84,8 @@
 			this.specialLang=lang.name
 			}else{
 				this.$router.push(`/${lang.locale}/home`)
-			}
-			// localStorage.removeItem('current')
-			// console.log(lang)
-			// console.log( current)
-			// console.log(current)
-			// localStorage.removeItem('current')		
+				// this.$store.dispatch("changeLanguage", {name: "English", locale: "en"});
+			}		
 		}
 	}
 </script>

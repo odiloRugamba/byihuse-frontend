@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import myOrder from "Api/my-order.js";
 export default {
    data(){
       return{
@@ -76,7 +77,17 @@ export default {
             }
          ]
       }
-   }   
+   },
+   async created(){
+      try {
+         const resRental= await myOrder.myRentalOrder()
+          const resProduct= await myOrder.myProductsOrder()
+          console.log(resRental)
+          console.log(resProduct)
+      } catch (err) {
+         console.log(err.response.message)
+      }
+   }
 }
 </script>
 

@@ -1,16 +1,12 @@
 import api from './index.js'
 
 export default {
-  async getRental () {
-    const res = api().get('/api/rentals')
+  async myRentalOrder () {
+    const res = api().get(`/api/rental-orders/my-orders`)
     return res
   },
-  async getOne (id) {
-    const res = api().get(`/api/rentals/${id}`)
-    return res
-  },
-  async rentalOrder (data) {
-    const res = api().post(`/api/rental-orders`, data)
+  async myProductsOrder () {
+    const res = api().get(`/api/orders/my-orders`)
     return res
   },
 }

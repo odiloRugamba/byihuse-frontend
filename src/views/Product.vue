@@ -125,7 +125,7 @@
         produ: [],
         length: 7,
         totalVisible: 7,
-        symbol: '',
+        symbol: false,
         currentValue:''
       };
     },
@@ -201,7 +201,7 @@
       curRes.data.data.forEach(el=> {
         // console.log(el, this.selectedCurrency)
         if (el.symbol === this.selectedCurrency.symbol) {
-          console.log(el)
+          // console.log(el)
           this.symbol= true
           this.currentValue= el.currentValue
         }
@@ -234,7 +234,7 @@
       });
       } else if(this.selectedLocale ==='English' && !this.symbol) {
         res.data.data.forEach(el => {
-        // console.log(el)
+        console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
             this.products.push({
@@ -268,7 +268,7 @@
                objectID: prdata._id,
                type: el.name.fr,
                image:this.linksformbackend+prdata.pictures.pic1,
-               price: this.currentValue*prdata.price,
+               price: (prdata.price/this.currentValue).toFixed(2),
                name: prdata.name.fr,
                rate: 3,
                image_gallery: [
@@ -286,8 +286,9 @@
         })
       });
       } else if(this.selectedLocale ==='English' && this.symbol) {
+        console.log('hello')
         res.data.data.forEach(el => {
-        // console.log(el)
+        console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
             this.products.push({
