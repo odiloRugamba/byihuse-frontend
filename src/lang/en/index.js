@@ -117,5 +117,14 @@ export default {
   "Mail": "Mail",
   "Address": "Address",
   "WritetoUs":"Write to Us",
-  "SendMessage": "Send Message en"
+  "SendMessage": "Send Message en",
+  "Rental": "Rental",
+  "subHeadingRental":"Use our rental and minimize your life challenges.",
+  "Fillthisform":"Fill this form to request this Rental",
+  "RentingHour":":Renting Hour",
+  "Startingatonly":"Starting at only",
+  "Submit":"Submit en",
+  "Fillservice":"Fill this form to request this service rn",
+  "Services": "Services",
+  "Useourservices":"Use our services. "
 }
