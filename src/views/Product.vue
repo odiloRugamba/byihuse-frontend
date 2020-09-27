@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
     /* margin-left: 300px; */
-  }
+  } 
 
   .thumb-wrap{
     height: 380px;

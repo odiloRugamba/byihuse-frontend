@@ -91,7 +91,7 @@ export default {
   "footerDesc": "Byihuse est un e-commerce de FINVIA Group Ltd spécialisé dans les produits made in Rwanda. Il relie les clients aux industries. Ce faisant, Il assure les meilleurs prix du marché pour ses clients ",
   "AboutUs": "About Us fr",
   "subHeadingAboutUs":"We are here to make all your shopping fun! fr",
-  "OurMission":"Our Mission",
+  "OurMission":"Our Mission fr",
   "Providing":"Providing the best online shopping experience",
   "Through": "Through easy to use web and mobile application, customer care and delivery we give you the best online shopping experience ",
   "MadeinRwanda": "Made in Rwanda",

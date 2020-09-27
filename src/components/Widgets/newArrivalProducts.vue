@@ -6,7 +6,7 @@
 			</div>
 			<div class="tab-bar-wrap  text-center">
 				<div v-for="(tab,key, index) in featured" :key="key" class="tab-bar d-inline-block">
-					<v-btn class="d-inline-block" @click="onTabChange(index)" :text="index === selectedTab">{{key}}</v-btn>
+					<v-btn class="d-inline-block special-button" @click="onTabChange(index)" :text="index === selectedTab">{{key}}</v-btn>
 				</div>	
 			</div>
 			<div class="tab-content">
@@ -85,7 +85,9 @@
   width: 100%;
 }
 
-
+  .special-button{
+    width: auto !important;
+  }
 </style>
 <script>
 import Slick from "vue-slick";

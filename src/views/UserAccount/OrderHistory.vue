@@ -195,7 +195,7 @@ export default {
          selected.product.forEach(el=>{
             // console.log(el.pictures.pic1)
             this.selectProduts.push({
-               pictures: 'http://localhost:4000/'+el.pictures.pic1,
+               pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
                price:el.price,
                name: el.name.en,
                logs: selected.logs
