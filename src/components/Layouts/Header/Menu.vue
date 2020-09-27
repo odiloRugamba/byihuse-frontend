@@ -50,14 +50,12 @@ export default {
    },
    methods: {
       changeRoute(megaitemkey, submega) {
-         // :to="''++'/'+"
-         // this.$router.push('/')
          localStorage.removeItem('current')
+         const current = `/products/${megaitemkey}/${submega}`
+         localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // console.log('helo',megaitemkey, submega)
-         const current = `/products/${megaitemkey}/${submega}`
-         localStorage.setItem('current', current)
       },
       changedepRoute(megaitemkey) {
          localStorage.removeItem('current')
@@ -71,8 +69,8 @@ export default {
          const current = `/${oneLink}`
          localStorage.setItem('current', current)
          if (oneLink === 'products') {
-            // location.reload()
-            console.log(oneLink)
+            location.reload()
+            // console.log(oneLink)
          }
          // location.reload()
          // console.log('helo', oneLink)

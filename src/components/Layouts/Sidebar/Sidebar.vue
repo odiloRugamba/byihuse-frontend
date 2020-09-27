@@ -15,7 +15,7 @@
 							no-action
 							v-model="menu.active"
 						>	
-							<v-list-item class="px-0" slot="activator" :to="'/'+$i18n.locale+menu.path">
+							<v-list-item class="px-0" slot="activator" @click="changedepRoute(menu.path)">
 								<v-list-item-action class="mr-0">
 									<v-icon>{{menu.icon}}</v-icon>
 								</v-list-item-action>
@@ -85,7 +85,7 @@
                               <v-list-item
                                  v-for="(megaChild,megaChildKey) in subItem"
                                  :key="megaChildKey"
-                                 :to="'/'+$i18n.locale+'/products/'+subItemKey+'/'+megaChild.path"
+                                 @click="changeRoute(subItemKey,megaChild.path)"
                                  class="mega-menu-item "
                               >
                                  <v-list-item-action class="mr-0 pl-1">
@@ -100,7 +100,7 @@
 					</template>
 
 					<template v-else>
-						<v-list-item :key="menu.title" :to="'/'+$i18n.locale+menu.path">
+						<v-list-item :key="menu.title" @click="changedepRoute(menu.path)">
 							<v-list-item-action class="mr-0">
 								<v-icon>{{menu.icon}}</v-icon>
 							</v-list-item-action>
@@ -139,14 +139,14 @@ export default {
 			},
 menus:  [
 	{
-   path: '/home',
+   path: 'home',
     name: "message.home",
 	icon: "home",
    // type: "sub_menu",
    children: null
 	},
 	 {
-      path:'/products',
+      path:'products',
       name: "message.shop",
       icon: "pages",
       children: null
@@ -167,34 +167,34 @@ menus:  [
          {
             name: 'byoroshye',
             children_menus:null,
-            path: `/${this.$i18n.locale}/services`
+            path: `services`
          },
          {
             name: 'message.byizewe',
             children_menus:null,
-            path: `/${this.$i18n.locale}/services`
+            path: `services`
          },
          {
             name: 'Byiza',
             children_menus:null,
-            path: `/${this.$i18n.locale}/byiza`
+            path: `byiza`
          },
       ]
    },
          {
-      path:`/rental`,
+      path:`rental`,
       name: "message.rental",
       icon: "pages",
       children: null
 	},
    {
     name: "message.about",
-    path: "/about",
+    path: "about",
     icon: 'perm_contact_calendar',
    children: null
 },
    {
-      path: '/contact',
+      path: 'contact',
       name:"message.contactUs",
       icon: 'perm_contact_calendar',
       children: null
@@ -213,8 +213,26 @@ menus:  [
 		},
 		scrollHanle(evt) {
 			console.log(evt)
-		}
-	},
+      },
+      changeRoute(megaitemkey, submega) {
+         localStorage.removeItem('current')
+         const current = `/products/${megaitemkey}/${submega}`
+         localStorage.setItem('current', current)
+         this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
+         // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
+         // console.log('helo',megaitemkey, submega)
+      },
+      changedepRoute(megaitemkey) {
+         localStorage.removeItem('current')
+         this.$router.push(`/${this.$i18n.locale}/${megaitemkey}`)
+         const current = `/${megaitemkey}`
+         localStorage.setItem('current', current)
+         if (megaitemkey === 'products') {
+            location.reload()
+            // console.log(oneLink)
+         }
+      }
+   },
 		async created () {
 		try {
 			this.resCat = await categories.getCategories()
