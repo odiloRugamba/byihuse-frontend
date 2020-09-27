@@ -1,8 +1,8 @@
 <template>
    <div class="emb-contact-wrap">
 		<emb-page-title
-			heading="Rental"
-			subHeading="Use our rental and minimize your life challenges."
+			heading="message.Rental"
+			subHeading="message.subHeadingRental"
 		>
 		</emb-page-title>
         <v-btn class="primary ml-1 toggleBtn" icon @click="darwer=!darwer">
@@ -95,7 +95,7 @@
                 
 				<v-flex xs12 sm12 md6 lg5 xl6>
 								<div class="sec-title">
-									<h5>Fill this form to request this Rental</h5>
+									<h5>{{$t("message.Fillthisform")}}</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
                                     <div class="hourRental">
@@ -103,10 +103,10 @@
                                          <v-text-field v-model="rentalHour" id="input"  solo></v-text-field>   
                                          <!-- <input class="input font-weight-regular" type="text" v-model="rentalHour" value=""> -->
                                         </div>
-                                        <div class="font-weight-regular rentalH ml-2">:Renting Hour</div>
+                                        <div class="font-weight-regular rentalH ml-2">{{$t("message.RentingHour")}}</div>
                                     </div>
                                     <p class="accent--text d-inline-block sec-content">
-								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{(selectedServices.price*rentalHour).toFixed(2)}}
+								 {{$t("message.Startingatonly")}} <emb-currency-sign class="accent--text"></emb-currency-sign> {{(selectedServices.price*rentalHour).toFixed(2)}}
 							</p>
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
@@ -114,7 +114,7 @@
 									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Phone number" :rules="inputRules.basictextRules"></v-text-field>
                                     <v-text-field v-model="address" 	type="Address"	placeholder="Your address" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
-									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">Submit</v-btn>
+									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="AskForServices">{{$t("message.Submit")}}</v-btn>
 								</v-form>
 				</v-flex>
 			</v-layout>
@@ -264,13 +264,6 @@ export default {
       try {
           const res = await Rental.getRental()
         //   console.log(res.data.data)
-          res.data.data.forEach(el => {
-            //   console.log(el)
-              this.rentalNames.push({
-                  name:el.name.en,
-                  id: el._id
-              })
-          });
           const curRes= await currency.getcurrency()
           curRes.data.data.forEach(el=> {
            if (el.symbol === this.selectedCurrency.symbol) {
@@ -279,8 +272,44 @@ export default {
         }
       })
         //   this.servicesName.splice(0,1)
-          res.data.data.forEach(el => {
+        if (this.selectedLocale === 'French') {
+            res.data.data.forEach(el => {
+            //   console.log(el)
+              this.rentalNames.push({
+                  name:el.name.fr,
+                  id: el._id
+              })
+          });
+            res.data.data.forEach(el => {
               console.log(el)
+            if (this.rentalNames[0].id === el._id) {
+              this.selectedServices= {
+                    id: el._id,
+                    sectitle: el.name.fr,
+                    price:(el.price/this.currentValue).toFixed(2),
+                    paragraph:el.description.fr,
+                    productGallery:{
+                        pic1:this.linksformbackend+el.pictures.pic1,
+                        pic2:this.linksformbackend+el.pictures.pic2,
+                        pic3:this.linksformbackend+el.pictures.pic3,
+                        // pic4:this.linksformbackend+el.pictures.pic4,
+                    },
+                },
+                // this.price= el.
+                this.selectedPreviewImage=this.linksformbackend+el.pictures.pic1
+
+            }
+          });
+        } else{
+            res.data.data.forEach(el => {
+            //   console.log(el)
+              res.data.data.forEach(el => {
+            //   console.log(el)
+              this.rentalNames.push({
+                  name:el.name.en,
+                  id: el._id
+              })
+          });
             if (this.rentalNames[0].id === el._id) {
               this.selectedServices= {
                     id: el._id,
@@ -299,6 +328,7 @@ export default {
 
             }
           });
+        }
         //   const resOneForMouted = await services.getOne(this.servicesName[0].id)
         //   console.log(resOneForMouted)
       } catch (err) {
@@ -309,7 +339,28 @@ export default {
         try {
             // console.log(id)
             const resOne = await Rental.getRental()
-            resOne.data.data.forEach(el => {
+            if (this.selectedLocale === "French") {
+                resOne.data.data.forEach(el => {
+                if (el._id === id) {
+                  this.selectedServices= {
+                    id: el._id,
+                    sectitle: el.name.fr,
+                    price:(el.price/this.currentValue).toFixed(2),
+                    paragraph:el.description.fr,
+                    productGallery:{
+                        pic1:this.linksformbackend+el.pictures.pic1,
+                        pic2:this.linksformbackend+el.pictures.pic2,
+                        pic3:this.linksformbackend+el.pictures.pic3,
+                        // pic4:this.linksformbackend+el.pictures.pic4,
+                    }
+                }  
+                // console.log(this.linksformbackend+el.pictures.pic1)
+                this.selectedPreviewImage= this.selectedServices.productGallery.pic1
+                }
+                
+            })
+            } else{
+                resOne.data.data.forEach(el => {
                 if (el._id === id) {
                   this.selectedServices= {
                     id: el._id,
@@ -323,11 +374,12 @@ export default {
                         // pic4:this.linksformbackend+el.pictures.pic4,
                     }
                 }  
-                console.log(this.linksformbackend+el.pictures.pic1)
+                // console.log(this.linksformbackend+el.pictures.pic1)
                 this.selectedPreviewImage= this.selectedServices.productGallery.pic1
                 }
                 
             })
+            }
             if (window.innerWidth <= 1279 ) {
                 this.darwer= false
             }
@@ -341,7 +393,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters(["linksformbackend","selectedCurrency"])
+      ...mapGetters(["linksformbackend","selectedLocale","selectedCurrency"])
   }
 };
 </script>
