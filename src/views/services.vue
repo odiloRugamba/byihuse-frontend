@@ -166,6 +166,7 @@
 import services from "Api/services";
 import { mapGetters } from "vuex";
 import servicesOrders from "Api/serviceOrders";
+import currency from "Api/currency"
 export default {
   data() {
     return {
@@ -194,7 +195,9 @@ export default {
                 paragraph: "",
                 productGallery: {}
       },
-      	selectedPreviewImage:'',
+          selectedPreviewImage:'',
+        symbol: false,
+        currentValue:1
     };
   },
   mounted() {
@@ -242,6 +245,13 @@ export default {
                   id: el._id
               })
           });
+          const curRes= await currency.getcurrency()
+          curRes.data.data.forEach(el=> {
+        if (el.symbol === this.selectedCurrency.symbol) {
+          this.symbol= true
+          this.currentValue= el.currentValue
+        }
+        })
           this.servicesName.splice(0,1)
           res.data.data.forEach(el => {
             //   console.log(el)
@@ -249,7 +259,7 @@ export default {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:el.price,
+                    price:(el.price/this.currentValue).toFixed(2),
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -270,14 +280,15 @@ export default {
     },
     async viewServices(id) {
         try {
-            console.log(id)
+            // console.log(id)
             const resOne = await services.getServices()
+            
             resOne.data.data.forEach(el => {
                 if (el._id === id) {
                   this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:el.price,
+                    price:(el.price/this.currentValue).toFixed(2),
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -304,7 +315,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters(["linksformbackend"])
+      ...mapGetters(["linksformbackend", "selectedCurrency"])
   }
 };
 </script>

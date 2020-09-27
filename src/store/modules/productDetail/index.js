@@ -1,6 +1,7 @@
 import api from 'Api'
 import {languages, currencies} from "./data";
 import department from "Api/department";
+import currency from "Api/currency";
 const state = {
    products:{},
    featured: {},
@@ -9,11 +10,16 @@ const state = {
    languages,
 	selectedLocale: languages[0],
 	currencies,
-	selectedCurrency: currencies[0],
+   selectedCurrency: currencies[0],
+   symbol: false,
+   currentValue: 1
 }
 
 // getters
 const getters = {
+   currentValue: state =>{
+      return state.currentValue
+   },
    languages: state => {
 		return state.languages;
 	},
@@ -64,6 +70,16 @@ const mutations = {
       var obj = []
       var data = {}
       const res = await department.getDepartmentall();
+      const rescurr= await currency.getcurrency();
+      console.log(rescurr)
+      rescurr.data.data.forEach(el =>{
+         // console.log()
+         if (el.symbol === state.selectedCurrency.symbol) {
+            state.currentValue=el.currentValue
+         }
+         // console.log(s)
+      })
+      // console.log()
       // console.log(res.data)
       if (state.selectedLocale === 'French') {
          res.data.data.forEach(el => {
@@ -74,7 +90,7 @@ const mutations = {
                   objectID: prdata._id,
                   type: el.name.fr,
                   image:'http://localhost:4000/'+prdata.pictures.pic1,
-                  price: prdata.price,
+                  price: (prdata.price/state.currentValue).toFixed(2),
                   name: prdata.name.fr,
                   category: pr.name.fr
                 })
@@ -95,12 +111,12 @@ const mutations = {
          res.data.data.forEach(el => {
             el.categories.forEach(pr =>{
                pr.products.forEach(prdata =>{
-               if (prdata.featured === false) {
+               if (prdata.featured === true) {
                  obj.push({
                   objectID: prdata._id,
                   type: el.name.en,
                   image:'http://localhost:4000/'+prdata.pictures.pic1,
-                  price: prdata.price,
+                  price: (prdata.price/state.currentValue).toFixed(2),
                   name: prdata.name.en,
                   category: pr.name.en
                 })
@@ -116,10 +132,10 @@ const mutations = {
             }
          });
       }
-      state.featured = data,
+      state.featured = data
       // state.products = produ
       // console.log(produ)
-      console.log(localStorage.getItem('lang'))
+      // console.log(localStorage.getItem('lang'))
       } catch (err) {
          console.log(err)
       }

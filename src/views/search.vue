@@ -247,10 +247,11 @@ width:200px;
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
 import product from "Api/products";
+import currency from "Api/currency"
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend"]),
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedCurrency"]),
   },
   components: {
     // Slick
@@ -296,7 +297,9 @@ export default {
       product: [],
       length: 7,
       totalVisible:7,
-      pagination: true
+      pagination: true,
+      symbol: false,
+      currentValue:1
     };
   },
   methods: {
@@ -367,13 +370,20 @@ export default {
       try {
           this.keyword = this.$route.params.keyword
           const res= await product.getSearchedProducts(this.keyword)
-        console.log(res)
+          const curRes= await currency.getcurrency()
+          curRes.data.data.forEach(el=> {
+            if (el.symbol === this.selectedCurrency.symbol) {
+              this.symbol= true
+              this.currentValue= el.currentValue
+              }
+          })
+        // console.log(res)
         res.data.data.forEach(el => {
             this.produ.push({
                objectID: el._id,
                type: el.name.en,
                imag:this.linksformbackend+el.pictures.pic1,
-               price: el.price,
+               price: (el.price/this.currentValue).toFixed(2),
                name: el.name.en,
                rate: 3,
                image_gallery: [

@@ -122,6 +122,7 @@
 import services from "Api/services";
 import { mapGetters } from "vuex";
 import servicesOrders from "Api/serviceOrders";
+import currency from "Api/currency"
 export default {
   data() {
     return {
@@ -150,7 +151,9 @@ export default {
                 paragraph: "",
                 productGallery: {}
       },
-      	selectedPreviewImage:'',
+        selectedPreviewImage:'',
+      symbol: false,
+      currentValue:1
     };
   },
   mounted() {
@@ -170,14 +173,6 @@ export default {
             address: this.address,
             details: this.details
             })
-            // this.selectedServices.id,
-            // this.fristName = '',
-            // this.lastName= '',
-            // this.email= '',
-            // this.phoneNumber= '',
-            // this.address= '',
-            // this.details= ''
-            // console.log(orderRes)
             this.$snotify.success(`${orderRes.data.message}`,{
                     closeOnClick: false,
                     pauseOnHover: false,
@@ -198,7 +193,13 @@ export default {
     async getContactInfo() {
       try {
           const res = await services.getServices()
-        //   console.log(res.data.data)
+          const curRes= await currency.getcurrency()
+          curRes.data.data.forEach(el=> {
+            if (el.symbol === this.selectedCurrency.symbol) {
+                this.symbol= true
+                this.currentValue= el.currentValue
+                }
+          })
           res.data.data.forEach(el => {
             //   console.log(el)
               this.servicesName.push({
@@ -212,7 +213,7 @@ export default {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:el.price,
+                    price:(el.price/this.currentValue).toFixed(2),
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -235,7 +236,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters(["linksformbackend"])
+      ...mapGetters(["linksformbackend", "selectedCurrency"])
   }
 };
 </script>

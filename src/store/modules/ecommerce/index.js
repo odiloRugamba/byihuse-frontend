@@ -78,9 +78,9 @@ const actions = {
 // mutations
 const mutations = {
       onaddProductLocal(state,dart){
-            console.log(dart, 'heeeo')
+            // console.log(dart, 'heeeo')
             state.cart = dart
-            console.log(state.cart)
+            // console.log(state.cart)
       },
       onAddProductToCart(state,payload) {
             localStorage.removeItem('cart');
@@ -90,7 +90,8 @@ const mutations = {
                   name: payload.name,
                   price: payload.price,
                   quantity: payload.quantity ? payload.quantity : 1,
-                  total: payload.price
+                  total: payload.price,
+                  symbol: payload.symbol
             }
             state.cart.push(newProduct);
             localStorage.setItem('cart', JSON.stringify(state.cart))
@@ -100,12 +101,13 @@ const mutations = {
             console.log(payload.dart)
             payload.dart.forEach(el => {
               state.cart.push({
-                  id: el.objectID,
+                  id: el.id,
                   image: el.image,
                   name: el.name,
                   price: el.price,
                   quantity: el.quantity ? el.quantity : 1,
-                  total: el.price
+                  total: el.price,
+                  symbol:el.symbol
               })
               console.log(state.cart)
             });

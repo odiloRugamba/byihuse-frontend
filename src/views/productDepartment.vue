@@ -96,10 +96,11 @@
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
 import departments from "Api/department";
+import currency from "Api/currency"
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "selectedCurrency"])
     // produc () {
     //   return this.$store.state.products
     // }
@@ -144,7 +145,9 @@ export default {
         
       },
       title: "",
-      products: []
+      products: [],
+      symbol: false,
+      currentValue:1
     };
   },
   methods: {
@@ -213,8 +216,14 @@ export default {
     async getParametre () {
       try {
       this.title= this.$route.params.title
-      // console.log(this.title)
       const rescategoies = await departments.getDepartmentall()
+      const curRes= await currency.getcurrency()
+      curRes.data.data.forEach(el=> {
+        if (el.symbol === this.selectedCurrency.symbol) {
+          this.symbol= true
+          this.currentValue= el.currentValue
+        }
+      })
 			rescategoies.data.data.forEach(el => {
         // console.log(el.name.en ,this.title)
         if (el.name.en === this.title) {
@@ -223,7 +232,7 @@ export default {
               // console.log(pro)
 						this.products.push({
 							objectID: pro._id,
-							price: pro.price,
+							price: (pro.price/this.currentValue).toFixed(2),
 							name: pro.name.en,
               image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
               category:pro.name.en
@@ -240,7 +249,7 @@ export default {
               // console.log(pro)
 						this.products.push({
 							objectID: pro._id,
-							price: pro.price,
+							price: (pro.price/this.currentValue).toFixed(2),
 							name: pro.name.fr,
               image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
               category:pro.name.fr

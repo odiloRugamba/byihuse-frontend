@@ -39,7 +39,7 @@
 			if (currency) {
 				this.$store.dispatch("changeCurrency", currency);
 			}
-			console.log(currency)
+			// console.log(currency)
 		}
 	}
 </script>

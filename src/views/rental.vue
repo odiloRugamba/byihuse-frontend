@@ -106,7 +106,7 @@
                                         <div class="font-weight-regular rentalH ml-2">:Renting Hour</div>
                                     </div>
                                     <p class="accent--text d-inline-block sec-content">
-								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{selectedServices.price*rentalHour}}
+								 Starting at only <emb-currency-sign class="accent--text"></emb-currency-sign> {{(selectedServices.price*rentalHour).toFixed(2)}}
 							</p>
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
@@ -190,7 +190,7 @@ text-align: end;
 <script>
 import Rental from "Api/rental";
 import { mapGetters } from "vuex";
-// import servicesOrders from "Api/serviceOrders";
+import currency from "Api/currency"
 export default {
   data() {
     return {
@@ -217,6 +217,8 @@ export default {
       },
           selectedPreviewImage:'',
           rentalHour:'1',
+          symbol: false,
+          currentValue:1
         //   price
     };
   },
@@ -239,7 +241,7 @@ export default {
             agentCode:this.agentCode,
             estimatedHours:this.rentalHour
             })
-            console.log(orderRes)
+            // console.log(orderRes)
             this.$snotify.success(`${orderRes.data.message}`,{
                     closeOnClick: false,
                     pauseOnHover: false,
@@ -269,6 +271,13 @@ export default {
                   id: el._id
               })
           });
+          const curRes= await currency.getcurrency()
+          curRes.data.data.forEach(el=> {
+           if (el.symbol === this.selectedCurrency.symbol) {
+          this.symbol= true
+          this.currentValue= el.currentValue
+        }
+      })
         //   this.servicesName.splice(0,1)
           res.data.data.forEach(el => {
               console.log(el)
@@ -276,7 +285,7 @@ export default {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:el.price,
+                    price:(el.price/this.currentValue).toFixed(2),
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -298,14 +307,14 @@ export default {
     },
     async viewServices(id) {
         try {
-            console.log(id)
+            // console.log(id)
             const resOne = await Rental.getRental()
             resOne.data.data.forEach(el => {
                 if (el._id === id) {
                   this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:el.price,
+                    price:(el.price/this.currentValue).toFixed(2),
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -332,7 +341,7 @@ export default {
     }
   },
   computed: {
-      ...mapGetters(["linksformbackend"])
+      ...mapGetters(["linksformbackend","selectedCurrency"])
   }
 };
 </script>

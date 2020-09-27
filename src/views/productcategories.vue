@@ -111,10 +111,11 @@
 // import Slick from "vue-slick";
 import { mapGetters } from "vuex";
 import departments from "Api/department";
+import currency from "Api/currency"
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedLocale", "selectedCurrency"])
     // produc () {
     //   return this.$store.state.products
     // }
@@ -153,7 +154,7 @@ export default {
               arrows: false,
               dots: false
             }
-          }
+          },
         ],
         
       },
@@ -163,7 +164,9 @@ export default {
       page:1,
       produ: [],
       length: '',
-      totalVisible:7
+      totalVisible:7,
+      symbol: false,
+      currentValue:1
     };
   },
   methods: {
@@ -238,9 +241,13 @@ export default {
       this.id = this.$route.params.category
       // console.log(this.title)
       const rescategoies = await departments.getDepartmentall()
-      // console.log(rescategoies)
-      // if (this.selectedLocale === 'French') {
-        // console.log('hello')
+      const curRes= await currency.getcurrency()
+      curRes.data.data.forEach(el=> {
+        if (el.symbol === this.selectedCurrency.symbol) {
+          this.symbol= true
+          this.currentValue= el.currentValue
+        }
+      })
         rescategoies.data.data.forEach(el => {
         if (el.name.fr === this.title) {
          el.categories.forEach(recat =>{
@@ -248,7 +255,7 @@ export default {
             if (recat.name.fr === this.id) {
                this.products.push({
 							objectID: pro._id,
-							price: pro.price,
+							price: (pro.price/this.currentValue).toFixed(2),
 							name: pro.name.fr,
               image: this.linksformbackend+pro.pictures.pic1,
               category: recat.name.fr
@@ -267,14 +274,14 @@ export default {
             if (recat.name.en === this.id) {
                this.products.push({
 							objectID: pro._id,
-							price: pro.price,
+							price:(pro.price/this.currentValue).toFixed(2),
 							name: pro.name.en,
               image: this.linksformbackend+pro.pictures.pic1,
               category: recat.name.en
               })
             }
       })
-      // console.log(recat.name.en)
+      console.log(this.currentValue)
 			}) 
         }
       });

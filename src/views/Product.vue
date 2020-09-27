@@ -226,7 +226,8 @@
                ],
                description: prdata.description.fr,
                category: pro.name.fr,
-               department: el.name.fr
+               department: el.name.fr,
+               symbol: this.symbol,
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
@@ -253,7 +254,8 @@
                ],
                description: prdata.description.en,
                category: pro.name.en,
-               department: el.name.en
+               department: el.name.en,
+               symbol: this.symbol,
              })
             //  console.log(prdata.price)
              console.log('this.selectedLocale')
@@ -281,7 +283,8 @@
                ],
                description: prdata.description.fr,
                category: pro.name.fr,
-               department: el.name.fr
+               department: el.name.fr,
+               symbol: this.symbol,
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
@@ -309,7 +312,8 @@
                ],
                description: prdata.description.en,
                category: pro.name.en,
-               department:el.name.en
+               department:el.name.en,
+               symbol: this.symbol
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
