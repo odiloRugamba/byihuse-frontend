@@ -4,9 +4,9 @@
 			<v-layout row wrap align-center justify-center>
 				<v-flex sm12 md12 lg8 xl7>
 					<v-layout row mx-sm-0 mx-3  wrap align-center justify-center>
-						<v-flex sm6 md7 lg6 xl6 hidden-sm-and-down>
+						<!-- <v-flex sm6 md7 lg6 xl6 hidden-sm-and-down>
 							<div class="form-img register-image"></div>
-						</v-flex>
+						</v-flex> -->
 						<v-flex sm10 md5 lg6 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
 								<h4>Enter Your Details</h4>

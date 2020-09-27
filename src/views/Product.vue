@@ -5,7 +5,7 @@
         <div v-for="(cateogary,subindex) in produ" :key="subindex" class="tab-item">
           <div class="emb-card">
             <div class="thumb-wrap">
-              <router-link :to="'/en/products/'+cateogary.department+'/'+cateogary.category+'/'+cateogary.objectID">
+              <router-link :to="'/'+$i18n.locale+'/products/'+cateogary.department+'/'+cateogary.category+'/'+cateogary.objectID">
                 <div class="product-image-placeholder">
                   <img alt="feature product image" :src="cateogary.image">
                 </div>
@@ -225,7 +225,8 @@
                   this.linksformbackend+prdata.pictures.pic4
                ],
                description: prdata.description.fr,
-               category: pro.name.fr
+               category: pro.name.fr,
+               department: el.name.fr
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
@@ -251,7 +252,8 @@
                   this.linksformbackend+prdata.pictures.pic4
                ],
                description: prdata.description.en,
-               category: pro.name.en
+               category: pro.name.en,
+               department: el.name.en
              })
             //  console.log(prdata.price)
              console.log('this.selectedLocale')
@@ -278,7 +280,8 @@
                   this.linksformbackend+prdata.pictures.pic4
                ],
                description: prdata.description.fr,
-               category: pro.name.fr
+               category: pro.name.fr,
+               department: el.name.fr
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)
@@ -305,7 +308,8 @@
                   this.linksformbackend+prdata.pictures.pic4
                ],
                description: prdata.description.en,
-               category: pro.name.en
+               category: pro.name.en,
+               department:el.name.en
              })
             //  console.log(prdata.name)
             //  console.log(this.selectedLocale)

@@ -13,7 +13,7 @@
                      <img  alt="cart-empty" height="128" src="/static/images/empty-cart.png" width="128">
                   </div>
                   <h4 > Your Shopping Bag is empty</h4>
-                  <router-link class="primary--text" to="/">Go to Shopping</router-link>
+                  <router-link class="primary--text" :to="'/'+$i18n.locale+'/products/'">Go to Shopping</router-link>
                </div>
             </div>
             <div v-else class="cart-shop-list">
@@ -80,7 +80,7 @@
                         </h4>
                      </div>
                      <div class="layout justify-end subtotal">
-                        <v-btn large class="accent mr-0" to="/en/checkout/payment">
+                        <v-btn large class="accent mr-0" :to="'/'+$i18n.locale+'/checkout/payment'">
                            Checkout
                         </v-btn>
                      </div>

@@ -4,9 +4,9 @@
 			<v-layout row wrap align-center justify-center>
 				<v-flex sm12 md12 lg8 xl7>
 					<v-layout row mx-sm-0 mx-3 wrap align-center justify-center>
-						<v-flex sm6 md7 lg6 xl6 hidden-sm-and-down>
+						<!-- <v-flex sm6 md7 lg6 xl6 hidden-sm-and-down>
 							<div class="form-img sign-in-image"></div>
-						</v-flex>
+						</v-flex> -->
 						<v-flex sm10 md5 lg5 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
 								<h4>User Sign In</h4>
@@ -29,7 +29,7 @@
 											v-model="checkbox"
 											label="Remember Me"
 										></v-checkbox>
-										<router-link to="/session/forgot-password" class=" text-lg-right">Forgot Password ?</router-link>
+										<!-- <router-link to="/session/forgot-password" class=" text-lg-right">Forgot Password ?</router-link> -->
 									</div>
 									<v-btn class="accent mb-3 ma-0" large @click.stop.prevent="signin">
 										Sign In

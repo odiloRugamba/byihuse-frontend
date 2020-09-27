@@ -17,7 +17,7 @@
 								<div  class="emb-card">
 									<div class="thumb-wrap">
 
-										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 										<div class="product-image-placeholder">
                     	<img 
 												alt="feature product image"
@@ -239,7 +239,7 @@ export default {
       // console.log(this.title)
       const rescategoies = await departments.getDepartmentall()
       // console.log(rescategoies)
-      if (this.selectedLocale === 'French') {
+      // if (this.selectedLocale === 'French') {
         // console.log('hello')
         rescategoies.data.data.forEach(el => {
         if (el.name.fr === this.title) {
@@ -259,7 +259,7 @@ export default {
 			}) 
         }
       });
-      } else {
+      // } else {
         rescategoies.data.data.forEach(el => {
         if (el.name.en === this.title) {
          el.categories.forEach(recat =>{
@@ -278,7 +278,7 @@ export default {
 			}) 
         }
       });
-      }
+      // }
       this.length=Math.ceil(this.products.length / 20)
       // const enddddd = this.products.length
       // for (let i = 0; i < 20; i++) {

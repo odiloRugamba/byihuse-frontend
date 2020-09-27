@@ -16,7 +16,7 @@
 							>
 								<div class="emb-card">
 									<div class="thumb-wrap">
-										<router-link :to="'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.image"
@@ -76,7 +76,7 @@
           </div>
           <div v-else>
             <h3>No Product Found</h3>
-            <v-btn block class="accent" to="/products">Shop</v-btn>
+            <v-btn block class="accent" :to="'/'+$i18n.locale+'/products'">Shop</v-btn>
           </div>
 				<!-- </template>	 -->
 			</div>	
@@ -220,12 +220,30 @@ export default {
         if (el.name.en === this.title) {
          el.categories.forEach(recat =>{
 						recat.products.forEach(pro =>{
-              console.log(pro)
+              // console.log(pro)
 						this.products.push({
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-							image: 'http://192.168.43.9:4000/'+pro.pictures.pic1
+              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              category:pro.name.en
+						})
+						})
+				}) 
+        }
+      });
+      rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.fr === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              // console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.fr,
+              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              category:pro.name.fr
 						})
 						})
 				}) 

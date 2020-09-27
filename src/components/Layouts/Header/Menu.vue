@@ -70,6 +70,10 @@ export default {
          this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
          const current = `/${oneLink}`
          localStorage.setItem('current', current)
+         if (oneLink === 'products') {
+            // location.reload()
+            console.log(oneLink)
+         }
          // location.reload()
          // console.log('helo', oneLink)
       }
@@ -110,6 +114,11 @@ menus:  [
             name: 'message.byizewe',
             children_menus:null,
             path: 'services'
+         },
+         {
+            name: 'byiza',
+            children_menus:null,
+            path: 'byiza'
          }
       ]
    },
@@ -119,12 +128,6 @@ menus:  [
       icon: "pages",
       type: "sub_menu",
    },
-   {
-      path:`byiza`,
-      name: "Byiza",
-      icon: "pages",
-      type: "sub_menu",
-	},
    {
       name: "message.about",
       children_menus:null,

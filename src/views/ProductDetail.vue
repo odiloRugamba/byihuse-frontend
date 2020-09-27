@@ -38,7 +38,7 @@
 								</v-layout>
 							</v-flex>
 							<v-flex xs12 sm12 md6 lg6 xl5>
-								<router-link to="/en/products">Back to shop</router-link>
+								<router-link :to="'/'+$i18n.locale+'/products'">Back to shop</router-link>
 								<h3>{{selectedProduct.name}}</h3>
 								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
@@ -102,7 +102,7 @@
 										<div class="emb-card ">
 											<div class="thumb-wrap">
 												<router-link
-													:to="'/en/products/'+title+'/'+product.category+'/'+product.objectID">
+													:to="'/'+$i18n.locale+'/products/'+title+'/'+product.category+'/'+product.objectID">
 													<div class="product-image-placeholder">
 														<img id="ddd" :src="product.image" alt="related product">
 													</div>
@@ -207,7 +207,7 @@
 			}
 		},
 		computed: {
-			...mapGetters(["cart", "wishlist", "selectedProduct", "linksformbackend"]),
+			...mapGetters(["cart", "wishlist", "selectedProduct","selectedLocale", "linksformbackend"]),
 		},
 		async mounted() {
 			this.getParametre()
@@ -246,9 +246,14 @@
 						],
 						this.selectedImage = this.linksformbackend + res.data.data.pictures.pic1
 					// console.log(this.image_gallery)
-					this.selectedProduct.name = res.data.data.name.en
 					this.selectedProduct.price = res.data.data.price
-					this.selectedProduct.descprition = res.data.data.description.en
+					if (this.selectedLocale === "French") {
+						this.selectedProduct.name = res.data.data.name.fr
+					    this.selectedProduct.descprition = res.data.data.description.fr
+					}else{
+						this.selectedProduct.name = res.data.data.name.en
+					    this.selectedProduct.descprition = res.data.data.description.en
+					}
 					// console.log(res.data.data)
 					res.data.data.additionalServices.forEach(el =>{
 						this.AdditionalService.push({
@@ -265,6 +270,26 @@
 					// 	'Free Delivery and delivery in 4 Days'
 					// 	]
 					const rescategoies = await departments.getDepartmentall()
+					if (this.selectedLocale === 'French') {
+						rescategoies.data.data.forEach(el => {
+						el.categories.forEach(recat => {
+							if (el.name.fr === this.title) {
+								console.log(recat.products)
+								recat.products.forEach(pro => {
+									this.products.push({
+										objectID: pro._id,
+										price: pro.price,
+										name: pro.name.fr,
+										image: this.linksformbackend + pro.pictures.pic1,
+										category: recat.name.fr
+									})
+								})
+
+							}
+						})
+
+					});
+				}else{
 					rescategoies.data.data.forEach(el => {
 						el.categories.forEach(recat => {
 							if (el.name.en === this.title) {
@@ -274,8 +299,7 @@
 										objectID: pro._id,
 										price: pro.price,
 										name: pro.name.en,
-										image: this.linksformbackend + pro.pictures
-											.pic1,
+										image: this.linksformbackend + pro.pictures.pic1,
 										category: recat.name.en
 									})
 								})
@@ -284,6 +308,8 @@
 						})
 
 					});
+				}
+					
 				} catch (err) {
 					console.log(err.message)
 				}

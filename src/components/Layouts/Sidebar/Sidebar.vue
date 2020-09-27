@@ -174,6 +174,11 @@ menus:  [
             children_menus:null,
             path: `/${this.$i18n.locale}/services`
          },
+         {
+            name: 'Byiza',
+            children_menus:null,
+            path: `/${this.$i18n.locale}/byiza`
+         },
       ]
    },
          {

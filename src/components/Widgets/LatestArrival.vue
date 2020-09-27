@@ -19,7 +19,7 @@
 						>
 							<div class="emb-card">
 								<div class="thumb-wrap">
-									<router-link to="/product/product-detail">
+									<router-link :to="'/'+$i18n.locale+'/product/product-detail'">
 										<img 
 											alt="feature product image"
 											:src="cateogary.image"
@@ -27,7 +27,7 @@
 											height="800"
 										>
 									</router-link>
-									<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/cart" class="primary" icon absolute bottom>
+									<v-btn v-if="ifItemExistInCart(cateogary,cart)" :to="'/'+$i18n.locale+'/cart'" class="primary" icon absolute bottom>
 										<v-icon medium>edit</v-icon>
 									</v-btn>
 									<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >

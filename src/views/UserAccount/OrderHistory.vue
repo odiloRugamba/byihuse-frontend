@@ -20,68 +20,60 @@ export default {
       return{
          headers: [
             {
-            text: 'No',
-            align: 'left',
-            sortable: false,
-            value: 'srno'
+               text: 'First name',
+               value: 'firstName'
             },
             {
-               text: 'Order Id',
-               value: 'orderId'
+               text: 'last name',
+               value: 'lastName'
+            },
+            {
+               text: 'details',
+               value: 'details'
             },
             { text: 'Product Name', value: 'name' },
             { text: 'Price', value: 'price' },
             { text: 'Status', value: 'status' },
             { text: 'Action', value: 'action' }
          ],
-         tableData: [
-            {
-               value: false,
-               srno: 1,
-               orderId: 159,
-               name: "LEGITIM",
-               price: 24.44,
-               status: "Sent"
-            },
-            {
-               value: false,
-               srno: 2,
-               orderId: 237,
-               name: "GRUNDTAL",
-               price: 37.44,
-               status: "In Process"
-            },
-            {
-               value: false,
-               srno: 3,
-               orderId: 262,
-               name: "BOHOLMEN",
-               price: 23.85,
-               status: "Sent",
-            },
-            {
-               value: false,
-               srno: 4,
-               orderId: 305,
-               name: "ROSTAD LÖK",
-               price: 67.36,
-               status: "Return"
-            },
-            {
-               value: false,
-               srno: 5,
-               orderId: 356,
-               name: "TÅRTA CHOKLADKROKANT",
-               price: 49.36,
-               status: "In Process"
-            }
-         ]
+         tableData: []
       }
    },
    async created(){
       try {
          const resRental= await myOrder.myRentalOrder()
           const resProduct= await myOrder.myProductsOrder()
+          resRental.data.data.forEach(el => {
+             console.log(el)
+             this.tableData.push({
+               address: el.address,
+               details: el.details,
+               email: el.email,
+               firstName: el.firstName,
+               lastName: el.lastName,
+               logs: el.logs,
+               paid: el.paid,
+               paymentLogs: el.paymentLogs,
+               status: el.status,
+            })
+          });
+           resProduct.data.data.forEach(el => {
+             console.log(el)
+             this.tableData.push({
+                MoMoPhoneNumber:el.MoMoPhoneNumber,
+               agentCode: el.agentCode,
+               cancelReason: el.cancelReason,
+               city: el.city,
+               email:el.email,
+               firstName:el.firstName,
+               lastName:el.lastName,
+               logs:el.logs,
+               status:el.status,
+               details:el.streetNumber,
+               totalAmmount: el.totalAmmount,
+               totalAmountPaid: el.totalAmountPaid
+             })
+          });
           console.log(resRental)
           console.log(resProduct)
       } catch (err) {
