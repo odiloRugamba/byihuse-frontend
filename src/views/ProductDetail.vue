@@ -47,7 +47,7 @@
 								</h4>
 
 								<p>{{selectedProduct.descprition}}</p>
-								<div v-if="AdditionalService" class="serviveListDive">
+								<div v-if="AdditionalService.length" class="serviveListDive">
 									<div class="font-weight-regular title">Additional service:</div>
 									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
 										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
