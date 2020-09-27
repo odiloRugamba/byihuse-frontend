@@ -84,9 +84,10 @@ import axios from 'axios'
                     timeout: 1000,
 					showProgressBar:false,
 					});
-				// this.$router.push();
+				// this.$router.push('');
 				// location.reload(true)
-				window.location.assign('/')
+				this.$store.state.user= true
+				window.location.assign('/#/account/profile')
 			} catch (err) {
 			console.log(err)
 			    this.$snotify.success('invaled Input',{

@@ -60,10 +60,16 @@ export default {
          localStorage.setItem('current', current)
       },
       changedepRoute(megaitemkey) {
+         localStorage.removeItem('current')
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
+         const current = `/products/${megaitemkey}`
+         localStorage.setItem('current', current)
       },
       changeOneRoute(oneLink){
+         localStorage.removeItem('current')
          this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
+         const current = `/${oneLink}`
+         localStorage.setItem('current', current)
          // location.reload()
          // console.log('helo', oneLink)
       }
@@ -84,7 +90,6 @@ menus:  [
       // type: "sub_menu",
 	},
    {
-      path: '',
       name:"message.categories",
       icon: 'party_mode',
       type: 'mega_menu',
@@ -108,9 +113,15 @@ menus:  [
          }
       ]
    },
-      {
+   {
       path:`rental`,
       name: "message.rental",
+      icon: "pages",
+      type: "sub_menu",
+   },
+   {
+      path:`byiza`,
+      name: "Byiza",
       icon: "pages",
       type: "sub_menu",
 	},

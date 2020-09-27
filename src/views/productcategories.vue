@@ -238,12 +238,14 @@ export default {
       this.id = this.$route.params.category
       // console.log(this.title)
       const rescategoies = await departments.getDepartmentall()
+      // console.log(rescategoies)
       if (this.selectedLocale === 'French') {
+        // console.log('hello')
         rescategoies.data.data.forEach(el => {
-        if (el.name.en === this.title) {
+        if (el.name.fr === this.title) {
          el.categories.forEach(recat =>{
 		    recat.products.forEach(pro =>{
-            if (recat.name.en === this.id) {
+            if (recat.name.fr === this.id) {
                this.products.push({
 							objectID: pro._id,
 							price: pro.price,

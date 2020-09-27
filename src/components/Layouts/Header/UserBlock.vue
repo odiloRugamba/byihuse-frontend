@@ -47,7 +47,7 @@ import { mapGetters } from 'vuex'
 				// location.reload(false)
 				if (this.user) {
 					this.$store.state.user= false
-					console.log('hel')
+					// console.log('hel')
 				}
 			}
 		

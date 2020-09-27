@@ -1,8 +1,6 @@
 import UserPanel from 'Container/UserPanel';
 
-// const editEmail= () =>import('/views/UserAccount/editEmail.vue')
-// const editPassword= () =>import('/views/UserAccount/editPassword.vue')
-// const editNames= () =>import('/views/UserAccount/editNames.vue')
+const Byiza = () => import('Views/byiza');
 const Rental = () => import('Views/rental');
 const Drycleaning = () => import('Views/drycleaning');
 const Search = () => import('Views/search');
@@ -63,6 +61,11 @@ export default {
 			path: 'rental',
 			component: Rental,
 			name: 'Rental'
+		},
+		{			
+			path: 'byiza',
+			component: Byiza,
+			name: 'Byiza'
 		},
 		{			
 			path: 'byoroshye',

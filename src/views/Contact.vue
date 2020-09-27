@@ -42,7 +42,7 @@
 								<v-form  ref="form" v-model="valid">
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="email" type="email" placeholder="Email" :rules="emailRules"></v-text-field>
+									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>
 									<v-text-field v-model="subject"	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
 									<v-textarea v-model="message" rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	Send Message</v-btn>
@@ -70,10 +70,6 @@ export default {
 	  message: '',
       valid: false,
       contactInfo: "",
-      emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+/.test(v) || "E-mail must be valid"
-      ],
       inputRules: {
         basictextRules: [v => !!v || "This field should not be empty"]
 	  },
