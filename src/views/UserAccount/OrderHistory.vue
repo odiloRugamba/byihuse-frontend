@@ -1,6 +1,6 @@
 <template>
    <div class="order-history-wrap emb-card pa-4">
-      <h4 class="mb-4">Order History</h4>
+      <h4 class="mb-4">{{$t("message.OrderHistory")}}</h4>
       <v-data-table 
          :headers="headers"
 			:items="tableData"
@@ -16,7 +16,7 @@
 				<v-card-text class="pa-4">
 					<v-flex xs12>
 						<div class="text-center bg-grey px-4 py-6">
-							<h4>Order details</h4>
+							<h4>{{$t("message.Orderdetails")}}</h4>
 							<!-- <h5 class="mb-6">Payment is successfully processsed and your order is on the way </h5> -->
 							<!-- <h6 class="mb-6">Invoice ID:{{_id}}</h6>
 							<img src="/static/images/checked.png" width="64" height="64" alt="Success"> -->
@@ -30,7 +30,7 @@
 									<p class="mb-1">Order Total :{{selectProduts.total}}</p> -->
 								</v-flex>
 								<v-flex xs12 sm8 md8 lg8 xl8 text-left pa-0>
-									<h6>Deliver To</h6>
+									<h6>{{$t("message.DeliverTo")}}</h6>
 									<p class="mb-1">{{fristName}} {{lastName}}</p>
 									<p class="mb-1">{{city}}, {{street}}</p>
 									<p class="mb-1">{{phone}}</p>
@@ -43,10 +43,10 @@
 							<h4 class="pt-12 mb-7 text-sm-left text-center">You Ordered:</h4>
 							<div  id="producr">
 								<div id="tittle">
-								<div><h6> Product Image</h6></div>
-								<div><h6>Product Name</h6></div>
-								<div><h6>Quantity</h6></div>
-								<div><h6>Price</h6></div>
+								<div><h6> {{$t("message.ProductImage")}}</h6></div>
+								<div><h6>{{$t("message.ProductName")}}</h6></div>
+								<div><h6>{{$t("message.Quantity")}}</h6></div>
+								<div><h6>{{("message.Price")}}</h6></div>
 								</div>
 								<div v-for="product in selectProduts" :key="product" id="products">
 									<div><img width="100" :src="product.pictures" alt=""></div>
@@ -59,20 +59,20 @@
 							<v-divider class="my-6"></v-divider>
 							<div class="pt-6">
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Subtotal</p>
+									<p>{{("message.Subtotal")}}</p>
 									<span>RWf {{total}}</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Delivery</p>
+									<p>{{("message.Delivery")}}</p>
 									<span>RWF 0</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Tax</p>
+									<p>{{("message.Tax")}}</p>
 									<span>RWF 0</span>
 								</div>
 								<v-divider class="my-4"></v-divider>
 								<div class="layout align-center justify-space-between ma-0">
-									<h4>Total</h4>
+									<h4>{{("message.Total")}}</h4>
 									<h4>RWF {{total}}</h4>
 								</div>
 								<!-- <v-divider class="my-4"></v-divider> -->
@@ -95,7 +95,7 @@
       >
       </v-data-table>
 			<v-card-actions class="layout justify-center">
-				<v-btn color="accent mx-2" @click="open = false">Close</v-btn>
+				<v-btn color="accent mx-2" @click="open = false">{{$t("Close")}}</v-btn>
 				<!-- <v-btn color="accent" @click="RWF emit('onConfirm')">Yes</v-btn> -->
 			</v-card-actions>
 		</v-card>

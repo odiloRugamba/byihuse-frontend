@@ -1,7 +1,7 @@
 <template>
    <div class="editInfo-wrap emb-card pa-4">
       <div class="">
-         <h4>Edit Names Information</h4>
+         <h4>{{$t("message.EditNamesInformation")}}</h4>
          <v-form ref="form" v-model="valid" class="mb-2">
             <v-layout row wrap>
                <v-flex xs12 sm12 md12 lg6 xl6>
@@ -13,7 +13,7 @@
                         <v-text-field label="Last Name" v-model="lastName" :rules="inputRules.basictextRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 pt-1 pb-0>
-                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="update">Edit</v-btn>
+                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="update">{{$t("message.Edit")}}</v-btn>
                      </v-flex>
                   </v-layout>
                </v-flex>

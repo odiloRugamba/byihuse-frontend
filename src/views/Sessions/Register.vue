@@ -9,7 +9,7 @@
 						</v-flex> -->
 						<v-flex sm10 md5 lg6 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
-								<h4>Enter Your Details</h4>
+								<h4>{{$t("message.EnterYourDetails")}}</h4>
 								<v-form ref="form" v-model="valid">
 									<v-text-field
 										type="text"
@@ -54,9 +54,9 @@
 									>
 									</v-text-field>
 									<v-btn class="accent mx-0 mb-4" large  @click.stop.prevent="saveDetails">
-										Sign Up
+										{{$t("message.SignUp")}}
 									</v-btn>
-									<p>Already have account? then<router-link to="/session/signin" class="accent--text"> Sign In</router-link></p>
+									<p>{{$t("message.Alreadyhaveaccount")}}<router-link :to="'/'+$i18n.locale+'/session/signin'" class="accent--text">{{$t("message.SignIn")}}</router-link></p>
 								</v-form>
 							</div>
 						</v-flex>
@@ -111,7 +111,7 @@ import auth from "Api/auth";
 			})   
 			console.log(res)
 			// console.log('askjhaskj')
-			this.$router.push('/session/signin');
+			this.$router.push(this.$i18n.locale+'/session/signin');
 			} catch (err) {
 				console.log(err.message)
 				// console.log(res)

@@ -127,40 +127,40 @@ export default {
 			name:'Faq'
 		},
 		{ 
-			path: 'account',  
+			path: '/',  
 			component: Account, 
 			name:'Account',
 			children: [
             {
-					path: '/account/order-history',name:'OrderHistory',component: OrderHistory,
+					path: 'account/order-history',name:'OrderHistory',component: OrderHistory,
 				},
 				{
-					path: '/account/profile',name:'Profile',component: Profile,
+					path: 'account/profile',name:'Profile',component: Profile,
 				},
 				{
-					path: '/account/address',name:'Address',component: Address,
+					path: 'account/address',name:'Address',component: Address,
 				},
 				{
-					path: '/account/cards',name:'Cards',component: Cards,
+					path: 'account/cards',name:'Cards',component: Cards,
 				},
 				{
-					path: '/account/profile/edit',name:'EditProfile',component: EditProfile
+					path: 'account/profile/edit',name:'EditProfile',component: EditProfile
 				},
 				// {
 				// 	path: '/account/profile/edit',name:'EditAddress',component: EditAddress
 				// },
 				{
-					path: '/account/profile-edit/name',
+					path: 'account/profile-edit/name',
 					name:'editNames',
 					component: editNames,
 				},
 				{
-					path: '/account/profile-edit/email',
+					path: 'account/profile-edit/email',
 					name:'editEmail',
 					component: editEmail,
 				},
 				{
-					path: '/account/profile-edit/password',
+					path: 'account/profile-edit/password',
 					name:'editPassword',
 					component: editPassword,
 				},
@@ -186,7 +186,7 @@ export default {
 			name:'PrivacyPolicy'
 		},
 		{ 
-			path: '/session/signup',  
+			path: 'session/signup',  
 			component: Register, 
 			name:'Register'
 		},
@@ -201,7 +201,7 @@ export default {
 			name:'ThankYou'
 		},
 		{ 
-			path: '/session/signin',  
+			path: 'session/signin',  
 			component: SignIn, 
 			name:'SignIn'
 		}

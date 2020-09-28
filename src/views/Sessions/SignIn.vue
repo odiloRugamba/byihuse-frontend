@@ -9,7 +9,7 @@
 						</v-flex> -->
 						<v-flex sm10 md5 lg5 xl6>
 							<div class="emb-card sign-in-form form-margin d-block white pa-6">
-								<h4>User Sign In</h4>
+								<h4>{{$t("message.UserSignIn")}}</h4>
 								<v-form>
 									<v-text-field
 										type="email"
@@ -27,14 +27,14 @@
 									<div class="layout align-center justify-space-between">
 										<v-checkbox
 											v-model="checkbox"
-											label="Remember Me"
+											:label="$t(RememberMe)"
 										></v-checkbox>
 										<!-- <router-link to="/session/forgot-password" class=" text-lg-right">Forgot Password ?</router-link> -->
 									</div>
 									<v-btn class="accent mb-3 ma-0" large @click.stop.prevent="signin">
-										Sign In
+										{{$t("message.SignIn")}}
 									</v-btn>
-									<p>Don't Have account? <router-link to="/session/signup" class="accent--text">Click here to create one</router-link></p>
+									<p>{{$t("message.DontHaveaccount")}} <router-link :to="'/'+$i18n.locale+'/session/signup'" class="accent--text">{{$t("message.Clickheretocreateone")}}</router-link></p>
 								</v-form>
 							</div>
 						</v-flex>
@@ -53,6 +53,7 @@ import axios from 'axios'
 				checkbox: false,
 				Email: '',
 				password: '',
+				RememberMe:"message.RememberMe",
 				emailRules: [
 					v => !!v || 'E-mail is required',
 					v => /.+@.+/.test(v) || 'E-mail must be valid'

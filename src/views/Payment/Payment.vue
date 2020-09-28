@@ -1,13 +1,13 @@
 <template>
    <div class="emb-payment-wrap">
-		<emb-page-title heading="Payment Information"></emb-page-title>
+		<emb-page-title heading="message.PaymentInformation"></emb-page-title>
 		<div class="emb-payment-content section-gap overflow-x-hidden">
 			<v-container grid-list-xl py-0>
 				
 				<template v-if="cart.length > 0">
 					<div class="delivery" style="margin-bottom: 30px">
-							<v-btn style="min-width: 45%; height: 60px" @click="freedelivery" :class="{accent: attached}">Free Delivery <small>(get your products in few hours)</small></v-btn>
-							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">Premium Delivery - RWF 2000 <small>(get your order right away)</small></v-btn>
+							<v-btn style="min-width: 45%; height: 60px" @click="freedelivery" :class="{accent: attached}">{{$t("message.FreeDelivery")}} <small>({{$t("message.productsinfewhours")}})</small></v-btn>
+							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">{{$t("message.PremiumDelivery")}} - RWF 2000 <small>({{$t("message.getorderrightaway")}})</small></v-btn>
 						</div>
 					<div class="deliveryNavigation">
 						
@@ -32,8 +32,8 @@
 						<div class="mb-6">
 							<img  alt="cart-empty" height="128" src="/static/images/empty-cart.png" width="128">
 						</div>
-						<h4 > Your Shopping Bag is empty.</h4>
-						<router-link class="primary--text" to="/">Go to Shopping</router-link>
+						<h4 > {{$t("nessage.YourShoppingBagisempty")}}</h4>
+						<router-link class="primary--text" :to="'/'+$i18n.locale+'/products'">{{("message.GotoShopping")}}</router-link>
 					</div>
 				</template>
 			</v-container>

@@ -1,7 +1,7 @@
 <template>
    <div class="editInfo-wrap emb-card pa-4">
       <div class="">
-         <h4>Edit Email Information</h4>
+         <h4>{{$t("message.EditEmailInformation")}}</h4>
          <v-form ref="form" v-model="valid" class="mb-2">
             <v-layout row wrap>
                <v-flex xs12 sm12 md12 lg6 xl6>
@@ -10,7 +10,7 @@
                         <v-text-field label="Email" v-model="email" :rules="emailRules"></v-text-field>
                      </v-flex>
                      <v-flex xs12 sm12 md12 lg12 xl12 pt-1 pb-0>
-                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="update">Edit</v-btn>
+                        <v-btn class="accent mx-0 mb-4" @click.stop.prevent="update">{{$t("message.Edit")}}</v-btn>
                      </v-flex>
                   </v-layout>
                </v-flex>

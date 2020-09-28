@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Add Agent code if you have it</h4></v-expansion-panel-header>
+    <v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">{{$t("message.AddAgent")}}</h4></v-expansion-panel-header>
     <v-expansion-panel-content>
           <div>
             <v-tabs light slider-color="primary" v-model="active">
-                <v-tab class="text-capitalize">Offer Code </v-tab>
+                <v-tab class="text-capitalize">{{$t("message.OfferCode")}} </v-tab>
                 <!-- <v-tab class="text-capitalize">Credit/Debit/NetBanking</v-tab> -->
                 <v-tab-item>
                   <v-card flat>
@@ -13,7 +13,7 @@
                             <div class="mb-6">
                               <img  alt="discount" src="/static/images/discount.png">
                             </div>
-                            <h4 class="mb-12 font-weight-medium">Offer Thanks To Agent By Add his/her code</h4>
+                            <h4 class="mb-12 font-weight-medium">{{$t("message.OfferThanks")}}</h4>
                         </div>
                         <div class="form-wrapper py-12 text-center">
                             <div class="d-inline-flex">
@@ -26,8 +26,8 @@
                               </v-text-field>
                     				<!-- <v-btn icon @click="enterCouponCode"><v-icon>send</v-icon></v-btn> -->
                             </div>
-                            <p class="mb-0 grey--text">*if you were refer to us by an agent </p>
-                            <p class="grey--text">please provide his/her agent code <a href="javascript:void(0)">Here</a></p>
+                            <p class="mb-0 grey--text">{{$t("message.ifagent")}} </p>
+                            <p class="grey--text">{{$t("message.pleaseagentcode")}} <a href="javascript:void(0)">{{$t("message.Here")}}</a></p>
                         </div>
                       </v-card-text>
                   </v-card>

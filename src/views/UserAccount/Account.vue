@@ -9,7 +9,7 @@
 								<img src="/static/images/logo/face.png" width="70" alt="Active User">
 							</div>
 							<div class="px-4">
-								<h4>Hi,{{firstName}}</h4>
+								<h4>{{$t("message.Hi")}},{{firstName}}</h4>
 								<div class="text-muted text-xl">{{email}}</div>
 							</div>
 						</div>
@@ -20,13 +20,13 @@
 									<v-list
 										v-for="cateogary in settings[key]"
 										:key="cateogary.name" class="py-0 text-center">
-										<v-list-item @click="onTabChange(index)" :to="cateogary.path">
+										<v-list-item @click="onTabChange(index)" :to="'/'+$i18n.locale+cateogary.path">
 											<v-list-item-action class="ma-0">
 												<v-icon>{{cateogary.icon}}</v-icon>
 											</v-list-item-action>
 											<v-list-item-content class="py-0 text-left">
 												<v-list-item-title>
-													<span>{{cateogary.title}}</span>
+													<span>{{$t(cateogary.title)}}</span>
 												</v-list-item-title>
 											</v-list-item-content>
 										</v-list-item>
@@ -57,7 +57,7 @@ export default {
 			settings:{
 				orderHistory:[
 					{
-						title:"Order History",
+						title:"message.OrderHistory",
 						icon:"history",
 						path:"/account/order-history",
 						id:"orderHistory"
@@ -65,7 +65,7 @@ export default {
 				],
 				profile:[
 					{
-						title:"Profile",
+						title:"message.Profile",
 						icon:"account_circle",
 						path:"/account/profile",
 						id:"profile"
@@ -73,7 +73,7 @@ export default {
 				],
 				editNames:[
 					{
-						title:"Edit Names",
+						title:"message.EditNames",
 						icon:"account_circle",
 						path:"/account/profile-edit/name",
 						id:"addresses"
@@ -81,7 +81,7 @@ export default {
 				],
 				editEmails:[
 					{
-						title:"Edit Emails",
+						title:"message.EditEmails",
 						icon:"account_circle",
 						path:"/account/profile-edit/email",
 						id:"addresses"
@@ -89,7 +89,7 @@ export default {
 				],
 				editPassword:[
 					{
-						title:"Edit Password",
+						title:"message.EditPassword",
 						icon:"account_circle",
 						path:"/account/profile-edit/password",
 						id:"addresses"

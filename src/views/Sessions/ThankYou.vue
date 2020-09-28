@@ -14,10 +14,10 @@
                            white pa-6
                            text-center"
                      >
-                        <h4 class="px-6 pb-2 text-center">Thank you for shopping with us. Our sales team will call you in a minute for delivery process</h4>
+                        <h4 class="px-6 pb-2 text-center">{{$t("message.Thankyouforshopping")}}</h4>
                         <v-divider class="pt-2 pb-4"></v-divider>
                         <div class="mx-auto text-center">
-                           <p class="mb-4">Spread The Word</p>
+                           <p class="mb-4">{{$t("message.SpreadTheWord")}}</p>
                            <div class="mb-6 d-block"> 
                               <emb-social-share></emb-social-share>
                            </div>

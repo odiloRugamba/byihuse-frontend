@@ -47,14 +47,14 @@
 					message="Are you sure you want to delete this product?" @onConfirm="onDeleteProductFromCart">
 				</emb-delete-confirmation>
 				<v-layout align-center pa-3>
-					<v-btn class="accent white--text" block :to="'/'+$i18n.locale+'/checkout/payment'">Checkout</v-btn>
+					<v-btn class="accent white--text" block :to="'/'+$i18n.locale+'/checkout/payment'">{{$t("message.Checkout")}}</v-btn>
 				</v-layout>
 			</div>
 			<div v-else class="text-center white pa-6">
 				<v-icon size="31" class="accent--text">
 					shopping_cart
 				</v-icon>
-				<h5>No Product Found</h5>
+				<h5>{{$t("message.NoProductFound")}}</h5>
 			</div>
 		</v-menu>
 	</div>

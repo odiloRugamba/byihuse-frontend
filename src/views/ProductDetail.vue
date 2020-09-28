@@ -38,7 +38,7 @@
 								</v-layout>
 							</v-flex>
 							<v-flex xs12 sm12 md6 lg6 xl5>
-								<router-link :to="'/'+$i18n.locale+'/products'">Back to shop</router-link>
+								<router-link :to="'/'+$i18n.locale+'/products'">{{$t("message.Backtoshop")}}</router-link>
 								<h3>{{selectedProduct.name}}</h3>
 								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
@@ -48,7 +48,7 @@
 
 								<p>{{selectedProduct.descprition}}</p>
 								<div v-if="AdditionalService.length" class="serviveListDive">
-									<div class="font-weight-regular title">Additional service:</div>
+									<div class="font-weight-regular title">{{$t("message.Additionalservice")}}</div>
 									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
 										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
 											RWF 
@@ -69,21 +69,21 @@
 								<div class="mb-6">
 									<a href="javascript:void(0)" class="color-inherit text-underline"
 										@click="addItemToWishlist(selectedProduct)">
-										Add To WishList
+										{{$t("message.AddToWishList")}}
 									</a>
 								</div>
 								<div class="mb-6 btn-wrap">
 									<v-btn v-if="ifItemExistInCart(selectedProduct)" class="accent cpx-0" large
 										to="/en/cart">
-										View Cart
+										{{$t("message.ViewCart")}}
 									</v-btn>
 									<v-btn v-else class="accent d-inline-block cpx-0" large
 										@click="addProductToCart(selectedProduct)">
-										Add To Cart
+										{{$t("message.AddToCart")}}
 									</v-btn>
 								</div>
 								<div>
-									<span>Share Now</span>
+									<span>{{$t("message.ShareNow")}}</span>
 									<emb-social-share class="mx-2"></emb-social-share>
 								</div>
 							</v-flex>
@@ -93,7 +93,7 @@
 				<div class="related-product section-gap bg-grey">
 					<v-container grid-list-xl class="py-0">
 						<div class="sec-title">
-							<h2>You Might Also Like</h2>
+							<h2>{{$t("message.YouMightAlsoLike")}}</h2>
 						</div>
 						<div id="contt" class="product-listing tab-content">
 							<v-layout row wrap mb-4>
@@ -146,7 +146,7 @@
 							</v-layout>
 						</div>
 						<div class="text-center">
-							<v-btn :to="`/en/products/`+title" class="white">Show All</v-btn>
+							<v-btn :to="'/'+$i18n.locale+`/products/`+title" class="white">{{$t("message.ShowAll")}}</v-btn>
 						</div>
 					</v-container>
 				</div>

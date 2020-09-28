@@ -1,8 +1,8 @@
 <template>
    <div class="emb-cart-wrap emb-card">
       <emb-page-title
-         heading="Here's what's in your bag"
-         subHeading="Our latest news and learning articles."
+         heading="message.cartHeading"
+         subHeading="message.subHeadingCart"
          >
       </emb-page-title>
       <div class="cart-content section-gap">
@@ -12,8 +12,8 @@
                   <div class="mb-6">
                      <img  alt="cart-empty" height="128" src="/static/images/empty-cart.png" width="128">
                   </div>
-                  <h4 > Your Shopping Bag is empty</h4>
-                  <router-link class="primary--text" :to="'/'+$i18n.locale+'/products/'">Go to Shopping</router-link>
+                  <h4>{{$t("message.YourShoppingBagisempty")}}</h4>
+                  <router-link class="primary--text" :to="'/'+$i18n.locale+'/products/'">{{$t("message.GotoShopping")}}</router-link>
                </div>
             </div>
             <div v-else class="cart-shop-list">
@@ -41,7 +41,7 @@
 								</v-col>
 								<v-col cols="2" sm="2" md="2" class="res-float-icon d-inline-flex align-center justify-md-center justify-end">
 									<a class="accent--text remove-cart" @click="deleteProductFromCart(item)" href="javascript:void(0)">
-										<i class="material-icons font-weight-bold">close </i>
+										<i class="material-icons font-weight-bold">close</i>
 									</a>
 								</v-col>
 							</v-row>
@@ -51,21 +51,21 @@
                   <vue-snotify></vue-snotify>
                   <v-flex xs12 sm12 md5 lg5 xl5 py-0>
                      <div class="layout align-center justify-space-between subtotal">
-                        <p>Subtotal</p>
+                        <p>{{$t("message.Subtotal")}}</p>
                         <span>
                            RWF
                            {{itemTotal}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
-                        <p>Delivery</p>
+                        <p>{{$t("message.Delivery")}}</p>
                         <span>
                            RWF
                            {{shipping}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
-                        <p>Tax</p>
+                        <p>{{$t("message.Tax")}}</p>
                         <span>
                            RWF
                            {{tax}}
@@ -73,7 +73,7 @@
                      </div>
                      <v-divider class="my-3"></v-divider>
                      <div class="layout align-center justify-space-between subtotal layout-gap">
-                        <h4>Total</h4>
+                        <h4>{{("message.Total")}}</h4>
                         <h4>
                            RWF
                            {{getTotalPrice}}
@@ -81,14 +81,14 @@
                      </div>
                      <div class="layout justify-end subtotal">
                         <v-btn large class="accent mr-0" :to="'/'+$i18n.locale+'/checkout/payment'">
-                           Checkout
+                           {{$t("message.Checkout")}}
                         </v-btn>
                      </div>
                   </v-flex>
                </v-layout>
                <emb-delete-confirmation
                   ref="deleteConfirmationDialog"
-                  message="Are you sure you want to delete this product?"
+                  message="message.deleteCartProduct"
                   @onConfirm="onDeleteProductFromCart"
                   >
                </emb-delete-confirmation>

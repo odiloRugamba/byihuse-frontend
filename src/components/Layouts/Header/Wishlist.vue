@@ -15,7 +15,7 @@
 				<v-icon size="31" class="accent--text">
 					shopping_cart
 				</v-icon>
-				<h5>No Product Found</h5>
+				<h5>{{$t("message.NoProductFound")}}</h5>
 			</div>
 			<div v-else class="wishlist-menu white">
 				<emb-perfect-scrollbar class="scroll-area" style="max-height:280px">
@@ -39,7 +39,7 @@
 											@click="deleteProductFromWishlist(wishlist)">
 											<v-icon> remove_shopping_cart </v-icon>
 										</v-btn>
-										<v-btn class="primary d-inline-block ml-2 d-inline-flex align-items-center" icon to="/cart">
+										<v-btn class="primary d-inline-block ml-2 d-inline-flex align-items-center" icon :to="'/'+$i18n.locale+'/cart'">
 											<v-icon>edit</v-icon>
 										</v-btn>
 									</v-flex>
@@ -52,7 +52,7 @@
 					message="Are you sure you want to delete this product?" @onConfirm="onDeleteProductFromWishlist">
 				</emb-delete-confirmation>
 				<v-layout align-center pa-3>
-					<v-btn class="accent white--text" block @click="addAllWishlistItemToCart">Add all to cart</v-btn>
+					<v-btn class="accent white--text" block @click="addAllWishlistItemToCart">{{$t("message.Addalltocart")}}</v-btn>
 				</v-layout>
 			</div>
 		</v-menu>

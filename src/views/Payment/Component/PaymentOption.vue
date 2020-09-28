@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Payment Options</h4></v-expansion-panel-header>
+		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">{{$t("message.PaymentOptions")}}</h4></v-expansion-panel-header>
 		<v-expansion-panel-content>
 			<div>
 				<v-tabs light slider-color="primary" v-model="activePayment">
-					<v-tab class="text-capitalize">Mobile Money</v-tab>
-					<v-tab class="text-capitalize">Pay with Cash</v-tab>
+					<v-tab class="text-capitalize">{{$t("message.MobileMoney")}}</v-tab>
+					<v-tab class="text-capitalize">{{$t("message.PaywithCash")}}</v-tab>
 					<v-tab-item>
 						<v-card flat>
 							<v-card-text class="pa-0">
@@ -13,7 +13,7 @@
 									<div class="mb-6">
 										<img  alt="discount" src="/static/images/card.png">
 									</div>
-									<h4 class="mb-12 font-weight-medium">Pay With Mobile Money</h4>
+									<h4 class="mb-12 font-weight-medium">{{$t("message.PayWithMobileMoney")}}</h4>
 								</div>
 								<v-form class="form-wrapper pt-6 text-center py-12" ref="form" v-model="valid">
 									<div class="layout row wrap">
@@ -26,8 +26,8 @@
 												</v-flex>
 												<v-flex xs12 sm12 md12 lg12 xl12>
 													<div class="text-xl-left text-sm-left">
-														<v-btn :loading="loading" class="accent mr-3" @click="makePayment('MOMO')">Submit</v-btn>
-														<v-btn @click="makeCleat">Clear</v-btn>
+														<v-btn :loading="loading" class="accent mr-3" @click="makePayment('MOMO')">{{$t("message.Submit")}}</v-btn>
+														<v-btn @click="makeCleat">{{$t("message.Clear")}}</v-btn>
 													</div>
 												</v-flex>
 											</div>
@@ -47,13 +47,13 @@
 									<div class="mb-6">
 										<img alt="Bank" src="/static/images/online-shop.png">
 									</div>
-									<h4 class="mb-12 font-weight-medium">Pay With Cash</h4>
+									<h4 class="mb-12 font-weight-medium">{{$t("message.PaywithCash")}}</h4>
 								</div>
 								<v-divider class="mt-12 mb-2"></v-divider>
 								<div class="text-center">
 									<!-- <v-btn class="sidebar-toggle mx-4" color="accent" dark @click="showOrder()" >Show Order Detail</v-btn> -->
-									<v-btn class="sidebar-toggle mx-4"  color="accent" dark @click="makePayment('CASH')">Submit</v-btn>
-									<v-btn @click="makeCleat">Clear</v-btn>
+									<v-btn class="sidebar-toggle mx-4"  color="accent" dark @click="makePayment('CASH')">{{$t("message.Submit")}}</v-btn>
+									<v-btn @click="makeCleat">{{$t("message.Clear")}}</v-btn>
 								</div>
 							</v-card-text>
 						</v-card>

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">Enter Your Delivery Address</h4></v-expansion-panel-header>
+		<v-expansion-panel-header class="primary"><h4 class="mx-2 mb-0 white--text">{{$t("message.DeliveryAddress")}}</h4></v-expansion-panel-header>
 		<v-expansion-panel-content>
 			<v-card-text>
 				<v-form ref="form" v-model="valid">
@@ -36,7 +36,7 @@
 									</v-flex>
 					</v-layout>
 					<div class="contact-info d-block pt-4">
-						<h4>Enter Contact Information</h4>
+						<h4>{{$t("message.EnterContact")}}</h4>
 						<v-layout row wrap>
 							<v-flex lg6 xl6 md6 sm12>
 								<v-text-field  v-model="userInfo.phone" :rules="inputRules.basictextRules" label="Mobile*" required></v-text-field>
@@ -49,7 +49,7 @@
 						</v-layout>
 					</div>
 					<div class="layout justify-start px-4 mt-6">
-						<v-btn pl-0 ml-0 large @click="addUserDetails" class="accent">Continue To Payment</v-btn>
+						<v-btn pl-0 ml-0 large @click="addUserDetails" class="accent">{{$t("message.ContinuePayment")}}</v-btn>
 					</div>
 				</v-form>
 			</v-card-text>

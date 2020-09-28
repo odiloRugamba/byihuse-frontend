@@ -10,16 +10,16 @@
 			<v-list class="user-dropdown-list">
 				<div  v-if="user">
 				 <v-list-item  v-for="(userLink, key) in userLinks" :key="key">
-					<router-link :to="userLink.path" >
+					<router-link :to="'/'+$i18n.locale+userLink.path" >
 					    <v-icon class="mr-2">{{userLink.icon}}</v-icon>
-					    <span>{{userLink.title}}</span>	
+					    <span>{{$t(userLink.title)}}</span>
 					</router-link>
 				 </v-list-item>
 				</div>
 				
 				<v-list-item  @click="changePage('/session/signin')">
 					<v-icon class="mr-2">power_settings_new</v-icon>
-					<span v-if="!user">LogIn</span><span v-if="user">LogOut</span>
+					<span v-if="!user">{{$t("message.LogIn")}}</span><span v-if="user">{{$t("message.LogOut")}}</span>
 				</v-list-item>
 			</v-list>
 		</v-menu>
@@ -42,7 +42,7 @@ import { mapGetters } from 'vuex'
 		methods: {
 			changePage(page) {
 				localStorage.clear()
-				this.$router.push(page)
+				this.$router.push(`/${this.$i18n.locale}${page}`)
 				// location.replace(page)
 				// location.reload(false)
 				if (this.user) {
@@ -57,7 +57,7 @@ import { mapGetters } from 'vuex'
 			userLinks: [
 				{
 					icon:'account_circle',
-					title: 'User Profile',
+					title: 'message.UserProfile',
 					path:"/account/profile"
 				},
 			],
