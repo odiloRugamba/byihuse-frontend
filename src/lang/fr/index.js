@@ -191,5 +191,9 @@ export default {
   "FreeDelivery":"Free Delivery",
   "productsinfewhours":"get your products in few hours",
   "PremiumDelivery":"Premium Delivery",
-  "getorderrightaway":"get your order right away"
+  "getorderrightaway":"get your order right away",
+  "ShowOrderDetail":"Show Order Detail",
+  "Youhave":"You have",
+  "itemscart":"items in your cart",
+  "NoItemFound":"No Item Found"
 }

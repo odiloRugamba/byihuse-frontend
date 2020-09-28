@@ -7,7 +7,7 @@
 				dark
 				@click.stop="drawer = !drawer"
 			>
-				Show Order Detail :RWF {{getTotalPrice}}
+				{{$t("message.ShowOrderDetail")}} :RWF {{getTotalPrice}}
 			</v-btn>
 		</v-layout>
 		 <v-navigation-drawer fixed width="340" right v-model="drawer" temporary>
@@ -15,15 +15,15 @@
 				<v-icon class="white--text mb-4">
 					shopping_cart
 				</v-icon>
-				<h5 class="white--text">You have {{cart.length}} items in your cart</h5>
+				<h5 class="white--text">{{$t("message.Youhave")}} {{cart.length}} {{$t("message.itemscart")}}</h5>
 			</div>
 			<div class="cart-content">
 				<div v-if="cart == ''" class="text-xl-center">
 					<v-icon size="26" class="px-2">
 						shopping_cart
 					</v-icon>
-					<h3>No Item Found</h3>
-					<v-btn class="accent" to="/">Go to Shopping</v-btn>
+					<h3>{{$t("message.NoItemFound")}}</h3>
+					<v-btn class="accent" :to="'/'+$i18n.locale+'/products'">{{$t("message.GotoShopping")}}</v-btn>
 				</div>
 				<div v-else class="cart-shop-list">
 					<div class="cart-item p-sm-4 p-3" v-for="(cart, index) in cart" :key="index">
@@ -48,20 +48,20 @@
 					</div>
 					<div class="pt-6 px-4">
 						<div class="layout align-center justify-space-between ma-0">
-							<p>Subtotal</p>
+							<p>{{$t("message.Subtotal")}}</p>
 							<span>RWF {{itemTotal}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
-							<p>Delivery</p>
+							<p>{{$t("message.Delivery")}}</p>
 							<span>RWF {{shipping}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
-							<p>Tax</p>
+							<p>{{$t("message.Tax")}}</p>
 							<span>RWF {{tax}}</span>
 						</div>
 						<v-divider class="my-4"></v-divider>
 						<div class="layout align-center justify-space-between ma-0">
-							<h4>Total</h4>
+							<h4>{{$t("message.Total")}}</h4>
 							<h4>RWF {{getTotalPrice}}</h4>
 						</div>
 						<v-divider class="my-4"></v-divider>
