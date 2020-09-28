@@ -2,7 +2,7 @@
    <div class="emb-contact-wrap">
 		<emb-page-title
 			heading="Byiza"
-			subHeading="Share your feedback with us."
+			subHeading="Coming soon!"
 		>
 		</emb-page-title>
 		<div class="emb-contact-content">

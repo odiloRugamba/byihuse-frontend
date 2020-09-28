@@ -40,7 +40,7 @@ const SignIn = () => import('Views/Sessions/SignIn');
 export default {
 	path: '/',
 	component: UserPanel,
-	// redirect:'en/home',
+	redirect:'en/home',
 	children:[
 		{ 
 			path: 'home',
@@ -49,14 +49,6 @@ export default {
 				header: 1
 			 }
 		},
-		// {
-		// 	path: 'products/accessories',
-		// 	component: Accessory 
-		// },
-		// { 
-		// 	path: 'gadget',
-		// 	component: Gadget 
-		// },
 		{			
 			path: 'rental',
 			component: Rental,

@@ -7,7 +7,7 @@
 				dark
 				@click.stop="drawer = !drawer"
 			>
-				Show Order Detail :<emb-currency-sign></emb-currency-sign>{{getTotalPrice}}
+				Show Order Detail :RWF {{getTotalPrice}}
 			</v-btn>
 		</v-layout>
 		 <v-navigation-drawer fixed width="340" right v-model="drawer" temporary>
@@ -34,7 +34,7 @@
 								<v-flex xs7 sm7 md7 lg7 xl7 cart-product-name pa-0>
 									<h6 class="mb-1 word-wrap-break">{{cart.name}}</h6>
 									<p class="mb-0">{{cart.quantity}}</p>
-									<p class="mb-0 font-weight-bold"><emb-currency-sign></emb-currency-sign>{{cart.price}}</p>
+									<p class="mb-0 font-weight-bold">RWF {{cart.price}}</p>
 									</v-flex>
 								<v-flex xs2 sm2 md2 lg2 xl2 btn-action text-right pa-0>
 										<v-btn :ripple="false" class="ma-0" icon @click="deleteProductFromCart(cart)">
@@ -49,20 +49,20 @@
 					<div class="pt-6 px-4">
 						<div class="layout align-center justify-space-between ma-0">
 							<p>Subtotal</p>
-							<span><emb-currency-sign></emb-currency-sign>{{itemTotal}}</span>
+							<span>RWF {{itemTotal}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
 							<p>Delivery</p>
-							<span><emb-currency-sign></emb-currency-sign>{{shipping}}</span>
+							<span>RWF {{shipping}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
 							<p>Tax</p>
-							<span><emb-currency-sign></emb-currency-sign>{{tax}}</span>
+							<span>RWF {{tax}}</span>
 						</div>
 						<v-divider class="my-4"></v-divider>
 						<div class="layout align-center justify-space-between ma-0">
 							<h4>Total</h4>
-							<h4><emb-currency-sign></emb-currency-sign>{{getTotalPrice}}</h4>
+							<h4>RWF {{getTotalPrice}}</h4>
 						</div>
 						<v-divider class="my-4"></v-divider>
 					</div>

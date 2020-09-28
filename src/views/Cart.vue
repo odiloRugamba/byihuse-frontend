@@ -35,7 +35,7 @@
 								</v-col>
 								<v-col cols="6" sm="3" md="2" class="d-inline-flex align-center justify-center">
 									<h4 class="mb-0">
-										<emb-currency-sign></emb-currency-sign>
+										RWF
                     {{(item.quantity)*(item.price)}}
 									</h4>
 								</v-col>
@@ -53,21 +53,21 @@
                      <div class="layout align-center justify-space-between subtotal">
                         <p>Subtotal</p>
                         <span>
-                           <emb-currency-sign></emb-currency-sign>
+                           RWF
                            {{itemTotal}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
                         <p>Delivery</p>
                         <span>
-                           <emb-currency-sign></emb-currency-sign>
+                           RWF
                            {{shipping}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
-                        <p>Tax(GST)</p>
+                        <p>Tax</p>
                         <span>
-                           <emb-currency-sign></emb-currency-sign>
+                           RWF
                            {{tax}}
                         </span>
                      </div>
@@ -75,7 +75,7 @@
                      <div class="layout align-center justify-space-between subtotal layout-gap">
                         <h4>Total</h4>
                         <h4>
-                           <emb-currency-sign></emb-currency-sign>
+                           RWF
                            {{getTotalPrice}}
                         </h4>
                      </div>

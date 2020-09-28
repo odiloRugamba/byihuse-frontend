@@ -16,7 +16,7 @@
               dark
               class="primary"
               width="230"
-              height="700"
+              height="800"
               permanent>
     <v-list id="services">
         <div v-for="names in rentalNames" :key="names">

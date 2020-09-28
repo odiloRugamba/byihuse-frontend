@@ -77,7 +77,7 @@
 									<span>$12.95</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Tax(GST)</p>
+									<p>Tax</p>
 									<span>$27.95</span>
 								</div>
 								<v-divider class="my-4"></v-divider>

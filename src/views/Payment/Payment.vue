@@ -3,12 +3,14 @@
 		<emb-page-title heading="Payment Information"></emb-page-title>
 		<div class="emb-payment-content section-gap overflow-x-hidden">
 			<v-container grid-list-xl py-0>
+				
 				<template v-if="cart.length > 0">
-					<div class="deliveryNavigation">
-						<div class="delivery">
-							<v-btn @click="freedelivery" :class="{accent: attached}">Free Delivery</v-btn>
-							<v-btn id="premium" @click="premiumdelivery" :class="{accent: !attached}">primium Delivery</v-btn>
+					<div class="delivery" style="margin-bottom: 30px">
+							<v-btn style="min-width: 45%; height: 60px" @click="freedelivery" :class="{accent: attached}">Free Delivery <small>(get your products in few hours)</small></v-btn>
+							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">Premium Delivery - RWF 2000 <small>(get your order right away)</small></v-btn>
 						</div>
+					<div class="deliveryNavigation">
+						
 						<div class="Navigation">
 							<emb-sidebar-panel class="mb-12"></emb-sidebar-panel>	
 						</div>
@@ -109,7 +111,5 @@ export default {
 .Navigation{
 	flex: 1;
 }
-#premium{
-	margin-left: 10px;
-}
+
 </style>

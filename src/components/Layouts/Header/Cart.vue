@@ -24,7 +24,7 @@
 										<div class="pl-1">
 											<h6 class="word-wrap-break">{{cart.name}}</h6>
 											<span>
-												<emb-currency-sign></emb-currency-sign>{{cart.price * cart.quantity}}
+												RWF {{cart.price * cart.quantity}}
 											</span>
 										</div>
 									</v-flex>

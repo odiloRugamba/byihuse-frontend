@@ -16,10 +16,10 @@
 				<v-card-text class="pa-4">
 					<v-flex xs12>
 						<div class="text-center bg-grey px-4 py-6">
-							<h4>Payment Status</h4>
+							<h4>Order details</h4>
 							<!-- <h5 class="mb-6">Payment is successfully processsed and your order is on the way </h5> -->
-							<h6 class="mb-6">Invoice ID:{{selectProduts.id}}</h6>
-							<img src="/static/images/checked.png" width="64" height="64" alt="Success">
+							<!-- <h6 class="mb-6">Invoice ID:{{_id}}</h6>
+							<img src="/static/images/checked.png" width="64" height="64" alt="Success"> -->
 						</div>
 						<div class="mt-12 mx-4">
 							<v-layout row wrap mb-10 mx-0 mt-0>
@@ -29,20 +29,18 @@
 									<!-- <p class="mb-1">Order Date :{{selectProduts.date}}</p>
 									<p class="mb-1">Order Total :{{selectProduts.total}}</p> -->
 								</v-flex>
-								<v-flex xs12 sm6 md6 lg6 xl6 text-left pa-0>
-									<h6>Ship To</h6>
-									<p class="mb-1">{{fristName}}</p>
-									<p class="mb-1">{{lastName}}</p>
-									<p class="mb-1">{{city}}</p>
+								<v-flex xs12 sm8 md8 lg8 xl8 text-left pa-0>
+									<h6>Deliver To</h6>
+									<p class="mb-1">{{fristName}} {{lastName}}</p>
+									<p class="mb-1">{{city}}, {{street}}</p>
 									<p class="mb-1">{{phone}}</p>
-									<p class="mb-1">{{street}}</p>
 								</v-flex>
 							</v-layout>
-							<div class="py-6 text-center bg-grey">
-								<h4>Expected Date of Delivery</h4>
+							<!-- <div class="py-6 text-center bg-grey">
+								<h4>Products ordered</h4>
 								<h3>December 31, 2019</h3>
-							</div>
-							<h4 class="pt-12 mb-7 text-sm-left text-center">Your Ordered Details</h4>
+							</div> -->
+							<h4 class="pt-12 mb-7 text-sm-left text-center">You Ordered:</h4>
 							<div  id="producr">
 								<div id="tittle">
 								<div><h6> Product Image</h6></div>
@@ -54,7 +52,7 @@
 									<div><img width="100" :src="product.pictures" alt=""></div>
 									<p class="font-weight-bold">{{product.name}}</p>
 									<div><p>{{product.quantity}}</p></div>
-									<div>${{product.price}}</div>
+									<div>RWF {{product.price}}</div>
 								</div>
 							</div>
 							
@@ -62,20 +60,20 @@
 							<div class="pt-6">
 								<div class="layout align-center justify-space-between ma-0">
 									<p>Subtotal</p>
-									<span>${{total}}</span>
+									<span>RWf {{total}}</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Shipping</p>
-									<span>$0</span>
+									<p>Delivery</p>
+									<span>RWF 0</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>Tax(GST)</p>
-									<span>$0</span>
+									<p>Tax</p>
+									<span>RWF 0</span>
 								</div>
 								<v-divider class="my-4"></v-divider>
 								<div class="layout align-center justify-space-between ma-0">
 									<h4>Total</h4>
-									<h4>${{total}}</h4>
+									<h4>RWF {{total}}</h4>
 								</div>
 								<!-- <v-divider class="my-4"></v-divider> -->
 							</div>
@@ -98,7 +96,7 @@
       </v-data-table>
 			<v-card-actions class="layout justify-center">
 				<v-btn color="accent mx-2" @click="open = false">Close</v-btn>
-				<!-- <v-btn color="accent" @click="$emit('onConfirm')">Yes</v-btn> -->
+				<!-- <v-btn color="accent" @click="RWF emit('onConfirm')">Yes</v-btn> -->
 			</v-card-actions>
 		</v-card>
 	</v-dialog>

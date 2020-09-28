@@ -30,7 +30,7 @@
 										<div class="pl-1">
 											<h6 class="mb-0 word-wrap-break">{{wishlist.name}}</h6>
 											<span>
-												<emb-currency-sign></emb-currency-sign>{{wishlist.price}}
+												RWF {{wishlist.price}}
 											</span>
 										</div>
 									</v-flex>

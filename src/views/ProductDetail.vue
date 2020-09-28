@@ -43,7 +43,7 @@
 								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
 								<h4 class="accent--text">
-									<emb-currency-sign></emb-currency-sign>{{selectedProduct.price}}
+									RWF {{selectedProduct.price}}
 								</h4>
 
 								<p>{{selectedProduct.descprition}}</p>
@@ -51,7 +51,7 @@
 									<div class="font-weight-regular title">Additional service:</div>
 									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
 										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
-											<emb-currency-sign></emb-currency-sign>
+											RWF 
 											{{service.price}}
 										</v-btn>
 									 <div id="serviceName">{{service.name}}</div>
@@ -133,7 +133,7 @@
 													<div class="layout align-center justify-space-between pa-4">
 														<div class="inline-block">
 															<h6 class="accent--text font-weight-medium">
-																<emb-currency-sign></emb-currency-sign>
+																RWF 
 																{{product.price}}
 															</h6>
 														</div>

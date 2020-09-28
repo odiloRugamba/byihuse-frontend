@@ -98,7 +98,7 @@ menus:  [
       children: {}
    },
    {
-      path:`services`,
+      path:"services",
       name: "message.services",
       icon: "pages",
       type: "sub_menu",

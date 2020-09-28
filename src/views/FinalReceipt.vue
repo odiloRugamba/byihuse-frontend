@@ -19,7 +19,7 @@
 											<h6>Summary</h6>
                                  <p class="mb-1 text-capitalize">Order ID: {{invoiceData.orderId}}</p>
                                  <p class="mb-1">Order Date: {{invoiceData.orderedDate}}</p>
-                                 <p class="mb-1">Order Total: <emb-currency-sign></emb-currency-sign>{{getTotalPrice()}}</p>
+                                 <p class="mb-1">Order Total: RWF {{getTotalPrice()}}</p>
                               </v-flex>
                               <v-flex xs12 sm6 md6 lg6 xl6>
 											<h6>Ship To</h6>
@@ -58,21 +58,21 @@
                            <div>
                               <div class="d-flex align-center justify-space-between mt-4 mb-4">
                                  <div><p class="mb-0">Subtotal</p></div>
-                                 <div><span><emb-currency-sign></emb-currency-sign>{{itemTotal()}}</span></div>
+                                 <div><span>RWF {{itemTotal()}}</span></div>
                               </div>
                               <div class="d-flex align-center justify-space-between mb-4">
                                  <p class="mb-0">Delivery</p>
-                                 <span><emb-currency-sign></emb-currency-sign>{{shipping}}</span>
+                                 <span>RWF {{shipping}}</span>
                               </div>
                               <div class="d-flex align-center justify-space-between mb-4">
-                                 <p class="mb-0">Tax(GST)</p>
-                                 <span><emb-currency-sign></emb-currency-sign>{{tax}}</span>
+                                 <p class="mb-0">Tax</p>
+                                 <span>RWF {{tax}}</span>
                               </div>
                            </div>
 									<v-divider class="my-4"></v-divider>
 									<div class="d-flex align-center justify-space-between">
 										<h4>Total</h4>
-										<h4><emb-currency-sign></emb-currency-sign>{{getTotalPrice()}}</h4>
+										<h4>RWF {{getTotalPrice()}}</h4>
 									</div>
                         </div>
                      </div>
