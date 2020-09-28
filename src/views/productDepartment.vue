@@ -71,12 +71,12 @@
 					</div>
           </div>
          <div v-if="pageProductsLoaded && products.length">
-            <h3>Loading...</h3>
+            <h3>{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-else>
-            <h3>No Product Found</h3>
-            <v-btn block class="accent" :to="'/'+$i18n.locale+'/products'">Shop</v-btn>
+            <h3>{{$t("message.NoProductFound")}}</h3>
+            <v-btn block class="accent" :to="'/'+$i18n.locale+'/products'">{{$t("message.Shop")}}</v-btn>
           </div>
 				<!-- </template>	 -->
 			</div>	

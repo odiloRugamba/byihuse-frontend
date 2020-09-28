@@ -15,7 +15,7 @@
 							>
 								<div class="emb-card">
 									<div  id="item" class="thumb-wrap">
-										<router-link :to="'/en/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
+										<router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
 											<img 
 												alt="feature product image"
 												:src="cateogary.imag"
@@ -64,7 +64,7 @@
 						<!-- </slick> -->
 					</div>
                     <div v-if="!products.length">
-                        <h3>No Products Found, Cannot find what you are looking for? call +250 784 481 653</h3>
+                        <h3>{{$t("message.searchNoproductFound")}} +250 784 481 653</h3>
                     </div>
 				</template>	
 			</div>

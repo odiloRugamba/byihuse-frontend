@@ -202,5 +202,8 @@ export default {
   "ShowOrderDetail":"Show Order Detail",
   "Youhave":"You have",
   "itemscart":"items in your cart",
-  "NoItemFound":"No Item Found"
+  "NoItemFound":"No Item Found",
+  "Loading":"Loading",
+  "Shop":"Shop",
+  "searchNoproductFound":"No Products Found, Cannot find what you are looking for? call"
 }

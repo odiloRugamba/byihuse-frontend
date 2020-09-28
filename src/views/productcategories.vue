@@ -77,11 +77,11 @@
   </div>	
 		</div>
           <div v-if="!pageProductsLoaded">
-            <h3>Loading...</h3>
+            <h3>{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-if="pageProductsLoaded && !produ.length">
-            <h3 class="pl-15">No Product Found</h3>
+            <h3 class="pl-15">{{$t("message.NoProductFound")}}</h3>
             <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
     </div>
