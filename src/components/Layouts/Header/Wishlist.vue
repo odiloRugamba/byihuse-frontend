@@ -30,7 +30,7 @@
 										<div class="pl-1">
 											<h6 class="mb-0 word-wrap-break">{{wishlist.name}}</h6>
 											<span>
-												RWF {{wishlist.price}}
+												<emb-currency-sign></emb-currency-sign>{{(wishlist.price/currentValue).toFixed(2)}}
 											</span>
 										</div>
 									</v-flex>
@@ -62,7 +62,7 @@
 <script>
 	import { mapGetters } from 'vuex';
 	import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-
+	import currency from "Api/currency";
 	export default {
 		components: {
 			embPerfectScrollbar: VuePerfectScrollbar,
@@ -72,11 +72,12 @@
 				selectDeletedProduct: null,
 				settings: {
 					maxScrollbarLength: 160
-				}
+				},
+				currentValue:1
 			};
 		},
 		computed: {
-			...mapGetters(["wishlist", "cart"]),
+			...mapGetters(["wishlist","selectedCurrency","cart"]),
 			/**
 			 * method for claculating total price
 			*/
@@ -91,6 +92,19 @@
 				else {
 					return totalPrice;
 				}
+			}
+		},
+		async mounted (){
+			try {
+				const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+				console.log(res)
+			} catch (err) {
+				console.log(err.response.message)
 			}
 		},
 		methods: {

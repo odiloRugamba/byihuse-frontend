@@ -40,9 +40,9 @@
 				this.$i18n.locale = language.locale;
 				this.$store.dispatch("changeLanguage", language);
 				// this.pageRoute = this.$route.params
-				localStorage.removeItem('lang')
-				localStorage.removeItem('current')
-				localStorage.setItem('lang', JSON.stringify(language))
+				// localStorage.removeItem('lang')
+				// localStorage.removeItem('current')
+				// localStorage.setItem('lang', JSON.stringify(language))
 				const rote = this.$route.path.split(`/`)
 				let currentRoute = ''
 				rote.forEach(el => {
@@ -50,13 +50,18 @@
 						currentRoute = currentRoute + '/' + el
 					}
 				});
-				localStorage.setItem('current', currentRoute)
+				// localStorage.setItem('current', currentRoute)
 				console.log(rote, this.$route.path)
 				this.langPage = language.lang
 				// const lang = JSON.parse(localStorage.getItem('lang'))
 				// const current = localStorage.getItem('current')
 				// this.$router.push(`/${lang.locale}${current}`)
-				location.reload();
+				// location.reload();
+				// location.assign('#')
+				location.assign(`/#/${this.$i18n.locale}${currentRoute}`)
+				location.reload(true)
+
+				// location.l
 				
 			}
 		},
@@ -65,26 +70,35 @@
 		// 		console.log('hello')
 		// 	}
 		// },
-		created() {
-			let lang = JSON.parse(localStorage.getItem('lang'))
-			const current = localStorage.getItem('current')
-			if (!lang) {
-				lang= {
-					name: "English",
-					locale: "en"
-					}
+		mounted() {
+			// let lang = JSON.parse(localStorage.getItem('lang'))
+			// const current = localStorage.getItem('current')
+			// if (!lang) {
+			// 	lang= {
+			// 		name: "English",
+			// 		locale: "en"
+			// 		}
 				// localStorage.setItem('lang',JSON.)
-			}
-			if (current) {
-			this.$store.dispatch("changeLanguage", lang.name);
-			this.$i18n.locale = lang.locale;
-			this.$router.push(`/${lang.locale}${current}`)
-			this.$i18n.locale = lang.locale;
-			this.$store.dispatch("changeLanguage", lang.name);
-			this.specialLang=lang.name
-			}else{
-				this.$router.push(`/${lang.locale}/home`)
+			// }
+			// console.log(this.$route.params)
+			// if (current) {
+			// this.$store.dispatch("changeLanguage", lang.name);
+			// this.$i18n.locale = lang.locale;
+			// this.$router.push(`/${lang.locale}${current}`)
+			// this.$i18n.locale = lang.locale;
+			// this.$store.dispatch("changeLanguage", lang.name);
+			// this.specialLang=lang.name
+			// }else{
+				// this.$router.push(`/${lang.locale}/home`)
 				// this.$store.dispatch("changeLanguage", {name: "English", locale: "en"});
+			// }
+			if (this.$route.params.lang === 'fr') {
+				this.$store.dispatch("changeLanguage", {name: "French", locale: "fr"});
+				this.$i18n.locale= 'fr'
+				// console.log('sdajhskajhjkashjk')
+			}else{
+				this.$store.dispatch("changeLanguage", {name: "English", locale: "en"});
+				this.$i18n.locale= 'en'
 			}		
 		}
 	}

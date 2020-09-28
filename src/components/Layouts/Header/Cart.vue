@@ -24,7 +24,7 @@
 										<div class="pl-1">
 											<h6 class="word-wrap-break">{{cart.name}}</h6>
 											<span>
-												RWF {{cart.price * cart.quantity}}
+												<emb-currency-sign></emb-currency-sign>{{(cart.price/currentValue).toFixed(2)*cart.quantity}}
 											</span>
 										</div>
 									</v-flex>
@@ -69,7 +69,7 @@
 <script>
 	import { mapGetters } from 'vuex';
 	import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-
+	import currency from "Api/currency";
 	export default {
 		components: {
 			embPerfectScrollbar: VuePerfectScrollbar,
@@ -79,7 +79,8 @@
 				selectDeletedProduct: null,
 				settings: {
 					maxScrollbarLength: 160
-				}
+				},
+				currentValue:1
 			};
 		},
 		computed: {
@@ -95,6 +96,19 @@
 				else {
 					return totalPrice;
 				}
+			}
+		},
+		async mounted (){
+			try {
+				const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+				// console.log(res)
+			} catch (err) {
+				console.log(err.response.message)
 			}
 		},
 		methods: {

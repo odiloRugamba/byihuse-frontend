@@ -51,7 +51,7 @@
 										<div class="emb-meta-info layout align-center my-1">
 											<div class="inline-block">
 												<h6 class="accent--text font-weight-medium">
-													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+													<emb-currency-sign></emb-currency-sign>{{(cateogary.price/currentValue).toFixed(2)}}
 												</h6>
 											</div>
 											<div class="inline-block ">
@@ -100,7 +100,7 @@ import currency from "Api/currency"
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "selectedCurrency"])
+    ...mapGetters(["rtlLayout", "cart", "wishlist","selectedLocale", "selectedCurrency"])
     // produc () {
     //   return this.$store.state.products
     // }
@@ -224,24 +224,8 @@ export default {
           this.currentValue= el.currentValue
         }
       })
-			rescategoies.data.data.forEach(el => {
-        // console.log(el.name.en ,this.title)
-        if (el.name.en === this.title) {
-         el.categories.forEach(recat =>{
-						recat.products.forEach(pro =>{
-              // console.log(pro)
-						this.products.push({
-							objectID: pro._id,
-							price: (pro.price/this.currentValue).toFixed(2),
-							name: pro.name.en,
-              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
-              category:pro.name.en
-						})
-						})
-				}) 
-        }
-      });
-      rescategoies.data.data.forEach(el => {
+      if (this.selectedLocale.name === 'French') {
+        rescategoies.data.data.forEach(el => {
         // console.log(el.name.en ,this.title)
         if (el.name.fr === this.title) {
          el.categories.forEach(recat =>{
@@ -249,7 +233,7 @@ export default {
               // console.log(pro)
 						this.products.push({
 							objectID: pro._id,
-							price: (pro.price/this.currentValue).toFixed(2),
+							price: pro.price,
 							name: pro.name.fr,
               image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
               category:pro.name.fr
@@ -258,6 +242,26 @@ export default {
 				}) 
         }
       });
+    }else{
+        rescategoies.data.data.forEach(el => {
+        // console.log(el.name.en ,this.title)
+        if (el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+              // console.log(pro)
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.en,
+              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              category:pro.name.en
+						})
+						})
+				}) 
+        }
+      });
+    }
+    
       this.pageProductsLoaded = true
       // console.log(this.products)
     } catch (err) {

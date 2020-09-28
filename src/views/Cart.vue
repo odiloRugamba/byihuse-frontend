@@ -35,8 +35,7 @@
 								</v-col>
 								<v-col cols="6" sm="3" md="2" class="d-inline-flex align-center justify-center">
 									<h4 class="mb-0">
-										RWF
-                    {{(item.quantity)*(item.price)}}
+									<emb-currency-sign></emb-currency-sign>{{(item.quantity)*(item.price/currentValue).toFixed(2)}}
 									</h4>
 								</v-col>
 								<v-col cols="2" sm="2" md="2" class="res-float-icon d-inline-flex align-center justify-md-center justify-end">
@@ -53,30 +52,30 @@
                      <div class="layout align-center justify-space-between subtotal">
                         <p>{{$t("message.Subtotal")}}</p>
                         <span>
-                           RWF
-                           {{itemTotal}}
+                           <emb-currency-sign></emb-currency-sign>
+                           {{(itemTotal/currentValue).toFixed(2)}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
                         <p>{{$t("message.Delivery")}}</p>
                         <span>
-                           RWF
-                           {{shipping}}
+                           <emb-currency-sign></emb-currency-sign>
+                           {{(shipping/currentValue).toFixed(2)}}
                         </span>
                      </div>
                      <div class="layout align-center justify-space-between subtotal">
                         <p>{{$t("message.Tax")}}</p>
                         <span>
-                           RWF
-                           {{tax}}
+                           <emb-currency-sign></emb-currency-sign>
+                           {{(tax/currentValue).toFixed(2)}}
                         </span>
                      </div>
                      <v-divider class="my-3"></v-divider>
                      <div class="layout align-center justify-space-between subtotal layout-gap">
-                        <h4>{{("message.Total")}}</h4>
+                        <h4>{{$t("message.Total")}}</h4>
                         <h4>
-                           RWF
-                           {{getTotalPrice}}
+                           <emb-currency-sign></emb-currency-sign>
+                           {{(getTotalPrice/currentValue).toFixed(2)}}
                         </h4>
                      </div>
                      <div class="layout justify-end subtotal">
@@ -99,7 +98,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-
+import currency from "Api/currency";
 export default {
   data() {
     return {
@@ -116,11 +115,12 @@ export default {
         { text: "Product Quantity", value: "quantity" },
         { text: "Product Total", value: "total" },
         { text: "Remove", value: "remove" }
-      ]
+      ],
+      currentValue:1
     };
   },
   computed: {
-    ...mapGetters(["cart", "tax", "shipping"]),
+    ...mapGetters(["cart","selectedCurrency","tax", "shipping"]),
 
     itemTotal() {
       let productTotal = null;
@@ -145,6 +145,19 @@ export default {
       }
     }
   },
+  async mounted (){
+			try {
+				const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+				// console.log(res)
+			} catch (err) {
+				console.log(err.response.message)
+			}
+		},
   methods: {
     deleteProductFromCart(product) {
       this.$refs.deleteConfirmationDialog.openDialog();

@@ -32,7 +32,7 @@
               <div class="emb-meta-info layout align-center my-1">
                 <div class="inline-block">
                   <h6 class="accent--text font-weight-medium">
-                    <emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+                    <emb-currency-sign></emb-currency-sign>{{(cateogary.price/currentValue).toFixed(2)}}
                   </h6>
                 </div>
                 <div class="inline-block ">
@@ -126,7 +126,7 @@
         length: 7,
         totalVisible: 7,
         symbol: false,
-        currentValue:''
+        currentValue:1
       };
     },
     methods: {
@@ -196,8 +196,9 @@
   async mounted () {
     try {
         const res= await department.getDepartmentall()
-      // console.log(res)
+      console.log(res)
       const curRes= await currency.getcurrency()
+      console.log(this.selectedLocale)
       curRes.data.data.forEach(el=> {
         // console.log(el, this.selectedCurrency)
         if (el.symbol === this.selectedCurrency.symbol) {
@@ -206,9 +207,9 @@
           this.currentValue= el.currentValue
         }
       })
-      if (this.selectedLocale === 'French' && !this.symbol) {
+      if (this.selectedLocale.name === 'French') {
         res.data.data.forEach(el => {
-        // console.log(el)
+        console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
             this.products.push({
@@ -234,7 +235,7 @@
           })
         })
       });
-      } else if(this.selectedLocale ==='English' && !this.symbol) {
+      } else if(this.selectedLocale.name ==='English') {
         res.data.data.forEach(el => {
         console.log(el)
         el.categories.forEach(pro =>{
@@ -263,64 +264,6 @@
         })
       });
       }
-      if (this.selectedLocale === 'French' && this.symbol) {
-        res.data.data.forEach(el => {
-        // console.log(el)
-        el.categories.forEach(pro =>{
-          pro.products.forEach(prdata =>{
-            this.products.push({
-               objectID: prdata._id,
-               type: el.name.fr,
-               image:this.linksformbackend+prdata.pictures.pic1,
-               price: (prdata.price/this.currentValue).toFixed(2),
-               name: prdata.name.fr,
-               rate: 3,
-               image_gallery: [
-                  this.linksformbackend+prdata.pictures.pic1,
-                  this.linksformbackend+prdata.pictures.pic2,
-                  this.linksformbackend+prdata.pictures.pic3,
-                  this.linksformbackend+prdata.pictures.pic4
-               ],
-               description: prdata.description.fr,
-               category: pro.name.fr,
-               department: el.name.fr,
-               symbol: this.symbol,
-             })
-            //  console.log(prdata.name)
-            //  console.log(this.selectedLocale)
-          })
-        })
-      });
-      } else if(this.selectedLocale ==='English' && this.symbol) {
-        console.log('hello')
-        res.data.data.forEach(el => {
-        console.log(el)
-        el.categories.forEach(pro =>{
-          pro.products.forEach(prdata =>{
-            this.products.push({
-               objectID: prdata._id,
-               type: el.name.en,
-               image:this.linksformbackend+prdata.pictures.pic1,
-               price: (prdata.price/this.currentValue).toFixed(2),
-               name: prdata.name.en,
-               rate: 3,
-               image_gallery: [
-                  this.linksformbackend+prdata.pictures.pic1,
-                  this.linksformbackend+prdata.pictures.pic2,
-                  this.linksformbackend+prdata.pictures.pic3,
-                  this.linksformbackend+prdata.pictures.pic4
-               ],
-               description: prdata.description.en,
-               category: pro.name.en,
-               department:el.name.en,
-               symbol: this.symbol
-             })
-            //  console.log(prdata.name)
-            //  console.log(this.selectedLocale)
-          })
-        })
-        })
-    }
     // console.log(this.products.slice(0, 20))
     this.produ= this.products.slice(0,20)
     } catch (err) {

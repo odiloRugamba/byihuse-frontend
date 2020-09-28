@@ -47,7 +47,7 @@
 										<div class="emb-meta-info layout align-center my-1">
 											<div class="inline-block">
 												<h6 class="accent--text font-weight-medium">
-													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+													<emb-currency-sign></emb-currency-sign>{{(cateogary.price/currentValue).toFixed(2)}}
 												</h6>
 											</div>
 											<div class="inline-block ">
@@ -248,14 +248,15 @@ export default {
           this.currentValue= el.currentValue
         }
       })
-        rescategoies.data.data.forEach(el => {
+      if (this.selectedLocale.name === 'French') {
+          rescategoies.data.data.forEach(el => {
         if (el.name.fr === this.title) {
          el.categories.forEach(recat =>{
 		    recat.products.forEach(pro =>{
             if (recat.name.fr === this.id) {
                this.products.push({
 							objectID: pro._id,
-							price: (pro.price/this.currentValue).toFixed(2),
+							price: pro.price,
 							name: pro.name.fr,
               image: this.linksformbackend+pro.pictures.pic1,
               category: recat.name.fr
@@ -266,25 +267,27 @@ export default {
 			}) 
         }
       });
-      // } else {
-        rescategoies.data.data.forEach(el => {
+    }else{
+    rescategoies.data.data.forEach(el => {
         if (el.name.en === this.title) {
          el.categories.forEach(recat =>{
 		    recat.products.forEach(pro =>{
             if (recat.name.en === this.id) {
                this.products.push({
 							objectID: pro._id,
-							price:(pro.price/this.currentValue).toFixed(2),
+							price:pro.price,
 							name: pro.name.en,
               image: this.linksformbackend+pro.pictures.pic1,
               category: recat.name.en
               })
             }
       })
-      console.log(this.currentValue)
+      // console.log(this.currentValue)
 			}) 
         }
       });
+    }
+    
       // }
       this.length=Math.ceil(this.products.length / 20)
       // const enddddd = this.products.length

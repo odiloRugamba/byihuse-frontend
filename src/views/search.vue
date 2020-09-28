@@ -21,7 +21,7 @@
 												:src="cateogary.imag"
 												width="626"
 												height="800"
-                                                id="ddd">
+                        id="ddd">
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -45,7 +45,7 @@
 										<div class="emb-meta-info layout align-center my-1">
 											<div class="inline-block">
 												<h6 class="accent--text font-weight-medium">
-													<emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+													<emb-currency-sign></emb-currency-sign>{{(cateogary.price/currentValue).toFixed(2)}}
 												</h6>
 											</div>
 											<div class="inline-block ">
@@ -378,12 +378,32 @@ export default {
               }
           })
         // console.log(res)
-        res.data.data.forEach(el => {
+        if (this.selectedLocale.name === "French") {
+          res.data.data.forEach(el => {
+            this.produ.push({
+               objectID: el._id,
+               type: el.name.fr,
+               imag:this.linksformbackend+el.pictures.pic1,
+               price: el.price,
+               name: el.name.fr,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+el.pictures.pic1,
+                  this.linksformbackend+el.pictures.pic2,
+                  this.linksformbackend+el.pictures.pic3,
+                  this.linksformbackend+el.pictures.pic4
+               ],
+               description: el.description.fr,
+               category: el.category.name.fr 
+            })
+        });
+        } else{
+          res.data.data.forEach(el => {
             this.produ.push({
                objectID: el._id,
                type: el.name.en,
                imag:this.linksformbackend+el.pictures.pic1,
-               price: (el.price/this.currentValue).toFixed(2),
+               price: el.price,
                name: el.name.en,
                rate: 3,
                image_gallery: [
@@ -396,6 +416,8 @@ export default {
                category: el.category.name.en 
             })
         });
+        }
+        
         this.products=this.produ
         if (this.products.length > 20) {
           this.length=this.products.length /20
@@ -424,8 +446,8 @@ export default {
       //   this.produ.push(this.products[i]);
         
       // }
-      console.log(this.produ)
-      console.log(trimeStart)
+      // console.log(this.produ)
+      // console.log(trimeStart)
     }
   }
 };

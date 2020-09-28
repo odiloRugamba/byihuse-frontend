@@ -7,7 +7,7 @@
 				<template v-if="cart.length > 0">
 					<div class="delivery" style="margin-bottom: 30px">
 							<v-btn style="min-width: 45%; height: 60px" @click="freedelivery" :class="{accent: attached}">{{$t("message.FreeDelivery")}} <small>({{$t("message.productsinfewhours")}})</small></v-btn>
-							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">{{$t("message.PremiumDelivery")}} - RWF 2000 <small>({{$t("message.getorderrightaway")}})</small></v-btn>
+							<v-btn style="min-width: 54%; height: 60px" id="premium" @click="premiumdelivery" :class="{accent: !attached}">{{$t("message.PremiumDelivery")}} - <emb-currency-sign></emb-currency-sign>{{(2000/currentValue).toFixed(2)}} <small>({{$t("message.getorderrightaway")}})</small></v-btn>
 						</div>
 					<div class="deliveryNavigation">
 						
@@ -45,6 +45,7 @@
 import ShippingAddress from './Component/ShippingAddress'
 import PromoCodes from './Component/PromoCodes'
 import PaymentOption from './Component/PaymentOption'
+import currency from "Api/currency";
 import { mapGetters } from 'vuex';
 
 export default {
@@ -52,7 +53,8 @@ export default {
 		return{
 			stepOneFormValid: false,
 			expansionPanel: [0],
-			attached: true
+			attached: true,
+			currentValue:1
 		}
 	},
 	components:{
@@ -61,7 +63,7 @@ export default {
 		paymentOption:PaymentOption
 	},
 	computed: {
-		...mapGetters(["cart", "drawer"]),
+		...mapGetters(["cart","selectedCurrency", "drawer"]),
 		panel: {
 			get() {
 				return this.expansionPanel;
@@ -79,6 +81,19 @@ export default {
 				}
 			}
 		}
+	},
+	async mounted (){
+			try {
+				const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+				// console.log(res)
+			} catch (err) {
+				console.log(err.response.message)
+			}
 	},
 	methods: {
 		enableStepOneForm(){

@@ -11,8 +11,7 @@ const state = {
 	selectedLocale: languages[0],
 	currencies,
    selectedCurrency: currencies[0],
-   symbol: false,
-   currentValue: 1
+   symbol: false
 }
 
 // getters
@@ -81,7 +80,7 @@ const mutations = {
       })
       // console.log()
       // console.log(res.data)
-      if (state.selectedLocale === 'French') {
+      if (state.selectedLocale.name === 'French') {
          res.data.data.forEach(el => {
             el.categories.forEach(pr =>{
                pr.products.forEach(prdata =>{
@@ -90,7 +89,7 @@ const mutations = {
                   objectID: prdata._id,
                   type: el.name.fr,
                   image:'Https://byihuse.rw/'+prdata.pictures.pic1,
-                  price: (prdata.price/state.currentValue).toFixed(2),
+                  price: prdata.price,
                   name: prdata.name.fr,
                   category: pr.name.fr
                 })
@@ -116,7 +115,7 @@ const mutations = {
                   objectID: prdata._id,
                   type: el.name.en,
                   image:'Https://byihuse.rw/'+prdata.pictures.pic1,
-                  price: (prdata.price/state.currentValue).toFixed(2),
+                  price: prdata.price,
                   name: prdata.name.en,
                   category: pr.name.en
                 })

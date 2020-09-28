@@ -209,7 +209,7 @@ export default {
           });
           res.data.data.forEach(el => {
             //   console.log(el)
-            if (this.selectedLocale === 'French') {
+            if (this.selectedLocale.name === 'French') {
               if (this.servicesName[0].id === el._id) {
               this.selectedServices= {
                     id: el._id,

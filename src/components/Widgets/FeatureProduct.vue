@@ -43,7 +43,7 @@
                     <div class="emb-meta-info layout align-center my-1">
                       <div class="inline-block">
                         <h6 class="accent--text font-weight-medium">
-                          <emb-currency-sign></emb-currency-sign>{{cateogary.price}}
+                          <emb-currency-sign></emb-currency-sign>{{(cateogary.price/currentValue).toFixed(2)}}
                         </h6>
                       </div>
                     </div>
@@ -76,6 +76,7 @@
 </style>
 <script>
   import Slick from "vue-slick";
+  import currency from "Api/currency";
   import {
     mapGetters
   } from "vuex";
@@ -83,7 +84,7 @@
   export default {
     props: ["secTitle"],
     computed: {
-      ...mapGetters(["rtlLayout", "cart", "wishlist", "featured"]),
+      ...mapGetters(["rtlLayout", "cart","selectedCurrency", "wishlist", "featured"]),
     },
     components: {
       Slick
@@ -91,6 +92,7 @@
     data() {
       return {
         name: 'message.FeaProducts',
+        currentValue:1,
         selectedTab: 0,
         activeTab: null,
         slickOptions: {
@@ -188,10 +190,20 @@
         return exists;
       }
     },
-    mounted() {
-      // this.$store.dispatch("changeSelectedProduct", cateogary);
-      this.$store.dispatch('getproducts')
-      console.log(this.featured)
+    async mounted() {
+      try {
+        // this.$store.dispatch("changeSelectedProduct", cateogary);
+        this.$store.dispatch('getproducts')
+        const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+        // console.log(this.featured)
+      } catch (err) {
+        console.log(err.response.message)
+      }
     }
   };
 </script>

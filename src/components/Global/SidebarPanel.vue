@@ -7,7 +7,7 @@
 				dark
 				@click.stop="drawer = !drawer"
 			>
-				{{$t("message.ShowOrderDetail")}} :RWF {{getTotalPrice}}
+				{{$t("message.ShowOrderDetail")}}:<emb-currency-sign></emb-currency-sign>{{(getTotalPrice/currentValue).toFixed(2)}}
 			</v-btn>
 		</v-layout>
 		 <v-navigation-drawer fixed width="340" right v-model="drawer" temporary>
@@ -34,13 +34,13 @@
 								<v-flex xs7 sm7 md7 lg7 xl7 cart-product-name pa-0>
 									<h6 class="mb-1 word-wrap-break">{{cart.name}}</h6>
 									<p class="mb-0">{{cart.quantity}}</p>
-									<p class="mb-0 font-weight-bold">RWF {{cart.price}}</p>
+									<p class="mb-0 font-weight-bold"><emb-currency-sign></emb-currency-sign>{{(cart.price/currentValue).toFixed(2)}}</p>
 									</v-flex>
 								<v-flex xs2 sm2 md2 lg2 xl2 btn-action text-right pa-0>
 										<v-btn :ripple="false" class="ma-0" icon @click="deleteProductFromCart(cart)">
 											<v-icon>remove_shopping_cart</v-icon>
 										</v-btn>
-										<v-btn :ripple="false" class="ma-0" icon to="/en/cart" >
+										<v-btn :ripple="false" class="ma-0" icon :to="'/'+$i18n.locale+'/cart'" >
 											<v-icon>edit</v-icon>
 										</v-btn>
 									</v-flex>
@@ -49,20 +49,20 @@
 					<div class="pt-6 px-4">
 						<div class="layout align-center justify-space-between ma-0">
 							<p>{{$t("message.Subtotal")}}</p>
-							<span>RWF {{itemTotal}}</span>
+							<span><emb-currency-sign></emb-currency-sign>{{(itemTotal/currentValue).toFixed(2)}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
 							<p>{{$t("message.Delivery")}}</p>
-							<span>RWF {{shipping}}</span>
+							<span><emb-currency-sign></emb-currency-sign>{{(shipping/currentValue).toFixed(2)}}</span>
 						</div>
 						<div class="layout align-center justify-space-between ma-0">
 							<p>{{$t("message.Tax")}}</p>
-							<span>RWF {{tax}}</span>
+							<span><emb-currency-sign></emb-currency-sign>{{(tax/currentValue).toFixed(2)}}</span>
 						</div>
 						<v-divider class="my-4"></v-divider>
 						<div class="layout align-center justify-space-between ma-0">
 							<h4>{{$t("message.Total")}}</h4>
-							<h4>RWF {{getTotalPrice}}</h4>
+							<h4><emb-currency-sign></emb-currency-sign>{{(getTotalPrice/currentValue).toFixed(2)}}</h4>
 						</div>
 						<v-divider class="my-4"></v-divider>
 					</div>
@@ -80,7 +80,7 @@
 
 <script>
 	import { mapGetters } from 'vuex';
-	
+	import currency from "Api/currency";
    export default {
       data(){
          return{
@@ -91,10 +91,11 @@
 					{ title: 'Home', icon: 'dashboard' },
 					{ title: 'About', icon: 'question_answer' }
 				],
+				currentValue:1,
          }
 		},
 		computed: {
-			...mapGetters(["cart", "tax", "shipping"]),
+			...mapGetters(["cart", "tax","selectedCurrency","shipping"]),
 			/**
 			 * method for calculatig total of  item 
 			*/
@@ -117,7 +118,7 @@
 			 * method for calculatig subtotal of  item 
 			*/
 			getTotalPrice(){
-				let totalPrice = this.tax + this.shipping ;
+				let totalPrice = this.tax + this.shipping;
 				if (this.cart.length > 0) {
 					for (const item of this.cart) {
 						totalPrice += (item.total*item.quantity);
@@ -127,9 +128,28 @@
 				else {
 					return totalPrice.toFixed(2);
 				}
+			},
+		},
+		async mounted (){
+			try {
+				const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+				// console.log(res)
+			} catch (err) {
+				console.log(err.response.message)
 			}
 		},
 		methods: {
+		// 	changeRoute() {
+		// 	localStorage.removeItem('current')
+        //   this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
+        //  const current = `/products/${megaitemkey}`
+        //  localStorage.setItem('current', current)
+		// 	},
 			/**
 			 * method for deleting product from cart 
 			*/

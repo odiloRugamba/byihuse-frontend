@@ -106,7 +106,7 @@
                                         <div class="font-weight-regular rentalH ml-2">{{$t("message.RentingHour")}}</div>
                                     </div>
                                     <p class="accent--text d-inline-block sec-content">
-								 {{$t("message.Startingatonly")}} <emb-currency-sign class="accent--text"></emb-currency-sign> {{(selectedServices.price*rentalHour).toFixed(2)}}
+								 {{$t("message.Startingatonly")}} <emb-currency-sign class="accent--text"></emb-currency-sign> {{((selectedServices.price/currentValue)*rentalHour).toFixed(2)}}
 							</p>
 									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
@@ -286,7 +286,7 @@ export default {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.fr,
-                    price:(el.price/this.currentValue).toFixed(2),
+                    price:el.price,
                     paragraph:el.description.fr,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -314,7 +314,7 @@ export default {
               this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:(el.price/this.currentValue).toFixed(2),
+                    price:el.price,
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -339,13 +339,13 @@ export default {
         try {
             // console.log(id)
             const resOne = await Rental.getRental()
-            if (this.selectedLocale === "French") {
+            if (this.selectedLocale.name === "French") {
                 resOne.data.data.forEach(el => {
                 if (el._id === id) {
                   this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.fr,
-                    price:(el.price/this.currentValue).toFixed(2),
+                    price:el.price,
                     paragraph:el.description.fr,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,
@@ -365,7 +365,7 @@ export default {
                   this.selectedServices= {
                     id: el._id,
                     sectitle: el.name.en,
-                    price:(el.price/this.currentValue).toFixed(2),
+                    price:el.price,
                     paragraph:el.description.en,
                     productGallery:{
                         pic1:this.linksformbackend+el.pictures.pic1,

@@ -43,7 +43,7 @@
 								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
 								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
 								<h4 class="accent--text">
-									RWF {{selectedProduct.price}}
+									<emb-currency-sign></emb-currency-sign>{{(selectedProduct.price/currentValue).toFixed(2)}}
 								</h4>
 
 								<p>{{selectedProduct.descprition}}</p>
@@ -51,8 +51,7 @@
 									<div class="font-weight-regular title">{{$t("message.Additionalservice")}}</div>
 									<div v-for="service in AdditionalService" :key="service.name" class="serviceList">
 										<v-btn id="servivePrice" @click="selectService(service)" :class="{accent:service.select}">
-											RWF 
-											{{service.price}}
+											<emb-currency-sign></emb-currency-sign>{{(service.price/currentValue).toFixed(2)}}
 										</v-btn>
 									 <div id="serviceName">{{service.name}}</div>
 									</div>
@@ -133,8 +132,8 @@
 													<div class="layout align-center justify-space-between pa-4">
 														<div class="inline-block">
 															<h6 class="accent--text font-weight-medium">
-																RWF 
-																{{product.price}}
+																<emb-currency-sign></emb-currency-sign>
+																{{(product.price/currentValue).toFixed(2)}}
 															</h6>
 														</div>
 													</div>
@@ -194,6 +193,7 @@
 	} from "vuex";
 	import product from "Api/products";
 	import departments from "Api/department";
+	import currency from "Api/currency";
 	export default {
 		data() {
 			return {
@@ -203,11 +203,12 @@
 				image_gallery: null,
 				selectedImage: '',
 				products: [],
-				AdditionalService:[]
+				AdditionalService:[],
+				currentValue:1,
 			}
 		},
 		computed: {
-			...mapGetters(["cart", "wishlist", "selectedProduct","selectedLocale", "linksformbackend"]),
+			...mapGetters(["cart", "wishlist", "selectedProduct","selectedLocale","selectedCurrency", "linksformbackend"]),
 		},
 		async mounted() {
 			this.getParametre()
@@ -237,6 +238,12 @@
 					this.id = this.$route.params.id;
 					this.title = this.$route.params.title;
 					const res = await product.getOne(this.id)
+					const ress= await currency.getcurrency()
+					ress.data.data.forEach(el => {
+					   if (this.selectedCurrency.symbol === el.symbol) {
+						  this.currentValue= el.currentValue
+					  }
+					});
 					// console.log(res.data.data.name)
 					this.image_gallery = [
 							this.linksformbackend + res.data.data.pictures.pic1,
@@ -247,7 +254,7 @@
 						this.selectedImage = this.linksformbackend + res.data.data.pictures.pic1
 					// console.log(this.image_gallery)
 					this.selectedProduct.price = res.data.data.price
-					if (this.selectedLocale === "French") {
+					if (this.selectedLocale.name === "French") {
 						this.selectedProduct.name = res.data.data.name.fr
 					    this.selectedProduct.descprition = res.data.data.description.fr
 					}else{
@@ -270,7 +277,7 @@
 					// 	'Free Delivery and delivery in 4 Days'
 					// 	]
 					const rescategoies = await departments.getDepartmentall()
-					if (this.selectedLocale === 'French') {
+					if (this.selectedLocale.name === 'French') {
 						rescategoies.data.data.forEach(el => {
 						el.categories.forEach(recat => {
 							if (el.name.fr === this.title) {

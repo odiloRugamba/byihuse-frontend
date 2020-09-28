@@ -50,30 +50,36 @@ export default {
    },
    methods: {
       changeRoute(megaitemkey, submega) {
-         localStorage.removeItem('current')
-         const current = `/products/${megaitemkey}/${submega}`
-         localStorage.setItem('current', current)
+         console.log(megaitemkey,submega)
+         // localStorage.removeItem('current')
+         // const current = `/products/${megaitemkey}/${submega}`
+         // localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // console.log('helo',megaitemkey, submega)
       },
       changedepRoute(megaitemkey) {
-         localStorage.removeItem('current')
+         console.log(megaitemkey)
+         // localStorage.removeItem('current')
+         // this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
+         // const current = `/products/${megaitemkey}`
+         // localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
-         const current = `/products/${megaitemkey}`
-         localStorage.setItem('current', current)
       },
       changeOneRoute(oneLink){
-         localStorage.removeItem('current')
-         this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
-         const current = `/${oneLink}`
-         localStorage.setItem('current', current)
-         if (oneLink === 'products') {
-            location.reload()
+         console.log(oneLink)
+         // localStorage.removeItem('current')
+         // this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
+         // this.$router.push(`#/${this.$i18n.locale}/${oneLink}`)
+         // const current = `/${oneLink}`
+         // localStorage.setItem('current', current)
+         // if (oneLink === 'products') {
+         //    location.reload()
             // console.log(oneLink)
-         }
+         // }
          // location.reload()
          // console.log('helo', oneLink)
+         this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
       }
    },
 data () {
@@ -151,7 +157,7 @@ menus:  [
          this.resDept = await departments.getDepartment()
 			var obj = []
          var arr = {}
-         if (this.selectedLocale === 'French') {
+         if (this.selectedLocale.name === 'French') {
             this.resDept.data.data.forEach(dep =>{
 			    this.resCat.data.data.forEach(el => {
 					if (dep._id === el.department) {

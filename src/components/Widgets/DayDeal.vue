@@ -24,10 +24,10 @@
 							</h5>
 							<p class="accent--text d-inline-block sec-content">
 								{{$t(`${data.metaainfo}`)}}
-								 <emb-currency-sign class="accent--text"></emb-currency-sign> 1000
+								 <emb-currency-sign class="accent--text"></emb-currency-sign> {{(1000/currentValue).toFixed(2)}}
 							</p>
 							<p>{{$t(data.paragraph)}}</p>
-							<h4>Call us on +250 784 481 653</h4>
+							<h4>{{$t("message.Calluson")}} +250 784 481 653</h4>
 							
 						</div>
 						<v-layout row wrap cmx-0>
@@ -57,11 +57,17 @@
 </template>
 
 <script>
+import currency from "Api/currency";
+import { mapGetters } from "vuex";
 export default {
+	computed:{
+		...mapGetters(["selectedCurrency"])
+	},
 	// props:['data'],
 	data(){
 		return{
 			selectedPreviewImage:'',
+			currentValue:1,
 			data:{
 				sectitle: "message.sectitle",
                 subtitle: "message.subtitle",
@@ -76,6 +82,7 @@ export default {
 				]
 		}
 	},
+	
 	methods: {
 		/**
 		 * method to toggle the image
@@ -84,8 +91,18 @@ export default {
 			this.selectedPreviewImage = image;
 		}
 	},
-	mounted () {
-		this.selectedPreviewImage= this.productGallery[0]
+	async mounted () {
+		try {
+			this.selectedPreviewImage= this.productGallery[0]
+			const res= await currency.getcurrency()
+				res.data.data.forEach(el => {
+					if (this.selectedCurrency.symbol === el.symbol) {
+						this.currentValue= el.currentValue
+					}
+				});
+		} catch (err) {
+			console.log(err.response.message)
+		}
 	}
 }
 </script>
