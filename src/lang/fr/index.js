@@ -154,7 +154,7 @@ export default {
   "SignIn":"Sign In",
   "Clickheretocreateone":"Click here to create one",
   "SignUp":"Sign Up",
-  "Alreadyhaveaccount":"Already have account? then",
+  "Alreadyhaveaccount":"Already have account? then fr",
   "EnterYourDetails":"Enter Your Details",
   "Thankyouforshopping":"Thank you for shopping with us. Our sales team will call you in a minute for delivery process",
   "SpreadTheWord":"Spread The Word",

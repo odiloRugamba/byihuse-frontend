@@ -88,7 +88,8 @@ import axios from 'axios'
 				// this.$router.push('');
 				// location.reload(true)
 				this.$store.state.user= true
-				window.location.assign('/#/account/profile')
+				// console.log(`/${this.$i18n.locale}/account/profile`)
+				this.$router.push(`/${this.$i18n.locale}/account/profile/`)
 			} catch (err) {
 			console.log(err)
 			    this.$snotify.success('invaled Input',{
