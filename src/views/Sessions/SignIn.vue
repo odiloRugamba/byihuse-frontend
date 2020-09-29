@@ -92,7 +92,7 @@ import axios from 'axios'
 				this.$router.push(`/${this.$i18n.locale}/account/profile/`)
 			} catch (err) {
 			console.log(err)
-			    this.$snotify.success('invaled Input',{
+			    this.$snotify.error('invaled Input',{
                     closeOnClick: false,
                     pauseOnHover: false,
                     timeout: 1000,
