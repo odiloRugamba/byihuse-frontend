@@ -1,7 +1,8 @@
 <template>
    <div class="order-history-wrap emb-card pa-4">
       <h4 class="mb-4">{{$t("message.OrderHistory")}}</h4>
-      <v-data-table 
+      <v-data-table
+       v-if="selectedLocale.name === 'English'" 
          :headers="headers"
 			:items="tableData"
          :items-per-page="tableData.length"
@@ -11,8 +12,9 @@
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
 			</template>
       </v-data-table>
-      <!-- <v-data-table 
-         :headers="headers"
+      <v-data-table
+          v-if="selectedLocale.name === 'French'"
+         :headers="headersfr"
 			:items="tableData"
          :items-per-page="tableData.length"
 			hide-default-footer
@@ -20,7 +22,7 @@
          <template v-slot:item.action="{ item }">
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
 			</template>
-      </v-data-table> -->
+      </v-data-table>
       <v-dialog v-model="editDialog" max-width="685px" class="pa-2">
 			<v-card class="emb-FinalReceipt-wrap">
 				<v-card-text class="pa-4">
@@ -56,34 +58,34 @@
 								<div><h6> {{$t("message.ProductImage")}}</h6></div>
 								<div><h6>{{$t("message.ProductName")}}</h6></div>
 								<div><h6>{{$t("message.Quantity")}}</h6></div>
-								<div><h6>{{("message.Price")}}</h6></div>
+								<div><h6>{{$t("message.Price")}}</h6></div>
 								</div>
 								<div v-for="product in selectProduts" :key="product" id="products">
 									<div><img width="100" :src="product.pictures" alt=""></div>
 									<p class="font-weight-bold">{{product.name}}</p>
 									<div><p>{{product.quantity}}</p></div>
-									<div>RWF {{product.price}}</div>
+									<div><emb-currency-sign></emb-currency-sign>{{(product.price/currentValue).toFixed(2)}}</div>
 								</div>
 							</div>
 							
 							<v-divider class="my-6"></v-divider>
 							<div class="pt-6">
 								<div class="layout align-center justify-space-between ma-0">
-									<p>{{("message.Subtotal")}}</p>
-									<span>RWf {{total}}</span>
+									<p>{{$t("message.Subtotal")}}</p>
+									<span><emb-currency-sign></emb-currency-sign>{{(total/currentValue).toFixed(2)}}</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>{{("message.Delivery")}}</p>
-									<span>RWF 0</span>
+									<p>{{$t("message.Delivery")}}</p>
+									<span><emb-currency-sign></emb-currency-sign>0</span>
 								</div>
 								<div class="layout align-center justify-space-between ma-0">
-									<p>{{("message.Tax")}}</p>
-									<span>RWF 0</span>
+									<p>{{$t("message.Tax")}}</p>
+									<span><emb-currency-sign></emb-currency-sign>0</span>
 								</div>
 								<v-divider class="my-4"></v-divider>
 								<div class="layout align-center justify-space-between ma-0">
-									<h4>{{("message.Total")}}</h4>
-									<h4>RWF {{total}}</h4>
+									<h4>{{$t("message.Total")}}</h4>
+									<h4><emb-currency-sign></emb-currency-sign>{{(total/currentValue).toFixed(2)}}</h4>
 								</div>
 								<!-- <v-divider class="my-4"></v-divider> -->
 							</div>
@@ -98,7 +100,16 @@
       <v-dialog v-model="open">
 		<v-card class="py-6 px-2">
          <v-data-table 
+         v-if="selectedLocale.name === 'English'" 
          :headers="logHeader"
+			:items="logs"
+         :items-per-page="tableData.length"
+			hide-default-footer
+      >
+      </v-data-table>
+      <v-data-table 
+      v-if="selectedLocale.name === 'French'" 
+         :headers="logHeaderfr"
 			:items="logs"
          :items-per-page="tableData.length"
 			hide-default-footer
@@ -116,6 +127,8 @@
 <script>
 import myOrder from "Api/my-order.js";
 import moment from "moment"
+import currency from "Api/currency";
+import { mapGetters } from "vuex";
 export default {
    data(){
       return{
@@ -172,6 +185,25 @@ export default {
                value: 'action'
             },
          ],
+         logHeaderfr: [
+            {
+               text: 'Time fr',
+               value: 'time'
+            },
+            {
+               text: 'Name fr',
+               value: 'name'
+            },
+            {
+               text: 'Comment fr',
+               value: 'comment'
+            }
+            ,
+            {
+               text: 'Action fr',
+               value: 'action'
+            },
+         ],
          tableData: [],
          editDialog: false,
          selectProduts:[],
@@ -181,9 +213,10 @@ export default {
          lastName: '',
          city: '',
          street: '',
-         total:'',
+         total:0,
          open:false,
-         logs:[]
+         logs:[],
+         currentValue:1
       }
    },
    methods: {
@@ -217,7 +250,19 @@ export default {
          this.city=selected.address,
          this.street=selected.details
          this.selectProduts=[]
-         selected.product.forEach(el=>{
+         if (this.selectedLocale === "French") {
+            selected.product.forEach(el=>{
+            // console.log(el.pictures.pic1)
+            this.selectProduts.push({
+               pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
+               price:el.price,
+               name: el.name.fr,
+               logs: selected.logs
+            })
+            this.total+=el.price
+           })
+         }else{
+            selected.product.forEach(el=>{
             // console.log(el.pictures.pic1)
             this.selectProduts.push({
                pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
@@ -225,8 +270,9 @@ export default {
                name: el.name.en,
                logs: selected.logs
             })
-            this.total=el.price
-         })
+            this.total=this.total +el.price
+           })
+         }
          this.editDialog= true
       }
    },
@@ -234,6 +280,13 @@ export default {
       try {
          const resRental= await myOrder.myRentalOrder()
           const resProduct= await myOrder.myProductsOrder()
+          const curRes= await currency.getcurrency()
+          curRes.data.data.forEach(el=> {
+            if (el.symbol === this.selectedCurrency.symbol) {
+               this.symbol= true
+               this.currentValue= el.currentValue
+               }
+         })
           resRental.data.data.forEach(el => {
              if (el.logs.length) {
                 this.product[0]= el.rental
@@ -249,8 +302,8 @@ export default {
                status: el.status.status,
                product:this.product
             })
-             console.log(el)
-             console.log(el)
+            //  console.log(el)
+            //  console.log(el)
              }
             //  console
           });
@@ -276,6 +329,9 @@ export default {
       } catch (err) {
          console.log(err.response.message)
       }
+   },
+   computed:{
+      ...mapGetters(["selectedCurrency", "selectedLocale"])
    }
 }
 </script>

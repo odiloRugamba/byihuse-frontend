@@ -316,8 +316,13 @@ export default {
         
     },
     page: function () {
-      console.log(this.page)
+      // console.log(this.page)
       // console.log(this.products)
+      window.scrollTo({
+        top:0,
+        left: 0,
+        behavior: "smooth"
+      })
       const trimeStart = (this.page-1) * 20
       const trimeEnd = trimeStart + 20
       this.produ = this.products.slice(trimeStart,trimeEnd)

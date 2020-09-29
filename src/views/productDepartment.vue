@@ -1,33 +1,29 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
-		<div class="containevr ml-16">
+		<div class="containevr">
 			<!-- <div class="sec-title">
 				<h2>{{secTitle}}</h2>
 			</div> -->
-			<div id="contt" class="tab-content">
+      <div  v-if="products.length">
+			<div id="contt"  class="tab-content">
 				<!-- <template v-for="(tab,title) in products"> -->
 					<!-- <div v-if="index == selectedTab" :key="index"> -->
 						<!-- <slick  :options="slickOptions" :key="title"> -->
-              <div v-if="products.length">
 							<div
-								v-for="(cateogary,subindex) in products"
+								v-for="(cateogary,subindex) in produ"
 								:key="subindex"
 								class="tab-item"
 							>
-								<div class="emb-card">
+								<div  class="emb-card">
 									<div class="thumb-wrap">
+
 										<router-link :to="'/'+$i18n.locale+'/products/'+title+'/'+cateogary.category+'/'+cateogary.objectID">
-											<img 
+										<div class="product-image-placeholder">
+                    	<img 
 												alt="feature product image"
 												:src="cateogary.image"
-												width="626"
-												height="800"
-                        id="ddd"
 											>
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												
-											> -->
+										</div>
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >
@@ -38,7 +34,7 @@
 											</v-btn>
 										</div>
 										<div class="add-to-cart">
-											<v-btn v-if="ifItemExistInCart(cateogary,cart)" to="/cart" class="accent" icon absolute bottom>
+											<v-btn v-if="ifItemExistInCart(cateogary,cart)" :to="'/'+$i18n.locale+'/cart'" class="accent" icon absolute bottom>
 												<v-icon>remove_red_eye</v-icon>
 											</v-btn>
 											<v-btn v-else @click="addProductToCart(cateogary)" class="accent" icon >
@@ -69,28 +65,47 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
-          </div>
-         <div v-if="pageProductsLoaded && products.length">
+				<!-- </template>	 -->
+			</div>
+      <div class="text-center">
+    <v-pagination
+      class="my-4"
+      v-model="page"
+      :length="length"
+      :total-visible="totalVisible"
+    ></v-pagination>
+  </div>	
+		</div>
+          <div v-if="!pageProductsLoaded">
             <h3>{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
-          <div v-else>
-            <h3>{{$t("message.NoProductFound")}}</h3>
-            <v-btn block class="accent" :to="'/'+$i18n.locale+'/products'">{{$t("message.Shop")}}</v-btn>
+          <div v-if="pageProductsLoaded && !produ.length">
+            <h3 class="pl-15">{{$t("message.NoProductFound")}}</h3>
+            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
-				<!-- </template>	 -->
-			</div>	
-		</div>
+    </div>
 	</div>
 </template>
 <style>
-#contt{
-    display: flex;
-    flex-wrap: wrap;
-}
-#ddd{
-    width: 17rem;
-}
+
+  .thumb-wrap{
+    height: 380px;
+    width: 300px;
+  }
+
+  .thumb-wrap .product-image-placeholder{
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .font-weight-medium {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 260px;
+  }
+
 </style>
 <script>
 // import Slick from "vue-slick";
@@ -145,9 +160,13 @@ export default {
         
       },
       title: "",
+      produ: [],
       products: [],
       symbol: false,
-      currentValue:1
+      currentValue:1,
+      length: 7,
+      page: 1,
+      totalVisible: 7,
     };
   },
   methods: {
@@ -261,7 +280,8 @@ export default {
         }
       });
     }
-    
+    this.produ= this.products.slice(0,20)
+    this.length= Math.ceil(this.products.length/20)
       this.pageProductsLoaded = true
       // console.log(this.products)
     } catch (err) {
@@ -278,6 +298,17 @@ export default {
      this.id = to.params.id
      location.reload();
 		 this.getParametre();
+    },
+    page: function () {
+      window.scrollTo({
+        top:0,
+        left: 0,
+        behavior: "smooth"
+      })
+      this.produ= []
+      const trimeStart = (this.page-1) * 20
+      const trimeEnd = trimeStart + 20
+      this.produ = this.products.slice(trimeStart,trimeEnd)
     }
   }
 }

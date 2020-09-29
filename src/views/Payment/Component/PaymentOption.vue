@@ -138,13 +138,13 @@ import order from "Api/order";
 			console.log(this.invoiceData)
 			const res = await order.makeOrder(this.invoiceData)
 			if (option === 'CASH') {
-				this.$router.push('/session/thank-you')
+				this.$router.push(`${this.$i18n.locale}/session/thank-you`)
 			}else {
 				// console.log(res.data.data.payment.meta.authorization.redirect)
 				// window.open(res.data.data.payment.meta.authorization.redirect)
 				location.replace(res.data.data.payment.meta.authorization.redirect);
 				// console.log(this.totalPrice)
-				console.log(res)
+				// console.log(res)
 			}
 			// console.log(res)
 			

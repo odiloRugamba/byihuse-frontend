@@ -167,7 +167,7 @@ menus:  [
          {
             name: 'byoroshye',
             children_menus:null,
-            path: `services`
+            path: `byoroshye`
          },
          {
             name: 'message.byizewe',

@@ -123,7 +123,7 @@
         products: [],
         page: 1,
         produ: [],
-        length: 7,
+        length: 1,
         totalVisible: 7,
         symbol: false,
         currentValue:1
@@ -266,6 +266,7 @@
       }
     // console.log(this.products.slice(0, 20))
     this.produ= this.products.slice(0,20)
+    this.length= Math.ceil(this.products.length/20)
     } catch (err) {
       console.log(err)
     }
