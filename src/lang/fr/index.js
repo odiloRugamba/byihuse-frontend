@@ -195,5 +195,7 @@ export default {
   "ShowOrderDetail":"Afficher le détail de la commande",
   "Youhave":"Tu as",
   "itemscart":"Articles dans votre panier",
-  "NoItemFound":"Aucun élément trouvé"
+  "NoItemFound":"Aucun élément trouvé",
+  "searchNoproductFound":"Si vous ne trouvez pas ce que vous cherchez, appelez le +250 784 481 653",
+  "Loading":"Chargement",
 }

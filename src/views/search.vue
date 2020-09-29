@@ -75,11 +75,12 @@
             ></v-pagination>
       </div>
       <div v-if="!pageProductsLoaded">
-            <h3>{{$t("message.Loading")}}...</h3>
+            <h3 class="text-center">{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-if="pageProductsLoaded && !product.length">
-            <h3 class="pl-15">{{$t("message.NoProductFound")}}</h3>
+            <h3 class="pl-15 text-center">{{$t("message.NoProductFound")}}</h3>
+            <h4 class="pl-15 text-center">{{$t("message.searchNoproductFound")}}</h4>
             <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
           </div>
 		</div>

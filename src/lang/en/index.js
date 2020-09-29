@@ -205,6 +205,6 @@ export default {
   "NoItemFound":"No Item Found",
   "Loading":"Loading",
   "Shop":"Shop",
-  "searchNoproductFound":"No Products Found, Cannot find what you are looking for? call",
+  "searchNoproductFound":"If you can not find what you are looking for please call  +250 784 481 653",
   "Calluson":"Call us on"
 }

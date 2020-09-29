@@ -78,7 +78,7 @@
   </div>	
 		</div>
           <div v-if="!pageProductsLoaded">
-            <h3>{{$t("message.Loading")}}...</h3>
+            <h3 class="text-center">{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-if="pageProductsLoaded && !produ.length">
@@ -255,7 +255,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.fr,
-              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              image: 'https://byihuse.rw/'+pro.pictures.pic1,
               category:pro.name.fr
 						})
 						})
@@ -273,7 +273,7 @@ export default {
 							objectID: pro._id,
 							price: pro.price,
 							name: pro.name.en,
-              image: 'http://192.168.43.9:4000/'+pro.pictures.pic1,
+              image: 'https://byihuse.rw/'+pro.pictures.pic1,
               category:pro.name.en
 						})
 						})

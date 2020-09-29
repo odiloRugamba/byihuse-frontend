@@ -78,7 +78,7 @@
   </div>	
 		</div>
           <div v-if="!pageProductsLoaded">
-            <h3>{{$t("message.Loading")}}...</h3>
+            <h3 class="text-center">{{$t("message.Loading")}}...</h3>
             <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
           </div>
           <div v-if="pageProductsLoaded && !produ.length">
