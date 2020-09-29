@@ -124,7 +124,7 @@ export default {
   "RentingHour":":Renting Hour",
   "Startingatonly":"At only",
   "Submit":"Submit ",
-  "Fillservice":"Fill this form to request this service rn",
+  "Fillservice":"Fill this form to request this service",
   "Services": "Services",
   "Useourservices":"Use our services. ",
   "Hi":"Hi",
