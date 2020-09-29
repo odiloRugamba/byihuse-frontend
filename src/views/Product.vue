@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="pagination text-center">
-      <v-pagination class="my-4" v-model="page" :length="length" :totalVisible="totalVisible"></v-pagination>
+      <v-pagination v-if="produ.length" class="my-4" v-model="page" :length="length" :totalVisible="totalVisible"></v-pagination>
     </div>
   </div>
 </template>

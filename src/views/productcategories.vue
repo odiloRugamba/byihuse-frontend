@@ -73,6 +73,7 @@
       v-model="page"
       :length="length"
       :total-visible="totalVisible"
+      v-if="products.length"
     ></v-pagination>
   </div>	
 		</div>

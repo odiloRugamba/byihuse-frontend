@@ -69,6 +69,7 @@
 			</div>
       <div class="text-center">
     <v-pagination
+    v-if="products.length"
       class="my-4"
       v-model="page"
       :length="length"

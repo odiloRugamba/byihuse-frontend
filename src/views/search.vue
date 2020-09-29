@@ -70,11 +70,11 @@
 			</div>
       <div class="pagination text-center">
             <v-pagination
+            v-if="product.length"
               class="my-4"
               v-model="page"
               :length="length"
               :totalVisible="totalVisible"
-              v-if="pagination"
             ></v-pagination>
       </div>	
 		</div>
