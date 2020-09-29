@@ -74,9 +74,14 @@
               :totalVisible="totalVisible"
             ></v-pagination>
       </div>
-      <div v-if="!product.length">
-                        <h3>{{$t("message.searchNoproductFound")}} +250 784 481 653</h3>
-        </div>	
+      <div v-if="!pageProductsLoaded">
+            <h3>{{$t("message.Loading")}}...</h3>
+            <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
+          </div>
+          <div v-if="pageProductsLoaded && !product.length">
+            <h3 class="pl-15">{{$t("message.NoProductFound")}}</h3>
+            <!-- <button block id="btn" class="accent" to="/products">Shop</v-btn> -->
+          </div>
 		</div>
 	</div>
 </template>
@@ -299,7 +304,8 @@ export default {
       totalVisible:7,
       pagination: true,
       symbol: false,
-      currentValue:1
+      currentValue:1,
+      pageProductsLoaded:false
     };
   },
   methods: {
@@ -429,7 +435,7 @@ export default {
           this.product = this.products
           // console.log(this.products)
         }
-      
+      this.pageProductsLoaded = true
       } catch (err) {
          console.log(err.message) 
       }

@@ -45,6 +45,10 @@
         <!-- </template>	 -->
       </div>
     </div>
+    <div v-if="pageProductsLoaded">
+            <h3>{{$t("message.Loading")}}...</h3>
+            <!-- <v-btn block class="accent" to="/products">Shop</v-btn> -->
+          </div>
     <div class="pagination text-center">
       <v-pagination v-if="produ.length" class="my-4" v-model="page" :length="length" :totalVisible="totalVisible"></v-pagination>
     </div>
@@ -126,7 +130,8 @@
         length: 1,
         totalVisible: 7,
         symbol: false,
-        currentValue:1
+        currentValue:1,
+        pageProductsLoaded: true
       };
     },
     methods: {
@@ -259,7 +264,8 @@
                symbol: this.symbol,
              })
             //  console.log(prdata.price)
-             console.log('this.selectedLocale')
+            //  console.log('this.selectedLocale')
+
           })
         })
       });
@@ -267,6 +273,7 @@
     // console.log(this.products.slice(0, 20))
     this.produ= this.products.slice(0,20)
     this.length= Math.ceil(this.products.length/20)
+    this.pageProductsLoaded= false
     } catch (err) {
       console.log(err)
     }
