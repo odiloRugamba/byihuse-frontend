@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-menu transition="scale-transition" offset-overflow nudge-bottom="30" nudge-right="20" min-width="200"
+		<v-menu transition="scale-transition" offset-overflow nudge-bottom="20" nudge-right="20" min-width="200"
 			max-width="200" class="userblock-dropdown" light>
 			<template  v-slot:activator="{ on }">
 				<v-btn fab small v-on="on">
