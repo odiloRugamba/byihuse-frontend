@@ -70,7 +70,7 @@
 			</div>
       <div class="pagination text-center">
             <v-pagination
-            v-if="product.length"
+            v-if="length &&product.length"
               class="my-4"
               v-model="page"
               :length="length"
@@ -251,7 +251,7 @@ import currency from "Api/currency"
 export default {
   props: ["secTitle"],
   computed: {
-    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend", "selectedCurrency"]),
+    ...mapGetters(["rtlLayout", "cart", "wishlist", "linksformbackend","selectedLocale", "selectedCurrency"]),
   },
   components: {
     // Slick
@@ -295,7 +295,7 @@ export default {
       },
       page:1,
       product: [],
-      length: 7,
+      length: 0,
       totalVisible:7,
       pagination: true,
       symbol: false,
@@ -370,6 +370,7 @@ export default {
       try {
           this.keyword = this.$route.params.keyword
           const res= await product.getSearchedProducts(this.keyword)
+          console.log(res)
           const curRes= await currency.getcurrency()
           curRes.data.data.forEach(el=> {
             if (el.symbol === this.selectedCurrency.symbol) {
@@ -399,6 +400,7 @@ export default {
         });
         } else{
           res.data.data.forEach(el => {
+            console.log(el)
             this.produ.push({
                objectID: el._id,
                type: el.name.en,
