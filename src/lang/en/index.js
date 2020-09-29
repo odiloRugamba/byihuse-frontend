@@ -112,7 +112,7 @@ export default {
   "ContactUs": "Contact Us",
   "subHeadingContactUs":"Share your feedback with us.",
   "ContactInfo": "Contact Info",
-  "Salesteam": "Sales team",
+  "Salesteam": "Sales team", 
   "Call": "Call",
   "Mail": "Mail",
   "Address": "Address",
