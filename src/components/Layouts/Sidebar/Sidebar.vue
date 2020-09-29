@@ -119,7 +119,7 @@
 
 <script>
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-// import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import categories from "Api/categories";
 import departments from "Api/department";
 export default {
@@ -205,7 +205,7 @@ menus:  [
 		}
 	},
 	computed:{
-		// ...mapGetters(["menus"]),
+		...mapGetters(["selectedLocale"]),
 	},
 	methods: {
 		toggleMobileSidebar() {
@@ -227,10 +227,10 @@ menus:  [
          this.$router.push(`/${this.$i18n.locale}/${megaitemkey}`)
          const current = `/${megaitemkey}`
          localStorage.setItem('current', current)
-         if (megaitemkey === 'products') {
-            location.reload()
-            // console.log(oneLink)
-         }
+         // if (megaitemkey === 'products') {
+         //    location.reload(true)
+         //    // console.log(oneLink)
+         // }
       }
    },
 		async created () {
@@ -241,31 +241,42 @@ menus:  [
          // console.log(ww.data.data)
 			// console.log(res)
 			var obj = []
-			var arr = {}
-			this.resDept.data.data.forEach(dep =>{
-				// console.log(dep.name.en)
+         var arr = {}
+         if (this.selectedLocale.name === 'French') {
+            this.resDept.data.data.forEach(dep =>{
 			    this.resCat.data.data.forEach(el => {
 					if (dep._id === el.department) {
-						// var categoriesData = 
 					obj.push({
 							path: `${el.name.en}`,
-							// path: 'message',
 							children_menus:null,
-							// name: 'Shirt'
+                     name: `${el.name.fr}`
+						})
+					}
+            });
+            arr[dep.name.fr] = {...obj}
+            for (let i = 0; i < obj.length; i++) {
+               delete obj[i]
+            }
+         })
+         }else{
+            this.resDept.data.data.forEach(dep =>{
+			    this.resCat.data.data.forEach(el => {
+					if (dep._id === el.department) {
+					obj.push({
+							path: `${el.name.en}`,
+							children_menus:null,
                             name: `${el.name.en}`
 						})
 					}
             });
             arr[dep.name.en] = {...obj}
-            // console.log(obj)
             for (let i = 0; i < obj.length; i++) {
                delete obj[i]
-               // console.log('jshjhd')
             }
-				// obj.removeAll()
          })
+         }
          this.menus[2].children = arr
-			console.log(this.menus[3].children)
+			// console.log(this.menus[3].children)
 		} catch (err) {
 			console.log(err.message)
 		}

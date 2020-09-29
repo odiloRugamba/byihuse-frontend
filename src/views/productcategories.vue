@@ -250,7 +250,7 @@ export default {
       })
       if (this.selectedLocale.name === 'French') {
           rescategoies.data.data.forEach(el => {
-        if (el.name.fr === this.title) {
+        if (el.name.fr === this.title || el.name.en === this.title) {
          el.categories.forEach(recat =>{
 		    recat.products.forEach(pro =>{
             if (recat.name.fr === this.id) {
@@ -269,7 +269,7 @@ export default {
       });
     }else{
     rescategoies.data.data.forEach(el => {
-        if (el.name.en === this.title) {
+        if (el.name.en === this.title || el.name.fr === this.title) {
          el.categories.forEach(recat =>{
 		    recat.products.forEach(pro =>{
             if (recat.name.en === this.id) {

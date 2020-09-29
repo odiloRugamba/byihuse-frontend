@@ -11,6 +11,16 @@
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
 			</template>
       </v-data-table>
+      <!-- <v-data-table 
+         :headers="headers"
+			:items="tableData"
+         :items-per-page="tableData.length"
+			hide-default-footer
+      >
+         <template v-slot:item.action="{ item }">
+				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
+			</template>
+      </v-data-table> -->
       <v-dialog v-model="editDialog" max-width="685px" class="pa-2">
 			<v-card class="emb-FinalReceipt-wrap">
 				<v-card-text class="pa-4">
@@ -125,6 +135,23 @@ export default {
             { text: 'Paid', value: 'paid' },
             { text: 'Status', value: 'status' },
             { text: 'Action', value: 'action' }
+         ],
+         headersfr: [
+            {
+               text: 'First name fr',
+               value: 'firstName'
+            },
+            {
+               text: 'last name fr',
+               value: 'lastName'
+            },
+            {
+               text: 'details fr',
+               value: 'details'
+            },
+            { text: 'Paidfr', value: 'paid' },
+            { text: 'Statusfr', value: 'status' },
+            { text: 'Actionfr', value: 'action' }
          ],
           logHeader: [
             {
