@@ -118,7 +118,7 @@ export default {
   "Address": "Address",
   "WritetoUs":"Write to Us",
   "SendMessage": "Send Message ",
-  "Rental": "Rental",
+  "Rental": "Rental", 
   "subHeadingRental":"Use our rental and minimize your life challenges.",
   "Fillthisform":"Fill this form to request this Rental",
   "RentingHour":":Renting Hour",
