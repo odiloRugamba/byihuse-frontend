@@ -152,14 +152,14 @@ menus:  [
       children: null
 	},
    {
-      path: '',
+      path: 'categoriesiii',
       name:"message.categories",
       icon: 'party_mode',
       type: 'mega_menu',
       children: {}
    },
       {
-      path:``,
+      path:`categoriesiii`,
       name: "message.services",
       icon: "pages",
       type: "sub_menu",
@@ -215,18 +215,21 @@ menus:  [
 			console.log(evt)
       },
       changeRoute(megaitemkey, submega) {
-         localStorage.removeItem('current')
-         const current = `/products/${megaitemkey}/${submega}`
-         localStorage.setItem('current', current)
+         // localStorage.removeItem('current')
+         // const current = `/products/${megaitemkey}/${submega}`
+         // localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
          // console.log('helo',megaitemkey, submega)
       },
       changedepRoute(megaitemkey) {
-         localStorage.removeItem('current')
-         this.$router.push(`/${this.$i18n.locale}/${megaitemkey}`)
-         const current = `/${megaitemkey}`
-         localStorage.setItem('current', current)
+         // console.log(megaitemkey)
+         // localStorage.removeItem('current')
+         if (megaitemkey !== 'categoriesiii') {
+            this.$router.push(`/${this.$i18n.locale}/${megaitemkey}`)
+         }
+         // const current = `/${megaitemkey}`
+         // localStorage.setItem('current', current)
          // if (megaitemkey === 'products') {
          //    location.reload(true)
          //    // console.log(oneLink)

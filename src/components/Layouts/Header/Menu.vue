@@ -79,7 +79,9 @@ export default {
          // }
          // location.reload()
          // console.log('helo', oneLink)
-         this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
+         if (oneLink !== 'categoriesiii' && oneLink !== 'servicesTitle') {
+            this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
+         }
       }
    },
 data () {
@@ -98,13 +100,14 @@ menus:  [
       // type: "sub_menu",
 	},
    {
+      path:'categoriesiii',
       name:"message.categories",
       icon: 'party_mode',
       type: 'mega_menu',
       children: {}
    },
    {
-      path:"services",
+      path:"servicesTitle",
       name: "message.services",
       icon: "pages",
       type: "sub_menu",
