@@ -63,20 +63,20 @@
 							<!-- </div> -->
 						<!-- </slick> -->
 					</div>
-                    <div v-if="!products.length">
-                        <h3>{{$t("message.searchNoproductFound")}} +250 784 481 653</h3>
-                    </div>
 				</template>	
 			</div>
       <div class="pagination text-center">
             <v-pagination
-            v-if="length &&product.length"
+            v-if="length"
               class="my-4"
               v-model="page"
               :length="length"
               :totalVisible="totalVisible"
             ></v-pagination>
-      </div>	
+      </div>
+      <div v-if="!product.length">
+                        <h3>{{$t("message.searchNoproductFound")}} +250 784 481 653</h3>
+        </div>	
 		</div>
 	</div>
 </template>
@@ -370,7 +370,6 @@ export default {
       try {
           this.keyword = this.$route.params.keyword
           const res= await product.getSearchedProducts(this.keyword)
-          console.log(res)
           const curRes= await currency.getcurrency()
           curRes.data.data.forEach(el=> {
             if (el.symbol === this.selectedCurrency.symbol) {
@@ -400,7 +399,6 @@ export default {
         });
         } else{
           res.data.data.forEach(el => {
-            console.log(el)
             this.produ.push({
                objectID: el._id,
                type: el.name.en,
@@ -419,10 +417,9 @@ export default {
             })
         });
         }
-        
         this.products=this.produ
         if (this.products.length > 20) {
-          this.length=this.products.length /20
+          this.length=Math.ceil(this.products.length /20)
           // for (let i = 0; i < 20; i++) {
           //  this.product.push(this.products[i])
           this.product = this.products.slice(0, 20)
@@ -430,7 +427,7 @@ export default {
         } else {
           this.pagination = false
           this.product = this.products
-          console.log(this.products)
+          // console.log(this.products)
         }
       
       } catch (err) {

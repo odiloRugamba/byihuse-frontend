@@ -28,18 +28,23 @@
          search(){
          this.isHidden=true
          event.preventDefault();
-           if (this.$route.params.keyword) {
+         const hel= this.keyword.trim() !== ''
+         console.log(hel)
+         if (hel) {
+             if (this.$route.params.keyword) {
             // localStorage.removeItem('current')
             location.assign(`/#/${this.$i18n.locale}/search/${this.keyword}`)
             // const current = `/search/${this.keyword}`
             // localStorage.setItem('current', current)
             window.location.reload(false);
-         }else{
+           }else{
             // localStorage.removeItem('current')
             location.assign(`/#/en/search/${this.keyword}`)
             // const current = `/search/${this.keyword}`
             // localStorage.setItem('current', current)
-         } 
+          } 
+         }
+          
          
          //   this.$router.push(`/en/search/${this.keyword}`)
          //   
