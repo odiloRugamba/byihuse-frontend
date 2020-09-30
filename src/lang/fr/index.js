@@ -61,7 +61,7 @@ export default {
   "DenimPullover": "",
 	"Nowonly": "seulement maintenant",
   "dealDayTitle": "",
-  "wellcome": "Made in Rwanda",
+  "wellcome": "Made fr in Rwanda",
   "subTitleOne": "Livraison gratuite",
 	"titleOne": "Commandez aujourd'hui et recevez-le aujourd'hui!",
 	"descOne": "* Toute commande supérieure à 1000 RWF",

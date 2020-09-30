@@ -40,11 +40,11 @@
 									<h2>{{$t("message.WritetoUs")}}</h2>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>
-									<v-text-field v-model="subject"	type="text"	placeholder="Subject" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea v-model="message" rows="2" label="Leave a Message" :rules="inputRules.basictextRules"></v-textarea>
+									<v-text-field v-model="fristName" type="text" :placeholder="label.firstName" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="lastName"	type="text"	:placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="email" type="email" :placeholder="label.email"></v-text-field>
+									<v-text-field v-model="subject"	type="text"	:placeholder="label.Subject" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea v-model="message" rows="2" :label="label.message" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn :loading="loading" class="accent mx-0 mt-4" large @click.stop.prevent="getContactInfo">	{{$t("message.SendMessage")}}</v-btn>
 								</v-form>
 							</v-flex>
@@ -58,8 +58,11 @@
 
 <script>
 import contact from "Api/contact";
-
+import { mapGetters } from "vuex";
 export default {
+	computed:{
+		...mapGetters(["selectedLocale"])
+	},
   data() {
     return {
 	loading: false,
@@ -69,7 +72,8 @@ export default {
 	  subject: '',
 	  message: '',
       valid: false,
-      contactInfo: "",
+	  contactInfo: "",
+	  label:{},
       inputRules: {
         basictextRules: [v => !!v || "This field should not be empty"]
 	  },
@@ -108,6 +112,27 @@ export default {
     saveDetails() {
       this.$refs.form.validate();
     }
+  },
+  mounted(){
+	if (this.selectedLocale.name === 'English') {
+		this.label={
+				firstName : 'First Name*',	
+                lastName :'Last Name*',
+                Subject :'Subject', 
+                address : 'address',
+				message :'Leave a Message*',
+				email: 'Email*'
+		}
+	}else{
+		this.label={
+				firstName : 'First Name*fr',	
+                lastName :'Last Name*fr',
+                Subject :'Subject* fr', 
+                address : 'Your address fr',
+				message :'Leave a Message* fr',
+				email: 'Email* fr'
+		}
+	}
   }
 };
 </script>

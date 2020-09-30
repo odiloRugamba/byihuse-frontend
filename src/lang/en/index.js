@@ -206,5 +206,7 @@ export default {
   "Loading":"Loading",
   "Shop":"Shop",
   "searchNoproductFound":"If you can not find what you are looking for please call  +250 784 481 653",
-  "Calluson":"Call us on"
+  "Calluson":"Call us on",
+  "inputError":"This field should not be empty.",
+  "Paywithdebit": "Pay With Bebit"
 }

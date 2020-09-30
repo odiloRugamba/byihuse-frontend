@@ -6,6 +6,7 @@
 				<v-tabs light slider-color="primary" v-model="activePayment">
 					<v-tab class="text-capitalize">{{$t("message.MobileMoney")}}</v-tab>
 					<v-tab class="text-capitalize">{{$t("message.PaywithCash")}}</v-tab>
+					<v-tab class="text-capitalize">{{$t("message.Paywithdebit")}}</v-tab>
 					<v-tab-item>
 						<v-card flat>
 							<v-card-text class="pa-0">
@@ -53,6 +54,24 @@
 								<div class="text-center">
 									<!-- <v-btn class="sidebar-toggle mx-4" color="accent" dark @click="showOrder()" >Show Order Detail</v-btn> -->
 									<v-btn class="sidebar-toggle mx-4"  color="accent" dark @click="makePayment('CASH')">{{$t("message.Submit")}}</v-btn>
+									<v-btn @click="makeCleat">{{$t("message.Clear")}}</v-btn>
+								</div>
+							</v-card-text>
+						</v-card>
+					</v-tab-item>
+					<v-tab-item>
+						<v-card flat>
+							<v-card-text class="pa-0">
+								<div class="header text-center bg-grey pt-12 pb-4">
+									<div class="mb-6">
+										<img alt="Bank" src="/static/images/online-shop.png">
+									</div>
+									<h4 class="mb-12 font-weight-medium">{{$t("message.Paywithdebit")}}</h4>
+								</div>
+								<v-divider class="mt-12 mb-2"></v-divider>
+								<div class="text-center">
+									<!-- <v-btn class="sidebar-toggle mx-4" color="accent" dark @click="showOrder()" >Show Order Detail</v-btn> -->
+									<v-btn class="sidebar-toggle mx-4"  color="accent" dark @click="makePayment('DEBT')">{{$t("message.Submit")}}</v-btn>
 									<v-btn @click="makeCleat">{{$t("message.Clear")}}</v-btn>
 								</div>
 							</v-card-text>
@@ -137,8 +156,8 @@ import order from "Api/order";
 			}
 			console.log(this.invoiceData)
 			const res = await order.makeOrder(this.invoiceData)
-			if (option === 'CASH') {
-				this.$router.push(`${this.$i18n.locale}/session/thank-you`)
+			if (option === 'CASH' || option === 'DEBT') {
+				this.$router.push(`/${this.$i18n.locale}/session/thank-you`)
 			}else {
 				// console.log(res.data.data.payment.meta.authorization.redirect)
 				// window.open(res.data.data.payment.meta.authorization.redirect)

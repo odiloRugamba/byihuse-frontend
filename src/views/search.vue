@@ -87,6 +87,16 @@
 	</div>
 </template>
 <style>
+ @media screen and (max-width: 660px){
+    #contt{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    }
+    #contt .tab-item{
+      margin-bottom: 20px;
+    }
+  }
 #contt{
     display: flex;
     flex-wrap: wrap;
@@ -458,5 +468,3 @@ export default {
   }
 };
 </script>
-
-

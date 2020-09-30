@@ -88,8 +88,7 @@
     </div>
 	</div>
 </template>
-<style>
-
+<style scoped>
   .thumb-wrap{
     height: 380px;
     width: 300px;
@@ -106,7 +105,16 @@
     overflow: hidden;
     width: 260px;
   }
-
+  @media screen and (max-width: 660px){
+    #contt{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    }
+    #contt .tab-item{
+      margin-bottom: 20px;
+    }
+  }
 </style>
 <script>
 // import Slick from "vue-slick";

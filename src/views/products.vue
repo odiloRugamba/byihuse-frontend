@@ -1,13 +1,7 @@
 <template>
 	<div class="feature-product-wrap section-gap title-gap">
 		<div class="containevr">
-			<!-- <div class="sec-title">
-				<h2>{{secTitle}}</h2>
-			</div> -->
 			<div id="contt" class="tab-content">
-				<!-- <template v-for="(tab,title) in products"> -->
-					<!-- <div v-if="index == selectedTab" :key="index"> -->
-						<!-- <slick  :options="slickOptions" :key="title"> -->
 							<div
 								v-for="(cateogary,subindex) in produ"
 								:key="subindex"
@@ -23,22 +17,6 @@
 												height="800"
                         id="ddd"
 											>
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="http://162.243.173.84:4000/1598520712511.jpg"
-												
-											> -->
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/tryy.jpg"
-												
-											> -->
-                      <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/p.png"
-												
-											> -->
-                       <!-- <img id="ddd" alt="product" height="800" width="626"
-												src="/static/images/logo/data1.jpg"
-												
-											> -->
 										</router-link>
 										<div class="wishlist-icon">
 											<v-btn v-if="ifItemExistInWishlist(cateogary)" @click="addItemToWishlist(cateogary)" icon >

@@ -32,8 +32,8 @@
 						<div class="mb-6">
 							<img  alt="cart-empty" height="128" src="/static/images/empty-cart.png" width="128">
 						</div>
-						<h4 > {{$t("nessage.YourShoppingBagisempty")}}</h4>
-						<router-link class="primary--text" :to="'/'+$i18n.locale+'/products'">{{("message.GotoShopping")}}</router-link>
+						<h4 > {{$t("message.YourShoppingBagisempty")}}</h4>
+						<router-link class="primary--text" :to="'/'+$i18n.locale+'/products'">{{$t("message.GotoShopping")}}</router-link>
 					</div>
 				</template>
 			</v-container>

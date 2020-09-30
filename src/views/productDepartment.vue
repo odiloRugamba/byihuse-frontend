@@ -88,7 +88,7 @@
     </div>
 	</div>
 </template>
-<style>
+<style scoped>
 
   .thumb-wrap{
     height: 380px;

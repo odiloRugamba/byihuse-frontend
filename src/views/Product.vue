@@ -54,7 +54,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
   .pagination {
     display: flex;
     justify-content: center;
@@ -70,7 +70,16 @@
     height: 380px;
     overflow: hidden;
   }
-
+  @media screen and (max-width: 660px){
+    #contt{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    }
+    #contt .tab-item{
+      margin-bottom: 20px;
+    }
+  }
   .font-weight-medium {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -201,9 +210,7 @@
   async mounted () {
     try {
         const res= await department.getDepartmentall()
-      console.log(res)
       const curRes= await currency.getcurrency()
-      console.log(this.selectedLocale)
       curRes.data.data.forEach(el=> {
         // console.log(el, this.selectedCurrency)
         if (el.symbol === this.selectedCurrency.symbol) {
@@ -214,7 +221,6 @@
       })
       if (this.selectedLocale.name === 'French') {
         res.data.data.forEach(el => {
-        console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
             this.products.push({
@@ -242,7 +248,6 @@
       });
       } else if(this.selectedLocale.name ==='English') {
         res.data.data.forEach(el => {
-        console.log(el)
         el.categories.forEach(pro =>{
           pro.products.forEach(prdata =>{
             this.products.push({

@@ -13,7 +13,7 @@
 								<v-form ref="form" v-model="valid">
 									<v-text-field
 										type="text"
-										placeholder="First Name*"
+										:placeholder="placeHolder.firstName"
 										v-model="firstName"
 										:rules="inputRules.basictextRules"
 									>
@@ -21,26 +21,20 @@
 									<v-text-field
 										type="text"
 										v-model="lastName"
-										placeholder="Last Name*"
+										:placeholder="placeHolder.lastName"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
 									<v-text-field
 										type="email"
 										v-model="email"
-										placeholder="Email*"
+										:placeholder="placeHolder.email"
 										:rules="emailRules"
 									>
 									</v-text-field>
-									<!-- <v-select
-									:items="items"
-									label="Role"
-									v-model="role"
-									dense
-									></v-select> -->
 									<v-text-field
 										type="password"
-										placeholder="Enter Password*"
+										:placeholder="placeHolder.password"
 										v-model="password"
 										:rules="inputRules.basictextRules"
 									>
@@ -48,12 +42,12 @@
 									<v-text-field
 										class="mb-4"
 										type="password"
-										placeholder="confrim Password*"
+										:placeholder="placeHolder.repassword"
 										v-model="repassword"
 										:rules="inputRules.basictextRules"
 									>
 									</v-text-field>
-									<v-btn class="accent mx-0 mb-4" large  @click.stop.prevent="saveDetails">
+									<v-btn :loading="loading" class="accent mx-0 mb-4" large  @click.stop.prevent="saveDetails">
 										{{$t("message.SignUp")}}
 									</v-btn>
 									<p>{{$t("message.Alreadyhaveaccount")}}<router-link :to="'/'+$i18n.locale+'/session/signin'" class="accent--text">{{$t("message.SignIn")}}</router-link></p>
@@ -70,7 +64,11 @@
 <script>
 import auth from "Api/auth";
 // import department from "Api/department";
+import { mapGetters } from "vuex";
 	export default{
+	computed:{
+		...mapGetters(["selectedLocale"])
+	},
    	data () {
       	return {
 			  Departments: [],
@@ -81,7 +79,9 @@ import auth from "Api/auth";
 			  role: 'CLIENT',
 			  password: '',
 			  repassword: '',
+			  loading:false,
 			  data: '',
+			  confrim:'please  confrim password correct',
          	valid: false,
 				emailRules: [
 					v => !!v || 'E-mail is required',
@@ -94,10 +94,21 @@ import auth from "Api/auth";
       },
       methods: {
          saveDetails(){
+			 this.loading= true
 				this.$refs.form.validate();
 				if(this.valid == true){
-					this.signup()
-            }	
+					if (this.repassword === this.password) {
+						this.signup()
+					}else{
+					this.$snotify.error(this.confrim,{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 3000,
+					showProgressBar:false,
+				});
+			}
+			}
+			this.loading= false	
 			},
 		 async signup () {
            try {
@@ -110,24 +121,44 @@ import auth from "Api/auth";
                     password: this.password
 			})   
 			console.log(res)
-			// console.log('askjhaskj')
-			this.$router.push(this.$i18n.locale+'/session/signin');
+			this.$snotify.success(res.data.message,{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 3000,
+					showProgressBar:false,
+			});
+			this.$router.push('/'+this.$i18n.locale+'/session/signin');
 			} catch (err) {
-				console.log(err.message)
+				this.$snotify.success(err.response.message,{
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    timeout: 3000,
+					showProgressBar:false,
+			});
+				// console.log(err.message)
 				// console.log(res)
 			}
 		}
 	},
-	// async mounted () {
-	// 		try {
-	// 			const res = await department.getDepartment()
-	// 			this.data = await res.data.data
-	// 			this.data.forEach(el => {
-	// 				this.Departments.push(el.name.kiny)
-	// 			});
-	// 		} catch (err) {
-	// 			console.log(err.message)
-	// 		}
-	// 	}
+	mounted () {
+		if (this.selectedLocale.name === 'English') {
+			  this.placeHolder={
+				firstName : 'First Name*',	
+                lastName :'Last Name*',
+				email: 'Email*',
+				password:'Password',
+				repassword:'confrim Password*'
+			  }
+		  }else{
+			  this.confrim= 'please  confrim password correct fr'
+			  this.placeHolder={
+				firstName : 'First Name*fr',	
+                lastName :'Last Name*fr',
+				email: 'Email* fr',
+				password:'Password fr',
+				repassword:'confrim Password* fr'
+			  }
+		}
+	}
 	}
 </script>

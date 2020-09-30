@@ -57,12 +57,12 @@
 									<h5>{{$t("message.Fillservice")}}</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field v-model="fristName" type="text" placeholder="First Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="lastName"	type="text"	placeholder="Last Name" :rules="inputRules.basictextRules"></v-text-field>
-									<v-text-field v-model="email" type="email" placeholder="Email"></v-text-field>
-									<v-text-field v-model="phoneNumber" 	type="number"	placeholder="Phone number" :rules="inputRules.basictextRules"></v-text-field>
-                                    <v-text-field v-model="address" 	type="Address"	placeholder="Your address" :rules="inputRules.basictextRules"></v-text-field>
-									<v-textarea v-model="details" rows="2" label="Please give us details of your situation" :rules="inputRules.basictextRules"></v-textarea>
+									<v-text-field v-model="fristName" type="text" :placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="lastName"	type="text"	:placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="email" type="email" :placeholder="label.email"></v-text-field>
+									<v-text-field v-model="phoneNumber" 	type="number"	:placeholder="label.phone" :rules="inputRules.basictextRules"></v-text-field>
+                                    <v-text-field v-model="address" 	type="Address"	:placeholder="label.address" :rules="inputRules.basictextRules"></v-text-field>
+									<v-textarea v-model="details" rows="2" :label="label.cityState" :rules="inputRules.basictextRules"></v-textarea>
 									<v-btn  class="accent mx-0 mt-4" :loading="loading" large @click.stop.prevent="AskForServices">{{$t("message.Submit")}}</v-btn>
 								</v-form>
 				</v-flex>
@@ -153,7 +153,8 @@ export default {
       },
         selectedPreviewImage:'',
       symbol: false,
-      currentValue:1
+      currentValue:1,
+      label:{}
     };
   },
   mounted() {
@@ -191,6 +192,25 @@ export default {
 			this.selectedPreviewImage = image;
 		},
     async getContactInfo() {
+    		if (this.selectedLocale.name === 'English') {
+			  this.label={
+				        firstName : 'First Name*',	
+                lastName :'Last Name*',
+                cityState :'Please give us details of your situation* fr', 
+                address : 'address',
+				        phone :'Mobile*',
+				       email: 'Email*'
+			  }
+		  }else{
+			  this.label={
+				        firstName : 'First Name*fr',	
+                lastName :'Last Name*fr',
+                cityState :'Please give us details of your situation* fr', 
+                address : 'Your address fr',
+				        phone :'Mobile* fr',
+				        email: 'Email* fr'
+			  }
+		}
       try {
           const res = await services.getServices()
           const curRes= await currency.getcurrency()

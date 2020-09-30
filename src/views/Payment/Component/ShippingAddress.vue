@@ -6,13 +6,13 @@
 				<v-form ref="form" v-model="valid">
 					<v-layout row wrap>
 						<v-flex lg4 xl4 xs12 sm6 md6>
-							<v-text-field v-model="userInfo.firstName" :rules="inputRules.basictextRules" label="First Name*" required></v-text-field>
+							<v-text-field v-model="userInfo.firstName" :rules="inputRules.basictextRules" :label="label.firstName" required></v-text-field>
 						</v-flex>
 						<v-flex lg4 xl4 xs12 sm6 md6>
-							<v-text-field v-model="userInfo.lastName" :rules="inputRules.basictextRules" label="Last Name*" required></v-text-field>
+							<v-text-field v-model="userInfo.lastName" :rules="inputRules.basictextRules" :label="label.lastName" required></v-text-field>
 						</v-flex>
 						<v-flex lg4 xl4 xs12 sm6 md6>
-							<v-text-field v-model="userInfo.streetName" :rules="inputRules.basictextRules" label="Street  Number*" required ></v-text-field>
+							<v-text-field v-model="userInfo.streetName" :rules="inputRules.basictextRules" :label="label.streetName" required ></v-text-field>
 						</v-flex>
 						<!-- <v-flex lg6 xl6 sm6 md6 xs12> -->
 							<!-- <v-text-field v-model="userInfo.aptBuilding" :rules="inputRules.basictextRules" label="Apt Building Name*" required ></v-text-field> -->
@@ -21,7 +21,7 @@
 							<!-- <v-text-field v-model="userInfo.zipCode" :rules="inputRules.basictextRules" label="Zip Code*" required></v-text-field> -->
 						<!-- </v-flex> -->
 						<v-flex lg6 xl6 md6 sm6 xs12>
-							<v-text-field v-model="userInfo.cityState" :rules="inputRules.basictextRules" label="City and State*" required></v-text-field>
+							<v-text-field v-model="userInfo.cityState" :rules="inputRules.basictextRules" :label="label.cityState" required></v-text-field>
 						</v-flex>
 						<!-- <v-flex lg6 xl6 md6 sm6 xs12>
 							<v-text-field v-model="userInfo.country" :rules="inputRules.basictextRules" label="Country*" required></v-text-field>
@@ -29,7 +29,7 @@
 						<v-flex lg6 xl6 sm6 md6 xs12>
 						<v-select class="mt-6"
 									:items="countries"
-									label="Country"
+									:label="label.country"
 									v-model="userInfo.country"
 									dense
 									></v-select>
@@ -39,10 +39,10 @@
 						<h4>{{$t("message.EnterContact")}}</h4>
 						<v-layout row wrap>
 							<v-flex lg6 xl6 md6 sm12>
-								<v-text-field  v-model="userInfo.phone" :rules="inputRules.basictextRules" label="Mobile*" required></v-text-field>
+								<v-text-field  v-model="userInfo.phone" :rules="inputRules.basictextRules" :label="label.phone" required></v-text-field>
 							</v-flex>
 							<v-flex lg6 xl6 md6 sm12>
-								<v-text-field v-model="userInfo.email"   label="Email*" >
+								<v-text-field v-model="userInfo.email"   :label="label.email" >
 								</v-text-field>
 							</v-flex>
 							
@@ -58,8 +58,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 	export default {
 		props: ["changeStepOneForm"],
+	computed:{
+		...mapGetters(["selectedLocale"])
+	},
    	data () {
       	return {
 			  countries: [
@@ -69,6 +73,15 @@
 				  'Tanzaina',
 				  'Kenya'
 			  ],
+			label:{
+				firstName : '',	
+                lastName :'',
+                streetName :'',
+                cityState :'', 
+                country : 'Rwanda',
+				phone :'',
+				email: ''
+			},
          	valid: false,
           	userInfo:{
                 firstName : '',	
@@ -98,6 +111,42 @@
 					this.$store.dispatch("addUserDetails", this.userInfo);
 				}				
 			}
-      }
+	  },
+	  mounted(){
+		  const dataUser= JSON.parse(localStorage.getItem('data'))
+		  if (dataUser) {
+			  this.userInfo={
+			  firstName : dataUser.firstName,	
+                lastName :dataUser.lastName,
+				email: dataUser.email,
+				phone :'078',
+				cityState :'', 
+				streetName:'',
+				country : 'Rwanda',
+		    }
+		  }
+		  if (this.selectedLocale.name === 'English') {
+			  this.label={
+				firstName : 'First Name*',	
+                lastName :'Last Name*',
+                streetName :'Street  Number*',
+                cityState :'City and State*', 
+                country : 'Country',
+				phone :'Mobile*',
+				email: 'Email*'
+			  }
+		  }else{
+			  this.label={
+				firstName : 'First Name*fr',	
+                lastName :'Last Name*fr',
+                streetName :'Street  Number* fr',
+                cityState :'City and State* fr', 
+                country : 'Country fr',
+				phone :'Mobile* fr',
+				email: 'Email* fr'
+			  }
+		  }
+		  
+	  }
    }
 </script>
