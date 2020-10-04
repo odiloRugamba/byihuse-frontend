@@ -10,6 +10,9 @@
       >
          <template v-slot:item.action="{ item }">
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
+            <!-- <div class="openLogs"> -->
+                        <v-btn @click="openLogs(item.logs)" small elevation="0" tile class="primary">{{$t('message.TrackOrder')}}</v-btn>
+            <!-- </div> -->
 			</template>
       </v-data-table>
       <v-data-table
@@ -21,11 +24,14 @@
       >
          <template v-slot:item.action="{ item }">
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
+            <!-- <div class="openLogs"> -->
+                        <v-btn @click="openLogs"  small elevation="0" tile class="primary">{{$t('message.TrackOrder')}}</v-btn>
+            <!-- </div> -->
 			</template>
       </v-data-table>
       <v-dialog v-model="editDialog" max-width="685px" class="pa-2">
 			<v-card class="emb-FinalReceipt-wrap">
-				<v-card-text class="pa-4">
+				<v-card-text class="pa-4 mb-3">
 					<v-flex xs12>
 						<div class="text-center bg-grey px-4 py-6">
 							<h4>{{$t("message.Orderdetails")}}</h4>
@@ -89,16 +95,18 @@
 								</div>
 								<!-- <v-divider class="my-4"></v-divider> -->
 							</div>
-							<div class="openLogs">
-                        <v-btn @click="openLogs" class="accent">Track Order</v-btn>
-                     </div>
 						</div>
 					</v-flex>
+               <div class="selectedPayemnt">
+                   <v-btn @click="editDialog= false" class="mr-5 primary">Close</v-btn>
+                   <v-btn @click="payymentmethods()" class="accent">Payment</v-btn>
+            </div>
 				</v-card-text>
+            
 			</v-card>
 		</v-dialog>
-      <v-dialog v-model="open">
-		<v-card class="py-6 px-2">
+      <v-dialog max-width="800" v-model="open">
+		<v-card class="py-6 px-2 ">
          <v-data-table 
          v-if="selectedLocale.name === 'English'" 
          :headers="logHeader"
@@ -121,6 +129,30 @@
 			</v-card-actions>
 		</v-card>
 	</v-dialog>
+         <v-dialog max-width="800" v-model="paymentway">
+		<v-card class="py-6 px-2 ">
+         <v-data-table 
+         v-if="selectedLocale.name === 'English'" 
+         :headers="payment"
+			:items="paymentArray"
+         :items-per-page="tableData.length"
+			hide-default-footer
+      >
+      </v-data-table>
+      <v-data-table 
+      v-if="selectedLocale.name === 'French'" 
+         :headers="paymentfr"
+			:items="paymentArray"
+         :items-per-page="tableData.length"
+			hide-default-footer
+      >
+      </v-data-table>
+			<v-card-actions class="layout justify-center">
+				<v-btn color="primary mx-2" @click="paymentway = false">{{$t("Close")}}</v-btn>
+				<!-- <v-btn color="accent" @click="RWF emit('onConfirm')">Yes</v-btn> -->
+			</v-card-actions>
+		</v-card>
+	</v-dialog>
    </div>
 </template>
 
@@ -134,35 +166,47 @@ export default {
       return{
          headers: [
             {
-               text: 'First name',
-               value: 'firstName'
+               text: 'Time',
+               value: 'date'
             },
             {
-               text: 'last name',
-               value: 'lastName'
+               text: 'Total amount',
+               value: 'totalAmountExpected'
             },
             {
-               text: 'details',
-               value: 'details'
+               text: 'Total amount Paid',
+               value: 'totalAmountPaid'
             },
-            { text: 'Paid', value: 'paid' },
-            { text: 'Status', value: 'status' },
-            { text: 'Action', value: 'action' }
+            { 
+               text: 'delivery', 
+               value: 'delivery' 
+            },
+            {
+                text: 'Status', 
+                value: 'status' 
+            },
+            { 
+               text: 'Action', 
+               value: 'action' 
+            }
          ],
          headersfr: [
             {
-               text: 'First name fr',
-               value: 'firstName'
+               text: 'Time fr',
+               value: 'date'
             },
             {
-               text: 'last name fr',
-               value: 'lastName'
+               text: 'Total amount fr',
+               value: 'totalAmountExpected'
             },
             {
-               text: 'details fr',
-               value: 'details'
+               text: 'Total amount Paid fr',
+               value: 'totalAmountPaid'
             },
-            { text: 'Paidfr', value: 'paid' },
+            { 
+               text: 'delivery', 
+               value: 'delivery' 
+            },
             { text: 'Statusfr', value: 'status' },
             { text: 'Actionfr', value: 'action' }
          ],
@@ -172,27 +216,22 @@ export default {
                value: 'time'
             },
             {
-               text: 'Name',
-               value: 'name'
+               text: 'Action',
+               value: 'action'
             },
             {
                text: 'Comment',
                value: 'comment'
-            }
-            ,
+            },
             {
-               text: 'Action',
-               value: 'action'
+               text: 'Name',
+               value: 'name'
             },
          ],
          logHeaderfr: [
             {
                text: 'Time fr',
                value: 'time'
-            },
-            {
-               text: 'Name fr',
-               value: 'name'
             },
             {
                text: 'Comment fr',
@@ -202,6 +241,40 @@ export default {
             {
                text: 'Action fr',
                value: 'action'
+            },
+            {
+               text: 'Name fr',
+               value: 'name'
+            },
+         ],
+         payment: [
+            {
+               text: 'Time',
+               value: 'time'
+            },
+            {
+               text: 'Method',
+               value: 'method'
+            }
+            ,
+            {
+               text: 'Amount',
+               value: 'amount'
+            },
+         ],
+         paymentfr: [
+            {
+               text: 'Time fr',
+               value: 'time'
+            },
+            {
+               text: 'method fr',
+               value: 'method'
+            }
+            ,
+            {
+               text: 'amount fr',
+               value: 'amount'
             },
          ],
          tableData: [],
@@ -216,40 +289,59 @@ export default {
          total:0,
          open:false,
          logs:[],
-         currentValue:1
+         currentValue:1,
+         paymentway:false,
+         paymentArray:[],
+         paymentLogs:[]
       }
    },
    methods: {
-      openLogs(){
+      openLogs(logs){
          this.logs=[]
-         this.selectProduts.forEach(el =>{
-            console.log(el)
-            el.logs.forEach(elLogs =>{
-         const dat = moment(elLogs.time)
-			const time = moment(elLogs.time)
+         console.log(logs)
+         logs.forEach(el =>{
+         const dat = moment(el.createdAt)
+			const time = moment(el.createdAt)
 			const tt = time.format('LT')
 			const da = dat.format('L');
-			const date = tt + '' + ' '+ da
-            console.log(elLogs)
-            this.logs.push({
-            action: elLogs.action,
-            name: elLogs.name,
-            role: elLogs.role,
-            status:elLogs.status,
-            time :date,
-            })
-            })
+         const date = tt + '' + ' '+ da
+         this.logs.push({
+            time: date,
+            action:el.action,
+            comment:el.comment,
+            name: el.name
+         })
          })
          this.open= true
       },
+      payymentmethods(){
+         console.log(this.paymentLogs)
+         this.paymentArray=[]
+         this.paymentLogs.forEach(el =>{
+            const dat = moment(el.time)
+			const time = moment(el.time)
+			const tt = time.format('LT')
+			const da = dat.format('L');
+         const date = tt + '' + ' '+ da
+         this.paymentArray.push({
+            time: date,
+            amount:el.amount,
+            method:el.method
+         })
+      })
+         
+         this.paymentway= true
+      },
       selectedOrder(selected){
-         // console.log(selected)
+         console.log(selected)
+         this.paymentLogs= selected.paymentLogs
          this.logs=selected.logs
-         this.fristName=selected.fristName,
+         this.fristName=selected.firstName,
          this.lastName=selected.lastName,
          this.city=selected.address,
          this.street=selected.details
          this.selectProduts=[]
+         this.total=0
          if (this.selectedLocale === "French") {
             selected.product.forEach(el=>{
             // console.log(el.pictures.pic1)
@@ -259,7 +351,7 @@ export default {
                name: el.name.fr,
                logs: selected.logs
             })
-            this.total+=el.price
+            this.total= this.total+el.price
            })
          }else{
             selected.product.forEach(el=>{
@@ -270,7 +362,7 @@ export default {
                name: el.name.en,
                logs: selected.logs
             })
-            this.total=this.total +el.price
+            this.total=this.total+el.price
            })
          }
          this.editDialog= true
@@ -288,16 +380,22 @@ export default {
                }
          })
           resRental.data.data.forEach(el => {
+         const dat = moment(el.createdAt)
+			const time = moment(el.createdAt)
+			const tt = time.format('LT')
+			const da = dat.format('L');
+         const date = tt + '' + ' '+ da
+         
              if (el.logs.length) {
+                console.log(el)
                 this.product[0]= el.rental
                 this.tableData.push({
-               address: el.address,
-               details: el.details,
-               email: el.email,
+               date: date,
                firstName: el.firstName,
                lastName: el.lastName,
                logs: el.logs,
-               paid: el.paid,
+               totalAmountPaid: el.totalAmountPaid,
+               totalAmountExpected:el.totalAmountExpected,
                paymentLogs: el.paymentLogs,
                status: el.status.status,
                product:this.product
@@ -307,23 +405,26 @@ export default {
              }
             //  console
           });
-         //   resProduct.data.data.forEach(el => {
-         //    //  console.log(el)
-         //     this.tableData.push({
-         //        MoMoPhoneNumber:el.MoMoPhoneNumber,
-         //       agentCode: el.agentCode,
-         //       cancelReason: el.cancelReason,
-         //       city: el.city,
-         //       email:el.email,
-         //       firstName:el.firstName,
-         //       lastName:el.lastName,
-         //       logs:el.logs,
-         //       status:el.status.status,
-         //       details:el.streetNumber,
-         //       totalAmmount: el.totalAmmount,
-         //       totalAmountPaid: el.totalAmountPaid
-         //     })
-         //  });
+           resProduct.data.data.forEach(el => {
+            //  console.log(el)
+            if (el.logs.length) {
+            //    this.tableData.push({
+            //     MoMoPhoneNumber:el.MoMoPhoneNumber,
+            //    agentCode: el.agentCode,
+            //    cancelReason: el.cancelReason,
+            //    city: el.city,
+            //    email:el.email,
+            //    firstName:el.firstName,
+            //    lastName:el.lastName,
+            //    logs:el.logs,
+            //    status:el.status.status,
+            //    details:el.streetNumber,
+            //    totalAmmount: el.totalAmmount,
+            //    totalAmountPaid: el.totalAmountPaid
+            //  })
+            }
+             
+          });
           console.log(resRental.data.data.length)
           console.log(resProduct.data.data.length)
       } catch (err) {
@@ -356,4 +457,8 @@ export default {
 	display: flex;
 	justify-content: space-between;
 } */
+.selectedPayemnt{
+   display: flex;
+   justify-content: center;
+}
 </style>

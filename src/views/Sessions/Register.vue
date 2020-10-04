@@ -42,7 +42,7 @@
 									<v-text-field
 										class="mb-4"
 										type="password"
-										:placeholder="placeHolder.repassword"
+										:placeholder="placeHolder.makeitman"
 										v-model="repassword"
 										:rules="inputRules.basictextRules"
 									>
@@ -50,7 +50,7 @@
 									<v-btn :loading="loading" class="accent mx-0 mb-4" large  @click.stop.prevent="saveDetails">
 										{{$t("message.SignUp")}}
 									</v-btn>
-									<p>{{$t("message.Alreadyhaveaccount")}}<router-link :to="'/'+$i18n.locale+'/session/signin'" class="accent--text">{{$t("message.SignIn")}}</router-link></p>
+									<p>{{$t("message.Alreadyhaveaccount")}}<router-link :to="'/'+$i18n.locale+'/session/signin'" class="accent--text"> {{$t("message.SignIn")}}</router-link></p>
 								</v-form>
 							</div>
 						</v-flex>
@@ -81,6 +81,7 @@ import { mapGetters } from "vuex";
 			  repassword: '',
 			  loading:false,
 			  data: '',
+			  placeHolder:{},
 			  confrim:'please  confrim password correct',
          	valid: false,
 				emailRules: [
@@ -147,7 +148,7 @@ import { mapGetters } from "vuex";
                 lastName :'Last Name*',
 				email: 'Email*',
 				password:'Password',
-				repassword:'confrim Password*'
+				makeitman:'confrim Password*'
 			  }
 		  }else{
 			  this.confrim= 'please  confrim password correct fr'
@@ -156,7 +157,7 @@ import { mapGetters } from "vuex";
                 lastName :'Last Name*fr',
 				email: 'Email* fr',
 				password:'Password fr',
-				repassword:'confrim Password* fr'
+				makeitman:'confrim Password* fr'
 			  }
 		}
 	}
