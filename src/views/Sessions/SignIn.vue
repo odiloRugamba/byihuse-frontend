@@ -68,7 +68,7 @@ import axios from 'axios'
 					password: this.password
 					})
 					const data = res.data
-					// console.log(data)
+					console.log(data)
 					const localData = {
 						firstName: data.data.user.firstName,
 						lastName: data.data.user.lastName,
@@ -77,8 +77,8 @@ import axios from 'axios'
 						departments: data.data.user.assignedDepartments
 					}
 					localStorage.setItem('data', JSON.stringify(localData))
-					axios.defaults.headers.common['Authorization'] = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MTM2MzcyZmQ0YWUwZmE0YmJiNmRmIiwiZmlyc3ROYW1lIjoiT2RpbG8iLCJsYXN0TmFtZSI6IlJ1Z2FtYmEiLCJlbWFpbCI6Im9kaWxvcnVnYW1iYUBnbWFpbC5jb20iLCJyb2xlIjoiU1VQRVItQURNSU4iLCJhc3NpZ25lZERlcGFydG1lbnRzIjpudWxsfSwiaWF0IjoxNTk5OTYxOTc2fQ.oD3MGt94gi0PgpUvNJflc_7pl0aLZU8v0qj7pDlIa1w`
-					sessionStorage.setItem('token', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY1MTM2MzcyZmQ0YWUwZmE0YmJiNmRmIiwiZmlyc3ROYW1lIjoiT2RpbG8iLCJsYXN0TmFtZSI6IlJ1Z2FtYmEiLCJlbWFpbCI6Im9kaWxvcnVnYW1iYUBnbWFpbC5jb20iLCJyb2xlIjoiU1VQRVItQURNSU4iLCJhc3NpZ25lZERlcGFydG1lbnRzIjpudWxsfSwiaWF0IjoxNTk5OTYxOTc2fQ.oD3MGt94gi0PgpUvNJflc_7pl0aLZU8v0qj7pDlIa1w")
+					axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`
+					sessionStorage.setItem('token', data.data.token)
 					this.$snotify.success('SignIn process succesfully done',{
                     closeOnClick: false,
                     pauseOnHover: false,

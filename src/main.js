@@ -15,6 +15,7 @@ import VueMoment from 'vue-moment'
 import App from './App.vue'
 import { store } from './store/store'
 import AppConfig from 'Constants/AppConfig'
+import VueSocialSharing from 'vue-social-sharing'
 
 // localisation messages
 import messages from './lang'
@@ -40,6 +41,7 @@ Vue.use(VueMoment)
 Vue.use(InstantSearch)
 Vue.use(VueI18n)
 Vue.use(Snotify, options)
+Vue.use(VueSocialSharing);
 Vue.use(VueGoogleMaps, {
 	load: {
 		key: "AIzaSyDC6tKEbtRlB6B0HgrFEN9P6ztTSJ89xt8",
