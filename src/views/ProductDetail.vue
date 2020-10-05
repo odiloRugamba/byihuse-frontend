@@ -116,7 +116,7 @@
 													</v-btn>
 												</div>
 												<div class="add-to-cart">
-													<v-btn v-if="ifItemExistInCart(product)" to="/en/cart"
+													<v-btn v-if="ifItemExistInCart(product)" :to="'/'+$i18n.locale+'/cart'"
 														class="primary" small icon>
 														<v-icon medium>edit</v-icon>
 													</v-btn>
@@ -208,7 +208,7 @@
 			}
 		},
 		computed: {
-			...mapGetters(["cart", "wishlist", "selectedProduct","selectedLocale","selectedCurrency", "linksformbackend"]),
+			...mapGetters(["cart", "wishlist","selectedLocale","selectedCurrency", "linksformbackend"]),
 		},
 		async mounted() {
 			this.getParametre()
@@ -239,6 +239,7 @@
 					this.title = this.$route.params.title;
 					const res = await product.getOne(this.id)
 					const ress= await currency.getcurrency()
+					console.log(res)
 					ress.data.data.forEach(el => {
 					   if (this.selectedCurrency.symbol === el.symbol) {
 						  this.currentValue= el.currentValue
@@ -254,6 +255,7 @@
 						this.selectedImage = this.linksformbackend + res.data.data.pictures.pic1
 					// console.log(this.image_gallery)
 					this.selectedProduct.price = res.data.data.price
+					this.selectedProduct.objectID= res.data.data._id
 					if (this.selectedLocale.name === "French") {
 						this.selectedProduct.name = res.data.data.name.fr
 					    this.selectedProduct.descprition = res.data.data.description.fr
