@@ -292,7 +292,8 @@ export default {
          currentValue:1,
          paymentway:false,
          paymentArray:[],
-         paymentLogs:[]
+         paymentLogs:[],
+         realProduct:[]
       }
    },
    methods: {
@@ -349,7 +350,7 @@ export default {
                pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
                price:el.price,
                name: el.name.fr,
-               logs: selected.logs
+               // logs: selected.logs
             })
             this.total= this.total+el.price
            })
@@ -380,48 +381,64 @@ export default {
                }
          })
           resRental.data.data.forEach(el => {
-         const dat = moment(el.createdAt)
-			const time = moment(el.createdAt)
-			const tt = time.format('LT')
-			const da = dat.format('L');
-         const date = tt + '' + ' '+ da
+         // const dat = moment(el.createdAt)
+			// const time = moment(el.createdAt)
+			// const tt = time.format('LT')
+			// const da = dat.format('L');
+         // const date = tt + '' + ' '+ da
          
              if (el.logs.length) {
-                console.log(el)
+               //  console.log(el)
                 this.product[0]= el.rental
-                this.tableData.push({
-               date: date,
-               firstName: el.firstName,
-               lastName: el.lastName,
-               logs: el.logs,
-               totalAmountPaid: el.totalAmountPaid,
-               totalAmountExpected:el.totalAmountExpected,
-               paymentLogs: el.paymentLogs,
-               status: el.status.status,
-               product:this.product
-            })
+               //  this.tableData.push({
+               // date: date,
+               // firstName: el.firstName,
+               // lastName: el.lastName,
+               // logs: el.logs,
+               // totalAmountPaid: el.totalAmountPaid,
+               // totalAmountExpected:el.totalAmountExpected,
+               // paymentLogs: el.paymentLogs,
+               // status: el.status.status,
+               // product:this.product[0]
+               //  })
             //  console.log(el)
             //  console.log(el)
              }
             //  console
-          });
+          })
            resProduct.data.data.forEach(el => {
             //  console.log(el)
+            this.realProduct=[]
+             const datee = moment(el.createdAt)
+			    const timee = moment(el.createdAt)
+			    const ttt = timee.format('LT')
+			    const daa = datee.format('L');
+             const dateee = ttt + '' + ' '+ daa
+             el.products.forEach(element => {
+                this.realProduct.push({
+                   pictures:element._id.pictures,
+                   price:element._id.price,
+                   name:element._id.name
+                })
+             });
             if (el.logs.length) {
-            //    this.tableData.push({
-            //     MoMoPhoneNumber:el.MoMoPhoneNumber,
-            //    agentCode: el.agentCode,
-            //    cancelReason: el.cancelReason,
-            //    city: el.city,
-            //    email:el.email,
-            //    firstName:el.firstName,
-            //    lastName:el.lastName,
-            //    logs:el.logs,
-            //    status:el.status.status,
-            //    details:el.streetNumber,
-            //    totalAmmount: el.totalAmmount,
-            //    totalAmountPaid: el.totalAmountPaid
-            //  })
+               this.tableData.push({
+               date:dateee,
+               MoMoPhoneNumber:el.MoMoPhoneNumber,
+               agentCode: el.agentCode,
+               cancelReason: el.cancelReason,
+               city: el.city,
+               email:el.email,
+               firstName:el.firstName,
+               lastName:el.lastName,
+               logs:el.logs,
+               status:el.status.status,
+               details:el.streetNumber,
+               totalAmountExpected: el.totalAmmount,
+               totalAmountPaid: el.totalAmountPaid,
+               delivery: el.delivery,
+               product:this.realProduct
+             })
             }
              
           });
