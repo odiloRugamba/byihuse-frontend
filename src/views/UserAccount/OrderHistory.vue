@@ -381,26 +381,26 @@ export default {
                }
          })
           resRental.data.data.forEach(el => {
-         // const dat = moment(el.createdAt)
-			// const time = moment(el.createdAt)
-			// const tt = time.format('LT')
-			// const da = dat.format('L');
-         // const date = tt + '' + ' '+ da
+         const dat = moment(el.createdAt)
+			const time = moment(el.createdAt)
+			const tt = time.format('LT')
+			const da = dat.format('L');
+         const date = tt + '' + ' '+ da
          
              if (el.logs.length) {
                //  console.log(el)
                 this.product[0]= el.rental
-               //  this.tableData.push({
-               // date: date,
-               // firstName: el.firstName,
-               // lastName: el.lastName,
-               // logs: el.logs,
-               // totalAmountPaid: el.totalAmountPaid,
-               // totalAmountExpected:el.totalAmountExpected,
-               // paymentLogs: el.paymentLogs,
-               // status: el.status.status,
-               // product:this.product[0]
-               //  })
+                this.tableData.push({
+               date: date,
+               firstName: el.firstName,
+               lastName: el.lastName,
+               logs: el.logs,
+               totalAmountPaid: el.totalAmountPaid,
+               totalAmountExpected:el.totalAmountExpected,
+               paymentLogs: el.paymentLogs,
+               status: el.status.status,
+               product:this.product[0]
+                })
             //  console.log(el)
             //  console.log(el)
              }
