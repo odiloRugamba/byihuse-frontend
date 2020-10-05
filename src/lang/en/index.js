@@ -173,7 +173,7 @@ export default {
   "ShareNow":"Share Now ",
   "YouMightAlsoLike":"You Might Also Like ",
   "ShowAll":"Show All ",
-  "GotoShopping":"GotoShopping",
+  "GotoShopping":"Go to Shopping",
   "YourShoppingBagisempty":"Your Shopping Bag is empty",
   "cartHeading":"Here's what's in your bag ",
   "subHeadingCart":" ",
@@ -208,6 +208,6 @@ export default {
   "searchNoproductFound":"If you can not find what you are looking for please call  +250 784 481 653",
   "Calluson":"Call us on",
   "inputError":"This field should not be empty.",
-  "Paywithdebit": "Pay With Bebit",
+  "Paywithdebit": "Take products on a debt",
   "TrackOrder": "Track Order"
 }

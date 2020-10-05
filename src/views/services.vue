@@ -247,12 +247,12 @@ export default {
 			  }
 		  }else{
 			  this.label={
-				firstName : 'First Name*fr',	
-                lastName :'Last Name*fr',
-                cityState :'Please give us details of your situation* fr', 
-                address : 'Your address fr',
-				phone :'Mobile* fr',
-				email: 'Email* fr'
+				firstName : 'Prénom*',	
+                lastName :'Nom de famille*',
+                cityState :'Veuillez nous donner des détails sur votre situation*', 
+                address : 'Votre adresse',
+				phone :'Mobile*',
+				email: 'Email*'
 			  }
 		}
       try {

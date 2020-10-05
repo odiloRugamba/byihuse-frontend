@@ -151,13 +151,13 @@ import { mapGetters } from "vuex";
 				makeitman:'confrim Password*'
 			  }
 		  }else{
-			  this.confrim= 'please  confrim password correct fr'
+			  this.confrim= 'Veuillez confirmer le mot de passe correct'
 			  this.placeHolder={
-				firstName : 'First Name*fr',	
-                lastName :'Last Name*fr',
-				email: 'Email* fr',
-				password:'Password fr',
-				makeitman:'confrim Password* fr'
+				firstName : 'Prénom*',	
+                lastName :'Nom de famille*',
+				email: 'Email*',
+				password:'Mot de passe*',
+				makeitman:'Confrim mot de passe*'
 			  }
 		}
 	}

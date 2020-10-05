@@ -125,12 +125,12 @@ export default {
 		}
 	}else{
 		this.label={
-				firstName : 'First Name*fr',	
-                lastName :'Last Name*fr',
-                Subject :'Subject* fr', 
-                address : 'Your address fr',
-				message :'Leave a Message* fr',
-				email: 'Email* fr'
+				firstName : 'Prénom*',	
+                lastName :'Nom de famille*',
+                Subject :'Sujet*', 
+                address : 'Votre adresse',
+				message :'Laisser un message*',
+				email: 'Email*'
 		}
 	}
   }

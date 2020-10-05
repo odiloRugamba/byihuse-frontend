@@ -192,23 +192,23 @@ export default {
          ],
          headersfr: [
             {
-               text: 'Time fr',
+               text: 'Temps',
                value: 'date'
             },
             {
-               text: 'Total amount fr',
+               text: 'Montant total',
                value: 'totalAmountExpected'
             },
             {
-               text: 'Total amount Paid fr',
+               text: 'Montant total payé',
                value: 'totalAmountPaid'
             },
             { 
-               text: 'delivery', 
+               text: 'livraison', 
                value: 'delivery' 
             },
-            { text: 'Statusfr', value: 'status' },
-            { text: 'Actionfr', value: 'action' }
+            { text: 'statut', value: 'status' },
+            { text: 'action', value: 'action' }
          ],
           logHeader: [
             {
@@ -230,20 +230,20 @@ export default {
          ],
          logHeaderfr: [
             {
-               text: 'Time fr',
+               text: 'Temps',
                value: 'time'
             },
             {
-               text: 'Comment fr',
+               text: 'Commentaire',
                value: 'comment'
             }
             ,
             {
-               text: 'Action fr',
+               text: 'Action',
                value: 'action'
             },
             {
-               text: 'Name fr',
+               text: 'Nom',
                value: 'name'
             },
          ],
@@ -264,16 +264,16 @@ export default {
          ],
          paymentfr: [
             {
-               text: 'Time fr',
+               text: 'Temps',
                value: 'time'
             },
             {
-               text: 'method fr',
+               text: 'méthode',
                value: 'method'
             }
             ,
             {
-               text: 'amount fr',
+               text: 'montant',
                value: 'amount'
             },
          ],
