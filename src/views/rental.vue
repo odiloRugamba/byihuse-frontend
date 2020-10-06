@@ -224,12 +224,20 @@ export default {
   },
   mounted() {
     this.getContactInfo();
+    const data= JSON.parse(localStorage.getItem('data'))
+    // console.log(data)
+    if (data) {
+    this.fristName= data.firstName
+    this.lastName= data.lastName
+    this.email=data.email 
+    }
+    
   },
   methods: {
       async AskForServices() {
           try {
               this.loading= true
-              console.log(this.selectedServices)
+            //   console.log(this.selectedServices)
            const orderRes = await Rental.rentalOrder({
             rentalId: this.selectedServices.id,
             firstName:this.fristName,
@@ -281,7 +289,7 @@ export default {
               })
           });
             res.data.data.forEach(el => {
-              console.log(el)
+            //   console.log(el)
             if (this.rentalNames[0].id === el._id) {
               this.selectedServices= {
                     id: el._id,

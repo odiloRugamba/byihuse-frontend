@@ -57,7 +57,7 @@
 									<h5>{{$t("message.Fillservice")}}</h5>
 								</div>
 								<v-form  ref="form" v-model="valid">
-									<v-text-field v-model="fristName" type="text" :placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
+									<v-text-field v-model="fristName" type="text" :placeholder="label.firstName" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="lastName"	type="text"	:placeholder="label.lastName" :rules="inputRules.basictextRules"></v-text-field>
 									<v-text-field v-model="email" type="email" :placeholder="label.email"></v-text-field>
 									<v-text-field v-model="phoneNumber" 	type="number"	:placeholder="label.phone" :rules="inputRules.basictextRules"></v-text-field>
@@ -159,6 +159,13 @@ export default {
   },
   mounted() {
     this.getContactInfo();
+    const data= JSON.parse(localStorage.getItem('data'))
+    // console.log(data)
+    if (data) {
+    this.fristName= data.firstName
+    this.lastName= data.lastName
+    this.email=data.email 
+    }
   },
   methods: {
       async AskForServices() {

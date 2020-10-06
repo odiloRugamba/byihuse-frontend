@@ -114,6 +114,13 @@ export default {
     }
   },
   mounted(){
+	  const data= JSON.parse(localStorage.getItem('data'))
+    // console.log(data)
+    if (data) {
+    this.fristName= data.firstName
+    this.lastName= data.lastName
+    this.email=data.email 
+    }
 	if (this.selectedLocale.name === 'English') {
 		this.label={
 				firstName : 'First Name*',	
