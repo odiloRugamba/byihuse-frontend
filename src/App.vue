@@ -32,9 +32,9 @@ export default {
 		// if (condition) {
 			
 		// }
-		const token = JSON.parse(localStorage.getItem('data'))
-		// console.log(token.now)
-		axios.defaults.headers.common['Authorization'] = `Bearer ${token.now}`
+		const token = localStorage.getItem('now')
+		// console.log(token)
+		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 		const cart = JSON.parse(localStorage.getItem('cart'))
 		if (cart) {
 		this.$store.commit({

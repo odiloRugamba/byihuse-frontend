@@ -79,7 +79,7 @@ import axios from 'axios'
 					}
 					localStorage.setItem('data', JSON.stringify(localData))
 					axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`
-					sessionStorage.setItem('token', data.data.token)
+					localStorage.setItem('now', data.data.token)
 					this.$snotify.success('SignIn process succesfully done',{
                     closeOnClick: false,
                     pauseOnHover: false,
