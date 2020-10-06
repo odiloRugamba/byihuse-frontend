@@ -25,7 +25,7 @@
          <template v-slot:item.action="{ item }">
 				<v-btn @click="selectedOrder(item)" icon href="javascript:void(0)"><v-icon class="accent--text">remove_red_eye</v-icon></v-btn>
             <!-- <div class="openLogs"> -->
-                        <v-btn @click="openLogs"  small elevation="0" tile class="primary">{{$t('message.TrackOrder')}}</v-btn>
+                        <v-btn @click="openLogs(item.logs)"  small elevation="0" tile class="primary">{{$t('message.TrackOrder')}}</v-btn>
             <!-- </div> -->
 			</template>
       </v-data-table>
@@ -58,7 +58,7 @@
 								<h4>Products ordered</h4>
 								<h3>December 31, 2019</h3>
 							</div> -->
-							<h4 class="pt-12 mb-7 text-sm-left text-center">You Ordered:</h4>
+							<h4 class="pt-12 mb-7 text-sm-left text-center">You ordered:</h4>
 							<div  id="producr">
 								<div id="tittle">
 								<div><h6> {{$t("message.ProductImage")}}</h6></div>
@@ -98,8 +98,8 @@
 						</div>
 					</v-flex>
                <div class="selectedPayemnt">
-                   <v-btn @click="editDialog= false" class="mr-5 primary">Close</v-btn>
-                   <v-btn @click="payymentmethods()" class="accent">Payment</v-btn>
+                   <v-btn @click="editDialog= false" class="mr-5 primary">{{$t("Close")}}</v-btn>
+                   <v-btn @click="payymentmethods()" class="accent">{{$t("message.payment")}}</v-btn>
             </div>
 				</v-card-text>
             
@@ -347,10 +347,10 @@ export default {
             selected.product.forEach(el=>{
             // console.log(el.pictures.pic1)
             this.selectProduts.push({
-               pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
+               pictures: 'http://localhost:4000/'+el.pictures.pic1,
                price:el.price,
                name: el.name.fr,
-               // logs: selected.logs
+               logs: selected.logs
             })
             this.total= this.total+el.price
            })
@@ -358,21 +358,25 @@ export default {
             selected.product.forEach(el=>{
             // console.log(el.pictures.pic1)
             this.selectProduts.push({
-               pictures: 'Https://byihuse.rw/'+el.pictures.pic1,
+               pictures: 'http://localhost:4000/'+el.pictures.pic1,
                price:el.price,
                name: el.name.en,
-               logs: selected.logs
+               logs: selected.logs,
+               quantity:el.quantity
             })
             this.total=this.total+el.price
            })
          }
          this.editDialog= true
+         console.log(this.selectProduts)
       }
    },
    async created(){
       try {
          const resRental= await myOrder.myRentalOrder()
           const resProduct= await myOrder.myProductsOrder()
+         //  console.log(resRental)
+         //  console.log(resProduct)
           const curRes= await currency.getcurrency()
           curRes.data.data.forEach(el=> {
             if (el.symbol === this.selectedCurrency.symbol) {
@@ -381,6 +385,7 @@ export default {
                }
          })
           resRental.data.data.forEach(el => {
+             console.log(el)
          const dat = moment(el.createdAt)
 			const time = moment(el.createdAt)
 			const tt = time.format('LT')
@@ -399,7 +404,7 @@ export default {
                totalAmountExpected:el.totalAmountExpected,
                paymentLogs: el.paymentLogs,
                status: el.status.status,
-               product:this.product[0]
+               product:this.product
                 })
             //  console.log(el)
             //  console.log(el)
@@ -407,7 +412,7 @@ export default {
             //  console
           })
            resProduct.data.data.forEach(el => {
-            //  console.log(el)
+             console.log(el)
             this.realProduct=[]
              const datee = moment(el.createdAt)
 			    const timee = moment(el.createdAt)
@@ -418,7 +423,9 @@ export default {
                 this.realProduct.push({
                    pictures:element._id.pictures,
                    price:element._id.price,
-                   name:element._id.name
+                   name:element._id.name,
+                   logs:element.logs,
+                   quantity:element.quantity
                 })
              });
             if (el.logs.length) {
@@ -437,13 +444,12 @@ export default {
                totalAmountExpected: el.totalAmmount,
                totalAmountPaid: el.totalAmountPaid,
                delivery: el.delivery,
-               product:this.realProduct
+               product:this.realProduct,
+               paymentLogs:el.paymentLogs
              })
             }
              
           });
-          console.log(resRental.data.data.length)
-          console.log(resProduct.data.data.length)
       } catch (err) {
          console.log(err.response.message)
       }
