@@ -6,10 +6,10 @@
 				<template v-if="menuItem.type === 'sub_menu'">
 					<ul  class="sub-menu" v-if="menuItem.children && menuItem.children.length > 0">
 						<li v-for="(subMenuItem , subMenuKey) in menuItem.children" :key="subMenuKey">
-							<a @click="changeOneRoute(subMenuItem.path)"  :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{$t(subMenuItem.name)}}</a>
+							<a @click="changeOneRoute(subMenuItem.path)"  :class="[ subMenuItem.type === 'sub_menu' ? 'menu-item-has-children':'']">{{subMenuItem.name}}</a>
 							<ul class="sub-menu" v-if="subMenuItem.children_menus">
 								<li  v-for="(childrenItem , childrenKey) in subMenuItem.children_menus" :key="childrenKey">
-									<a @click="changeOneRoute(childrenItem.path)"  >{{$t(childrenItem.name)}}</a>
+									<a @click="changeOneRoute(childrenItem.path)"  >{{childrenItem.name}}</a>
 								</li>
 							</ul>
 						</li>
@@ -18,10 +18,10 @@
 				<template ref="dataplz"  v-if="menuItem.type === 'mega_menu'">
 					<ul class="sub-menu mega">
 						<li v-for="(megaitem,megaitemkey) in menuItem.children" :key="megaitemkey">
-                     <a  @click="changedepRoute(megaitemkey)">{{$t(megaitemkey)}}</a>
+                     <a  @click="changedepRoute(megaitemkey)">{{megaitemkey}}</a>
 							<ul class="sub-menu">
 								<li v-for="(submega,submegakey) in megaitem" :key="submegakey">
-									<a  @click="changeRoute(megaitemkey,submega.name)">{{$t(submega.name)}}</a>
+									<a  @click="changeRoute(megaitemkey,submega.name)">{{submega.name}}</a>
 								</li>
 								
 							</ul>
@@ -39,7 +39,7 @@
 }
 </style>
 <script>
-// :to="{name: 'Products', params: {title:$t(megaitemkey)}, query: {category: submega.path}}"
+// :to="{name: 'Products', params: {title:megaitemkey}, query: {category: submega.path}}"
 // let godplz = document.getElementById('dataplz')
 import categories from "Api/categories";
 import departments from "Api/department";

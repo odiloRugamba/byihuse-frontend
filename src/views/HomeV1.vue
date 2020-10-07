@@ -35,7 +35,6 @@
 			</emb-features>
 			<emb-feature-product
 				secTitle="Featured Products"
-				:data="featureProductData"
 			>
 			</emb-feature-product>
 			<emb-day-deal>
@@ -43,7 +42,6 @@
 			<emb-detail-offer></emb-detail-offer>
 			<emb-new-arrival-Products
 				secTitle="New Arrivals"
-				:data="latestArrivalData"
 			>
 			</emb-new-arrival-Products>
 			<!-- <embTestimonial
@@ -85,7 +83,7 @@ import homeBannerData from "Assets/data/homeBannerData";
 import featuresData from "Assets/data/featuresData";
 // import featureProductData from "Assets/data/featureProductData";
 // import dayDealData from "Assets/data/dayDealData";
-import latestArrivalData from "Assets/data/latestArrivalData";
+// import latestArrivalData from "Assets/data/latestArrivalData";
 // import TestimonialData from "Assets/data/TestimonialData";
 // import shopCard from "Assets/data/shopCard";
 
@@ -113,7 +111,7 @@ export default {
       featuresData,
     //   featureProductData,
     //   dayDealData,
-      latestArrivalData,
+    //   latestArrivalData,
     //   TestimonialData,
     //   shopCard: [],
       blogData: null

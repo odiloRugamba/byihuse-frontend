@@ -74,17 +74,19 @@ import axios from 'axios'
 						lastName: data.data.user.lastName,
 						role: data.data.user.role,
 						email: data.data.user.email,
-						departments: data.data.user.assignedDepartments
+						departments: data.data.user.assignedDepartments,
+						now:data.data.token,
 					}
 					localStorage.setItem('data', JSON.stringify(localData))
 					axios.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`
-					sessionStorage.setItem('token', data.data.token)
+					localStorage.setItem('now', data.data.token)
 					this.$snotify.success('SignIn process succesfully done',{
                     closeOnClick: false,
                     pauseOnHover: false,
                     timeout: 1000,
 					showProgressBar:false,
 					});
+					// console.log(JSON.parse(localStorage.getItem('data')))
 				// this.$router.push('');
 				// location.reload(true)
 				this.$store.state.user= true

@@ -70,7 +70,7 @@ const mutations = {
       var data = {}
       const res = await department.getDepartmentall();
       const rescurr= await currency.getcurrency();
-      console.log(rescurr)
+      // console.log(rescurr)
       rescurr.data.data.forEach(el =>{
          // console.log()
          if (el.symbol === state.selectedCurrency.symbol) {

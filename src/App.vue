@@ -29,7 +29,11 @@ export default {
 		if(this.rtlLayout) {
 			this.$vuetify.rtl = this.rtlLayout;
 		}
-		const token = sessionStorage.getItem('token')
+		// if (condition) {
+			
+		// }
+		const token = localStorage.getItem('now')
+		// console.log(token)
 		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 		const cart = JSON.parse(localStorage.getItem('cart'))
 		if (cart) {
