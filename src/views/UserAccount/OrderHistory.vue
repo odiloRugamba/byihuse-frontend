@@ -375,8 +375,8 @@ export default {
       try {
          const resRental= await myOrder.myRentalOrder()
           const resProduct= await myOrder.myProductsOrder()
-         //  console.log(resRental)
-         //  console.log(resProduct)
+          console.log(resRental)
+          console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++",resProduct)
           const curRes= await currency.getcurrency()
           curRes.data.data.forEach(el=> {
             if (el.symbol === this.selectedCurrency.symbol) {
@@ -392,7 +392,7 @@ export default {
 			const da = dat.format('L');
          const date = tt + '' + ' '+ da
          
-             if (el.logs.length) {
+            //  if (el.logs.length) {
                //  console.log(el)
                 this.product[0]= el.rental
                 this.tableData.push({
@@ -408,7 +408,7 @@ export default {
                 })
             //  console.log(el)
             //  console.log(el)
-             }
+            //  }
             //  console
           })
            resProduct.data.data.forEach(el => {
@@ -428,7 +428,7 @@ export default {
                    quantity:element.quantity
                 })
              });
-            if (el.logs.length) {
+            // if (el.logs.length) {
                this.tableData.push({
                date:dateee,
                MoMoPhoneNumber:el.MoMoPhoneNumber,
@@ -447,7 +447,7 @@ export default {
                product:this.realProduct,
                paymentLogs:el.paymentLogs
              })
-            }
+            // }
              
           });
       } catch (err) {
