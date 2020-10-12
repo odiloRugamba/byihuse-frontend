@@ -130,20 +130,20 @@ import { mapGetters } from "vuex";
 				firstName : 'First Name*',	
                 lastName :'Last Name*',
                 streetName :'Street  Number*',
-                cityState :'City and State*', 
+                cityState :'City and place*', 
                 country : 'Country',
 				phone :'Mobile*',
-				email: 'Email*'
+				email: 'Email'
 			  }
 		  }else{
 			  this.label={
-				firstName : 'First Name*fr',	
-                lastName :'Last Name*fr',
-                streetName :'Street  Number* fr',
-                cityState :'City and State* fr', 
-                country : 'Country fr',
-				phone :'Mobile* fr',
-				email: 'Email* fr'
+				firstName : 'Prénom*',	
+                lastName :'Nom de famille*',
+                streetName :'Numéro de rue*',
+                cityState :'Ville et lieu*', 
+                country : 'Pays',
+				phone :'Mobile*',
+				email: 'Email'
 			  }
 		  }
 		  
