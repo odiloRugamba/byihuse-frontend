@@ -8,7 +8,7 @@
     </div>
 
     <!-- Menu for mobile -->
-    <v-navigation-drawer v-model="mobileMenu" temporary absolute dark class="sidebar-bg">
+    <v-navigation-drawer id="navigation" v-model="mobileMenu" temporary absolute dark class="sidebar-bg">
       <emb-sidebar></emb-sidebar>
     </v-navigation-drawer>    
     <router-view></router-view>
@@ -16,7 +16,11 @@
     </emb-footer-V1>
   </v-app>
 </template>
-
+<style  scoped>
+#navigation{
+  background: #0D2947;
+}
+</style>
 <script>
 import { mapGetters } from "vuex";
 export default {
