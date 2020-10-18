@@ -51,7 +51,7 @@
                            </router-link>
                         </div>
                      </v-flex>
-                     <v-flex xs12 sm12 md6 lg4 xl4  search-v3-wrap>
+                     <v-flex xs12 sm12 md6 lg7 xl5  search-v3-wrap>
                            <input v-on:keyup.enter="search"  v-model="keyword" type="text" placeholder="Search">
                            <v-btn @click="search"  icon>
                               <v-icon>search</v-icon>

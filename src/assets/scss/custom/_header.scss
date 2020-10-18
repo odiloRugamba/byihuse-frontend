@@ -12,6 +12,7 @@ top-header-wrap
 lang-menu
 header-v3-wrap
 form
+mega
 -----------------------------------------------------------------*/ 
 //======================|| Header Scss ||======================//
 // @media screen  and (max-width: 409px){
@@ -615,7 +616,11 @@ form
 		margin: 0 auto;
 		left: 0;
 		right: 0;
-		overflow: hidden;
+		overflow-x: hidden;
+		display: flex;
+		flex-wrap: wrap;
+		overflow-y: scroll;
+		max-height: 500px;
 		padding: 3rem;
 		>li {
 			display: inline-block;
@@ -624,8 +629,10 @@ form
 			> a {
 				color: $primary;
 				font-size: 1.2rem;
-				border-bottom: 1px solid $base-200;
 			}
+		}
+		.department{
+			border-bottom: 1px solid $base-200;
 		}
 		.sub-menu {
 			opacity: 1;

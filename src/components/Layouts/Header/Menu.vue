@@ -18,7 +18,7 @@
 				<template ref="dataplz"  v-if="menuItem.type === 'mega_menu'">
 					<ul class="sub-menu mega">
 						<li v-for="(megaitem,megaitemkey) in menuItem.children" :key="megaitemkey">
-                     <a  @click="changedepRoute(megaitemkey)">{{megaitemkey}}</a>
+                     <a class="department" @click="changedepRoute(megaitemkey)">{{megaitemkey}}</a>
 							<ul class="sub-menu">
 								<li v-for="(submega,submegakey) in megaitem" :key="submegakey">
 									<a  @click="changeRoute(megaitemkey,submega.name)">{{submega.name}}</a>
@@ -113,12 +113,12 @@ menus:  [
       type: "sub_menu",
       children: [
          {
-            name: 'message.byoroshye',
+            name: 'byoroshye',
             children_menus:null,
             path: 'byoroshye'
          },
          {
-            name: 'message.byizewe',
+            name: 'byizewe',
             children_menus:null,
             path: 'services'
          },

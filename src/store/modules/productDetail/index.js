@@ -98,11 +98,14 @@ const mutations = {
                //  console.log(prdata)
                })
             })
-            data[el.name.fr] = {...obj}
-            // console.log(data)
-            for (let i = 0; i < obj.length; i++) {
-               delete obj[i]
+            if (obj.length) {
+               data[el.name.fr] = {...obj}
             }
+            // console.log(data)
+            obj=[]
+            // for (let i = 0; i < obj.length; i++) {
+            //    delete obj[i]
+            // }
          });  
       } else {
          // console.log(state.selectedLocale)
@@ -124,11 +127,14 @@ const mutations = {
                //  console.log(prdata)
                })
             })
-            data[el.name.en] = {...obj}
-            // console.log(data)
-            for (let i = 0; i < obj.length; i++) {
-               delete obj[i]
+            if (obj.length) {
+               data[el.name.en] = {...obj}
             }
+            // console.log(data)
+            obj=[]
+            // for (let i = 0; i < obj.length; i++) {
+            //    delete obj[i]
+            // }
          });
       }
       state.featured = data
