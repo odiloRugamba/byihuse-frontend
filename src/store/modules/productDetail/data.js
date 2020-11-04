@@ -7,6 +7,14 @@ export const languages = [
       name: "French",
       locale: "fr"
    },
+   {
+      name: "Swahili",
+      locale: "swah"
+   },
+   {
+      name: "Kinyarwanda",
+      locale: "kiny"
+   },
 ]
 export const currencies = [
    {

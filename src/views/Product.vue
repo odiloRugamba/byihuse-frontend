@@ -241,8 +241,6 @@
                department: el.name.fr,
                symbol: this.symbol,
              })
-            //  console.log(prdata.name)
-            //  console.log(this.selectedLocale)
           })
         })
       });
@@ -268,14 +266,60 @@
                department: el.name.en,
                symbol: this.symbol,
              })
-            //  console.log(prdata.price)
-            //  console.log('this.selectedLocale')
-
           })
         })
       });
-      }
-    // console.log(this.products.slice(0, 20))
+    } else if(this.selectedLocale.name ==='Swahili') {
+        res.data.data.forEach(el => {
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.sw,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.sw,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.en,
+               category: pro.name.sw,
+               department: el.name.sw,
+               symbol: this.symbol,
+             })
+          })
+        })
+      });
+    }else if(this.selectedLocale.name ==='Kinyarwanda') {
+        res.data.data.forEach(el => {
+        el.categories.forEach(pro =>{
+          pro.products.forEach(prdata =>{
+            this.products.push({
+               objectID: prdata._id,
+               type: el.name.kiny,
+               image:this.linksformbackend+prdata.pictures.pic1,
+               price: prdata.price,
+               name: prdata.name.kiny,
+               rate: 3,
+               image_gallery: [
+                  this.linksformbackend+prdata.pictures.pic1,
+                  this.linksformbackend+prdata.pictures.pic2,
+                  this.linksformbackend+prdata.pictures.pic3,
+                  this.linksformbackend+prdata.pictures.pic4
+               ],
+               description: prdata.description.en,
+               category: pro.name.kiny,
+               department: el.name.kiny,
+               symbol: this.symbol,
+             })
+          })
+        })
+      });
+    }
     this.produ= this.products.slice(0,20)
     this.length= Math.ceil(this.products.length/20)
     this.pageProductsLoaded= false

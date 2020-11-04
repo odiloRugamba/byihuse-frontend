@@ -1,8 +1,8 @@
 import en from './en'
 import fr from './fr'
-import sp from './sp'
-import jp from './jp'
-import gr from './gr'
+import swah from './kiswahhili'
+// import jp from './kinyarwanda'
+import kiny from './kinyarwanda'
 
 export default {
     en: {
@@ -11,13 +11,13 @@ export default {
     fr: {
         message: fr
     },
-    sp: {
-        message: sp
+    swah: {
+        message: swah
     },
-    jp: {
-        message: jp
-    },
-    gr:{
-        message: gr
+    // jp: {
+    //     message: jp
+    // },
+    kiny:{
+        message: kiny
     }
 }

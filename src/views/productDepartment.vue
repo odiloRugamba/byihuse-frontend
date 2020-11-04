@@ -262,12 +262,11 @@ export default {
 				}) 
         }
       });
-    }else{
+    }else if (this.selectedLocale.name === 'English'){
         rescategoies.data.data.forEach(el => {
         if (el.name.en === this.title || el.name.fr === this.title) {
          el.categories.forEach(recat =>{
 						recat.products.forEach(pro =>{
-              // console.log(pro)
 						this.products.push({
 							objectID: pro._id,
 							price: pro.price,
@@ -279,7 +278,39 @@ export default {
 				}) 
         }
       });
-    }
+    } else if (this.selectedLocale.name === 'Swahili'){
+        rescategoies.data.data.forEach(el => {
+        if (el.name.en === this.title || el.name.fr === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.sw,
+              image: 'https://byihuse.rw/'+pro.pictures.pic1,
+              category:pro.name.sw
+						})
+						})
+				}) 
+        }
+      });
+    } else if (this.selectedLocale.name === 'Kinyarwanda'){
+        rescategoies.data.data.forEach(el => {
+        if (el.name.en === this.title || el.name.fr === this.title) {
+         el.categories.forEach(recat =>{
+						recat.products.forEach(pro =>{
+						this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.kiny,
+              image: 'https://byihuse.rw/'+pro.pictures.pic1,
+              category:pro.name.kiny
+						})
+						})
+				}) 
+        }
+      });
+    } 
     this.produ= this.products.slice(0,20)
     this.length= Math.ceil(this.products.length/20)
       this.pageProductsLoaded = true

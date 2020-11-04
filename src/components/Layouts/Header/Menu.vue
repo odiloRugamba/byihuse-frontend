@@ -39,8 +39,6 @@
 }
 </style>
 <script>
-// :to="{name: 'Products', params: {title:megaitemkey}, query: {category: submega.path}}"
-// let godplz = document.getElementById('dataplz')
 import categories from "Api/categories";
 import departments from "Api/department";
 import { mapGetters } from 'vuex';
@@ -51,34 +49,14 @@ export default {
    methods: {
       changeRoute(megaitemkey, submega) {
          console.log(megaitemkey,submega)
-         // localStorage.removeItem('current')
-         // const current = `/products/${megaitemkey}/${submega}`
-         // localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
-         // location.replace(`/${this.$i18n.locale}/products/${megaitemkey}/${submega}`)
-         // console.log('helo',megaitemkey, submega)
       },
       changedepRoute(megaitemkey) {
          console.log(megaitemkey)
-         // localStorage.removeItem('current')
-         // this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
-         // const current = `/products/${megaitemkey}`
-         // localStorage.setItem('current', current)
          this.$router.push(`/${this.$i18n.locale}/products/${megaitemkey}`)
       },
       changeOneRoute(oneLink){
          console.log(oneLink)
-         // localStorage.removeItem('current')
-         // this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
-         // this.$router.push(`#/${this.$i18n.locale}/${oneLink}`)
-         // const current = `/${oneLink}`
-         // localStorage.setItem('current', current)
-         // if (oneLink === 'products') {
-         //    location.reload()
-            // console.log(oneLink)
-         // }
-         // location.reload()
-         // console.log('helo', oneLink)
          if (oneLink !== 'categoriesiii' && oneLink !== 'servicesTitle') {
             this.$router.push(`/${this.$i18n.locale}/${oneLink}`)
          }
@@ -151,9 +129,6 @@ menus:  [
    resDept: '',
 }
 },
-// mounted () {
-// 	console.log(this.$refs.dataplz)
-// },
 	async created () {
 		try {
 			this.resCat = await categories.getCategories()
@@ -165,7 +140,7 @@ menus:  [
 			    this.resCat.data.data.forEach(el => {
 					if (dep._id === el.department) {
 					obj.push({
-							path: `${el.name.fr}`,
+							path: `${el.name.en}`,
 							children_menus:null,
                             name: `${el.name.fr}`
 						})
@@ -176,7 +151,7 @@ menus:  [
                delete obj[i]
             }
          })
-         } else {
+         } else if(this.selectedLocale.name === 'English'){
            this.resDept.data.data.forEach(dep =>{
 			    this.resCat.data.data.forEach(el => {
 					if (dep._id === el.department) {
@@ -193,9 +168,41 @@ menus:  [
             }
          }) 
          }
-			
+         else if(this.selectedLocale.name === 'Swahili'){
+           this.resDept.data.data.forEach(dep =>{
+			    this.resCat.data.data.forEach(el => {
+					if (dep._id === el.department) {
+					obj.push({
+							path: `${el.name.sw}`,
+							children_menus:null,
+                            name: `${el.name.sw}`
+						})
+					}
+            });
+            arr[dep.name.sw] = {...obj}
+            for (let i = 0; i < obj.length; i++) {
+               delete obj[i]
+            }
+         }) 
+         }
+         else if(this.selectedLocale.name === 'Kinyarwanda'){
+           this.resDept.data.data.forEach(dep =>{
+			    this.resCat.data.data.forEach(el => {
+					if (dep._id === el.department) {
+					obj.push({
+							path: `${el.name.en}`,
+							children_menus:null,
+                            name: `${el.name.kiny}`
+						})
+					}
+            });
+            arr[dep.name.kiny] = {...obj}
+            for (let i = 0; i < obj.length; i++) {
+               delete obj[i]
+            }
+         })
+         }
          this.menus[2].children = arr
-			// console.log(this.menus[3].children)
 		} catch (err) {
 			console.log(err.message)
 		}

@@ -245,7 +245,6 @@
 						  this.currentValue= el.currentValue
 					  }
 					});
-					// console.log(res.data.data.name)
 					this.image_gallery = [
 							this.linksformbackend + res.data.data.pictures.pic1,
 							this.linksformbackend + res.data.data.pictures.pic2,
@@ -253,7 +252,6 @@
 							this.linksformbackend + res.data.data.pictures.pic4,
 						],
 						this.selectedImage = this.linksformbackend + res.data.data.pictures.pic1
-					// console.log(this.image_gallery)
 					this.selectedProduct.price = res.data.data.price
 					this.selectedProduct.objectID= res.data.data._id
 					if (this.selectedLocale.name === "French") {
@@ -263,7 +261,6 @@
 						this.selectedProduct.name = res.data.data.name.en
 					    this.selectedProduct.descprition = res.data.data.description.en
 					}
-					// console.log(res.data.data)
 					res.data.data.additionalServices.forEach(el =>{
 						this.AdditionalService.push({
 							select: false,
@@ -272,12 +269,6 @@
 						})
 					})
 					this.selectedProduct.tags = ['Black Men Summer']
-					// this.selectedProduct.features = [
-					// 	'Black Men Summer',
-					// 	'Slim Fit',
-					// 	'Pure Cotton',
-					// 	'Free Delivery and delivery in 4 Days'
-					// 	]
 					const rescategoies = await departments.getDepartmentall()
 					if (this.selectedLocale.name === 'French') {
 						rescategoies.data.data.forEach(el => {
@@ -298,7 +289,7 @@
 						})
 
 					});
-				}else{
+				}else if (this.selectedLocale.name === 'English'){
 					rescategoies.data.data.forEach(el => {
 						el.categories.forEach(recat => {
 							if (el.name.en === this.title) {
@@ -310,6 +301,44 @@
 										name: pro.name.en,
 										image: this.linksformbackend + pro.pictures.pic1,
 										category: recat.name.en
+									})
+								})
+
+							}
+						})
+
+					});
+				} else if (this.selectedLocale.name === 'Swahili') {
+						rescategoies.data.data.forEach(el => {
+						el.categories.forEach(recat => {
+							if (el.name.fr === this.title) {
+								console.log(recat.products)
+								recat.products.forEach(pro => {
+									this.products.push({
+										objectID: pro._id,
+										price: pro.price,
+										name: pro.name.sw,
+										image: this.linksformbackend + pro.pictures.pic1,
+										category: recat.name.sw
+									})
+								})
+
+							}
+						})
+
+					});
+				} else if (this.selectedLocale.name === 'Kinyarwanda') {
+						rescategoies.data.data.forEach(el => {
+						el.categories.forEach(recat => {
+							if (el.name.fr === this.title) {
+								console.log(recat.products)
+								recat.products.forEach(pro => {
+									this.products.push({
+										objectID: pro._id,
+										price: pro.price,
+										name: pro.name.kiny,
+										image: this.linksformbackend + pro.pictures.pic1,
+										category: recat.name.kiny
 									})
 								})
 

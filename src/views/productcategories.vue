@@ -272,11 +272,10 @@ export default {
               })
             }
       })
-      // console.log(recat.name.en)
 			}) 
         }
       });
-    }else{
+    }else if(this.selectedLocale.name === 'English') {
     rescategoies.data.data.forEach(el => {
         if (el.name.en === this.title || el.name.fr === this.title) {
          el.categories.forEach(recat =>{
@@ -291,13 +290,46 @@ export default {
               })
             }
       })
-      // console.log(this.currentValue)
 			}) 
         }
       });
-    }
-    
-      // }
+    } else if (this.selectedLocale.name === 'Swahili') {
+          rescategoies.data.data.forEach(el => {
+        if (el.name.fr === this.title || el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+		    recat.products.forEach(pro =>{
+            if (recat.name.sw === this.id) {
+               this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.sw,
+              image: this.linksformbackend+pro.pictures.pic1,
+              category: recat.name.sw
+              })
+            }
+      })
+			}) 
+        }
+      });
+      } else if (this.selectedLocale.name === 'Kinyarwanda') {
+          rescategoies.data.data.forEach(el => {
+        if (el.name.fr === this.title || el.name.en === this.title) {
+         el.categories.forEach(recat =>{
+		    recat.products.forEach(pro =>{
+            if (recat.name.kiny === this.id) {
+               this.products.push({
+							objectID: pro._id,
+							price: pro.price,
+							name: pro.name.kiny,
+              image: this.linksformbackend+pro.pictures.pic1,
+              category: recat.name.kiny
+              })
+            }
+      })
+			}) 
+        }
+      });
+      }
       this.length=Math.ceil(this.products.length / 20)
       // const enddddd = this.products.length
       // for (let i = 0; i < 20; i++) {

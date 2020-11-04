@@ -70,16 +70,11 @@ const mutations = {
       var data = {}
       const res = await department.getDepartmentall();
       const rescurr= await currency.getcurrency();
-      // console.log(rescurr)
       rescurr.data.data.forEach(el =>{
-         // console.log()
          if (el.symbol === state.selectedCurrency.symbol) {
             state.currentValue=el.currentValue
          }
-         // console.log(s)
       })
-      // console.log()
-      // console.log(res.data)
       if (state.selectedLocale.name === 'French') {
          res.data.data.forEach(el => {
             el.categories.forEach(pr =>{
@@ -94,22 +89,14 @@ const mutations = {
                   category: pr.name.fr
                 })
                }
-               
-               //  console.log(prdata)
                })
             })
             if (obj.length) {
                data[el.name.fr] = {...obj}
             }
-            // console.log(data)
             obj=[]
-            // for (let i = 0; i < obj.length; i++) {
-            //    delete obj[i]
-            // }
          });  
-      } else {
-         // console.log(state.selectedLocale)
-         // console.log('ho')
+      } else if(state.selectedLocale.name === 'English') {
          res.data.data.forEach(el => {
             el.categories.forEach(pr =>{
                pr.products.forEach(prdata =>{
@@ -123,24 +110,58 @@ const mutations = {
                   category: pr.name.en
                 })
                }
-               
-               //  console.log(prdata)
                })
             })
             if (obj.length) {
                data[el.name.en] = {...obj}
             }
-            // console.log(data)
             obj=[]
-            // for (let i = 0; i < obj.length; i++) {
-            //    delete obj[i]
-            // }
+         });
+      }
+      if (state.selectedLocale.name === 'Swahili') {
+         res.data.data.forEach(el => {
+            el.categories.forEach(pr =>{
+               pr.products.forEach(prdata =>{
+               if (prdata.featured === true) {
+                 obj.push({
+                  objectID: prdata._id,
+                  type: el.name.sw,
+                  image:'Https://byihuse.rw/'+prdata.pictures.pic1,
+                  price: prdata.price,
+                  name: prdata.name.sw,
+                  category: pr.name.sw
+                })
+               }
+               })
+            })
+            if (obj.length) {
+               data[el.name.sw] = {...obj}
+            }
+            obj=[]
+         });  
+      } else if(state.selectedLocale.name === 'Kinyarwanda') {
+         res.data.data.forEach(el => {
+            el.categories.forEach(pr =>{
+               pr.products.forEach(prdata =>{
+               if (prdata.featured === true) {
+                 obj.push({
+                  objectID: prdata._id,
+                  type: el.name.kiny,
+                  image:'Https://byihuse.rw/'+prdata.pictures.pic1,
+                  price: prdata.price,
+                  name: prdata.name.kiny,
+                  category: pr.name.kiny
+                })
+               }
+               })
+            })
+            if (obj.length) {
+               data[el.name.kiny] = {...obj}
+            }
+            obj=[]
          });
       }
       state.featured = data
-      // state.products = produ
-      // console.log(produ)
-      // console.log(localStorage.getItem('lang'))
       } catch (err) {
          console.log(err)
       }
